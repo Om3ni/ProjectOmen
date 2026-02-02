@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --sb-size: 8px;
+  --sb-thumb: rgba(148, 163, 184, 0.35); /* slate-400-ish */
+  --sb-thumb-hover: rgba(148, 163, 184, 0.55);
+  --sb-track: transparent;
+}
+
+/* Minimalist scrollbars (Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+
+/* Minimalist scrollbars (Chromium/WebKit) */
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sb-thumb-hover);
+}
+
+/* Utility: fully hide scrollbars for a specific scroller */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+/* Raw preview helpers (VS Code-ish line numbers without polluting copied text). */
+.rpr-numbered {
+  counter-reset: rpr-line;
+}
+
+.rpr-numbered .rpr-line {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.rpr-numbered .rpr-line::before {
+  counter-increment: rpr-line;
+  content: counter(rpr-line);
+  position: absolute;
+  left: 0;
+  width: 3rem;
+  text-align: right;
+  color: rgba(148, 163, 184, 0.7);
+  user-select: none;
+}

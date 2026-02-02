@@ -1,0 +1,2424 @@
+{
+  "version": "2025-10-30-full-rpr-schema-gold VER 0.0.3",
+  "notes": [
+    "RuneDef: admin-only, no Public flag (spawn/script controlled).",
+    "SpellEffect.TargetMode enum corrected: 0=Target, 1=AllTargets, 2=Caster.",
+    "UI hints included (labels/tooltips) where confirmed from editor screenshots; remaining entries are placeholders for future capture."
+  ],
+  "categories": [
+    "Attributes",
+    "Skills",
+    "Perks",
+    "Stats",
+    "Runes",
+    "Statuses",
+    "Mutators",
+    "Abilities"
+  ],
+  "tables": {
+    "SkillDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "SkillDef"
+        },
+        {
+          "index": 1,
+          "name": "TypeFlag",
+          "type": "char",
+          "enum": {
+            "t": "Attribute",
+            "f": "Skill"
+          },
+          "default": "t"
+        },
+        {
+          "index": 2,
+          "name": "Node ID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 3,
+          "name": "Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 4,
+          "name": "Description",
+          "type": "string_or_empty",
+          "default": ""
+        },
+        {
+          "index": 5,
+          "name": "Trained",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 6,
+          "name": "Max Allocation",
+          "type": "int_or_float",
+          "default": -1
+        },
+        {
+          "index": 7,
+          "name": "Bonus Source",
+          "type": "string_or_empty",
+          "default": ""
+        },
+        {
+          "index": 8,
+          "name": "Natural Bonus",
+          "type": "int_or_float",
+          "default": 0
+        },
+        {
+          "index": 9,
+          "name": "Public",
+          "type": "bool_tf",
+          "default": "t"
+        },
+        {
+          "index": 10,
+          "name": "Bonus Function",
+          "type": "char",
+          "enum": {
+            "0": "Sum",
+            "1": "Average",
+            "2": "Take Min",
+            "3": "Take Max"
+          },
+          "default": "0"
+        }
+      ],
+      "ui": {
+        "hiddenByTab": {
+          "Attributes": [
+            "Trained",
+            "Bonus Source",
+            "Bonus Function"
+          ],
+          "Skills": []
+        },
+        "hidden": [
+          "Literal",
+          "TypeFlag",
+          "Bonus Source",
+          "Bonus Function"
+        ],
+        "columns": 3,
+        "displayOrder": [
+          "Name",
+          "Literal",
+          "TypeFlag",
+          "Node ID",
+          "Description",
+          "Trained",
+          "Max Allocation",
+          "Bonus Source",
+          "Bonus Function",
+          "Natural Bonus",
+          "Public"
+        ],
+        "span": {
+          "Literal": 1,
+          "Node ID": 1,
+          "Name": 1,
+          "TypeFlag": 1,
+          "Description": 3,
+          "Bonus Source": 2,
+          "Bonus Function": 1,
+          "Natural Bonus": 1
+        },
+        "scale": {
+          "Literal": 2,
+          "Node ID": 1,
+          "TypeFlag": 1
+        },
+        "input": {
+          "Literal": "text",
+          "Bonus Source": "text",
+          "Description": "textarea"
+        },
+        "rows": {
+          "Name": 1,
+          "Description": 6
+        },
+        "skipLineBefore": {
+          "Node ID": true,
+          "Bonus Source": true,
+          "Bonus Function": true,
+          "Natural Bonus": true
+        },
+        "bonusBuilderPlacement": "after:Name",
+        "labels": {},
+        "tooltips": {},
+        "layoutGrid": {
+          "Name": {
+            "x": 0,
+            "y": 0,
+            "w": 4,
+            "h": 1,
+            "pad": 6
+          },
+          "Node ID": {
+            "x": 10.5,
+            "y": 7.5,
+            "w": 1,
+            "h": 1,
+            "pad": 6
+          },
+          "Public": {
+            "x": 0,
+            "y": 2,
+            "w": 1,
+            "h": 1,
+            "pad": 6
+          },
+          "Description": {
+            "x": 0,
+            "y": 2.75,
+            "w": 11,
+            "h": 1,
+            "pad": 6
+          },
+          "Natural Bonus": {
+            "x": 0,
+            "y": 1,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "Max Allocation": {
+            "x": 2,
+            "y": 1,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "Trained": {
+            "x": 1.25,
+            "y": 3,
+            "w": 1,
+            "h": 1,
+            "pad": 6
+          },
+          "Bonus Source": {
+            "x": 0,
+            "y": 7.5,
+            "w": 7,
+            "h": 2,
+            "pad": 6
+          },
+          "Bonus Function": {
+            "x": 7,
+            "y": 7.5,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "__bonus_builder_skill__": {
+            "x": 0,
+            "y": 1,
+            "w": 7,
+            "h": 3,
+            "pad": 6
+          }
+        },
+        "layoutGridScoped": {
+          "SkillDef::Attributes": {
+            "Name": {
+              "x": 0,
+              "y": 0,
+              "w": 4,
+              "h": 1,
+              "pad": 6
+            },
+            "Node ID": {
+              "x": 10.5,
+              "y": 7.5,
+              "w": 1,
+              "h": 1,
+              "pad": 6
+            },
+            "Public": {
+              "x": 0,
+              "y": 2.25,
+              "w": 1,
+              "h": 1,
+              "pad": 4
+            },
+            "Max Allocation": {
+              "x": 0,
+              "y": 1.25,
+              "w": 2,
+              "h": 1,
+              "pad": 6
+            },
+            "Natural Bonus": {
+              "x": 2,
+              "y": 1.25,
+              "w": 2,
+              "h": 1,
+              "pad": 6
+            },
+            "Description": {
+              "x": 0,
+              "y": 3,
+              "w": 11,
+              "h": 2,
+              "pad": 6
+            }
+          },
+          "SkillDef::Skills": {
+            "Name": {
+              "x": 0,
+              "y": 0,
+              "w": 4,
+              "h": 1,
+              "pad": 6
+            },
+            "Node ID": {
+              "x": 10.5,
+              "y": 9.25,
+              "w": 1,
+              "h": 1,
+              "pad": 6
+            },
+            "Public": {
+              "x": 4.25,
+              "y": 3.25,
+              "w": 1,
+              "h": 1,
+              "pad": 6
+            },
+            "Description": {
+              "x": 0,
+              "y": 5,
+              "w": 11,
+              "h": 1,
+              "pad": 6
+            },
+            "Natural Bonus": {
+              "x": 0,
+              "y": 3.5,
+              "w": 2,
+              "h": 1,
+              "pad": 6
+            },
+            "Max Allocation": {
+              "x": 2,
+              "y": 3.5,
+              "w": 2,
+              "h": 1,
+              "pad": 6
+            },
+            "Trained": {
+              "x": 4.25,
+              "y": 4.25,
+              "w": 1,
+              "h": 1,
+              "pad": 6
+            },
+            "Bonus Source": {
+              "x": 0,
+              "y": 7.5,
+              "w": 7,
+              "h": 2,
+              "pad": 6
+            },
+            "Bonus Function": {
+              "x": 7,
+              "y": 7.5,
+              "w": 2,
+              "h": 1,
+              "pad": 6
+            },
+            "__bonus_builder_skill__": {
+              "x": 0,
+              "y": 1.25,
+              "w": 7,
+              "h": 3,
+              "pad": 6
+            }
+          }
+        },
+        "layoutLocked": true,
+        "pinned": {
+          "Public": true,
+          "Description": true,
+          "Trained": true,
+          "Max Allocation": true,
+          "Natural Bonus": true
+        }
+      }
+    },
+    "PerkDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "PerkDef"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Public",
+          "type": "bool_tf"
+        },
+        {
+          "index": 3,
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "index": 4,
+          "name": "Description",
+          "type": "string_or_empty"
+        },
+        {
+          "index": 5,
+          "name": "Cost",
+          "type": "int_or_float"
+        },
+        {
+          "index": 6,
+          "name": "Category",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Public": "Public",
+          "Name": "Perk Name",
+          "Description": "Description",
+          "Cost": "Cost",
+          "Category": "Category"
+        },
+        "tooltips": {
+          "Public": "t = selectable by players; f = hidden/admin",
+          "Category": ""
+        },
+        "hiddenByTab": {
+          "Perks": [
+            "Literal"
+          ]
+        },
+        "displayOrder": [
+          "ID",
+          "Name",
+          "Public",
+          "Category",
+          "Cost",
+          "Description",
+          "Literal"
+        ],
+        "span": {
+          "ID": 0.5,
+          "Name": 0.5,
+          "Category": 0.5,
+          "Cost": 0.5
+        },
+        "skipLineBefore": {
+          "Name": true,
+          "Category": true,
+          "Description": true,
+          "Cost": true
+        },
+        "input": {
+          "Description": "textarea"
+        },
+        "rows": {
+          "Description": 3
+        }
+      }
+    },
+    "PerkAction": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "PerkAction"
+        },
+        {
+          "index": 1,
+          "name": "PerkID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Function",
+          "type": "int",
+          "enum": {
+            "0": "Allow Skill",
+            "1": "Deny Skill",
+            "2": "Allow Perk",
+            "3": "Deny Perk",
+            "4": "Dice Modifier",
+            "5": "Give Feat",
+            "6": "Grant Stat",
+            "7": "Stat Modifier",
+            "8": "Grant Ability",
+            "9": "Grant Status",
+            "10": "Unlock Status",
+            "11": "Grant Perk",
+            "12": "Grant Sudo Role",
+            "13": "Allow Perk Category",
+            "14": "Deny Perk Category",
+            "15": "Teach Language",
+            "16": "Give CharTag",
+            "17": "Set Float CharVar",
+            "18": "Set String CharVar"
+          }
+        },
+        {
+          "index": 3,
+          "name": "TargetType",
+          "type": "int"
+        },
+        {
+          "index": 4,
+          "name": "TargetID",
+          "type": "int"
+        },
+        {
+          "index": 5,
+          "name": "Modifier",
+          "type": "string_or_empty"
+        },
+        {
+          "index": 6,
+          "name": "Extra",
+          "type": "string_or_empty"
+        },
+        {
+          "index": 7,
+          "name": "Value",
+          "type": "float"
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Function": "Function",
+          "TargetType": "Target Type",
+          "TargetID": "Target ID",
+          "Modifier": "Modifier",
+          "Extra": "Extra",
+          "Value": "Value"
+        },
+        "tooltips": {
+          "Function": "Effect to apply (select from list; mapping can be adjusted in schema)"
+        },
+        "displayOrder": [
+          "PerkID",
+          "Function",
+          "TargetType",
+          "TargetID",
+          "Modifier",
+          "Extra",
+          "Value",
+          "Literal"
+        ],
+        "hiddenByTab": {
+          "Perks": [
+            "Literal",
+            "TargetType"
+          ]
+        }
+      }
+    },
+    "Stat": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "Stat"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "index": 3,
+          "name": "Base",
+          "type": "float_or_int"
+        },
+        {
+          "index": 4,
+          "name": "Formula",
+          "type": "string_or_empty"
+        },
+        {
+          "index": 5,
+          "name": "Bonus",
+          "type": "float_or_int"
+        },
+        {
+          "index": 6,
+          "name": "Public",
+          "type": "bool_tf"
+        },
+        {
+          "index": 7,
+          "name": "Show",
+          "type": "bool_tf"
+        },
+        {
+          "index": 8,
+          "name": "Active",
+          "type": "bool_tf"
+        },
+        {
+          "index": 9,
+          "name": "Description",
+          "type": "string"
+        },
+        {
+          "index": 10,
+          "name": "Scale",
+          "type": "float_or_int"
+        },
+        {
+          "index": 11,
+          "name": "Trainable",
+          "type": "bool_tf"
+        },
+        {
+          "index": 12,
+          "name": "Display",
+          "type": "bool_tf"
+        },
+        {
+          "index": 13,
+          "name": "CategoryID",
+          "type": "int"
+        },
+        {
+          "index": 14,
+          "name": "BonusFunction",
+          "type": "char",
+          "enum": {
+            "0": "Sum",
+            "1": "Average",
+            "2": "Take Min",
+            "3": "Take Max"
+          },
+          "default": "0"
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Name": "Name",
+          "Base": "Base Value",
+          "Formula": "Formula",
+          "Bonus": "Min Value",
+          "Public": "Public",
+          "Show": "Player Can Reset",
+          "Active": "Player Can Modify",
+          "Description": "Description",
+          "Scale": "Final Multiplier",
+          "Trainable": "Can Modify",
+          "Display": "Secret",
+          "CategoryID": "Category",
+          "BonusFunction": "Function"
+        },
+        "tooltips": {
+          "Formula": "Semicolon-separated AttributeID*Multiplier terms, e.g., '2*1.0;1*1.0'",
+          "Scale": "Final Multiplier: multiplies the combined contributor result",
+          "BonusFunction": "How bonus sources are combined: Sum adds all, Average takes the mean, Take Min/Max uses extreme values"
+        },
+        "hiddenByTab": {
+          "Stats": [
+            "Literal",
+            "ID",
+            "CategoryID",
+            "Scale",
+            "Formula",
+            "BonusFunction"
+          ]
+        },
+        "displayOrder": [
+          "Name",
+          "Base",
+          "Bonus",
+          "Public",
+          "Show",
+          "Active",
+          "Trainable",
+          "Display",
+          "Description",
+          "Literal"
+        ],
+        "bonusBuilderPlacement": "after:Name",
+        "columns": 3,
+        "skipLineBefore": {
+          "Bonus": true,
+          "Public": true,
+          "Active": true
+        },
+        "span": {
+          "Base": 1,
+          "Name": 1,
+          "Bonus": 1,
+          "Description": 2
+        },
+        "input": {
+          "Description": "textarea"
+        }
+      }
+    },
+    "RuneDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "Rune"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Game Item ID",
+          "type": "string_or_id",
+          "default": "None"
+        },
+        {
+          "index": 3,
+          "name": "Reserved1",
+          "type": "int",
+          "default": "0"
+        },
+        {
+          "index": 4,
+          "name": "Reserved2",
+          "type": "int",
+          "default": "0"
+        },
+        {
+          "index": 5,
+          "name": "Broadcast Equip",
+          "type": "bool_tf"
+        },
+        {
+          "index": 6,
+          "name": "Rune Slot",
+          "type": "string"
+        },
+        {
+          "index": 7,
+          "name": "Description",
+          "type": "string"
+        },
+        {
+          "index": 8,
+          "name": "All Includes Must Match",
+          "type": "bool_tf"
+        },
+        {
+          "index": 9,
+          "name": "All Excludes Must Match",
+          "type": "bool_tf"
+        },
+        {
+          "index": 10,
+          "name": "Auto Equip on Add",
+          "type": "bool_tf"
+        },
+        {
+          "index": 11,
+          "name": "Auto Equip on Equip",
+          "type": "bool_tf"
+        }
+      ],
+      "ui": {
+        "labels": {
+          "ID": "Node ID",
+          "Game Item ID": "Game Item ID",
+          "Reserved1": "0",
+          "Reserved2": "0",
+          "Broadcast Equip": "Broadcast Equip",
+          "Rune Slot": "Rune Slot",
+          "Description": "Description",
+          "All Includes Must Match": "All Includes Must Match",
+          "All Excludes Must Match": "All Excludes Must Match",
+          "Auto Equip on Add": "Auto Equip when added to inventory",
+          "Auto Equip on Equip": "Auto Equip when equipped by character."
+        },
+        "tooltips": {
+          "Game Item ID": "Enter a verified Conan Exiles item ID or use None when no backing item exists yet.",
+          "Reserved1": "Reserved (must remain, placeholder 0)",
+          "Reserved2": "Reserved (must remain, placeholder 0)",
+          "Broadcast Equip": "",
+          "All Includes Must Match": "",
+          "All Excludes Must Match": "",
+          "Auto Equip on Add": "",
+          "Auto Equip on Equip": ""
+        },
+        "displayOrder": [
+          "Game Item ID",
+          "ID",
+          "Broadcast Equip",
+          "Auto Equip on Equip",
+          "Auto Equip on Add",
+          "Rune Slot",
+          "Description",
+          "All Includes Must Match",
+          "All Excludes Must Match",
+          "Reserved2",
+          "Reserved1",
+          "Literal"
+        ],
+        "span": {
+          "ID": 0.5,
+          "Game Item ID": 1,
+          "Reserved1": 0.5,
+          "Reserved2": 0.5,
+          "Rune Slot": 1,
+          "Broadcast Equip": 0.5,
+          "All Includes Must Match": 0.5,
+          "All Excludes Must Match": 0.5,
+          "Description": 2.5
+        },
+        "skipLineBefore": {
+          "Game Item ID": true,
+          "Broadcast Equip": true,
+          "Description": true,
+          "Rune Slot": true,
+          "All Includes Must Match": true
+        },
+        "input": {
+          "Description": "textarea"
+        },
+        "rows": {
+          "Description": 3
+        },
+        "hiddenByTab": {
+          "Runes": [
+            "ID",
+            "Reserved1",
+            "Reserved2",
+            "Literal"
+          ]
+        },
+        "columns": 3
+      }
+    },
+    "RuneAction": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "RuneAction"
+        },
+        {
+          "index": 1,
+          "name": "RuneID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "TargetID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 3,
+          "name": "Value",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "Effect",
+          "type": "char",
+          "enum": {
+            "0": "Dice Modifier",
+            "1": "Grant Perk",
+            "3": "Stat Modifier",
+            "4": "Grant Ability",
+            "5": "Grant Status",
+            "6": "Unlock Status"
+          },
+          "default": "0"
+        },
+        {
+          "index": 5,
+          "name": "Reserved",
+          "type": "int",
+          "default": 0
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Effect": "Effect",
+          "TargetID": "Target",
+          "Value": "by",
+          "Reserved": "0"
+        },
+        "tooltips": {
+          "Effect": "Effect code (col 4): 0=Dice Modifier, 1=Grant Perk, 3=Stat Modifier, 4=Grant Ability, 5=Grant Status, 6=Unlock Status",
+          "TargetID": "Chosen type to be affected (col 2): Attribute/Skill for Dice, Stat for Stat Modifier, Perk/Ability/Status for grants",
+          "Value": "Value (col 3): numeric 'by' amount for Dice and Stat Modifier; ignored for grant/unlock",
+          "Reserved": "Placeholder (col 5) – keep 0"
+        },
+        "displayOrder": [
+          "Effect",
+          "TargetID",
+          "Value",
+          "Reserved",
+          "RuneID",
+          "Literal"
+        ],
+        "hiddenByTab": {
+          "Runes": [
+            "Literal",
+            "Reserved"
+          ]
+        }
+      }
+    },
+    "RuneCondition": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "RuneCondition"
+        },
+        {
+          "index": 1,
+          "name": "RuneID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Inclusion",
+          "type": "char",
+          "enum": {
+            "0": "Include",
+            "1": "Exclude"
+          },
+          "default": "0"
+        },
+        {
+          "index": 3,
+          "name": "Condition",
+          "type": "int",
+          "enum": {
+            "1": "Buff Category",
+            "2": "Skill Allocation",
+            "3": "Level",
+            "4": "Climate",
+            "5": "Shelter",
+            "6": "Time of Day",
+            "7": "Equipped Main Hand",
+            "8": "Equipped Off Hand",
+            "9": "Armor Class",
+            "10": "Character Height",
+            "11": "Character Build",
+            "12": "Bust Size",
+            "13": "Dong Size",
+            "14": "Flying",
+            "15": "Riding",
+            "16": "Swimming",
+            "17": "Gender",
+            "18": "High Heels",
+            "19": "Corruption"
+          },
+          "default": 3
+        },
+        {
+          "index": 4,
+          "name": "Operator",
+          "type": "int",
+          "enum": {
+            "0": "==",
+            "1": "!=",
+            "2": ">",
+            "3": ">=",
+            "4": "<",
+            "5": "<=",
+            "6": "Between",
+            "7": "Outside"
+          },
+          "default": 0
+        },
+        {
+          "index": 5,
+          "name": "NodeAffected",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "Value",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "MaxValue",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 8,
+          "name": "Category",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Inclusion": "Include/Exclude",
+          "Condition": "Condition",
+          "Operator": "Operator",
+          "NodeAffected": "Node Affected",
+          "Value": "Value",
+          "MaxValue": "Max Value",
+          "Category": "Category"
+        },
+        "tooltips": {
+          "Condition": "Select a condition type. Certain types will show custom inputs (e.g., Climate, Shelter).",
+          "NodeAffected": "Node the condition checks (e.g., Skill ID for Skill Allocation, Stat ID for Stat conditions).",
+          "Value": "Numeric value for the condition check.",
+          "MaxValue": "Max value when using Between or Outside operators.",
+          "Category": "Buff category name (only used with Buff Category condition)."
+        },
+        "lookupByCondition": {
+          "4": {
+            "table": "LookupClimate",
+            "id": "ID",
+            "label": "Name"
+          },
+          "5": {
+            "table": "LookupShelter",
+            "id": "ID",
+            "label": "Name"
+          },
+          "6": {
+            "table": "LookupTimeOfDay",
+            "id": "ID",
+            "label": "Name"
+          },
+          "7": {
+            "table": "LookupMainHand",
+            "id": "ID",
+            "label": "Name"
+          },
+          "8": {
+            "table": "LookupOffHand",
+            "id": "ID",
+            "label": "Name"
+          },
+          "9": {
+            "table": "LookupArmorClass",
+            "id": "ID",
+            "label": "Name"
+          }
+        }
+      }
+    },
+    "LookupClimate": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupClimate"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupShelter": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupShelter"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupTimeOfDay": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupTimeOfDay"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupArmorClass": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupArmorClass"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupMainHand": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupMainHand"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupOffHand": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupOffHand"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupBool": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupBool"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "LookupGender": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "LookupGender"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        }
+      ],
+      "ui": {
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 2
+      }
+    },
+    "StatusDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "StatusDef"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "index": 3,
+          "name": "Color",
+          "type": "rgba_float_list"
+        },
+        {
+          "index": 4,
+          "name": "Public",
+          "type": "bool_tf"
+        }
+      ],
+      "ui": {
+        "displayOrder": [
+          "ID",
+          "Literal",
+          "Color",
+          "Name",
+          "Public"
+        ],
+        "hidden": [
+          "Literal"
+        ],
+        "columns": 1,
+        "span": {
+          "ID": 0.5,
+          "Name": 0.5,
+          "Color": 0.5,
+          "Public": 0.5
+        },
+        "skipLineBefore": {
+          "Name": true
+        }
+      }
+    },
+    "StatusAction": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "StatusAction"
+        },
+        {
+          "index": 1,
+          "name": "StatusID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "TargetID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 3,
+          "name": "Value",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "Function",
+          "type": "int",
+          "enum": {
+            "0": "Modify Skill",
+            "1": "Modify Stat",
+            "2": "Grant Perk",
+            "3": "Grant Ability",
+            "4": "Grant Status"
+          },
+          "default": 1
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Function": "",
+          "Value": "by",
+          "TargetID": ""
+        },
+        "tooltips": {
+          "Function": "",
+          "Value": "",
+          "TargetID": ""
+        },
+        "hiddenByTab": {
+          "Statuses": [
+            "Literal"
+          ]
+        },
+        "scale": {
+          "Function": 1,
+          "TargetID": 1
+        },
+        "span": {
+          "Function": 0.5,
+          "Value": 0.5,
+          "TargetID": 0.5
+        },
+        "displayOrder": [
+          "Literal",
+          "StatusID",
+          "Function",
+          "TargetID",
+          "Value"
+        ],
+        "columns": 3
+      }
+    },
+    "MutatorDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "MutatorDef"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int"
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string"
+        },
+        {
+          "index": 3,
+          "name": "All Includes Must Match",
+          "type": "bool_tf"
+        },
+        {
+          "index": 4,
+          "name": "All Excludes Must Match",
+          "type": "bool_tf"
+        }
+      ],
+      "ui": {
+        "labels": {
+          "All Includes Must Match": "All Includes must match",
+          "All Excludes Must Match": "All Excludes must match"
+        },
+        "hiddenByTab": {
+          "Mutators": [
+            "Literal"
+          ]
+        },
+        "displayOrder": [
+          "Name",
+          "All Includes Must Match",
+          "ID",
+          "All Excludes Must Match",
+          "Literal"
+        ],
+        "span": {
+          "Name": 1
+        },
+        "hidden": [
+          "Literal"
+        ]
+      }
+    },
+    "MutatorAction": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "MutatorAction"
+        },
+        {
+          "index": 1,
+          "name": "MutatorID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Function",
+          "type": "char",
+          "enum": {
+            "0": "Modify Skill",
+            "1": "Modify Stat",
+            "2": "Grant Perk",
+            "3": "Grant Ability",
+            "4": "Grant Status",
+            "5": "Unlock Status"
+          },
+          "default": "0"
+        },
+        {
+          "index": 3,
+          "name": "TargetID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "Value",
+          "type": "int",
+          "default": 0
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Function": "Effect",
+          "TargetID": "Target",
+          "Value": "by"
+        },
+        "tooltips": {
+          "Function": "0=Modify Skill, 1=Modify Stat, 2=Grant Perk, 3=Grant Ability, 4=Grant Status, 5=Unlock Status",
+          "TargetID": "ID of the chosen skill/stat/perk/ability/status",
+          "Value": "Numeric modifier (ignored for grant/unlock actions)"
+        },
+        "hiddenByTab": {
+          "Mutators": [
+            "Literal"
+          ]
+        }
+      }
+    },
+    "MutatorCondition": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "MutatorCondition"
+        },
+        {
+          "index": 1,
+          "name": "MutatorID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Inclusion",
+          "type": "char",
+          "enum": {
+            "0": "Include",
+            "1": "Exclude"
+          },
+          "default": "0"
+        },
+        {
+          "index": 3,
+          "name": "Condition",
+          "type": "int",
+          "enum": {
+            "0": "Perk",
+            "1": "Buff Category",
+            "2": "Skill Allocation",
+            "3": "Level",
+            "4": "Climate",
+            "5": "Shelter",
+            "6": "Time of Day",
+            "7": "Equipped Main Hand",
+            "8": "Equipped Off Hand",
+            "9": "Armor Class",
+            "10": "Character Height",
+            "11": "Character Build",
+            "12": "Bust Size",
+            "13": "Dong Size",
+            "14": "Flying",
+            "15": "Riding",
+            "16": "Swimming",
+            "17": "Gender",
+            "18": "High Heels",
+            "19": "Corruption",
+            "20": "Status",
+            "21": "Perk Category"
+          },
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "Operator",
+          "type": "int",
+          "enum": {
+            "0": "==",
+            "1": "!=",
+            "2": ">",
+            "3": ">=",
+            "4": "<",
+            "5": "<=",
+            "6": "Between",
+            "7": "Outside"
+          },
+          "default": 0
+        },
+        {
+          "index": 5,
+          "name": "NodeAffected",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "Value",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "MaxValue",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 8,
+          "name": "Category",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "ui": {
+        "hiddenByTab": {
+          "Mutators": [
+            "Literal"
+          ]
+        }
+      }
+    },
+    "SpellDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "SpellDef"
+        },
+        {
+          "index": 1,
+          "name": "ID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Name",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 3,
+          "name": "Description",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 4,
+          "name": "Range",
+          "type": "float",
+          "default": 0
+        },
+        {
+          "index": 5,
+          "name": "TargetType",
+          "type": "int",
+          "enum": {
+            "0": "Selected",
+            "1": "Caster",
+            "2": "All",
+            "3": "All Others",
+            "4": "Selected Others"
+          },
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "#Targets",
+          "type": "float",
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "CasterRollType",
+          "type": "int",
+          "enum": {
+            "0": "Roll Skill",
+            "1": "Roll Stat",
+            "2": "Custom Formula"
+          },
+          "default": 0
+        },
+        {
+          "index": 8,
+          "name": "RollStatSkillID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 9,
+          "name": "CasterRollFormula",
+          "type": "string_or_empty",
+          "default": ""
+        },
+        {
+          "index": 10,
+          "name": "DCType",
+          "type": "int",
+          "enum": {
+            "0": "Target Roll",
+            "1": "Target Stat",
+            "2": "Fixed",
+            "3": "Target Roll Stat",
+            "4": "Custom"
+          },
+          "default": 0
+        },
+        {
+          "index": 11,
+          "name": "FixedDCValue",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 12,
+          "name": "RequirementsMode",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 13,
+          "name": "AllowPlayerModifiers",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 14,
+          "name": "CommonAbility",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 15,
+          "name": "LogUsage",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 16,
+          "name": "CooldownMinutes",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 17,
+          "name": "AbilityIcon",
+          "type": "string_or_empty",
+          "default": ""
+        },
+        {
+          "index": 18,
+          "name": "AllowPlayerComment",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 19,
+          "name": "EnableCriticalRolls",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 20,
+          "name": "IconColor",
+          "type": "rgba_float_list",
+          "default": "0.0"
+        },
+        {
+          "index": 21,
+          "name": "Category",
+          "type": "string_or_empty",
+          "default": ""
+        },
+        {
+          "index": 22,
+          "name": "TargetCondIncludeAll",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 23,
+          "name": "TargetCondExcludeAll",
+          "type": "bool_tf",
+          "default": "f"
+        },
+        {
+          "index": 24,
+          "name": "ChatRadius",
+          "type": "int",
+          "enum": {
+            "0": "Default",
+            "1": "Very Close",
+            "2": "Close",
+            "3": "Far",
+            "4": "Very Far"
+          },
+          "default": 0
+        },
+        {
+          "index": 25,
+          "name": "DCTypeFormula",
+          "type": "string_or_id",
+          "default": ""
+        },
+        {
+          "index": 26,
+          "name": "TargetDCFormula",
+          "type": "string_or_empty",
+          "default": ""
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Name": "Ability Name",
+          "Description": "Description",
+          "Range": "In Range",
+          "TargetType": "Target Type",
+          "#Targets": "# of Targets",
+          "CasterRollType": "Caster roll type",
+          "RollStatSkillID": "Caster skill/stat",
+          "CasterRollFormula": "Custom roll formula",
+          "DCType": "DC Type",
+          "FixedDCValue": "Fixed DC Value",
+          "RequirementsMode": "Requirements mode",
+          "AllowPlayerModifiers": "Allow player modifiers",
+          "CommonAbility": "Common ability",
+          "LogUsage": "Log usage",
+          "CooldownMinutes": "Cooldown",
+          "AbilityIcon": "Ability Icon",
+          "AllowPlayerComment": "Allow player comment",
+          "EnableCriticalRolls": "Enable Critical Rolls",
+          "IconColor": "Icon Color",
+          "Category": "Category",
+          "TargetCondIncludeAll": "All Includes must match",
+          "TargetCondExcludeAll": "All Excludes must match",
+          "ChatRadius": "Chat radius",
+          "DCTypeFormula": "DC Type Formula",
+          "TargetDCFormula": "Target DC Custom Formula"
+        },
+        "tooltips": {
+          "DCTypeFormula": "Reference to a shared DC formula (ID or name).",
+          "TargetDCFormula": "Optional dice/expression to override the Target DC (e.g., 1d20+3). Leave blank to use default."
+        },
+        "layoutGrid": {
+          "Name": {
+            "x": 0,
+            "y": 0,
+            "w": 6,
+            "h": 1,
+            "pad": 6
+          },
+          "Description": {
+            "x": 0,
+            "y": 1,
+            "w": 11,
+            "h": 2,
+            "pad": 6
+          },
+          "Category": {
+            "x": 0,
+            "y": 3.25,
+            "w": 3,
+            "h": 1,
+            "pad": 6
+          },
+          "AbilityIcon": {
+            "x": 3.125,
+            "y": 3.25,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "IconColor": {
+            "x": 5.25,
+            "y": 3.25,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "CasterRollType": {
+            "x": 0,
+            "y": 4.5,
+            "w": 3,
+            "h": 1,
+            "pad": 6
+          },
+          "RollStatSkillID": {
+            "x": 3.125,
+            "y": 4.5,
+            "w": 4,
+            "h": 1,
+            "pad": 6
+          },
+          "CasterRollFormula": {
+            "x": 3.125,
+            "y": 5.5,
+            "w": 4,
+            "h": 1,
+            "pad": 6
+          },
+          "TargetType": {
+            "x": 0,
+            "y": 6.75,
+            "w": 3,
+            "h": 1,
+            "pad": 6
+          },
+          "#Targets": {
+            "x": 3.125,
+            "y": 6.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "Range": {
+            "x": 5.25,
+            "y": 6.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "DCType": {
+            "x": 0,
+            "y": 8,
+            "w": 3,
+            "h": 1,
+            "pad": 6
+          },
+          "FixedDCValue": {
+            "x": 3.125,
+            "y": 8,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "DCTypeFormula": {
+            "x": 3.125,
+            "y": 9,
+            "w": 4,
+            "h": 1,
+            "pad": 6
+          },
+          "TargetDCFormula": {
+            "x": 3.125,
+            "y": 10,
+            "w": 4,
+            "h": 1,
+            "pad": 6
+          },
+          "CooldownMinutes": {
+            "x": 8,
+            "y": 3.25,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "ChatRadius": {
+            "x": 8,
+            "y": 4.5,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "CommonAbility": {
+            "x": 8,
+            "y": 5.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "AllowPlayerModifiers": {
+            "x": 8,
+            "y": 6.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "AllowPlayerComment": {
+            "x": 8,
+            "y": 7.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "EnableCriticalRolls": {
+            "x": 8,
+            "y": 8.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "LogUsage": {
+            "x": 8,
+            "y": 9.75,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "RequirementsMode": {
+            "x": 10.5,
+            "y": 3.25,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "TargetCondIncludeAll": {
+            "x": 10.5,
+            "y": 4.5,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          },
+          "TargetCondExcludeAll": {
+            "x": 10.5,
+            "y": 5.5,
+            "w": 2,
+            "h": 1,
+            "pad": 6
+          }
+        },
+        "layoutLocked": true
+      }
+    },
+    "SpellReqDef": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "SpellReqDef"
+        },
+        {
+          "index": 1,
+          "name": "SpellID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Function",
+          "type": "char",
+          "enum": {
+            "0": "Stat",
+            "1": "Skill",
+            "2": "Skill Allocation",
+            "3": "Perk",
+            "4": "Conan Level",
+            "5": "Status Category",
+            "6": "Conan Item ID"
+          },
+          "default": "0"
+        },
+        {
+          "index": 3,
+          "name": "Operator",
+          "type": "int",
+          "default": "0"
+        },
+        {
+          "index": 4,
+          "name": "Param",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 5,
+          "name": "ValueMin",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "ValueMax",
+          "type": "float_or_int",
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "Text",
+          "type": "string",
+          "default": ""
+        }
+      ],
+      "ui": {
+        "labels": {
+          "SpellID": "Ability ID",
+          "Function": "Requirement",
+          "Operator": "Comparator",
+          "Param": "Node / ID",
+          "ValueMin": "Value",
+          "ValueMax": "Max",
+          "Text": "Category"
+        },
+        "tooltips": {
+          "Function": "0=Stat, 1=Skill, 2=Skill Allocation, 3=Perk, 4=Conan Level, 5=Status Category, 6=Item ID",
+          "Operator": "==/!= for categorical requirements; Between/Outside enables Value/Max ranges",
+          "Param": "Referenced ID for the requirement (stat/skill/perk/etc).",
+          "ValueMin": "Numeric threshold; use Max to supply the upper bound when needed.",
+          "ValueMax": "Upper bound for Between/Outside comparisons.",
+          "Text": "Optional text label (used when Function is Status Category)."
+        },
+        "hiddenByTab": {
+          "Abilities": [
+            "Literal"
+          ]
+        }
+      }
+    },
+    "SpellTargetCond": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "SpellTargetCond"
+        },
+        {
+          "index": 1,
+          "name": "SpellID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Mode",
+          "type": "int",
+          "enum": {
+            "0": "Include",
+            "1": "Exclude"
+          },
+          "default": 0
+        },
+        {
+          "index": 3,
+          "name": "Function",
+          "type": "int",
+          "enum": {
+            "0": "Perk",
+            "1": "Buff Category",
+            "2": "Skill Allocation",
+            "3": "Level",
+            "4": "Climate",
+            "5": "Shelter",
+            "6": "Time of Day",
+            "7": "Equipped Main Hand",
+            "8": "Equipped Off Hand",
+            "9": "Armor Class",
+            "10": "Character Height",
+            "11": "Character Build",
+            "12": "Bust Size",
+            "13": "Dong Size",
+            "14": "Flying",
+            "15": "Riding",
+            "16": "Swimming",
+            "17": "Gender",
+            "18": "High Heels",
+            "19": "Corruption",
+            "20": "Status",
+            "21": "Perk Category"
+          },
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "Operator",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 5,
+          "name": "Param",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "ValueMin",
+          "type": "float",
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "ValueMax",
+          "type": "float",
+          "default": 0
+        },
+        {
+          "index": 8,
+          "name": "Text",
+          "type": "string_or_empty",
+          "default": ""
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Mode": "Include/Exclude",
+          "Function": "If",
+          "Operator": "Operator",
+          "Param": "Condition Node ID",
+          "ValueMin": "Value",
+          "ValueMax": "Max",
+          "Text": "Category"
+        },
+        "tooltips": {
+          "Function": "Select a condition type. Certain types will show custom inputs (e.g., Climate, Shelter).",
+          "Param": "Condition node or parameter reference used by the selected function.",
+          "ValueMin": "Numeric value or enum code depending on condition.",
+          "ValueMax": "Upper bound for Between/Outside operators.",
+          "Text": "Optional category text; leave blank when unused (cell is still exported)."
+        },
+        "lookupByFunction": {
+          "4": {
+            "table": "LookupClimate",
+            "id": "ID",
+            "label": "Name"
+          },
+          "5": {
+            "table": "LookupShelter",
+            "id": "ID",
+            "label": "Name"
+          },
+          "6": {
+            "table": "LookupTimeOfDay",
+            "id": "ID",
+            "label": "Name"
+          },
+          "7": {
+            "table": "LookupMainHand",
+            "id": "ID",
+            "label": "Name"
+          },
+          "8": {
+            "table": "LookupOffHand",
+            "id": "ID",
+            "label": "Name"
+          },
+          "9": {
+            "table": "LookupArmorClass",
+            "id": "ID",
+            "label": "Name"
+          },
+          "14": {
+            "table": "LookupBool",
+            "id": "ID",
+            "label": "Name"
+          },
+          "15": {
+            "table": "LookupBool",
+            "id": "ID",
+            "label": "Name"
+          },
+          "16": {
+            "table": "LookupBool",
+            "id": "ID",
+            "label": "Name"
+          },
+          "17": {
+            "table": "LookupGender",
+            "id": "ID",
+            "label": "Name"
+          },
+          "18": {
+            "table": "LookupBool",
+            "id": "ID",
+            "label": "Name"
+          }
+        }
+      }
+    },
+    "SpellEffect": {
+      "columns": [
+        {
+          "index": 0,
+          "name": "Literal",
+          "type": "string",
+          "const": "SpellEffect"
+        },
+        {
+          "index": 1,
+          "name": "SpellID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 2,
+          "name": "Who",
+          "type": "int",
+          "enum": {
+            "0": "Target",
+            "1": "All Targets",
+            "2": "Caster"
+          },
+          "default": 0
+        },
+        {
+          "index": 3,
+          "name": "Function",
+          "type": "int",
+          "enum": {
+            "0": "Print Message",
+            "1": "Modify Stat",
+            "2": "Give Base Game Item",
+            "3": "Remove Base Game Item",
+            "4": "Buff Skill",
+            "5": "Buff Stat",
+            "6": "Buff Perk",
+            "7": "Dispel Buff",
+            "8": "Buff Ability",
+            "9": "Auto Use Ability",
+            "10": "Set Stat",
+            "11": "Buff Grant Status",
+            "12": "Buff Unlock Status"
+          },
+          "default": 0
+        },
+        {
+          "index": 4,
+          "name": "AdjustFormula",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 5,
+          "name": "TargetID",
+          "type": "int",
+          "default": 0
+        },
+        {
+          "index": 6,
+          "name": "If",
+          "type": "int",
+          "enum": {
+            "0": "Always",
+            "1": "Critical Only",
+            "2": "Non-Critical Only"
+          },
+          "default": 0
+        },
+        {
+          "index": 7,
+          "name": "Broadcast",
+          "type": "int",
+          "enum": {
+            "0": "Public",
+            "1": "Private",
+            "2": "Secret"
+          },
+          "default": 0
+        },
+        {
+          "index": 8,
+          "name": "Outcome",
+          "type": "int",
+          "enum": {
+            "0": "General Effect",
+            "1": "Success Effect",
+            "2": "Failure Effect"
+          },
+          "default": 0
+        },
+        {
+          "index": 9,
+          "name": "DurationFormula",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 10,
+          "name": "Category",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 11,
+          "name": "DelayFormula",
+          "type": "string",
+          "default": ""
+        },
+        {
+          "index": 12,
+          "name": "Unused",
+          "type": "int",
+          "default": 0
+        }
+      ],
+      "ui": {
+        "labels": {
+          "Broadcast": "Broadcast",
+          "Who": "To",
+          "If": "If",
+          "Function": "Effect",
+          "TargetID": "Node ID",
+          "AdjustFormula": "Formula / Text",
+          "Outcome": "Outcome",
+          "DurationFormula": "Duration",
+          "Category": "Buff Category",
+          "DelayFormula": "Delay",
+          "Unused": "Unused"
+        },
+        "tooltips": {
+          "Function": "",
+          "AdjustFormula": "",
+          "TargetID": "",
+          "If": "",
+          "Broadcast": "",
+          "Outcome": "",
+          "DurationFormula": "",
+          "DelayFormula": ""
+        },
+        "displayOrder": [
+          "Broadcast",
+          "Who",
+          "If",
+          "Function",
+          "TargetID",
+          "AdjustFormula",
+          "Outcome",
+          "DurationFormula",
+          "Category",
+          "DelayFormula",
+          "Unused"
+        ],
+        "span": {
+          "Broadcast": 1,
+          "Who": 1,
+          "If": 1,
+          "Function": 1,
+          "TargetID": 1,
+          "AdjustFormula": 2,
+          "Outcome": 1,
+          "DurationFormula": 1,
+          "Category": 1,
+          "DelayFormula": 1,
+          "Unused": 1
+        },
+        "skipLineBefore": {
+          "Outcome": true
+        },
+        "hiddenByTab": {
+          "Abilities": [
+            "Literal"
+          ]
+        },
+        "columns": 2
+      }
+    }
+  }
+}
