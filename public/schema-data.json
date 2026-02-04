@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "2025-10-30-designer",
+  "data": {
+    "SkillDef": [],
+    "PerkDef": [],
+    "PerkAction": [],
+    "Stat": [],
+    "RuneDef": [],
+    "RuneAction": [],
+    "RuneCondition": [],
+    "LookupClimate": [],
+    "LookupShelter": [],
+    "LookupTimeOfDay": [],
+    "LookupArmorClass": [],
+    "LookupMainHand": [],
+    "LookupOffHand": [],
+    "LookupBool": [],
+    "LookupGender": [],
+    "StatusDef": [],
+    "StatusAction": [],
+    "MutatorDef": [],
+    "MutatorAction": [],
+    "MutatorCondition": [],
+    "SpellDef": [],
+    "SpellReqDef": [],
+    "SpellTargetCond": [],
+    "SpellEffect": []
+  },
+  "tooltips": {
+    "Attributes": "",
+    "Skills": "",
+    "Perks": "",
+    "Stats": "",
+    "Runes": "",
+    "Statuses": "",
+    "Mutators": "",
+    "Abilities": "",
+    "Raw": ""
+  }
+}

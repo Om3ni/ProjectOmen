@@ -1,0 +1,630 @@
+================================================================================
+                       RPR SCHEMA - COMPLETE TABLE REFERENCE
+================================================================================
+
+This document covers all tables in the RPR schema with default/filled examples,
+column breakdowns, enum mappings, and edge cases. Format mirrors existing
+A_Rune.txt and a_Spelldef.txt documentation.
+
+*** All bools are t/f toggles unless noted. Leave string_or_empty cells blank
+when unused but DO NOT drop them—the game still expects the cell.
+
+================================================================================
+                              SKILLDEF (Attributes & Skills)
+================================================================================
+
+New Blank:  SkillDef|t|1|Name||f|-1.0||0.0|t|0
+Filled:     SkillDef|f|8|Acrobatics|Stay on your feet...|f|-1.0|2*1.0|0.0|t|0
+
+	0	1		2		3	4		5	6		7		8		9	10
+Literal|TypeFlag|Node ID|Name|Description|Trained|Max Allocation|Bonus Source|Natural Bonus|Public|Bonus Function
+
+	0} Prefix literal (SkillDef)
+	1} TypeFlag: t=Attribute, f=Skill
+	2} Unique Node ID in the system
+	3} Display name
+	4} Description text; supports rich formatting
+	5} Trained: t/f whether the skill is trained
+	6} Max Allocation: -1 means unlimited; otherwise numeric cap
+	7} Bonus Source: semicolon-separated contributor formula (e.g., "2*1.0;1*1.0" = DEX*1.0 + STR*1.0)
+	8} Natural Bonus: base bonus value
+	9} Public: t/f visibility to players
+	10} Bonus Function (how bonus sources combine):
+		0 = Sum
+		1 = Average
+		2 = Take Min
+		3 = Take Max
+
+Notes:
+- Attributes use TypeFlag=t and typically have empty Bonus Source
+- Skills use TypeFlag=f and reference attributes via Bonus Source formula
+- Node ID cross-references in formulas use the attribute/skill Node ID
+
+
+================================================================================
+                              PERKDEF (Perks)
+================================================================================
+
+New Blank:  PerkDef|1|f|Name||0.0|Category
+Filled:     PerkDef|37|t|Human|Versatile and ambitious...|0.0|Races
+
+	0	1	2	3	4		5	6
+Literal|ID|Public|Name|Description|Cost|Category
+
+	0} Prefix literal (PerkDef)
+	1} Unique Perk ID
+	2} Public: t=selectable by players, f=hidden/admin only
+	3} Display name
+	4} Description text
+	5} Cost: XP or point cost to acquire the perk
+	6} Category: grouping label (e.g., "Races", "Class", "Weapon Spec")
+
+Notes:
+- Perks marked with f are typically separator rows (e.g., "=====Races=====")
+- Category is a free-text field used for UI grouping
+
+
+================================================================================
+                              PERKACTION (Perk Effects)
+================================================================================
+
+Default:    PerkAction|1|0|0|0|||0.0
+Filled:     PerkAction|58|4|1|4|||0.0
+
+	0	1	2		3		4		5		6	7
+Literal|PerkID|Function|TargetType|TargetID|Modifier|Extra|Value
+
+	0} Prefix literal (PerkAction)
+	1} PerkID: parent perk this action belongs to
+	2} Function (effect type):
+		0 = Allow Skill
+		1 = Deny Skill
+		2 = Allow Perk
+		3 = Deny Perk
+		4 = Dice Modifier
+		5 = Give Feat
+		6 = Grant Stat
+		7 = Stat Modifier
+		8 = Grant Ability
+		9 = Grant Status
+		10 = Unlock Status
+		11 = Grant Perk
+		12 = Grant Sudo Role
+		13 = Allow Perk Category
+		14 = Deny Perk Category
+		15 = Teach Language
+		16 = Give CharTag
+		17 = Set Float CharVar
+		18 = Set String CharVar
+	3} TargetType: additional targeting info (context-dependent)
+	4} TargetID: ID of the skill/stat/perk/ability being affected
+	5} Modifier: string modifier (optional)
+	6} Extra: additional string data (optional)
+	7} Value: numeric modifier value
+
+Notes:
+- For Dice Modifier (4), TargetID is Skill/Attribute ID and Value is the modifier
+- For Grant functions (8,9,10,11), TargetID is the ID being granted
+- For Category functions (13,14), Modifier contains the category name
+
+
+================================================================================
+                              STAT (Stats)
+================================================================================
+
+New Blank:  Stat|1|Name|0.0||0.0|f|f|f||1.0|f|f|0|0
+Filled:     Stat|5|Health|100.0||0.0|t|t|f|Hit points|1.0|t|f|1|0
+
+	0	1	2	3	4		5	6	7	8	9		10	11		12	13		14
+Literal|ID|Name|Base|Formula|Bonus|Public|Show|Active|Description|Scale|Trainable|Display|CategoryID|BonusFunction
+
+	0} Prefix literal (Stat)
+	1} Unique Stat ID
+	2} Display name
+	3} Base Value: starting value
+	4} Formula: semicolon-separated contributor formula (e.g., "2*1.0;1*1.0")
+	5} Bonus: minimum value floor
+	6} Public: t/f visibility to players
+	7} Show: t/f whether player can reset this stat
+	8} Active: t/f whether player can modify
+	9} Description text
+	10} Scale: final multiplier applied to combined result
+	11} Trainable: t/f whether player can modify
+	12} Display: t/f whether stat is secret
+	13} CategoryID: stat category grouping
+	14} Bonus Function:
+		0 = Sum
+		1 = Average
+		2 = Take Min
+		3 = Take Max
+
+Notes:
+- Formula references SkillDef Node IDs with multipliers
+- Scale is applied after all formula contributions are combined
+
+
+================================================================================
+                              RUNEDEF (Runes)
+================================================================================
+
+See A_Rune.txt for complete documentation.
+
+New Blank:  Rune|1|None|0|0|f|||f|f|f|f
+Filled:     Rune|1|123|0|0|t|Slot|Desc|f|f|t|t
+
+	0	1		2		3	4	5		6	7		8		9		10		11
+Literal|Node ID|Item ID|0|0|Broadcast|Slot|Description|Include All|Exclude All|Auto Equip (Add)|Auto Equip (Equip)
+
+	0} Prefix literal (Rune)
+	1} Node ID
+	2} Game Item ID (Conan Exiles item ID or "None")
+	3} Reserved placeholder (always 0)
+	4} Reserved placeholder (always 0)
+	5} Broadcast Equip: t/f
+	6} Rune Slot name
+	7} Description
+	8} All Include conditions must match
+	9} All Exclude conditions must match
+	10} Auto equip when added to inventory
+	11} Auto equip when equipped
+
+
+================================================================================
+                              RUNEACTION (Rune Effects)
+================================================================================
+
+Default:    RuneAction|1|0|0|0|0
+Filled:     RuneAction|1|961|0|3|0
+
+	0	1		2		3	4	5
+Literal|Node ID|Target ID|Value|Effect|Reserved
+
+	0} Prefix literal (RuneAction)
+	1} Rune Node ID (FK to parent)
+	2} Target ID: what the effect applies to
+	3} Value: numeric modifier
+	4} Effect:
+		0 = Dice Modifier (TargetID is Skill/Attribute; Value is modifier)
+		1 = Grant Perk (TargetID is Perk ID)
+		3 = Stat Modifier (TargetID is Stat ID; Value is modifier)
+		4 = Grant Ability (TargetID is Spell/Ability ID)
+		5 = Grant Status (TargetID is Status ID)
+		6 = Unlock Status (TargetID is Status ID)
+	5} Reserved: always 0
+
+Notes:
+- Effect values 0 and 3 use Value for the modifier amount
+- Grant/Unlock effects ignore Value
+
+
+================================================================================
+                              RUNECONDITION (Rune Conditions)
+================================================================================
+
+Default:    RuneCondition|1|0|3|0|0|0.0|0.0|
+Filled:     RuneCondition|1|0|2|0|3|22.0|0.0|
+
+	0	1		2		3		4		5		6	7		8
+Literal|Node ID|Inclusion|Condition|Operator|Node Affected|Value|Max Value|Category
+
+	0} Prefix literal (RuneCondition)
+	1} Rune Node ID (FK to parent)
+	2} Inclusion: 0=Include, 1=Exclude
+	3} Condition (1-indexed):
+		1 = Buff Category (uses col 8 Category)
+		2 = Skill Allocation (Node Affected = Skill ID)
+		3 = Level
+		4 = Climate (Value: 0=Hot, 1=Cold)
+		5 = Shelter (Value: 0=None, 1=Some, 2=Has)
+		6 = Time of Day (Value: 0=Dawn, 1=Day, 2=Dusk, 3=Night)
+		7 = Equipped Main Hand (see weapon table)
+		8 = Equipped Off Hand (see offhand table)
+		9 = Armor Class (0=None, 1=Light, 2=Medium, 3=Heavy)
+		10 = Character Height
+		11 = Character Build
+		12 = Bust Size
+		13 = Dong Size
+		14 = Flying (bool check)
+		15 = Riding (bool check)
+		16 = Swimming (bool check)
+		17 = Gender
+		18 = High Heels (bool check)
+		19 = Corruption
+	4} Operator:
+		0 = ==
+		1 = !=
+		2 = >
+		3 = >=
+		4 = <
+		5 = <=
+		6 = Between (uses Value + MaxValue)
+		7 = Outside (uses Value + MaxValue)
+	5} Node Affected: target node ID when applicable
+	6} Value or min value
+	7} Max Value (for Between/Outside)
+	8} Category text (required for Buff Category; blank otherwise but cell must exist)
+
+*** IMPORTANT: RuneCondition is 1-INDEXED (starts at 1, no Perk condition)
+
+
+================================================================================
+                              STATUSDEF (Statuses)
+================================================================================
+
+New Blank:  StatusDef|1|Name|0.0,0.0,0.0,1.0|f
+Filled:     StatusDef|5|Burning|1.0,0.3,0.0,1.0|t
+
+	0	1	2	3	4
+Literal|ID|Name|Color|Public
+
+	0} Prefix literal (StatusDef)
+	1} Unique Status ID
+	2} Display name
+	3} Color: RGBA as comma-separated floats (e.g., "1.0,0.0,0.0,1.0" = red)
+	4} Public: t/f visibility
+
+Notes:
+- StatusAction child table defines what the status does
+- Color is rendered in the game UI
+
+
+================================================================================
+                              STATUSACTION (Status Effects)
+================================================================================
+
+Default:    StatusAction|1|0|0|0
+Filled:     StatusAction|5|94|10|1
+
+	0	1		2		3	4
+Literal|StatusID|TargetID|Value|Function
+
+	0} Prefix literal (StatusAction)
+	1} StatusID: parent status this action belongs to
+	2} TargetID: ID of the stat/skill/perk/ability being affected
+	3} Value: numeric modifier
+	4} Function:
+		0 = Modify Skill (TargetID = SkillDef)
+		1 = Modify Stat (TargetID = Stat)
+		2 = Grant Perk (TargetID = PerkDef)
+		3 = Grant Ability (TargetID = SpellDef)
+		4 = Grant Status (TargetID = StatusDef)
+
+Notes:
+- For Modify functions (0,1), Value is the modifier amount
+- For Grant functions (2,3,4), Value is typically ignored
+
+
+================================================================================
+                              MUTATORDEF (Mutators)
+================================================================================
+
+New Blank:  MutatorDef|1|Name|f|f
+Filled:     MutatorDef|10|Climate Bonus|t|t
+
+	0	1	2	3			4
+Literal|ID|Name|All Includes Must Match|All Excludes Must Match
+
+	0} Prefix literal (MutatorDef)
+	1} Unique Mutator ID
+	2} Display name
+	3} All include conditions must match: t/f
+	4} All exclude conditions must match: t/f
+
+Notes:
+- Mutators apply conditional effects based on MutatorCondition rules
+- Child tables: MutatorAction, MutatorCondition
+
+
+================================================================================
+                              MUTATORACTION (Mutator Effects)
+================================================================================
+
+Default:    MutatorAction|1|0|0|0
+Filled:     MutatorAction|10|1|5|10
+
+	0	1		2		3		4
+Literal|MutatorID|Function|TargetID|Value
+
+	0} Prefix literal (MutatorAction)
+	1} MutatorID: parent mutator FK
+	2} Function:
+		0 = Modify Skill
+		1 = Modify Stat
+		2 = Grant Perk
+		3 = Grant Ability
+		4 = Grant Status
+		5 = Unlock Status
+	3} TargetID: ID of skill/stat/perk/ability/status
+	4} Value: numeric modifier (ignored for grant/unlock)
+
+
+================================================================================
+                              MUTATORCONDITION (Mutator Conditions)
+================================================================================
+
+Default:    MutatorCondition|1|0|0|0|0|0.0|0.0|
+Filled:     MutatorCondition|10|0|2|3|5|10.0|0.0|
+
+	0	1		2		3		4		5		6	7		8
+Literal|MutatorID|Inclusion|Condition|Operator|Node Affected|Value|Max Value|Category
+
+	0} Prefix literal (MutatorCondition)
+	1} MutatorID: parent mutator FK
+	2} Inclusion: 0=Include, 1=Exclude
+	3} Condition (0-INDEXED):
+		0 = Perk (Node Affected = Perk ID)
+		1 = Buff Category (uses Category text)
+		2 = Skill Allocation
+		3 = Level
+		4 = Climate
+		5 = Shelter
+		6 = Time of Day
+		7 = Equipped Main Hand
+		8 = Equipped Off Hand
+		9 = Armor Class
+		10 = Character Height
+		11 = Character Build
+		12 = Bust Size
+		13 = Dong Size
+		14 = Flying
+		15 = Riding
+		16 = Swimming
+		17 = Gender
+		18 = High Heels
+		19 = Corruption
+		20 = Status (Node Affected = Status ID)
+		21 = Perk Category (uses Category text)
+	4} Operator (same as RuneCondition)
+	5} Node Affected
+	6} Value
+	7} Max Value
+	8} Category text
+
+*** IMPORTANT: MutatorCondition is 0-INDEXED (Perk=0, Buff Category=1, etc.)
+*** This differs from RuneCondition which is 1-indexed!
+
+
+================================================================================
+                              SPELLDEF (Abilities)
+================================================================================
+
+See a_Spelldef.txt for complete documentation.
+
+New Blank:  SpellDef|1|||0.0|0|0.0|0|0||0|0|f|f|f|f|0.0||f|f|0.0||f|f|0||
+Filled:     SpellDef|1|Battle Cry|Shout that buffs|10.0|2|3.0|0|120||0|0|f|t|f|t|5.0|icon|t|t|255.0|Warcry|f|f|0||
+
+	0	1	2	3		4	5		6		7		8		9		10	11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26
+Literal|ID|Name|Description|Range|TargetType|#Targets|CasterRollType|RollStatSkillID|CasterRollFormula|DCType|FixedDCValue|ReqMode|AllowMods|Common|Log|Cooldown|Icon|AllowComment|Critical|IconColor|Category|IncludeAll|ExcludeAll|ChatRadius|DCTypeFormula|TargetDCFormula
+
+Key enums:
+- TargetType (5): 0=Selected, 1=Caster, 2=All, 3=All Others, 4=Selected Others
+- CasterRollType (7): 0=Roll Skill, 1=Roll Stat, 2=Custom Formula
+- DCType (10): 0=Target Roll, 1=Target Stat, 2=Fixed, 3=Target Roll Stat, 4=Custom
+- ChatRadius (24): 0=Default, 1=Very Close, 2=Close, 3=Far, 4=Very Far
+
+
+================================================================================
+                              SPELLREQDEF (Ability Requirements)
+================================================================================
+
+Default:    SpellReqDef|1|0|0|0|0.0|0.0|
+Filled:     SpellReqDef|1|3|6|45|30|0|
+
+	0	1		2		3		4	5	6	7
+Literal|SpellID|Function|Operator|Param|ValueMin|ValueMax|Text
+
+	0} Prefix literal (SpellReqDef)
+	1} SpellID: ability FK
+	2} Function (Requirement type):
+		0 = Stat
+		1 = Skill
+		2 = Skill Allocation
+		3 = Perk
+		4 = Conan Level
+		5 = Status Category
+		6 = Conan Item ID
+	3} Operator (same as conditions)
+	4} Param: node/ID being checked
+	5} ValueMin: threshold value
+	6} ValueMax: upper bound for Between/Outside
+	7} Text: category text (used with Status Category)
+
+*** Column 7 MUST exist even when blank
+
+
+================================================================================
+                              SPELLTARGETCOND (Ability Target Conditions)
+================================================================================
+
+Default:    SpellTargetCond|1|0|0|0|0|0.0|0.0|
+Filled:     SpellTargetCond|1|0|7|0|13|0.0|0.0|
+
+	0	1		2	3		4		5	6		7		8
+Literal|SpellID|Mode|Function|Operator|Param|ValueMin|ValueMax|Text
+
+	0} Prefix literal (SpellTargetCond)
+	1} SpellID: ability FK
+	2} Mode: 0=Include, 1=Exclude
+	3} Function (1-INDEXED, same as RuneCondition):
+		1 = Buff Category
+		2 = Skill Allocation
+		3 = Level
+		4 = Climate
+		5 = Shelter
+		6 = Time of Day
+		7 = Equipped Main Hand
+		8 = Equipped Off Hand
+		9 = Armor Class
+		10 = Character Height
+		11 = Character Build
+		12 = Bust Size
+		13 = Dong Size
+		14 = Flying
+		15 = Riding
+		16 = Swimming
+		17 = Gender
+		18 = High Heels
+		19 = Corruption
+		20 = Status
+		21 = Perk Category
+	4} Operator (0==, 1!=, 2>, 3>=, 4<, 5<=, 6 Between, 7 Outside)
+	5} Param: node/parameter reference for the condition
+	6} ValueMin: value or minimum value
+	7} ValueMax: upper bound for Between/Outside
+	8} Text: optional category text
+
+*** Column 8 MUST exist even when blank
+*** Function is 1-INDEXED like RuneCondition (no Perk at 0)
+
+
+================================================================================
+                              SPELLEFFECT (Ability Effects)
+================================================================================
+
+Default:    SpellEffect|1|0|0||0|0|0|0||||0
+Filled:     SpellEffect|1|0|4|+1|510|0|1|0|1d4|Skill Buff||0
+
+	0	1		2	3	4		5		6	7		8	9			10	11		12
+Literal|Ability ID|Targets|Effect|Formula/Text|Target ID|If|Broadcast|Outcome|Duration Formula|Category|Delay Formula|Unused
+
+	0} Prefix literal (SpellEffect)
+	1} Ability ID this effect belongs to
+	2} Who the effect applies to (0=Target, 1=All Targets, 2=Caster)
+	3} Effect function:
+		0 = Print Message
+		1 = Modify Stat
+		2 = Give Base Game Item
+		3 = Remove Base Game Item
+		4 = Buff Skill
+		5 = Buff Stat
+		6 = Buff Perk
+		7 = Dispel Buff
+		8 = Buff Ability
+		9 = Auto Use Ability
+		10 = Set Stat
+		11 = Buff Grant Status
+		12 = Buff Unlock Status
+	4} AdjustFormula text or dice expression consumed by the effect; leave blank when not used but do NOT drop
+	5} TargetID for the effect (stat ID, spell ID, status ID, etc. depending on function)
+	6} If gating: 0=Always, 1=Critical Only, 2=Non-Critical Only
+	7} Broadcast visibility (0=Public, 1=Private, 2=Secret)
+	8} Outcome block (0=General Effect, 1=Success Effect, 2=Failure Effect)
+	9} Duration formula (-1 means instantaneous)
+	10} Category text label if the effect uses one
+	11} Delay formula before resolution
+	12} Reserved flag; keep at 0
+
+*** All empty string columns MUST exist as blank cells
+
+
+================================================================================
+                              LOOKUP TABLES
+================================================================================
+
+These are reference tables used for dropdown pickers in condition editors.
+
+LookupClimate:      LookupClimate|ID|Name
+LookupShelter:      LookupShelter|ID|Name
+LookupTimeOfDay:    LookupTimeOfDay|ID|Name
+LookupArmorClass:   LookupArmorClass|ID|Name
+LookupMainHand:     LookupMainHand|ID|Name
+LookupOffHand:      LookupOffHand|ID|Name
+LookupBool:         LookupBool|ID|Name
+LookupGender:       LookupGender|ID|Name
+
+Standard values:
+
+LookupClimate:
+	0 = Hot
+	1 = Cold
+
+LookupShelter:
+	0 = No Shelter
+	1 = Some Shelter
+	2 = Has Shelter
+
+LookupTimeOfDay:
+	0 = Dawn
+	1 = Day
+	2 = Dusk
+	3 = Night
+
+LookupArmorClass:
+	0 = None
+	1 = Light
+	2 = Medium
+	3 = Heavy
+
+LookupMainHand:
+	0 = None
+	1 = Axe 1H
+	2 = Axe 2H
+	3 = Bow
+	4 = Crossbow
+	5 = Daggers
+	6 = Mace 1H
+	7 = Mace 2H
+	8 = Spear 1H
+	9 = Spear 2H
+	10 = Sword 1H
+	11 = Sword 2H
+	12 = Other
+	13 = Focus 2H
+
+LookupOffHand:
+	0 = None
+	1 = Shield
+	2 = Thrown
+	3 = Torch
+	4 = Other
+
+LookupBool:
+	0 = False
+	1 = True
+
+LookupGender:
+	0 = Male
+	1 = Female
+
+
+================================================================================
+                              CRITICAL NOTES & EDGE CASES
+================================================================================
+
+1. CONDITION INDEXING
+   - RuneCondition: 1-indexed (starts at 1, no Perk condition)
+   - MutatorCondition: 0-indexed (Perk=0, Buff Category=1, etc.)
+   - SpellTargetCond: 1-indexed (same as RuneCondition, no Perk at 0)
+
+2. EMPTY CELLS THAT MUST EXIST
+   - SpellReqDef column 7 (Text)
+   - SpellTargetCond column 8 (Text)
+   - SpellEffect columns 4, 9, 10, 11 when not used
+   - All string_or_empty columns: leave blank but don't drop
+
+3. RESERVED COLUMNS
+   - RuneDef columns 3,4: always 0 (legacy placeholders)
+   - RuneAction column 5: always 0
+   - SpellEffect column 12: always 0
+
+4. RGBA COLOR FORMAT
+   - Used in StatusDef.Color and SpellDef.IconColor
+   - Format: "R,G,B,A" as floats (e.g., "1.0,0.0,0.0,1.0")
+
+5. FORMULA SYNTAX
+   - Bonus Source/Formula: "NodeID*Multiplier;NodeID*Multiplier"
+   - Example: "2*1.0;1*0.5" = Skill 2 × 1.0 + Skill 1 × 0.5
+
+6. BOOL VALUES
+   - All booleans use t/f (not true/false or 1/0)
+
+7. CHILD TABLE RELATIONSHIPS
+   - PerkAction → PerkDef (via PerkID)
+   - RuneAction, RuneCondition → RuneDef (via RuneID/NodeID)
+   - StatusAction → StatusDef (via StatusID)
+   - MutatorAction, MutatorCondition → MutatorDef (via MutatorID)
+   - SpellReqDef, SpellTargetCond, SpellEffect → SpellDef (via SpellID)
+
+================================================================================
+                              END OF DOCUMENT
+================================================================================

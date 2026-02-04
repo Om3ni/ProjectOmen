@@ -1,0 +1,336 @@
+@import "tailwindcss";
+
+/* ============================================
+   THEME SYSTEM - CSS Custom Properties
+   ============================================ */
+
+:root {
+  /* Scrollbar */
+  --sb-size: 8px;
+  --sb-thumb: rgba(148, 163, 184, 0.35);
+  --sb-thumb-hover: rgba(148, 163, 184, 0.55);
+  --sb-track: transparent;
+}
+
+/* ------------------------------------------
+   SLATE DARK (Default) - The original theme
+   ------------------------------------------ */
+:root,
+[data-theme="slate"] {
+  /* Background layers */
+  --bg-base: #020618;        /* slate-950 */
+  --bg-surface: #0f172b;     /* slate-900 */
+  --bg-elevated: #1d293d;    /* slate-800 */
+  --bg-muted: rgba(15, 23, 43, 0.2);  /* slate-900/20 */
+  --bg-input: rgba(2, 6, 24, 0.4);    /* slate-950/40 */
+
+  /* Borders */
+  --border-default: #1d293d;  /* slate-800 */
+  --border-muted: #314158;    /* slate-700 */
+
+  /* Text */
+  --text-primary: #f1f5f9;    /* slate-100 */
+  --text-secondary: #cad5e2;  /* slate-300 */
+  --text-muted: #64748b;      /* slate-500 */
+  --text-faint: #475569;      /* slate-600 */
+  --text-inverted: #0f172b;   /* slate-900 */
+
+  /* Accent colors */
+  --accent-primary: #00bb7f;   /* emerald-500 */
+  --accent-primary-hover: #34d399; /* emerald-400 */
+  --accent-primary-text: #020618;  /* dark text on accent */
+
+  /* Danger/destructive */
+  --danger-bg: rgba(127, 29, 29, 0.3);  /* red-950/30 */
+  --danger-border: rgba(185, 28, 28, 0.6); /* red-700/60 */
+  --danger-text: #fecaca;      /* red-200 */
+  --danger-hover: rgba(127, 29, 29, 0.5);
+
+  /* Warning */
+  --warning-bg: rgba(120, 53, 15, 0.3);
+  --warning-border: rgba(217, 119, 6, 0.6);
+  --warning-text: #fde68a;
+
+  /* Selection/active */
+  --selection-bg: #e2e8f0;     /* slate-200 */
+  --selection-text: #0f172b;   /* slate-900 */
+  --selection-subtext: #334155; /* slate-700 */
+
+  /* Focus ring */
+  --ring-color: rgba(100, 116, 139, 0.4); /* slate-500/40 */
+}
+
+/* ------------------------------------------
+   MIDNIGHT - Deep blue-black theme
+   ------------------------------------------ */
+[data-theme="midnight"] {
+  --bg-base: #0a0a1a;
+  --bg-surface: #12122a;
+  --bg-elevated: #1a1a3a;
+  --bg-muted: rgba(18, 18, 42, 0.2);
+  --bg-input: rgba(10, 10, 26, 0.4);
+
+  --border-default: #1a1a3a;
+  --border-muted: #2a2a5a;
+
+  --text-primary: #e8e8ff;
+  --text-secondary: #b8b8d8;
+  --text-muted: #6868a8;
+  --text-faint: #484878;
+  --text-inverted: #0a0a1a;
+
+  --accent-primary: #818cf8;   /* indigo-400 */
+  --accent-primary-hover: #a5b4fc; /* indigo-300 */
+  --accent-primary-text: #0a0a1a;
+
+  --danger-bg: rgba(127, 29, 29, 0.3);
+  --danger-border: rgba(239, 68, 68, 0.5);
+  --danger-text: #fca5a5;
+  --danger-hover: rgba(127, 29, 29, 0.5);
+
+  --warning-bg: rgba(120, 53, 15, 0.3);
+  --warning-border: rgba(251, 191, 36, 0.5);
+  --warning-text: #fde68a;
+
+  --selection-bg: #c7d2fe;     /* indigo-200 */
+  --selection-text: #0a0a1a;
+  --selection-subtext: #3730a3;
+
+  --ring-color: rgba(129, 140, 248, 0.4);
+
+  --sb-thumb: rgba(129, 140, 248, 0.35);
+  --sb-thumb-hover: rgba(129, 140, 248, 0.55);
+}
+
+/* ------------------------------------------
+   OCEAN - Deep teal/cyan theme
+   ------------------------------------------ */
+[data-theme="ocean"] {
+  --bg-base: #021a1a;
+  --bg-surface: #0a2828;
+  --bg-elevated: #123838;
+  --bg-muted: rgba(10, 40, 40, 0.2);
+  --bg-input: rgba(2, 26, 26, 0.4);
+
+  --border-default: #123838;
+  --border-muted: #1a4848;
+
+  --text-primary: #e0f7f7;
+  --text-secondary: #a8d8d8;
+  --text-muted: #5a9898;
+  --text-faint: #3a7878;
+  --text-inverted: #021a1a;
+
+  --accent-primary: #22d3d3;   /* cyan-400ish */
+  --accent-primary-hover: #5eead4; /* teal-300 */
+  --accent-primary-text: #021a1a;
+
+  --danger-bg: rgba(127, 29, 29, 0.3);
+  --danger-border: rgba(239, 68, 68, 0.5);
+  --danger-text: #fca5a5;
+  --danger-hover: rgba(127, 29, 29, 0.5);
+
+  --warning-bg: rgba(120, 53, 15, 0.3);
+  --warning-border: rgba(251, 191, 36, 0.5);
+  --warning-text: #fde68a;
+
+  --selection-bg: #99f6e4;     /* teal-200 */
+  --selection-text: #021a1a;
+  --selection-subtext: #0f766e;
+
+  --ring-color: rgba(34, 211, 211, 0.4);
+
+  --sb-thumb: rgba(34, 211, 211, 0.35);
+  --sb-thumb-hover: rgba(34, 211, 211, 0.55);
+}
+
+/* ------------------------------------------
+   EMBER - Warm dark theme with orange accents
+   ------------------------------------------ */
+[data-theme="ember"] {
+  --bg-base: #1a0f0a;
+  --bg-surface: #261812;
+  --bg-elevated: #3a241a;
+  --bg-muted: rgba(38, 24, 18, 0.2);
+  --bg-input: rgba(26, 15, 10, 0.4);
+
+  --border-default: #3a241a;
+  --border-muted: #4a3428;
+
+  --text-primary: #fef3e2;
+  --text-secondary: #e8d0b8;
+  --text-muted: #a08068;
+  --text-faint: #705848;
+  --text-inverted: #1a0f0a;
+
+  --accent-primary: #fb923c;   /* orange-400 */
+  --accent-primary-hover: #fdba74; /* orange-300 */
+  --accent-primary-text: #1a0f0a;
+
+  --danger-bg: rgba(127, 29, 29, 0.3);
+  --danger-border: rgba(239, 68, 68, 0.5);
+  --danger-text: #fca5a5;
+  --danger-hover: rgba(127, 29, 29, 0.5);
+
+  --warning-bg: rgba(120, 53, 15, 0.3);
+  --warning-border: rgba(251, 191, 36, 0.5);
+  --warning-text: #fde68a;
+
+  --selection-bg: #fed7aa;     /* orange-200 */
+  --selection-text: #1a0f0a;
+  --selection-subtext: #9a3412;
+
+  --ring-color: rgba(251, 146, 60, 0.4);
+
+  --sb-thumb: rgba(251, 146, 60, 0.35);
+  --sb-thumb-hover: rgba(251, 146, 60, 0.55);
+}
+
+/* ------------------------------------------
+   VSCODE - VS Code Dark+ inspired theme
+   ------------------------------------------ */
+[data-theme="vscode"] {
+  --bg-base: #1e1e1e;
+  --bg-surface: #252526;
+  --bg-elevated: #333333;
+  --bg-muted: rgba(37, 37, 38, 0.2);
+  --bg-input: rgba(30, 30, 30, 0.6);
+
+  --border-default: #3c3c3c;
+  --border-muted: #454545;
+
+  --text-primary: #d4d4d4;
+  --text-secondary: #cccccc;
+  --text-muted: #808080;
+  --text-faint: #5a5a5a;
+  --text-inverted: #1e1e1e;
+
+  --accent-primary: #0e639c;   /* VS Code blue */
+  --accent-primary-hover: #1177bb;
+  --accent-primary-text: #ffffff;
+
+  --danger-bg: rgba(244, 71, 71, 0.15);
+  --danger-border: rgba(244, 71, 71, 0.5);
+  --danger-text: #f48771;
+  --danger-hover: rgba(244, 71, 71, 0.25);
+
+  --warning-bg: rgba(205, 145, 60, 0.15);
+  --warning-border: rgba(205, 145, 60, 0.5);
+  --warning-text: #cca700;
+
+  --selection-bg: #264f78;
+  --selection-text: #ffffff;
+  --selection-subtext: #cccccc;
+
+  --ring-color: rgba(14, 99, 156, 0.5);
+
+  --sb-thumb: rgba(121, 121, 121, 0.4);
+  --sb-thumb-hover: rgba(121, 121, 121, 0.7);
+}
+
+/* Minimalist scrollbars (Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--sb-thumb) var(--sb-track);
+}
+
+/* Minimalist scrollbars (Chromium/WebKit) */
+*::-webkit-scrollbar {
+  width: var(--sb-size);
+  height: var(--sb-size);
+}
+
+*::-webkit-scrollbar-track {
+  background: var(--sb-track);
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--sb-thumb);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: var(--sb-thumb-hover);
+}
+
+/* Utility: fully hide scrollbars for a specific scroller */
+.scrollbar-none {
+  scrollbar-width: none;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+}
+
+/* Raw preview helpers (VS Code-ish line numbers without polluting copied text). */
+.rpr-numbered {
+  counter-reset: rpr-line;
+}
+
+.rpr-numbered .rpr-line {
+  position: relative;
+  padding-left: 3.5rem;
+}
+
+.rpr-numbered .rpr-line::before {
+  counter-increment: rpr-line;
+  content: counter(rpr-line);
+  position: absolute;
+  left: 0;
+  width: 3rem;
+  text-align: right;
+  color: var(--text-muted);
+  user-select: none;
+}
+
+/* ============================================
+   THEME UTILITY CLASSES
+   ============================================ */
+
+/* Backgrounds */
+.theme-bg-base { background-color: var(--bg-base); }
+.theme-bg-surface { background-color: var(--bg-surface); }
+.theme-bg-elevated { background-color: var(--bg-elevated); }
+.theme-bg-muted { background-color: var(--bg-muted); }
+.theme-bg-input { background-color: var(--bg-input); }
+.theme-bg-selection { background-color: var(--selection-bg); }
+.theme-bg-accent { background-color: var(--accent-primary); }
+.theme-bg-accent-hover:hover { background-color: var(--accent-primary-hover); }
+.theme-bg-danger { background-color: var(--danger-bg); }
+.theme-bg-danger-hover:hover { background-color: var(--danger-hover); }
+
+/* Borders */
+.theme-border { border-color: var(--border-default); }
+.theme-border-muted { border-color: var(--border-muted); }
+.theme-border-danger { border-color: var(--danger-border); }
+
+/* Text */
+.theme-text { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-text-muted { color: var(--text-muted); }
+.theme-text-faint { color: var(--text-faint); }
+.theme-text-inverted { color: var(--text-inverted); }
+.theme-text-selection { color: var(--selection-text); }
+.theme-text-accent { color: var(--accent-primary); }
+.theme-text-accent-on { color: var(--accent-primary-text); }
+.theme-text-danger { color: var(--danger-text); }
+
+/* Focus ring */
+.theme-ring:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring-color);
+}

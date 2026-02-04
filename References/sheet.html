@@ -1,0 +1,416 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RPR Character Sheet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      body { background-color: #0f172a; color: #e2e8f0; }
+      .panel { background-color: #111827; border: 1px solid #1f2937; border-radius: 0.5rem; }
+      .badge { font-size: 10px; padding: 2px 6px; border-radius: 9999px; }
+    </style>
+  </head>
+  <body class="p-4">
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script>
+    (()=>{
+      const h = React.createElement;
+      const { useState, useMemo, useEffect, useRef } = React;
+
+      const tf = v => String(v).toLowerCase()==='t' || v===true;
+      const num = (v,d=0)=>{ const n = Number(v); return Number.isFinite(n)? n : d; };
+
+      function useEditorSync(initial){
+        const [payload, setPayload] = useState(initial||null);
+        const chRef = useRef(null);
+        useEffect(()=>{
+          try{
+            const ch = new BroadcastChannel('rpr-sheet-sync');
+            chRef.current = ch;
+            ch.onmessage = (ev)=>{
+              console.log('[Sheet] Received broadcast message:', ev.data?.type);
+              if (!ev || !ev.data) return;
+              if (ev.data.type === 'rpr-data'){ 
+                console.log('[Sheet] Updating data from editor');
+                setPayload(ev.data); 
+              }
+            };
+          } catch(_e){}
+          return ()=>{ try{ chRef.current && chRef.current.close(); }catch(_e){} };
+        },[]);
+        return payload;
+      }
+
+      async function fetchJson(path){
+        const res = await fetch(path+`?v=${Date.now()}`, { cache:'no-store' });
+        if(!res.ok) throw new Error('Failed to fetch '+path);
+        return res.json();
+      }
+
+      function parseAttrList(str){
+        const s = String(str||'').trim(); if(!s) return [];
+        return s.split(/\s*;\s*/).map(it=>{ const [id, mult='1'] = it.split('*'); return { id: Number(id), mult: Number(mult) }; }).filter(x=> Number.isFinite(x.id) && Number.isFinite(x.mult));
+      }
+
+      function computeStatValue(stat, attrMap, perkBonuses, statPerkBonuses){
+        const base = num(stat.Base,0);
+        const bonus = num(stat.Bonus,0);
+        const scale = num(stat.Scale,1);
+        const parts = parseAttrList(stat.Formula);
+        let contrib = 0;
+        for(const p of parts){
+          const attr = attrMap.get(p.id);
+          if(!attr) continue;
+          // SkillDef: Natural Bonus + allocation + perk bonus
+          const naturalBonus = num(attr['Natural Bonus'], 0);
+          const allocation = num(attr.Allocation, 0);
+          const perkBonus = perkBonuses.get(p.id) || 0;
+          const val = naturalBonus + allocation + perkBonus;
+          contrib += val * p.mult;
+        }
+        const statId = Number(stat.ID ?? stat['Node ID']);
+        const perkStatBonus = Number.isFinite(statId) ? (statPerkBonuses.get(statId) || 0) : 0;
+        return (base + bonus + contrib + perkStatBonus) * (scale || 1);
+      }
+
+      function CharacterSheet(){
+        const editor = useEditorSync(null);
+        const [admin, setAdmin] = useState(false);
+        const [data, setData] = useState(null);
+        const [loading, setLoading] = useState(true);
+        const [error, setError] = useState(null);
+
+        useEffect(()=>{
+          if(editor && editor.data){ setData(editor.data); setLoading(false); }
+        }, [editor?.data]);
+
+        useEffect(()=>{
+          (async()=>{
+            if (data) return; // prefer broadcast when present
+            try{
+              const fallback = await fetchJson('schema-data.json');
+              setData(fallback.data || fallback); // supports either {data} or raw
+              setLoading(false);
+            }catch(e){ setError(String(e.message||e)); setLoading(false);} 
+          })();
+        }, [data]);
+
+  const skillRows = useMemo(()=> Array.isArray(data?.SkillDef)? data.SkillDef : [], [data]);
+  const statRows  = useMemo(()=> Array.isArray(data?.Stat)? data.Stat : [], [data]);
+        const perkRows  = useMemo(()=> Array.isArray(data?.PerkDef)? data.PerkDef : [], [data]);
+        const perkActs  = useMemo(()=> Array.isArray(data?.PerkAction)? data.PerkAction : [], [data]);
+
+        const attributes = useMemo(()=> skillRows.filter(r=> String(r.TypeFlag||'f').toLowerCase()==='t'), [skillRows]);
+        const skills = useMemo(()=> skillRows.filter(r=> String(r.TypeFlag||'f').toLowerCase()==='f'), [skillRows]);
+
+        const attrMap = useMemo(()=>{
+          const m = new Map();
+          for(const a of attributes){
+            const id = Number(a['Node ID'] ?? a.ID);
+            if(Number.isFinite(id)) m.set(id, a);
+          }
+          return m;
+        }, [attributes]);
+
+        // Perk availability logic
+        const [chosen, setChosen] = useState([]); // array of perk IDs
+        const chosenSet = useMemo(()=> new Set(chosen), [chosen]);
+        const actsByPerk = useMemo(()=>{
+          const map = new Map();
+          for(const act of perkActs){
+            const pid = Number(act.PerkID);
+            if(!Number.isFinite(pid)) continue;
+            if(!map.has(pid)) map.set(pid, []);
+            map.get(pid).push(act);
+          }
+          return map;
+        }, [perkActs]);
+
+        const derivedPerkLists = useMemo(()=>{
+          const baseAvail = perkRows.filter(p=> tf(p.Public));
+          const byId = new Map(perkRows.map(p=>[Number(p.ID), p]));
+          let allowIDs = new Set();
+          let denyIDs = new Set();
+          let allowCats = new Set();
+          let denyCats = new Set();
+          let allowSkillIDs = new Set();
+          let denySkillIDs = new Set();
+
+          for(const pid of chosen){
+            const actions = actsByPerk.get(pid) || [];
+            for(const a of actions){
+              const fn = String(a.Function);
+              if(fn==='2'){ // Allow Perk
+                const id = Number(a.TargetID); if(Number.isFinite(id)) allowIDs.add(id);
+              } else if (fn==='3'){ // Deny Perk
+                const id = Number(a.TargetID); if(Number.isFinite(id)) denyIDs.add(id);
+              } else if (fn==='13'){ // Allow Perk Category
+                const cat = String(a.Modifier||'').trim(); if(cat) allowCats.add(cat);
+              } else if (fn==='14'){ // Deny Perk Category
+                const cat = String(a.Modifier||'').trim(); if(cat) denyCats.add(cat);
+              } else if (fn==='0'){ // Allow Skill
+                const id = Number(a.TargetID); if(Number.isFinite(id)) allowSkillIDs.add(id);
+              } else if (fn==='1'){ // Deny Skill
+                const id = Number(a.TargetID); if(Number.isFinite(id)) denySkillIDs.add(id);
+              }
+            }
+          }
+
+          // Build availability set
+          const availSet = new Set(baseAvail.map(p=> Number(p.ID)));
+          // Add from allowIDs and allowCats
+          for(const id of allowIDs){ if(byId.has(id)) availSet.add(id); }
+          if(allowCats.size){
+            for(const p of perkRows){ if(allowCats.has(String(p.Category||''))) availSet.add(Number(p.ID)); }
+          }
+          // Apply denies (but do not remove already chosen)
+          const finalAvail = Array.from(availSet).filter(id=>{
+            const p = byId.get(id); if(!p) return false;
+            if(denyIDs.has(id) && !chosenSet.has(id)) return false;
+            if(denyCats.has(String(p.Category||'')) && !chosenSet.has(id)) return false;
+            return true;
+          }).map(id=> byId.get(id));
+
+          // Prevent choosing two perks in a denied category after selection (case-sensitive)
+          const denyCatActive = (p)=> denyCats.has(String(p.Category||''));
+
+          return { available: finalAvail, denyCats, allowCats, denyIDs, allowIDs, denyCatActive, allowSkillIDs, denySkillIDs };
+        }, [perkRows, actsByPerk, chosen, chosenSet]);
+
+        const statPerkBonuses = useMemo(()=>{
+          const bonuses = new Map();
+          for(const pid of chosen){
+            const actions = actsByPerk.get(pid) || [];
+            for(const act of actions){
+              const fn = Number(act.Function);
+              if(fn === 7){ // Stat Modifier
+                const statId = Number(act.TargetID);
+                if(!Number.isFinite(statId)) continue;
+                const candidates = [act.Value, act.TargetType, act.Modifier];
+                let amount = 0;
+                for(const candidate of candidates){
+                  if(candidate === undefined || candidate === null) continue;
+                  if(typeof candidate === 'string' && candidate.trim() === '') continue;
+                  const n = Number(candidate);
+                  if(Number.isFinite(n)) { amount = n; break; }
+                }
+                bonuses.set(statId, (bonuses.get(statId)||0) + amount);
+              }
+            }
+          }
+          return bonuses;
+        }, [chosen, actsByPerk]);
+
+        const perkBonuses = useMemo(()=>{
+          const bonuses = new Map();
+          for(const pid of chosen){
+            const p = perkRows.find(x=> Number(x.ID)===pid);
+            if(!p) continue;
+            const desc = String(p.Description || '');
+            // Parse attribute bonuses: • +X Attribute
+            const attrMatches = desc.matchAll(/• \+([0-9]+) ([A-Za-z ]+)/g);
+            for(const m of attrMatches){
+              const bonus = Number(m[1]);
+              const attrName = m[2].trim();
+              const attr = attributes.find(a=> String(a.Name).toLowerCase() === attrName.toLowerCase());
+              if(attr){
+                const id = Number(attr['Node ID'] ?? attr.ID);
+                bonuses.set(id, (bonuses.get(id)||0) + bonus);
+              }
+            }
+            // Parse skill bonuses: • Skill: X
+            const skillMatches = desc.matchAll(/• ([A-Za-z ]+): ([0-9]+)/g);
+            for(const m of skillMatches){
+              const skillName = m[1].trim();
+              const bonus = Number(m[2]);
+              const sk = skills.find(s=> String(s.Name).toLowerCase() === skillName.toLowerCase());
+              if(sk){
+                const id = Number(sk['Node ID'] ?? sk.ID);
+                bonuses.set(id, (bonuses.get(id)||0) + bonus);
+              }
+            }
+          }
+          return bonuses;
+        }, [chosen, perkRows, attributes, skills]);
+
+        const [allocations, setAllocations] = useState(new Map());
+        const updateAllocation = (attrId, value)=>{
+          setAllocations(prev=>{
+            const next = new Map(prev);
+            next.set(attrId, value);
+            return next;
+          });
+        };
+
+        // Apply allocations to attributes for computation
+        const attributesWithAlloc = useMemo(()=>{
+          return attributes.map(a=>{
+            const id = Number(a['Node ID'] ?? a.ID);
+            return { ...a, Allocation: allocations.get(id) || 0 };
+          });
+        }, [attributes, allocations]);
+
+        const attrMapWithAlloc = useMemo(()=>{
+          const m = new Map();
+          for(const a of attributesWithAlloc){
+            const id = Number(a['Node ID'] ?? a.ID);
+            if(Number.isFinite(id)) m.set(id, a);
+          }
+          return m;
+        }, [attributesWithAlloc]);
+
+        const publicStatsWithAlloc = useMemo(()=>{
+          const raw = admin ? statRows : statRows.filter(s=> tf(s.Public));
+          return raw.map(s=>{
+            const value = computeStatValue(s, attrMapWithAlloc, perkBonuses, statPerkBonuses);
+            return { ...s, __value: value };
+          });
+        }, [statRows, admin, attrMapWithAlloc, perkBonuses, statPerkBonuses]);
+
+        const publicStats = useMemo(()=>{
+          const raw = admin ? statRows : statRows.filter(s=> tf(s.Public));
+          return raw.map(s=>{
+            const value = computeStatValue(s, attrMap, perkBonuses, statPerkBonuses);
+            return { ...s, __value: value };
+          });
+        }, [statRows, admin, attrMap, perkBonuses, statPerkBonuses]);
+
+        // group skills under attributes if their Bonus Source mentions that attribute id
+        function skillRefsAttr(skill, attrId){
+          const src = String(skill['Bonus Source']||'');
+          return src.split(/\s*;\s*/).some(tok=> Number(tok.split('*')[0]) === attrId);
+        }
+        // grouped will be computed later after perk visibility is resolved
+
+        // Skills visible to player considering public flag, admin, and perk allow/deny
+        const visibleSkills = useMemo(()=>{
+          const out = [];
+          for(const sk of skills){
+            const id = Number(sk['Node ID'] ?? sk.ID);
+            const isAllowed = derivedPerkLists.allowSkillIDs.has(id);
+            const isDenied = derivedPerkLists.denySkillIDs.has(id);
+            const basePublic = tf(sk.Public);
+            if(isDenied && !isAllowed && !admin) continue;
+            if(basePublic || admin || isAllowed){ out.push(sk); }
+          }
+          return out;
+        }, [skills, derivedPerkLists.allowSkillIDs, derivedPerkLists.denySkillIDs, admin]);
+
+        // Group attributes with their visible skills. Include a private attribute if it has any visible skills or admin is on.
+        const grouped = useMemo(()=>{
+          return attributesWithAlloc.map(a=>{
+            const id = Number(a['Node ID'] ?? a.ID);
+            const kids = visibleSkills.filter(s=> skillRefsAttr(s, id));
+            const attrVisible = tf(a.Public) || admin || kids.length>0;
+            if(!attrVisible) return null;
+            return { attr: a, skills: kids };
+          }).filter(Boolean);
+        }, [attributesWithAlloc, visibleSkills, admin]);
+
+        const addPerk = (id)=>{ if(!chosenSet.has(id)) setChosen(prev=> [...prev, id]); };
+        const removePerk = (id)=> setChosen(prev=> prev.filter(x=> x!==id));
+
+        if (loading) return h('div',{className:'text-center p-8'}, 'Loading…');
+        if (error) return h('div',{className:'text-red-300'}, String(error));
+        if (!data) return h('div',null, 'No data');
+
+        return h('div',{className:'grid grid-cols-1 lg:grid-cols-6 gap-4'},[
+          // Perks Sidebar
+          h('div',{className:'panel p-3 lg:col-span-2'},[
+            h('div',{className:'flex items-center justify-between mb-2'},[
+              h('h2',{className:'font-semibold'}, 'Perks'),
+              h('span',{className:'text-xs text-slate-400'}, `${chosen.length} chosen`)
+            ]),
+            h('div',{className:'space-y-2 max-h-[70vh] overflow-y-auto pr-1'},[
+              h('div',{className:'text-xs uppercase tracking-wide text-slate-400'}, 'Available'),
+              ...derivedPerkLists.available.map(p=> h('div',{key:p.ID,className:'p-2 rounded bg-slate-800 border border-slate-700 flex items-center justify-between'},[
+                h('div',null,[ h('div',{className:'font-medium text-sm'}, p.Name||`Perk ${p.ID}`), h('div',{className:'text-xs text-slate-400'}, p.Category||'') ]),
+                h('button',{className:'px-2 py-1 text-xs rounded bg-emerald-600 hover:bg-emerald-500', onClick:()=>addPerk(Number(p.ID)), disabled: chosenSet.has(Number(p.ID)) || derivedPerkLists.denyCatActive(p)}, chosenSet.has(Number(p.ID))?'Added':'Add')
+              ])),
+              h('div',{className:'text-xs uppercase tracking-wide text-slate-400 pt-2'}, 'Chosen'),
+              ...chosen.map(id=>{
+                const p = perkRows.find(x=> Number(x.ID)===id);
+                if(!p) return null;
+                return h('div',{key:id,className:'p-2 rounded bg-slate-900 border border-slate-700 flex items-center justify-between'},[
+                  h('div',null,[ h('div',{className:'font-medium text-sm'}, p?.Name||`Perk ${id}`), h('div',{className:'text-xs text-slate-500'}, p?.Category||'') ]),
+                  h('button',{className:'px-2 py-1 text-xs rounded bg-rose-600 hover:bg-rose-500', onClick:()=>removePerk(id)}, 'Remove')
+                ]);
+              }).filter(Boolean)
+            ])
+          ]),
+
+          // Main content
+          h('div',{className:'lg:col-span-4 space-y-4'},[
+            h('div',{className:'flex items-center justify-between panel p-3'},[
+              h('h2',{className:'font-semibold'}, 'Character Sheet'),
+              h('label',{className:'flex items-center gap-2 text-sm'},[
+                h('input',{type:'checkbox', checked:admin, onChange:(e)=>setAdmin(e.target.checked)}),
+                h('span',null,'Admin mode')
+              ])
+            ]),
+
+            // Stats
+            h('div',{className:'panel p-3'},[
+              h('div',{className:'font-semibold mb-2'}, 'Stats'),
+              h('div',{className:'grid grid-cols-1 gap-2'},
+                publicStatsWithAlloc.map(s=> h('div',{key:s.ID||s.Name,className:'flex items-center justify-between bg-slate-900 border border-slate-700 rounded px-3 py-2'},[
+                  h('div',null,[ h('div',{className:'font-medium text-sm'}, s.Name||`Stat ${s.ID}`), !tf(s.Public) && h('span',{className:'badge bg-slate-700 ml-2'},'private') ]),
+                  h('div',{className:'text-slate-300 font-semibold'}, String(Math.round(s.__value*100)/100))
+                ]))
+              )
+            ]),
+
+            // Attributes & Skills
+            h('div',{className:'panel p-3'},[
+              h('div',{className:'font-semibold mb-2'}, 'Attributes & Skills'),
+              h('div',{className:'space-y-2 max-h-[60vh] overflow-y-auto pr-1'},
+                grouped.map(g=> {
+                  const attrId = Number(g.attr['Node ID'] ?? g.attr.ID);
+                  const naturalBonus = num(g.attr['Natural Bonus'],0);
+                  const allocation = allocations.get(attrId) || 0;
+                  const perkBonus = perkBonuses.get(attrId) || 0;
+                  const total = naturalBonus + allocation + perkBonus;
+                  return h('div',{key:attrId||g.attr.Name,className:'border border-slate-700 rounded'},[
+                    h('div',{className:'px-3 py-2 bg-slate-900 flex items-center justify-between'},[
+                      h('div',{className:'font-bold text-2xl'}, g.attr.Name||`Attribute ${attrId}`),
+                      h('div',{className:'flex items-center gap-2'},[
+                        h('span',{className:'text-sm text-slate-400'}, `Base: ${naturalBonus}`),
+                        h('input',{type:'number',className:'w-16 px-2 py-1 text-sm bg-slate-800 border border-slate-600 rounded text-white',value:allocation,onChange:(e)=>updateAllocation(attrId, Number(e.target.value)||0),placeholder:'Alloc'}),
+                        h('span',{className:'text-sm text-emerald-400'}, perkBonus>0 ? `+${perkBonus}` : ''),
+                        h('span',{className:'text-lg font-semibold text-white'}, `= ${total}`)
+                      ])
+                    ]),
+                    h('ul',{className:'divide-y divide-slate-800'},
+                      g.skills.map(sk=> {
+                        const skId = Number(sk['Node ID'] ?? sk.ID);
+                        const skAlloc = allocations.get(skId) || 0;
+                        const skPerkBonus = perkBonuses.get(skId) || 0;
+                        const skTotal = skAlloc + skPerkBonus;
+                        return h('li',{key:skId||sk.Name,className:'flex items-center justify-between px-3 py-1.5'},[
+                          h('span',{className:'text-sm'}, sk.Name||`Skill ${skId}`),
+                          h('div',{className:'flex items-center gap-2'},[
+                            h('input',{type:'number',className:'w-12 px-1 py-0.5 text-xs bg-slate-800 border border-slate-600 rounded text-white',value:skAlloc,onChange:(e)=>updateAllocation(skId, Number(e.target.value)||0),placeholder:'0'}),
+                            h('span',{className:'text-xs text-emerald-400'}, skPerkBonus>0 ? `+${skPerkBonus}` : ''),
+                            h('span',{className:'text-sm font-semibold'}, skTotal>0 ? `= ${skTotal}` : ''),
+                            !tf(sk.Public) && h('span',{className:'badge bg-slate-700 ml-1'}, 'private')
+                          ])
+                        ]);
+                      })
+                    )
+                  ]);
+                })
+              )
+            ])
+          ])
+        ]);
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'));
+      root.render(React.createElement(CharacterSheet));
+    })();
+    </script>
+  </body>
+</html>

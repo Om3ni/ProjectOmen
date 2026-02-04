@@ -1,0 +1,249 @@
+# RPR SEQUENCE ID REFERENCE
+# This document defines which columns contain Node IDs and what table they reference.
+# Used by handleSequence to correctly remap IDs after sequencing.
+
+================================================================================
+                         NODE ID COLUMN MAPPINGS
+================================================================================
+
+## PARENT TABLES (Get sequenced, create ID mappings)
+
+| Table      | ID Column | ID Column Index | Notes                          |
+|------------|-----------|-----------------|--------------------------------|
+| SkillDef   | Node ID   | 2               | Unique - only table with ID in col 2 |
+| PerkDef    | ID        | 1               |                                |
+| Stat       | ID        | 1               |                                |
+| Rune       | Node ID   | 1               | Parent of RuneAction           |
+| RuneDef    | Node ID   | 1               | Parent of RuneCondition, RuneEffect |
+| SpellDef   | ID        | 1               |                                |
+| StatusDef  | ID        | 1               |                                |
+| MutatorDef | ID        | 1               |                                |
+
+
+================================================================================
+                         CHILD TABLE → PARENT MAPPINGS
+================================================================================
+
+| Child Table     | Parent Table | Parent ID Column |
+|-----------------|--------------|------------------|
+| PerkAction      | PerkDef      | 1                |
+| RuneAction      | Rune         | 1                | ← NOT RuneDef! |
+| RuneCondition   | RuneDef      | 1                |
+| RuneEffect      | RuneDef      | 1                |
+| SpellEffect     | SpellDef     | 1                |
+| SpellReqDef     | SpellDef     | 1                |
+| SpellTargetCond | SpellDef     | 1                |
+| StatusAction    | StatusDef    | 1                |
+| MutatorAction   | MutatorDef   | 1                |
+| MutatorCondition| MutatorDef   | 1                |
+
+
+================================================================================
+                         FORMULA FIELDS (Reference SkillDef IDs)
+================================================================================
+
+Format: "NodeID*Multiplier;NodeID*Multiplier" (e.g., "2*1.0;1*0.5")
+
+| Table    | Column | Column Index | Description      |
+|----------|--------|--------------|------------------|
+| SkillDef | Bonus Source | 7      | References SkillDef Node IDs |
+| Stat     | Formula      | 4      | References SkillDef Node IDs |
+
+
+================================================================================
+                         PERKACTION - TargetID by Function
+================================================================================
+
+Layout: PerkAction|PerkID|Function|TargetType|TargetID|Modifier|Extra|Value
+                  Col 1   Col 2    Col 3     Col 4
+
+| Function | Name             | TargetID References |
+|----------|------------------|---------------------|
+| 0        | Allow Skill      | SkillDef            |
+| 1        | Deny Skill       | SkillDef            |
+| 2        | Allow Perk       | PerkDef             |
+| 3        | Deny Perk        | PerkDef             |
+| 4        | Dice Modifier    | SkillDef            |
+| 5        | Give Feat        | (external)          |
+| 6        | Grant Stat       | Stat                |
+| 7        | Stat Modifier    | Stat                |
+| 8        | Grant Ability    | SpellDef            |
+| 9        | Grant Status     | StatusDef           |
+| 10       | Unlock Status    | StatusDef           |
+| 11       | Grant Perk       | PerkDef             |
+| 12       | Grant Sudo Role  | (external)          |
+| 13       | Allow Perk Cat   | (uses Modifier col) |
+| 14       | Deny Perk Cat    | (uses Modifier col) |
+| 15       | Teach Language   | (external)          |
+| 16       | Give CharTag     | (external)          |
+| 17       | Set Float CharVar| (external)          |
+| 18       | Set String CharVar| (external)         |
+
+
+================================================================================
+                         STATUSACTION - TargetID by Function
+================================================================================
+
+*** ACTUAL Layout: StatusAction|StatusID|TargetID|Value|Function ***
+                              Col 1    Col 2   Col 3 Col 4
+
+(Note: A_AllTables.txt incorrectly shows Function in Col 2)
+
+| Function | Name             | TargetID References |
+|----------|------------------|---------------------|
+| 0        | Modify Skill     | SkillDef            |
+| 1        | Modify Stat      | Stat                |
+| 2        | Grant Perk       | PerkDef             |
+| 3        | Grant Ability    | SpellDef            |
+| 4        | Grant Status     | StatusDef           |
+
+
+================================================================================
+                         MUTATORACTION - TargetID by Function
+================================================================================
+
+Layout: MutatorAction|MutatorID|Function|TargetID|Value
+                      Col 1     Col 2    Col 3   Col 4
+
+| Function | Name             | TargetID References |
+|----------|------------------|---------------------|
+| 0        | Modify Skill     | SkillDef            |
+| 1        | Modify Stat      | Stat                |
+| 2        | Grant Perk       | PerkDef             |
+| 3        | Grant Ability    | SpellDef            |
+| 4        | Grant Status     | StatusDef           |
+| 5        | Unlock Status    | StatusDef           |
+
+
+================================================================================
+                         RUNEACTION - TargetID by Effect
+================================================================================
+
+Layout: RuneAction|RuneID|TargetID|Value|Effect|Reserved
+                  Col 1  Col 2    Col 3 Col 4  Col 5
+
+| Effect | Name             | TargetID References |
+|--------|------------------|---------------------|
+| 0      | Dice Modifier    | SkillDef            |
+| 1      | Grant Perk       | PerkDef             |
+| 3      | Stat Modifier    | Stat                |
+| 4      | Grant Ability    | SpellDef            |
+| 5      | Grant Status     | StatusDef           |
+| 6      | Unlock Status    | StatusDef           |
+
+
+================================================================================
+                         SPELLEFFECT - TargetID by Effect
+================================================================================
+
+Layout: SpellEffect|SpellID|Targets|Effect|Formula|TargetID|If|Broadcast|Outcome|...
+                   Col 1   Col 2   Col 3  Col 4  Col 5
+
+| Effect | Name              | TargetID References |
+|--------|-------------------|---------------------|
+| 0      | Print Message     | (none)              |
+| 1      | Modify Stat       | Stat                |
+| 2      | Give Game Item    | (external item ID)  |
+| 3      | Remove Game Item  | (external item ID)  |
+| 4      | Buff Skill        | SkillDef            |
+| 5      | Buff Stat         | Stat                |
+| 6      | Buff Perk         | PerkDef             |
+| 7      | Dispel Buff       | (category)          |
+| 8      | Buff Ability      | SpellDef            |
+| 9      | Auto Use Ability  | SpellDef            |
+| 10     | Set Stat          | Stat                |
+| 11     | Buff Grant Status | StatusDef           |
+| 12     | Buff Unlock Status| StatusDef           |
+
+
+================================================================================
+                         SPELLREQDEF - Param by Function
+================================================================================
+
+Layout: SpellReqDef|SpellID|Function|Operator|Param|ValueMin|ValueMax|Text
+                   Col 1   Col 2    Col 3    Col 4
+
+| Function | Name             | Param References    |
+|----------|------------------|---------------------|
+| 0        | Stat             | Stat                |
+| 1        | Skill            | SkillDef            |
+| 2        | Skill Allocation | SkillDef            |
+| 3        | Perk             | PerkDef             |
+| 4        | Conan Level      | (none)              |
+| 5        | Status Category  | (uses Text col)     |
+| 6        | Conan Item ID    | (external item ID)  |
+
+
+================================================================================
+                         SPELLTARGETCOND - Param by Function (1-indexed)
+================================================================================
+
+Layout: SpellTargetCond|SpellID|Mode|Function|Operator|Param|ValueMin|ValueMax|Text
+                       Col 1   Col 2 Col 3   Col 4    Col 5
+
+| Function | Name               | Param References    |
+|----------|--------------------|---------------------|
+| 1        | Buff Category      | (uses Text col)     |
+| 2        | Skill Allocation   | SkillDef            |
+| 3-19     | (various checks)   | (none/external)     |
+| 20       | Status             | StatusDef           |
+| 21       | Perk Category      | (uses Text col)     |
+
+
+================================================================================
+                         RUNECONDITION - Node Affected by Condition (1-indexed)
+================================================================================
+
+Layout: RuneCondition|RuneID|Inclusion|Condition|Operator|NodeAffected|Value|MaxValue|Category
+                     Col 1  Col 2     Col 3     Col 4    Col 5
+
+| Condition | Name               | NodeAffected References |
+|-----------|--------------------|-------------------------|
+| 2         | Skill Allocation   | SkillDef                |
+| (others)  | (various checks)   | (none/external)         |
+
+
+================================================================================
+                         MUTATORCONDITION - Node Affected by Condition (0-indexed)
+================================================================================
+
+Layout: MutatorCondition|MutatorID|Inclusion|Condition|Operator|NodeAffected|Value|MaxValue|Category
+                        Col 1     Col 2     Col 3     Col 4    Col 5
+
+| Condition | Name               | NodeAffected References |
+|-----------|--------------------|-------------------------|
+| 0         | Perk               | PerkDef                 |
+| 2         | Skill Allocation   | SkillDef                |
+| 20        | Status             | StatusDef               |
+| (others)  | (various checks)   | (none/external)         |
+
+
+================================================================================
+                         SKIP TABLES (Don't sequence)
+================================================================================
+
+These tables should NOT have their IDs changed:
+- DiceConfig
+- DiceRules  
+- Gear
+- LookupClimate
+- LookupShelter
+- LookupTimeOfDay
+- LookupMainHand
+- LookupOffHand
+- LookupArmorClass
+- LookupBool
+- LookupGender
+
+
+================================================================================
+                         EXTERNAL REFERENCES (Don't remap)
+================================================================================
+
+These values reference external game systems, not RPR Node IDs:
+- SpellEffect col 5 when Effect=2 or 3 (Game Item IDs like 15002, 2491200)
+- SpellReqDef col 4 when Function=6 (Conan Item ID)
+- Rune col 2 (Game Item ID)
+- PerkAction col 4 when Function=5,12,15,16,17,18 (external systems)
+
+================================================================================

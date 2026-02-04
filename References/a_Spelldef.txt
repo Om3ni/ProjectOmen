@@ -1,0 +1,133 @@
+New Blank. SpellDef|1|||0.0|0|0.0|0|0||0|0|f|f|f|f|0.0||f|f|0.0||f|f|0||
+Info filled. SpellDef|1|Battle Cry|Shout that buffs nearby allies|10.0|2|3.0|0|120||0|0|f|t|f|t|5.0|ability_battlecry|t|t|255.0|Warcry|f|f|0||
+
+SpellDef|1|Ability 1|Desc|4.5|0|1|2|0|Formula|4|0|f|f|t|t|1233|None|t|f|1.0,1.0,1.0,1.0|Cat|t|t|3|1|Formula
+
+*** All bools are t/f toggles. Leave string_or_empty cells blank when unused.
+
+	0		1	2		3		4		5		6		7		8		9		10		11	12	13	14	15	16	17	18	19	20	21	22	23	24	25	26
+Literal|Ability ID|Ability Name|Description|Range|Target Type|# Targets|Caster Roll Type|Roll Skill/Stat ID|Caster Roll Formula|DC Type|Fixed DC Value|Req Mode|Allow Player Mods|Common Ability|Log Usage|Cooldown (min)|Icon|Allow Player Comment|Critical Rolls|Icon Color RGBA|Category|Include All|Exclude All|Chat Radius|DC Type Formula|Target DC Formula|
+
+	0} Prefix literal (SpellDef)
+	1} Unique ability ID defined in SpellDef
+	2} Display name shown in UI
+	3} Description text, supports rich formatting from the game
+	4} Effective range in world units
+	5} Target type selector (0=Selected, 1=Caster, 2=All, 3=All Others, 4=Selected Others)
+	6} Maximum number of targets affected
+	7} How the caster roll is resolved (0=Roll Skill, 1=Roll Stat, 2=Custom Formula)
+	8} Skill/Stat ID used when CasterRollType is Skill or Stat
+	9} Dice expression when CasterRollType is Custom Formula
+	10} DC calculation mode (0=Target Roll, 1=Target Stat, 2=Fixed, 3=Target Roll Stat, 4=Custom)
+	11} Fixed DC number when DCType=Fixed
+	12} Requirement mode toggle; t enables all SpellReqDef rows
+	13} Allow players to add situational modifiers
+	14} Marks the ability as common/shared
+	15} Log each use to the ability log
+	16} Cooldown in minutes
+	17} Icon asset reference
+	18} Allow players to leave a comment
+	19} Enable critical roll handling
+	20} Icon color stored as comma-separated RGBA floats
+	21} Category label used by in-game UI
+	22} All include target conditions must match when t
+	23} All exclude target conditions must match when t
+	24} Chat broadcast radius (0=Default, 1=Very Close, 2=Close, 3=Far, 4=Very Far)
+	25} Reference name/ID for shared DC formula
+	26} Optional custom formula overriding target DC
+
+
+Spell Requirements
+
+SpellReqDef|1|0|0|0|0.0|0.0|     
+Example filled:	SpellReqDef|1|3|6|0|30|0|
+
+The 0.0 is important and must remain. 
+The 7th Cell is a category cell, when blank it must still be populated as a cell. Do not drop it. 
+
+		0		1		2		3		4		5		6		7
+	Literal|Ability ID|Requirement|Comparator|Node ID|Value|Max|Category
+
+	0} Prefix literal (SpellReqDef)
+	1} Ability ID this requirement belongs to
+	2} Requirement type (0=Stat, 1=Skill, 2=Skill Allocation, 3=Perk, 4=Conan Level, 5=Status Category, 6=Conan Item ID)
+	3} Comparator (0==, 1!=, 2>, 3>=, 4<, 5<=, 6 Between, 7 Outside)
+	4} Referenced node/ID (stat, skill, perk, etc.)
+	5} Required value or range minimum
+	6} Max value for Between/Outside comparisons
+	7} Optional category text (used with Status Category)
+	
+		2) Requirment
+			0= Stat
+			1= Skill
+			2= Skill Allocation
+			3= Perk
+			4= Conan Level
+			5= Status Category
+			6= Conan Item ID
+			
+		3} 	Comparitors
+				Same as Mutators
+				
+		
+
+
+Spell Target Conditions
+
+The 8th Cell is a category cell, when blank it must still be populated as a cell. Do not drop it. 
+
+
+Default:		SpellTargetCond|1|0|0|0|0|0.0|0.0|
+Example filled:	SpellTargetCond|1|0|7|0|13|0.0|0.0|
+
+		0		1		2	3	  4	             5	          6	 7	   8
+	Literal|Ability ID|Mode|If|Operator|Condition Node ID|Value|Max|Category
+
+	0} Prefix literal (SpellTargetCond)
+	1} Ability ID the condition belongs to
+	2} 0=Include, 1=Exclude
+	3} Condition function ID (mirrors Rune/Mutator condition list; see "If" mapping below)
+	4} Operator (0==, 1!=, 2>, 3>=, 4<, 5<=, 6 Between, 7 Outside)
+	5} Node/parameter reference for the condition
+	6} Value or minimum value
+	7} Max value when operator is Between or Outside
+	8} Optional category text
+
+	If mapping and guidance (same as rune/mutator conditions):
+		1 Buff Category | 2 Skill Allocation | 3 Level | 4 Climate | 5 Shelter | 6 Time of Day | 7 Equipped Main Hand | 8 Equipped Off Hand | 9 Armor Class | 10 Character Height | 11 Character Build | 12 Bust Size | 13 Dong Size | 14 Flying | 15 Riding | 16 Swimming | 17 Gender | 18 High Heels | 19 Corruption | 20 Status | 21 Perk Category
+
+	"When" tables populate Value (column 6):
+		Climate: 0.0=Hot, 1.0=Cold
+		Shelter: 0=None, 1=Some, 2=Has Shelter
+		Time of Day: 0=Dawn, 1=Day, 2=Dusk, 3=Night
+		Equipped Main Hand: 0=None, 1=Axe 1H, 2=Axe 2H, 3=Bow, 4=Crossbow, 5=Daggers, 6=Mace 1H, 7=Mace 2H, 8=Spear 1H, 9=Spear 2H, 10=Sword 1H, 11=Sword 2H, 12=Other, 13=Focus 2H
+		Equipped Off Hand: 0=None, 1=Shield, 2=Thrown, 3=Torch, 4=Other
+		Armor Class: 0=None, 1=Light, 2=Medium, 3=Heavy
+
+	"If" UI helper:
+		When selecting functions 14, 15, 16, or 18 the editor displays a constant "True" helper value beside the picker.
+		Function 17 displays "Female" in the helper slot.
+		These helpers do not write into the exported row—column 8 stays blank unless you enter a value manually.
+
+
+Spell Effects
+
+Default:		SpellEffect|1|0|0||0|0|0|0||||0
+Example filled:	SpellEffect|1|0|4|+1|510|0|1|0|1d4|Skill Buff||0
+
+		0		1		2		3		4		     5	      6	  7     	8	     9		10	     11	      12
+	Literal|Ability ID|Targets|Effect|Formula/Text|Target ID|If|Broadcast|Outcome|Duration Formula|Category|Delay Formula|Unused
+
+	0} Prefix literal (SpellEffect)
+	1} Ability ID this effect belongs to
+	2} Who the effect applies to (0=Target, 1=All Targets, 2=Caster)
+	3} Effect function (0=Print Message, 1=Modify Stat, 2=Give Base Game Item, 3=Remove Base Game Item, 4=Buff Skill, 5=Buff Stat, 6=Buff Perk, 7=Dispel Buff, 8=Buff Ability, 9=Auto Use Ability, 10=Set Stat, 11=Buff Grant Status, 12=Buff Unlock Status)
+	4} AdjustFormula text or dice expression consumed by the effect; leave blank when not used but do NOT drop
+	5} TargetID for the effect (stat ID, spell ID, status ID, etc. depending on function)
+	6} If gating: 0=Always, 1=Critical Only, 2=Non-Critical Only
+	7} Broadcast visibility (0=Public, 1=Private, 2=Secret)
+	8} Outcome block (0=General Effect, 1=Success Effect, 2=Failure Effect)
+	9} Duration formula (-1 means instantaneous)
+	10} Category text label if the effect uses one
+	11} Delay formula before resolution
+	12} Reserved flag; keep at 0
