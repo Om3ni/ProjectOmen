@@ -1,9 +1,8 @@
 import type { SchemaData, SchemaStructure, TableSchema } from '@/models/schema';
 
+// Tables we intentionally ignore during import.
+// Note: DiceConfig/DiceRules/Gear are part of the canonical export order and should be imported.
 const DEFAULT_IGNORED = new Set([
-  'DiceConfig',
-  'DiceRules',
-  'Gear',
   'Mechanic',
   'Megascope',
   'MechanicCondition',

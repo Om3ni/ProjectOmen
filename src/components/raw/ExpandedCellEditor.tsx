@@ -11,10 +11,9 @@ export function ExpandedCellEditor({ cell, value, onUpdate, onClose }: Props) {
   if (!cell) return null;
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60" onClick={onClose}>
+    <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60">
       <div
         className="w-full max-w-2xl rounded-lg border border-slate-700 bg-slate-900 p-4"
-        onClick={(e) => e.stopPropagation()}
       >
         <div className="mb-2 text-xs text-slate-400">
           Edit cell [{cell.row}, {cell.col}]:

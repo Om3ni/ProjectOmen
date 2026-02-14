@@ -1,0 +1,759 @@
+# Beatrix's RPR progress — extracted from Discord PDF
+
+> Regenerated from the uploaded PDF. Each section contains the extracted text for that page, followed by the page image and an image description.
+
+---
+
+## Page 01
+
+**Image description:** Discord screenshot: 10/22/25, 4:34 AM Beatrix OP This is like a progress update thread with updates and stuff I learn on the way to making my own rpr system. I'm not sure where to actually begin when creating a new system so I started…
+
+
+![Page 01](beatrix_md_assets/page_01.png)
+
+
+### Extracted text
+
+```text
+10/22/25, 4:34 AM
+Beatrix
+OP
+This is like a progress update thread with updates and stuff I learn on the way to making
+my own rpr system.
+I'm not sure where to actually begin when creating a new system so I started thinking of
+damage.
+The way I started  working on it was that when you equip a item rather than it giving a
+flat damage bonus it increases a secret stat that represents a damage dice.
+I also wanted to do multiple elements. For fire the stats are just called 1d4 Fire, 1d6
+Fire, 1d10 Fire and 1d12 fire. The damage calculation finds how many of the dice you
+your stat keeps track of  then would multiply it by what you rolled. I also wanted people
+to have resistance to damage types so I made a resistance stat that would subtract from
+the damage roll before it modifies the health stat.
+This is the first formula I came up with.
+I was pretty happy with this but then the issue I realized  is that if I roll a 1d4 and get 10
+it would just multiply that by whatever my dice stat was. It also meant that like had 2d4
+with the above formula I could never roll a 5.
+So the way I fixed it was to do {c.1d4 fire}d4 after reading the function information more
+closely..
+f.clamp[(({c.1D4_Fire}*1d4) +
+({c.1D6_Fire}*1d6) + ({c.1D10_Fire}*1d10) +
+({c.1D12_Fire}*1d12) - {t.DR_Fire}), 0, 999]
+10/22/25, 4:36 AM
+Beatrix
+OP
+The next day I wanted to add immunity percentages also for damage. that get
+calculated before resistance.
+So what this forumla does is that it rolls all the damage dice stats then the clamp limits
+the result between 0 and 999. The next step is the immunity. It does 100 minus the
+immunity then divides that result by 100. So for example if you had 120 damage from
+the damage dice and 30 immunity it would do 100 subtract 30 then divide by 100 to get
+f.min[ f.max[ ( (( f.clamp[({c.1D4_Fire}d4 +
+{c.1D6_Fire}d6 + {c.1D10_Fire}d10 +
+{c.1D12_Fire}d12),0,999] * (100 -
+f.clamp[{t.F_Imun},0,100]) ) / 100) -
+{t.DR_Fire} ), 0 ], 999 ]
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+1/15
+```
+
+---
+
+## Page 02
+
+**Image description:** Discord screenshot: 0.7. The damage dice is multiplied against that 0.7 and you get 84. then the damage resist subtracts from the result to give the final damage number. 10/22/25, 4:53 AM Beatrix OP I wanted to make a rune that acts like…
+
+
+![Page 02](beatrix_md_assets/page_02.png)
+
+
+### Extracted text
+
+```text
+0.7. The damage dice is multiplied against that 0.7 and you get 84.
+then the damage resist subtracts from the result to give the final damage number.
+10/22/25, 4:53 AM
+Beatrix
+OP
+I wanted to make a rune that acts like armor that gives a bonus to a Defense/AC stat
+while you also get a multiplier from your dexterity, but also make light, medium and
+heavy armor types that limit your maximum bonus to AC that dex gives.
+I also wanted people to have a base value of 10 for the stat. So I made a stat named
+defense and gave it a multiplier bonus of the dexterity attribute x 0.5. So with 2 dexterity
+that makes the value 11 for example. In order to limit the amount that dexterity woild
+increase the stat I created another secret attribute called 'max dex bonus' and gave it a
++100 natural bonus. I added this new attribute to my defense stat to work exactly the
+same giving a 0.5 multiplier. But I made the stat take the lowest value.
+Next I made five statuses that can be granted while the rune is equipped. It looks odd
+on a rune but it serves the function if limiting the stat bonus to the defense stat.
+10/22/25, 5:21 AM
+Beatrix
+OP
+unknown
+In this thread I was asking for help trying to figure out a way to implement threat range
+with how dice work in dnd3.5.
+The way that works is if a weapon has a threat range of 19-20 then when you roll you
+1d20 without the modifiers and it lands on either 19 or 20 then you are guaranteed to
+land a attack regardless of their defense, but you also roll again normally against their
+defense to see if you get a multiplier also for your damage.
+So Roll, get 19, roll again beat their defense do x2 damage or whatever the multiplier is.
+or Roll, get 19, roll again but fail to beat their defense, just hit for normal damage.
+The best idea I could come up with is to get close to this system was to create a new
+stat just called threat. So now rather than a weapon having a threat range of 19-20 you
+just get a +1 to your attack roll. But I wanted to make a counter for this called threat
+immunity which works exactly how damage immunity does except this is does it in  an
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+2/15
+```
+
+---
+
+## Page 03
+
+**Image description:** Discord screenshot: accuracy roll. So if you wear a rune that gives you immunity or a status that grants you immunity then their threat becomes 0 in the roll. I also wanted to add a option for melee attacks to determine if somebody has…
+
+
+![Page 03](beatrix_md_assets/page_03.png)
+
+
+### Extracted text
+
+```text
+accuracy roll. So if you wear a rune that gives you immunity or a status that grants you
+immunity then their threat becomes 0 in the roll.
+I also wanted to add a option for melee attacks to determine if somebody has finesse
+which lets them use whatever is higher between either their strength or dexterity
+modifiers. So I made it as a stat. If the value is 1 then you have it, 0 you don't.
+
+1d20 + f.max[( {c.Threat} * (100 -
+f.clamp[{t.Threat immunity},0,100]) / 100 ),
+0] + ({c.STR Modifier} +
+f.clamp[{c.Finesse},0,1] * (f.max[{c.STR
+Modifier},{c.DEX Modifier}] - {c.STR
+Modifier})) + {c.Melee Main Hand Accuracy} +
+{c.Accuracy}
+10/22/25, 6:00 AM
+Beatrix
+OP
+The finesse part of the formula
+Look at it as you start with your strength, then upgrade to the better of str/dex if finesse
+is 1.
+{c.STR Modifier} + f.clamp[{c.Finesse},0,1] *
+(f.max[{c.STR Modifier},{c.DEX Modifier}] -
+{c.STR Modifier})
+STR + F * ( max(STR, DEX) - STR )
+10/22/25, 6:17 AM
+Beatrix
+OP
+I wanted to make a second health pool called a ward that gets effected before health
+does but couldn't figure out how to store the damage then apply it to the health pool if
+the ward pool turned negative. And I also wanted to make a universal damage immunity
+and resistance stat. I called the these new stats a ward, tough and extra tough. Tough is
+percentage and extra is flat.
+Process goes like: Damage dice rolled, result is reduced by a flat amount from  ward,
+f.min[ f.max[ ( ( f.max[( f.clamp[({c.1D4
+Fire}d4+{c.1D6 Fire}d6+{c.1D8 Fire}d8+{c.1D10
+Fire}d10+{c.1D12 Fire}d12),0,999]-{t.Fire
+Ward}),0] * (100-f.clamp[{t.Fire
+Immunity},0,100]) / 100 * (100-
+f.clamp[{t.Tough},0,100]) / 100 ) - {t.Extra
+Tough} - {t.Fire Resistance} ), 0 ], 999 ]
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+3/15
+```
+
+---
+
+## Page 04
+
+**Image description:** Discord screenshot: result is then reduced by type immunity percentage, then a universal immunity percentage, then a universal flat reduction, then finally the type resistance. So like you roll for 100 damage, a ward of 20 would reduce…
+
+
+![Page 04](beatrix_md_assets/page_04.png)
+
+
+### Extracted text
+
+```text
+result is then reduced by type immunity percentage, then a universal immunity
+percentage, then a universal flat reduction, then finally the type resistance. So like you
+roll for 100 damage, a ward of 20 would reduce reduced the damage by 20. That 80
+damage could get reduced by 50% to 40 for fire immunity, then 50% again for universal
+immunity to 20 and the universal stat would reduce it by 2 to make 18. Lastly fire
+resistance would take a flat amount out of it like 15 turning it into 3 damage.
+That 3 damage goes straight to health then after that resolves another damage
+calculation is does for the ward. The ward will be rolled for against damage again and
+reduced by whatever amount the roll was. This was the closest thing I could get to a 2nd
+health pool on my own. But I do think the rng of having a flat resist in exchange for
+random chunks of it being removed or getting past it makes it interesting.
+10/22/25, 6:32 AM
+Beatrix
+OP
+For my system I wanted to add dual wielding mechanic with main and off hand modifiers
+for attacks with perks that can be gained over leveling to balance it out. Untrained while
+duel wielding you get a -10 to your off hand and a -6 to your main hand before you other
+modifiers take effect like strength or dex. Getting perks would reduce the negatives to
+-6/-6 then -4/-4 then -2/-2.
+Any weapon that can be used in the main hand will also have a off-hand counterpart. I
+just used a dagger as a sample.
+To make this I had to use mutators to determine if a a status from a rune was active and
+use include/exclude rules. Then I made the perks as placeholders that don't actually do
+anything themselves. But if the mutator sees that you're dual wielding and have the perk
+this it gives you a bonus.
+The idea is that anyone can get an extra attack with their off hand per turn in exchange
+for a negative and having to progress through some levels. But then I also made
+another stat called physical multiplier for a mutator. So when it detects you're just using
+one main hand melee weapon it will double the damage bonus from your strength
+modifier by adding 1 to the stat in a damage formula.
+I also wanted to add flat damage bonuses for a element or damage type to a damage
+roll so I went back and made a new stat for all of them and added them to the formulas.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+4/15
+```
+
+---
+
+## Page 05
+
+**Image description:** Discord screenshot: - f.min[ f.max[ ( ( f.max[( f.clamp[({c.Bonus Fire Damage}+{c.1D4 Fire}d4+{c.1D6 Fire}d6+ {c.1D8 Fire}d8+{c.1D10 Fire}d10+{c.1D12 Fire}d12),0,999]-{t.Fire Ward}),0] * (100- f.clamp[{t.Fire Immunity},0,100]) / 100 *…
+
+
+![Page 05](beatrix_md_assets/page_05.png)
+
+
+### Extracted text
+
+```text
+- f.min[ f.max[ ( ( f.max[( f.clamp[({c.Bonus
+Fire Damage}+{c.1D4 Fire}d4+{c.1D6 Fire}d6+
+{c.1D8 Fire}d8+{c.1D10 Fire}d10+{c.1D12
+Fire}d12),0,999]-{t.Fire Ward}),0] * (100-
+f.clamp[{t.Fire Immunity},0,100]) / 100 *
+(100-f.clamp[{t.Tough},0,100]) / 100 ) -
+{t.Extra Tough} - {t.Fire Resistance} ), 0 ],
+999 ]
+10/22/25, 6:54 AM
+Beatrix
+OP
+When it came to races in what I'm making there are only two options to pick from. Either
+organic or constructs. Constructs wont be effected by things like poison or thunder
+damage so I remade my percentage immunity formula so that if the number is negative
+then it starts to add extra damage to the roll. So in exchange for certain immunities to
+some types they can get hurt from others easier by having a racial modifier that lowers
+the stat.
+The type of damage I came up with was spiritual damage. The specific part of the
+formula is this
+So it stars at 100% damage then subtracts the positive immunity and capping the value
+at 100, the adds the negative immunity so damage can go over 100%
+- f.min[f.max[((f.max[(f.clamp[({c.Bonus
+Spirit Damage}+{c.1D4 Spirit}d4+{c.1D6
+Spirit}d6+{c.1D8 Spirit}d8+{c.1D10
+Spirit}d10+{c.1D12 Spirit}d12),0,999]-
+{t.Spirit Ward}),0]*((100 - f.clamp[{t.Spirit
+Immunity},0,100] + f.max[(0 - {t.Spirit
+Immunity}),0])/100)*((100 -
+f.clamp[{t.Tough},0,100])/100))-{t.Extra
+Tough}-{t.Spirit Resistance}),0],999]
+((100 - f.clamp[{t.Spirit Immunity},0,100] +
+f.max[(0 - {t.Spirit Immunity}),0])/100)
+Yesterday I made a new formula to add before the 1d20 of a roll when attacking another
+player.
+This is used for ranged attacks and has the sum of all of your accuracy bonuses that go
+against a stat called deflection that is going to be used for melee fighters at a higher
+f.min[f.max[f.ceil[(( {c.Accuracy stat 1}+
+{c.Accuracy stat 2}+{c.Accuracy stat 3}) -
+f.max[{t.Deflection},0] )/999],0],1] * 1d20
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+5/15
+```
+
+---
+
+## Page 06
+
+**Image description:** Discord screenshot: levels. Basically if your accuracy is higher than their deflection then it results in a 1, and if it's less than their deflection it results in a 0. So whatever your result is you multiply that 1 or 0 with your ranged…
+
+
+![Page 06](beatrix_md_assets/page_06.png)
+
+
+### Extracted text
+
+```text
+levels. Basically if your accuracy is higher than their deflection then it results in a 1, and
+if it's less than their deflection it results in a 0. So whatever your result is you multiply
+that 1 or 0  with your ranged attack roll with a 1d20 that goes after this with your
+accuracy modifiers again and that is compared against the opponents defense to hit
+them as normal afterwards. Some items and perks will grant people a bonus to
+deflection while some will lower it, and some perks will even give you bonuses to your
+ranged attack rolls to overcome an opponents deflection stat.
+This will only apply when a ranged attack is made against a melee opponent and I'm not
+sure if I should make this exclusive to two-handed weapons or not yet. But its basically
+AC before AC that only applies to ranged attacks.
+10/22/25, 1:50 PM
+Beatrix
+OP
+I mentioned making a stat called physical multiplier. I added it to the above formula I've
+been working on for the different types as:
+So the f.max compares your modifier against zero and takes the higher value then
+multiplies it against the physical multiplier stat. This way you can't deal negative damage
+if you had a debuff. If somebody wanted to use this same formula in their system it
+could work as a like 'rage' from dnd 5e.
+f.min[f.max[((f.max[(f.clamp[({c.MH Bonus
+Physical Damage}+{c.MH 1D4 Physical}d4+{c.MH
+1D6 Physical}d6+{c.MH 1D8 Physical}d8+{c.MH
+1D10 Physical}d10+{c.MH 1D12
+Physical}d12+f.max[{c.STR Modifier},0]*{c.MH
+Physical Multiplier}),0,999]-{t.Physical
+Ward}),0]*((100-
+f.clamp[{t.Toughness},0,100])/100)*((100-
+f.clamp[{t.Physical
+Immunity},0,100]+f.max[(0-{t.Physical
+Immunity}),0])/100))-{t.Extra Toughness}-
+{t.Physical Resistance}),0],999]
+f.max[{c.STR Modifier},0]*{c.MH Physical
+Multiplier}
+10/22/25, 2:00 PM
+Beatrix
+OP
+So on top of making using mutators to determine if you're have something either in your
+main hand or both, I also made one to figure out if you're unarmed that grants a status.
+The different statuses for these weapon states can be used for abilities to figure out if
+allowed to use specific attacks by having them granted from the status. At the moment I
+don't see anything wrong with the excluding..
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+6/15
+```
+
+---
+
+## Page 07
+
+**Image description:** Discord screenshot showing a discussion about consolidating multiple damage/mitigation components into a single stacked formula to avoid many separate health-change outputs. Includes screenshots of an editor panel and a large log/output area repeatedly showing 'unchanged at 0/0', plus follow-up editor/testing screenshots.
+
+
+![Page 07](beatrix_md_assets/page_07.png)
+
+
+### Extracted text
+
+```text
+10/22/25, 3:58 PM
+Beatrix
+OP
+So I think I considered all the variables when it comes to damage and any stats that will
+mitigate it, so my first thought was to put each damage calculation for every type as its
+own effect but then that gives off like eight results for health being changed. So.. I did
+the only thing that makes sense to me literally treat it like lego bricks and just stack them
+together into one formula. And.. I get this.
+10/22/25, 4:53 PM
+Beatrix
+OP
+So seeing all of these as unchanged is a bit unsightly imo, especially if it's unneeded
+information that doesn't actually change. The unfortunate only way to make the wards
+work I can think of is to use an auto ability that's set as secret, and the abilities attack
+roll that uses the targets own ward stat as it's roll vs a dc of 1. So if the target has no
+ward then it doesn't go off, and if it does then it does the damage calculation against it.
+And boom, magic. Only the wards that get reduced and health show up.
+Also, fixed it saying it did it to the fire ward now.
+10/23/25, 7:44 AM
+Beatrix
+OP
+I created three stats called "MH Action", "OH Action" and "Extra Attack" that keep track
+of attack uses per turn, I'm really trying to bring alive the ability to use two different
+weapons at the same time if a player wants to. So at the start of a turn you get one of
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+7/15
+```
+
+---
+
+## Page 08
+
+**Image description:** Discord screenshot: each MH and OH actions, and specific attacks that are used by a MH action give a +1 to the Extra attacks stat that enable other specific attacks. For spells I'm thinking I'll make it so they require a MH action, but…
+
+
+![Page 08](beatrix_md_assets/page_08.png)
+
+
+### Extracted text
+
+```text
+each MH and OH actions, and specific attacks that are used by a MH action give a +1 to
+the Extra attacks stat that enable other specific attacks. For spells I'm thinking I'll make
+it so they require a MH action, but removes 1 point from both MH & OH.
+One limitation is that I want people to use their MH action before their OH one.. Thinking
+the best way to do this is using the mutator statuses I made to detect if your wielding
+two weapons to buff the max value.
+Some attacks are meant to lower your accuracy and/or defense and I'm unsure what
+effect that might have it I make them a modifiable stat.
+In order for me to make this dual wielding system work I have to make a clone of every
+single stat for damage dice, I'm not sure what effect this has overall but my current
+character count is 43k after doing that. When using the ability for the basic attack it
+seems to drop server fps from 30 to 25 and sometimes 21 as the only person on the
+dedicated server while also increasing my  The basic attack ability by itself is 3.5k
+characters.
+10/23/25, 9:27 AM
+Beatrix
+OP
+Does anyone know how you can reference the modified value of a stat, like it's
+maximum rather than its current? Say I have 0/100 Health and I want to use the 100
+part of the stat and not the 0.
+10/23/25, 12:56 PM
+Beatrix
+OP
+When it comes to weapons(runes) I wanted some of them to also have a random
+chance to force a DC when landing a hit by making a stat. So in the first case sample of
+this I want to give my longsword a 25% chance to trigger a DC check against their reflex
+stat. So using the same trick I did with the deflection for the attack roll I made this
+formula.
+so what it does is I roll a 1d100 plus the stun chance, and if the value goes over 100
+then it turns the result into 1 or 0 and that's multiplied against our DC vs opponents save
+roll. Same as before I'll just slap this on some auto use abilities then make the success
+effect give them the status for stunned. Or whatever else other infliction you might want
+to do if you use this too.
+f.min[f.max[f.ceil[((1d100+{c.Chance to
+Stun})-100))/999],0],1] * DC
+10/23/25, 5:21 PM
+Beatrix
+OP
+Bit of an issue I'm coming across if anyone wants to help me figure this out. excluding
+and including conditions doesn't seem to work with runes for some reason that I can see
+with any of the testing I'm doing. For example if I make a stat and tell it to exclude it if
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+8/15
+```
+
+---
+
+## Page 09
+
+**Image description:** Discord screenshot: that stats value is not at least 1 I can still equip it. I'm not really sure what exactly I'm doing wrong here but every single combination of things I'm trying is failing.. 10/23/25, 8:00 PM Mara Are you telling it to…
+
+
+![Page 09](beatrix_md_assets/page_09.png)
+
+
+### Extracted text
+
+```text
+that stats value is not at least 1 I can still equip it. I'm not really sure what exactly I'm
+doing wrong here but every single combination of things I'm trying is failing..
+10/23/25, 8:00 PM
+Mara
+Are you telling it to exclude the stat or the rune?  And are you doing it via a rune?
+10/23/25, 8:47 PM
+Beatrix
+OP
+So the weapon rune gives two attribute a +1.
+1. Main Hand
+2. Melee
+For the other rune I have both of these added as conditions as Include if skill allocation
+attribute is greater than or equal to 1. But If I don't have the weapon rune equipped that
+gives these requirement stats the game still allows me to equip the other rune. I've also
+tried it as exclude if skill allocation attribute is not greater than or equal to 1.
+The only work around I have is to use mutators I think.  Like have a have rune grant a
+status dubbed the weapon upgrades name, use mutator to detect if you have the
+weapon rune equipped that matches the requirements then let the mutator handle the
+bonus modifiers if it detects the weapon.
+10/23/25, 10:42 PM
+Mara
+I had the same issue @Beatrix  My issue may not be yours BUT, for our server some of
+our races start with either a bonus or a negative to certain skills.  Since those are a
+given they are not "allocated"  so it doesn't count them.   I ended up needing to do a
+mutator for 0 and 1
+10/24/25, 3:09 AM
+Eyeless Dice
+You mean the conditions in Runes? Yeah, those don't work. The logic never got hooked
+up. You'll need to do Mutators for it.
+10/24/25, 8:12 AM
+Beatrix
+OP
+Is there a way to exclude a status from appearing over a players head while they have a
+status?
+10/24/25, 11:19 AM
+Invellous
+The only way to do that to my knowledge is for the player to hide on client side in their
+own setting.
+A perk may be a better choice for something you want to be mostly hidden from plain
+view and utilized in other functions.
+10/24/25, 11:20 AM
+Invellous
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+9/15
+```
+
+---
+
+## Page 10
+
+**Image description:** Discord screenshot: Not that I have found, your best bet would be to make a companion stat like Max HP. I have a simple injury doc I pull up that for reference. 10/24/25, 11:20 AM Beatrix OP When I started making this I was going to avoid…
+
+
+![Page 10](beatrix_md_assets/page_10.png)
+
+
+### Extracted text
+
+```text
+Not that I have found, your best bet would be to make a companion stat like Max HP. I
+have a simple injury doc I pull up that for reference.
+10/24/25, 11:20 AM
+Beatrix
+OP
+When I started making this I was going to avoid having nameplates on, but then I
+realized you need them on for the bubble chat. But then every status effect I've been
+using shows up and bloats the screen.
+The band-aid I'm finding right now is that I can use perk categories but it's super tedious
+having to write everything out for the mutators now.
+This almost feeling like a eve learning curve  moment.
+10/24/25, 11:29 AM
+Invellous
+One of the work arounds people use including the server I work for; The Witcher: Trial of
+the Valley, is abbreviated and text icons to help reduce that.
+There was limited desire to remove them entirely but their purpose, in most cases,
+should be to provide information that would readily identifiable at a glance.
+10/24/25, 11:30 AM
+Beatrix
+OP
+Wait are you saying you can use icons for a status effect?
+10/24/25, 11:31 AM
+Invellous
+Injury doc
+https://docs.google.com/document/d/1Kprr56bkJnz0E11H_4ovRW3lr459YJhNyjYDWvQ
+HhB4/edit?usp=drivesdk
+Google Docs
+RPR Simple Injuries
+The simplest way to create an injury system is to first create
+'health checks' which are a set of abilities that you have
+damaging / healing abilities that force the target to auto use.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+10/15
+```
+
+---
+
+## Page 11
+
+**Image description:** Discord screenshot: General rule of thumb, if the abilities modifies a character's health, be it positive or negative, you want th... 10/24/25, 11:31 AM Invellous Yes, simple ones from alt codes 10/24/25, 11:32 AM Beatrix OP I was reading…
+
+
+![Page 11](beatrix_md_assets/page_11.png)
+
+
+### Extracted text
+
+```text
+General rule of thumb, if the abilities modifies a character's
+health, be it positive or negative, you want th...
+10/24/25, 11:31 AM
+Invellous
+Yes, simple ones from alt codes
+10/24/25, 11:32 AM
+Beatrix
+OP
+I was reading another post in the discord that talked about UTF16 characters that cause
+a line to count as double the character limit if just one is used I think, do those have the
+same effect? Or would it matter if it's just one symbol anyways.
+10/24/25, 11:37 AM
+Invellous
+That I have noticed. I have put forth alot of time in streamlining and optimizing our
+systen to avoid plugging it into a server mod. It mostly a decision made to prevent theft
+as we had several attenpts made by manipulative individuals that never got what they
+want. Nowadays, not likely a concern given the power of scripting.
+You might be able to do something with scripting and custom made icons but I am not a
+scripting expert.
+10/24/25, 11:41 AM
+Beatrix
+OP
+As many videos that I doo see about scripting I manage to find here in the discord I cant
+wrap my mind around what I feel like are basic fundamentals. Variables or the node
+inspector, I can not for the life of me process how they relate to or reference anything.
+Like I know it has to be something simple but it's just not clicking for me for whatever
+reason.
+This goes into modding but another hurdle I need figure out is creating a mod and
+publishing it so that I can make my own named runes and icons.
+10/24/25, 12:00 PM
+Beatrix
+OP
+Alright so progress note for anyone reading this in the future if they come across the
+same issue I've had with statuses while trying to use mutators for situational stat
+modifiers.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+11/15
+```
+
+---
+
+## Page 12
+
+**Image description:** Discord screenshot describing a perk/mutator approach to detect what a character is holding (main-hand, off-hand, unarmed, dual wielding, wielding melee, wielding ranged). Includes a large list-style UI mockup of those perk names and several smaller screenshots of perk cards/editor panels.
+
+
+![Page 12](beatrix_md_assets/page_12.png)
+
+
+### Extracted text
+
+```text
+I created some perks and I named them the same category as the perk name, these
+where supposed to represent if a character was holding something and what it is. I
+made the runes depending on the weapons being used grant perks to say 'Hey I got
+something in this hand and it's a melee weapon'. Then made the mutators use perk
+categories to see if it should give that passive buff or anything. For unarmed in particular
+It starts off with the mutator, and also the same for another mutator that grants the dual
+wielding perk.
+I wanted to make dual wielding modifiers for the main and off-hand and give them
+bonuses so I made a perk with the mutator to give the bonuses only when dual wielding.
+Now if I have the perks then I get my bonuses to offset the original mutators negatives.
+Mini-crisis avoided..
+10/24/25, 12:47 PM
+Invellous
+Here is our list as reference. Some have changed so I need to update but it will give you
+an idea of what you can do and use.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+12/15
+```
+
+---
+
+## Page 13
+
+**Image description:** Discord screenshot showing an icon naming/reference legend (Combat buffs/debuffs, Armor & Weapons, General/Misc) followed by a discussion about a Skills 'Bonus' rule where skills depending on an attribute are not displayed under that attribute. Includes screenshots of an Athletics skill bonus configuration and a skills list view.
+
+
+![Page 13](beatrix_md_assets/page_13.png)
+
+
+### Extracted text
+
+```text
+1/5/26, 8:29 AM
+The Void
+Hey @Beatrix, during your journey. Did you stumbled upon the Skills system, and thus,
+the "Bonus" rule ? My skills refuses to collapse un the attributes. Perhaps you met
+something like this ?
+1/5/26, 8:43 AM
+Beatrix
+OP
+Could you give me some more detail?
+1/5/26, 8:44 AM
+The Void
+I have here a skill.
+Which depends on Strength.
+But is not under strength.
+1/5/26, 8:46 AM
+Beatrix
+OP
+When you mix the bonuses from different sources(attribute/stat/skill, etc) it tends to
+break, it's annoying visually and to work around.
+1/5/26, 8:48 AM
+The Void
+Well, that's the catch. I only have one single bonus per skill.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+13/15
+```
+
+---
+
+## Page 14
+
+**Image description:** Discord screenshot: Arcana for example, depends only on Intelligence. 1/5/26, 8:48 AM Beatrix OP I took some time away from this project and should start working on it soon again as well. 1/5/26, 8:48 AM Beatrix OP Is that true for…
+
+
+![Page 14](beatrix_md_assets/page_14.png)
+
+
+### Extracted text
+
+```text
+Arcana for example, depends only on Intelligence.
+1/5/26, 8:48 AM
+Beatrix
+OP
+I took some time away from this project and should start working on it soon again as
+well.
+1/5/26, 8:48 AM
+Beatrix
+OP
+Is that true for everything?
+1/5/26, 8:50 AM
+The Void
+Every. Single. Skill. Depends only on the attribute according.
+Acrobatics, Sleight of Hand and Stealth all depends on Dex, and Dex Only
+And yet they are outside of their attributes.
+1/5/26, 8:53 AM
+Beatrix
+OP
+Hmm, this is a common issue thats be discussed a lot in this forum. Give me a bit and
+I'll come back to you with a better answer
+1/5/26, 8:53 AM
+The Void
+Amazing, thanks.
+1/5/26, 9:36 AM
+Yeeehawww
+It can also do that if one of the attributes isn't tied to any stat iirc.
+1/5/26, 9:59 AM
+The Void
+Tried this one. Nothing changed.
+1/5/26, 10:19 AM
+The Void
+Fixed ! For the record, in case anyone happens to be passing by.
+In your skills, if, like me, you create separators like these: (see screenshot)
+Even if they are invisible to players, they must be correctly configured with the
+appropriate statistics so that everything appear in the drop-down menus.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+14/15
+```
+
+---
+
+## Page 15
+
+**Image description:** Discord screenshot: 1/13/26, 6:06 PM Tss_Zoro Ye good ol' dividers error. Sad you had to deal with it but glad you got it figured out haha! I spent like 2 weeks digging into that after someone added them to our system after we had a few…
+
+
+![Page 15](beatrix_md_assets/page_15.png)
+
+
+### Extracted text
+
+```text
+1/13/26, 6:06 PM
+Tss_Zoro
+Ye good ol' dividers error. Sad you had to deal with it but glad you got it figured out
+haha! I spent like 2 weeks digging into that after someone added them to our system
+after we had a few months into building it and playing with it. Couldn't figure out why so
+much wasn't working all the sudden.
+2/7/26, 7:41 PM
+(851) Discord | "Beatrix's RPR progress" | Tot ! Mods
+https://discord.com/channels/917916583064662076/1430474382773588068
+15/15
+```

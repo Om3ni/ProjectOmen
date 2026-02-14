@@ -2,114 +2,71 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 
 import type { SchemaData } from '@/models/schema';
 import { ChatPanel } from '@/components/chat';
+import { PanelShell } from '@/components/panels';
 import { useChatState } from '@/hooks/useChatState';
+import { usePanelManager } from '@/hooks/usePanelManager';
+import { AbilitiesTab } from '@/components/abilities';
+import { evaluateActiveMutators } from '@/utils/mutatorEvaluator';
+import StatusPanel from '@/components/StatusPanel';
+import { AiCharactersTab } from '@/ollama/components/AiCharactersTab';
+import { num, tf } from '@/utils/rprHelpers';
+import { idOf, computeStatMax, rollDice } from '@/utils/statComputation';
+import { useSchemaArrays } from '@/hooks/useSchemaArrays';
+
+type CharacterSheetTab = 'character' | 'abilities' | 'ai-characters';
 
 type Row = Record<string, unknown>;
 
 type WithAlloc = Row & { Allocation: number };
-type StatWithValue = Row & { __value: number };
+type StatWithValue = Row & { __max: number; __min: number };
 
 type RollModifier = 'none' | 'advantage' | 'disadvantage';
+
+export type PersistedCharacterSheetStateV1 = {
+  version: 1;
+  admin: boolean;
+  characterName: string;
+  activeTab?: CharacterSheetTab;
+  chosen: number[];
+  allocations: Array<[number, number]>;
+  rollInputs: Array<[number, { modifier: number; comment: string; rollMod: RollModifier }]>;
+  zoom?: number;
+};
 
 type Props = {
   data: SchemaData;
   onClose: () => void;
   isChildWindow?: boolean;
+  persistedState?: PersistedCharacterSheetStateV1 | null;
+  onPersistedStateChange?: (next: PersistedCharacterSheetStateV1 | null) => void;
 };
+export default function CharacterSheetModal({
+  data,
+  onClose,
+  isChildWindow = false,
+  persistedState,
+  onPersistedStateChange,
+}: Props) {
+  const [panelState, panelActions] = usePanelManager({ chat: { mode: 'docked' } });
+  const chatPanel = panelState.chat;
+  const [admin, setAdmin] = useState(() => persistedState?.admin ?? false);
+  const [characterName, setCharacterName] = useState(() => persistedState?.characterName ?? 'Player');
+  const [activeTab, setActiveTab] = useState<CharacterSheetTab>(() => persistedState?.activeTab ?? 'character');
 
-function tf(v: unknown): boolean {
-  return String(v).toLowerCase() === 't' || v === true;
-}
-
-function num(v: unknown, d = 0): number {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : d;
-}
-
-function parseAttrList(value: unknown): Array<{ id: number; mult: number }> {
-  const s = String(value ?? '').trim();
-  if (!s) return [];
-  return s
-    .split(/\s*;\s*/)
-    .map((it) => {
-      const [id, mult = '1'] = it.split('*');
-      return { id: Number(id), mult: Number(mult) };
-    })
-    .filter((x) => Number.isFinite(x.id) && Number.isFinite(x.mult));
-}
-
-function computeStatValue(
-  stat: Row,
-  attrMap: Map<number, Row>,
-  perkBonuses: Map<number, number>,
-  statPerkBonuses: Map<number, number>,
-) {
-  const base = num(stat.Base, 0);
-  const bonus = num(stat.Bonus, 0);
-  const scale = num(stat.Scale, 1);
-  const parts = parseAttrList(stat.Formula);
-
-  let contrib = 0;
-  for (const p of parts) {
-    const attr = attrMap.get(p.id);
-    if (!attr) continue;
-    const naturalBonus = num(attr['Natural Bonus'], 0);
-    const allocation = num(attr.Allocation, 0);
-    const perkBonus = perkBonuses.get(p.id) || 0;
-    const val = naturalBonus + allocation + perkBonus;
-    contrib += val * p.mult;
-  }
-
-  const statId = Number(stat.ID ?? stat['Node ID']);
-  const perkStatBonus = Number.isFinite(statId) ? (statPerkBonuses.get(statId) || 0) : 0;
-
-  return (base + bonus + contrib + perkStatBonus) * (scale || 1);
-}
-
-function idOf(row: Row): number {
-  return Number(row['Node ID'] ?? row.ID);
-}
-
-// Dice rolling utility
-function rollDice(numDice: number, sides: number): number[] {
-  const rolls: number[] = [];
-  for (let i = 0; i < numDice; i++) {
-    rolls.push(Math.floor(Math.random() * sides) + 1);
-  }
-  return rolls;
-}
-
-export default function CharacterSheetModal({ data, onClose, isChildWindow = false }: Props) {
-  const [admin, setAdmin] = useState(false);
-  const [characterName, setCharacterName] = useState('Player');
+  const [sheetZoom, setSheetZoom] = useState(() => {
+    const z = persistedState?.zoom;
+    return typeof z === 'number' && Number.isFinite(z) ? z : 1;
+  });
 
   // Track allocations by SkillDef (attributes + skills)
-  const [allocations, setAllocations] = useState<Map<number, number>>(() => new Map());
+  const [allocations, setAllocations] = useState<Map<number, number>>(() => new Map(persistedState?.allocations ?? []));
 
-  // Read dice configuration from data (MUST be defined before using)
-  const diceConfig = useMemo(() => {
-    const rows = Array.isArray(data.DiceConfig) ? (data.DiceConfig as Row[]) : [];
-    return rows[0] ?? {};
-  }, [data]);
-
-  const diceRules = useMemo(() => {
-    const rows = Array.isArray(data.DiceRules) ? (data.DiceRules as Row[]) : [];
-    return rows[0] ?? {};
-  }, [data]);
-
-  const skillRows = useMemo(() => (Array.isArray(data.SkillDef) ? (data.SkillDef as Row[]) : []), [data]);
-  const statRows = useMemo(() => (Array.isArray(data.Stat) ? (data.Stat as Row[]) : []), [data]);
-  const perkRows = useMemo(() => (Array.isArray(data.PerkDef) ? (data.PerkDef as Row[]) : []), [data]);
-  const perkActs = useMemo(() => (Array.isArray(data.PerkAction) ? (data.PerkAction as Row[]) : []), [data]);
-
-  const attributes = useMemo(
-    () => skillRows.filter((r) => String(r.TypeFlag ?? 'f').toLowerCase() === 't'),
-    [skillRows],
-  );
-  const skills = useMemo(
-    () => skillRows.filter((r) => String(r.TypeFlag ?? 'f').toLowerCase() === 'f'),
-    [skillRows],
-  );
+  // Extract schema arrays from data
+  const {
+    diceConfig, diceRules, skillRows, statRows, perkRows, perkActs,
+    spellRows, spellReqRows, statusRows, mutatorActionRows, statusActionRows,
+    mutatorDefRows, mutatorCondRows, attributes, skills,
+  } = useSchemaArrays(data);
 
   // Point buy cost calculation
   const calculatePointBuyCost = useCallback((fromValue: number, toValue: number): number => {
@@ -122,6 +79,7 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
   }, []);
 
   // Allocation limits from DiceConfig
+  // Note: if maxAlloc is 0 or missing, treat as unlimited (99) since 0 makes no sense
   const attributePointsAvailable = useMemo(() => num(diceConfig.AttributePoints, 0), [diceConfig]);
   const skillPointsAvailable = useMemo(() => num(diceConfig.SkillPoints, 0), [diceConfig]);
   const minAttrAlloc = useMemo(() => num(diceConfig.MinAttributeAllocation, 0), [diceConfig]);
@@ -131,6 +89,34 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
   const attrPointBuy = useMemo(() => tf(diceConfig.AttributePointBuy), [diceConfig]);
   const skillPointBuy = useMemo(() => tf(diceConfig.SkillPointBuy), [diceConfig]);
   const perkPointsAvailable = useMemo(() => num(diceConfig.PerkPoints, 0), [diceConfig]);
+
+  // Initialize allocations to minimum values for any skill/attr not yet in the map
+  useEffect(() => {
+    setAllocations((prev) => {
+      const next = new Map(prev);
+      let changed = false;
+
+      // Set attributes to min
+      for (const attr of attributes) {
+        const id = idOf(attr);
+        if (!next.has(id)) {
+          next.set(id, minAttrAlloc);
+          changed = true;
+        }
+      }
+
+      // Set skills to min
+      for (const skill of skills) {
+        const id = idOf(skill);
+        if (!next.has(id)) {
+          next.set(id, minSkillAlloc);
+          changed = true;
+        }
+      }
+
+      return changed ? next : prev;
+    });
+  }, [attributes, skills, minAttrAlloc, minSkillAlloc]);
 
   // Calculate spent points
   const { attrPointsSpent, skillPointsSpent } = useMemo(() => {
@@ -163,7 +149,9 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
   // Dice rolling state - use chat for displaying results
   const { addMessage } = useChatState();
   const [expandedRollId, setExpandedRollId] = useState<number | null>(null);
-  const [rollInputs, setRollInputs] = useState<Map<number, { modifier: number; comment: string; rollMod: RollModifier }>>(() => new Map());
+  const [rollInputs, setRollInputs] = useState<Map<number, { modifier: number; comment: string; rollMod: RollModifier }>>(
+    () => new Map(persistedState?.rollInputs ?? []),
+  );
 
   // Derived dice settings
   const diceEnabled = useMemo(() => {
@@ -173,6 +161,7 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
 
   const numDice = useMemo(() => num(diceRules['Number of Dice'], 1), [diceRules]);
   const diceSides = useMemo(() => num(diceRules['Sides of Dice'], 20), [diceRules]);
+  const diceSystem = useMemo(() => num(diceRules['Dice System'], 0), [diceRules]);
   const critSuccessThreshold = useMemo(() => num(diceRules['Critical Success Threshold'], 20), [diceRules]);
   const critFailThreshold = useMemo(() => num(diceRules['Critical Failure Threshold'], 1), [diceRules]);
   const enable5eAdvantage = useMemo(() => {
@@ -192,13 +181,50 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
     return map;
   }, [perkActs]);
 
-  const [chosen, setChosen] = useState<number[]>([]);
+  const [chosen, setChosen] = useState<number[]>(() => persistedState?.chosen ?? []);
   const chosenSet = useMemo(() => new Set(chosen), [chosen]);
 
-  // Calculate perk points spent
+  // Track manually toggled statuses (e.g. "In Combat")
+  const [activeStatusIds, setActiveStatusIds] = useState<Set<number>>(new Set());
+
+  // Track current stat values (separate from max). Key = stat ID, value = current value.
+  // Undefined means "at max". Managed by combat effects and manual adjustment.
+  const [statCurrentValues, setStatCurrentValues] = useState<Map<number, number>>(() => new Map());
+
+  // Track which category each status was granted under (for Dispel Buff matching)
+  const [statusCategoryMap, setStatusCategoryMap] = useState<Map<number, string>>(() => new Map());
+
+  // Build set of active status categories from toggled statuses
+  const activeStatusCategories = useMemo(() => {
+    const cats = new Set<string>();
+    for (const sid of activeStatusIds) {
+      // Use the category the status was granted under (from SpellEffect)
+      const grantCat = statusCategoryMap.get(sid);
+      if (grantCat) cats.add(grantCat);
+      // Also use the status Name as a fallback category — RPR uses Name-based matching
+      const status = statusRows.find((s) => idOf(s) === sid);
+      if (status) {
+        const name = String(status.Name ?? '').trim();
+        if (name) cats.add(name);
+      }
+    }
+    return cats;
+  }, [activeStatusIds, statusRows, statusCategoryMap]);
+
+  // Evaluate which mutators are active based on perks + statuses
+  const activeMutatorIds = useMemo(() => {
+    return evaluateActiveMutators(mutatorDefRows, mutatorCondRows, {
+      chosenPerkIds: chosenSet,
+      activeStatusIds,
+      activeStatusCategories,
+      skillAllocations: allocations,
+      chosenPerks: perkRows.filter((p) => chosenSet.has(idOf(p))),
+    });
+  }, [mutatorDefRows, mutatorCondRows, chosenSet, activeStatusIds, activeStatusCategories, allocations, perkRows]);
+
   const perkPointsSpent = useMemo(() => {
     return chosen.reduce((sum, pid) => {
-      const perk = perkRows.find(p => Number(p.ID) === pid);
+      const perk = perkRows.find((p) => idOf(p) === pid);
       return sum + num(perk?.Cost, 0);
     }, 0);
   }, [chosen, perkRows]);
@@ -231,9 +257,63 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
     });
   }, [attributes, skills, minAttrAlloc, minSkillAlloc]);
 
+  // Prune persisted state when underlying data changes (e.g. load a different file).
+  useEffect(() => {
+    const validSkillIds = new Set<number>();
+    for (const r of skillRows) {
+      const id = idOf(r);
+      if (Number.isFinite(id)) validSkillIds.add(id);
+    }
+
+    setAllocations((prev) => {
+      let changed = false;
+      const next = new Map(prev);
+      for (const k of next.keys()) {
+        if (!validSkillIds.has(k)) {
+          next.delete(k);
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+
+    const validPerkIds = new Set<number>(perkRows.map((p) => idOf(p)).filter((x) => Number.isFinite(x)));
+    setChosen((prev) => {
+      const filtered = prev.filter((id) => validPerkIds.has(id));
+      return filtered.length === prev.length ? prev : filtered;
+    });
+
+    setRollInputs((prev) => {
+      let changed = false;
+      const next = new Map(prev);
+      for (const k of next.keys()) {
+        if (!validSkillIds.has(k)) {
+          next.delete(k);
+          changed = true;
+        }
+      }
+      return changed ? next : prev;
+    });
+  }, [skillRows, perkRows]);
+
+  // Persist sheet state upward so closing/reopening keeps the same state.
+  useEffect(() => {
+    if (!onPersistedStateChange) return;
+    onPersistedStateChange({
+      version: 1,
+      admin,
+      characterName,
+      activeTab,
+      chosen,
+      allocations: Array.from(allocations.entries()),
+      rollInputs: Array.from(rollInputs.entries()),
+      zoom: sheetZoom,
+    });
+  }, [admin, characterName, activeTab, chosen, allocations, rollInputs, sheetZoom, onPersistedStateChange]);
+
   const derivedPerkLists = useMemo(() => {
     const baseAvail = perkRows.filter((p) => tf(p.Public));
-    const byId = new Map<number, Row>(perkRows.map((p) => [Number(p.ID), p]));
+    const byId = new Map<number, Row>(perkRows.map((p) => [idOf(p), p]));
 
     const allowIDs = new Set<number>();
     const denyIDs = new Set<number>();
@@ -268,13 +348,13 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       }
     }
 
-    const availSet = new Set<number>(baseAvail.map((p) => Number(p.ID)));
+    const availSet = new Set<number>(baseAvail.map((p) => idOf(p)));
     for (const id of allowIDs) {
       if (byId.has(id)) availSet.add(id);
     }
     if (allowCats.size) {
       for (const p of perkRows) {
-        if (allowCats.has(String(p.Category ?? ''))) availSet.add(Number(p.ID));
+        if (allowCats.has(String(p.Category ?? ''))) availSet.add(idOf(p));
       }
     }
 
@@ -409,9 +489,25 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       const oldValue = prev.get(skillId) || effectiveMin;
       if (oldValue === clamped) return prev;
 
+      const computeSpent = (allocMap: Map<number, number>, rows: Row[], pointBuyEnabled: boolean, minAlloc: number) => {
+        let spent = 0;
+        for (const r of rows) {
+          const id = idOf(r);
+          const alloc = allocMap.get(id) ?? minAlloc;
+          if (pointBuyEnabled) {
+            spent += calculatePointBuyCost(minAlloc, alloc);
+          } else {
+            spent += alloc - minAlloc;
+          }
+        }
+        return spent;
+      };
+
       // Calculate point cost difference
       const pointBuyEnabled = isAttribute ? attrPointBuy : skillPointBuy;
-      const currentPoints = isAttribute ? attrPointsSpent : skillPointsSpent;
+      const currentPoints = isAttribute
+        ? computeSpent(prev, attributes, attrPointBuy, minAttrAlloc)
+        : computeSpent(prev, skills, skillPointBuy, minSkillAlloc);
       const availablePoints = isAttribute ? attributePointsAvailable : skillPointsAvailable;
 
       let costChange: number;
@@ -434,6 +530,21 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
     });
   };
 
+  // Separate allocation handler for Stat modifications (no point budget, uses stat buff/debuff limits)
+  const maxStatBuff = useMemo(() => num(diceConfig.MaxStatBuff, 99), [diceConfig]);
+  const maxStatDebuff = useMemo(() => num(diceConfig.MaxStatDebuff, -99), [diceConfig]);
+  void maxStatBuff; void maxStatDebuff;
+
+  // Set the current value of a stat (clamped between its min and max)
+  const setStatCurrentValue = (statId: number, value: number, statMax: number, statMin: number) => {
+    const clamped = Math.max(statMin, Math.min(statMax, Math.round(value * 100) / 100));
+    setStatCurrentValues((prev) => {
+      const next = new Map(prev);
+      next.set(statId, clamped);
+      return next;
+    });
+  };
+
   // Get or initialize roll input for a skill/attribute
   const getRollInput = useCallback((id: number) => {
     return rollInputs.get(id) ?? { modifier: 0, comment: '', rollMod: 'none' as RollModifier };
@@ -451,18 +562,62 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
   // Execute a dice roll
   const executeRoll = useCallback((skillName: string, skillId: number, baseModifier: number) => {
     const input = rollInputs.get(skillId) ?? { modifier: 0, comment: '', rollMod: 'none' as RollModifier };
+    // Dice System 0 = Roll, 1 = Dice Pool
+    if (diceSystem === 1) {
+      // Dice Pool: number of dice is derived from the bonus (plus optional modifier input).
+      // Uses existing schema fields:
+      // - Critical Success Threshold => "+hit" threshold (>=)
+      // - Critical Failure Threshold => "-hit" threshold (<=)
+      const baseDiceCount = Math.max(0, Math.floor(baseModifier));
+      const adjustedDiceCount = Math.max(0, baseDiceCount + Math.trunc(input.modifier));
+      const rolls = rollDice(adjustedDiceCount, diceSides);
+
+      let successes = 0;
+      let failures = 0;
+      for (const r of rolls) {
+        if (r >= critSuccessThreshold) successes += 1;
+        if (r <= critFailThreshold) failures += 1;
+      }
+
+      const hits = successes - failures;
+
+      const formula = `${adjustedDiceCount}d${diceSides}`;
+      let rollText = `${characterName} has rolled ${skillName}`;
+      rollText += `\nResult: ${hits}=${successes}+(-${failures}) [Dice Pool ${formula}, >=${critSuccessThreshold}:+1, <=${critFailThreshold}:-1]`;
+      if (input.comment) rollText += ` (${input.comment})`;
+
+      addMessage({
+        tab: 'local',
+        sender: 'user',
+        content: rollText,
+        type: 'roll',
+        metadata: {
+          formula,
+          rollResult: {
+            formula,
+            rolls,
+            modifier: input.modifier,
+            total: hits,
+          },
+        },
+      });
+      setExpandedRollId(null);
+      return;
+    }
+
+    // Roll system
     const totalModifier = baseModifier + input.modifier;
-    
+
     let rolls: number[];
     let effectiveRoll: number;
-    
+
     if (enable5eAdvantage && input.rollMod !== 'none') {
       // Roll twice for advantage/disadvantage
       const roll1 = rollDice(numDice, diceSides);
       const roll2 = rollDice(numDice, diceSides);
       const sum1 = roll1.reduce((a, b) => a + b, 0);
       const sum2 = roll2.reduce((a, b) => a + b, 0);
-      
+
       if (input.rollMod === 'advantage') {
         effectiveRoll = Math.max(sum1, sum2);
         rolls = sum1 >= sum2 ? roll1 : roll2;
@@ -474,21 +629,21 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       rolls = rollDice(numDice, diceSides);
       effectiveRoll = rolls.reduce((a, b) => a + b, 0);
     }
-    
+
     const total = effectiveRoll + totalModifier;
     const isCritSuccess = effectiveRoll >= critSuccessThreshold;
     const isCritFail = effectiveRoll <= critFailThreshold;
-    
+
     // Format roll result for chat
-    const formula = `${numDice}d${diceSides}${totalModifier >= 0 ? '+' : ''}${totalModifier}`;
-    let rollText = `${characterName} has rolled ${skillName} (${formula}) for a total of ${total}`;
+    let rollText = `${characterName} has rolled ${skillName}`;
     if (input.rollMod !== 'none') {
       rollText += ` [${input.rollMod === 'advantage' ? 'ADV' : 'DIS'}]`;
     }
-    if (isCritSuccess) rollText += ' 🎯 CRIT!';
-    if (isCritFail) rollText += ' 💀 FUMBLE!';
-    if (input.comment) rollText += `\n"${input.comment}"`;
-    
+    rollText += `\nResult: ${total}=${effectiveRoll}${totalModifier >= 0 ? '+' : ''}${totalModifier}`;
+    if (input.comment) rollText += ` (${input.comment})`;
+    if (isCritSuccess) rollText += ' [CRIT]';
+    if (isCritFail) rollText += ' [FUMBLE]';
+
     addMessage({
       tab: 'local',
       sender: 'user',
@@ -496,19 +651,19 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       type: 'roll',
       metadata: {
         formula: `${numDice}d${diceSides}${totalModifier >= 0 ? '+' : ''}${totalModifier}`,
-        rollResult: { 
+        rollResult: {
           formula: `${numDice}d${diceSides}`,
-          rolls, 
+          rolls,
           modifier: totalModifier,
-          total, 
-          criticalHit: isCritSuccess, 
-          criticalFail: isCritFail 
+          total,
+          criticalHit: isCritSuccess,
+          criticalFail: isCritFail,
         },
       },
     });
     
     setExpandedRollId(null); // Close the roll input panel
-  }, [rollInputs, enable5eAdvantage, numDice, diceSides, critSuccessThreshold, critFailThreshold, addMessage, characterName]);
+  }, [rollInputs, diceSystem, enable5eAdvantage, numDice, diceSides, critSuccessThreshold, critFailThreshold, addMessage, characterName]);
 
   const attributesWithAlloc = useMemo<WithAlloc[]>(() => {
     return attributes.map((a) => {
@@ -535,7 +690,7 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       const isSecret = tf(s.Display); // "Secret" field - internal stat, never shown
       if (isSecret) return false;
       
-      const statId = Number(s.ID ?? s['Node ID']);
+      const statId = idOf(s);
       const isPublic = tf(s.Public);
       const isGranted = grantedStatIDs.has(statId);
       
@@ -546,10 +701,28 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       (s) =>
         ({
           ...s,
-          __value: computeStatValue(s, attrMapWithAlloc, perkBonuses, statPerkBonuses),
+          __max: computeStatMax(s, attrMapWithAlloc, perkBonuses, statPerkBonuses),
+          // No explicit per-stat minimum exists in the Stat schema.
+          // Keep UI clamping conservative at 0 for editable stats.
+          __min: 0,
         }) as StatWithValue,
     );
   }, [statRows, admin, attrMapWithAlloc, perkBonuses, statPerkBonuses, grantedStatIDs]);
+
+  // Map of all stat MAX values for ability requirement checking (includes non-visible stats)
+  const allStatValues = useMemo(() => {
+    const map = new Map<number, number>();
+    for (const s of statRows) {
+      const statId = idOf(s);
+      if (Number.isFinite(statId) && statId > 0) {
+        // Use current value if tracked, otherwise max
+        const max = computeStatMax(s, attrMapWithAlloc, perkBonuses, statPerkBonuses);
+        const current = statCurrentValues.get(statId);
+        map.set(statId, current !== undefined ? current : max);
+      }
+    }
+    return map;
+  }, [statRows, attrMapWithAlloc, perkBonuses, statPerkBonuses, statCurrentValues]);
 
   function skillRefsAttr(skill: Row, attrId: number): boolean {
     const src = String(skill['Bonus Source'] ?? '');
@@ -588,7 +761,160 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
   };
   const removePerk = (id: number) => setChosen((prev) => prev.filter((x) => x !== id));
 
+  const formatSigned = useCallback((n: number) => (n >= 0 ? `+${n}` : String(n)), []);
+
+  const skillById = useMemo(() => {
+    const m = new Map<number, Row>();
+    for (const r of skillRows) {
+      const id = idOf(r);
+      if (Number.isFinite(id)) m.set(id, r);
+    }
+    return m;
+  }, [skillRows]);
+
+  const statById = useMemo(() => {
+    const m = new Map<number, Row>();
+    for (const r of statRows) {
+      const id = idOf(r);
+      if (Number.isFinite(id)) m.set(id, r);
+    }
+    return m;
+  }, [statRows]);
+
+  const perkById = useMemo(() => new Map<number, Row>(perkRows.map((p) => [idOf(p), p])), [perkRows]);
+  const spellById = useMemo(() => new Map<number, Row>(spellRows.map((s) => [idOf(s), s])), [spellRows]);
+  const statusById = useMemo(() => new Map<number, Row>(statusRows.map((s) => [idOf(s), s])), [statusRows]);
+
+  const describePerk = useCallback((pid: number): { about: string; effects: string[] } => {
+    const perk = perkById.get(pid);
+    const about = String(perk?.Description ?? '').trim();
+    const effects: string[] = [];
+
+    const actions = actsByPerk.get(pid) ?? [];
+    for (const act of actions) {
+      const fn = Number(act.Function);
+
+      // PerkAction|PerkID|Function|Value|TargetID|...
+      // In our import/export mapping, TargetType column often holds the "Value".
+      if (fn === 4) {
+        const amount = Number(act.TargetType);
+        const targetId = Number(act.TargetID);
+        if (!Number.isFinite(amount) || !Number.isFinite(targetId)) continue;
+        const target = skillById.get(targetId);
+        const targetName = String(target?.Name ?? `SkillDef ${targetId}`);
+        effects.push(`${targetName} ${formatSigned(amount)}`);
+      } else if (fn === 7) {
+        const amount = Number(act.TargetType);
+        const statId = Number(act.TargetID);
+        if (!Number.isFinite(amount) || !Number.isFinite(statId)) continue;
+        const stat = statById.get(statId);
+        const statName = String(stat?.Name ?? `Stat ${statId}`);
+        effects.push(`${statName} ${formatSigned(amount)}`);
+      } else if (fn === 6) {
+        const statId = Number(act.TargetID);
+        if (!Number.isFinite(statId)) continue;
+        const stat = statById.get(statId);
+        const statName = String(stat?.Name ?? `Stat ${statId}`);
+        effects.push(`Grants ${statName}`);
+      // fn 0/1 (Allow/Deny Skill), 2/3 (Allow/Deny Perk) — backend gating, skip
+      } else if (fn === 8) {
+        const id = Number(act.TargetID);
+        if (!Number.isFinite(id)) continue;
+        effects.push(`Grants ability ${String(spellById.get(id)?.Name ?? `Ability ${id}`)}`);
+      } else if (fn === 9) {
+        const id = Number(act.TargetID);
+        if (!Number.isFinite(id)) continue;
+        effects.push(`Grants status ${String(statusById.get(id)?.Name ?? `Status ${id}`)}`);
+      } else if (fn === 10) {
+        const id = Number(act.TargetID);
+        if (!Number.isFinite(id)) continue;
+        effects.push(`Unlocks status ${String(statusById.get(id)?.Name ?? `Status ${id}`)}`);
+      }
+      // fn 13/14 (Allow/Deny Category) — backend gating, skip
+    }
+
+    // Also parse legacy descriptions for bullet-style bonuses.
+    if (about) {
+      const attrMatches = about.matchAll(/• \+([0-9]+) ([A-Za-z ]+)/g);
+      for (const m of attrMatches) {
+        const bonus = Number(m[1]);
+        const name = String(m[2] ?? '').trim();
+        if (Number.isFinite(bonus) && name) effects.push(`${name} ${formatSigned(bonus)}`);
+      }
+
+      const skillMatches = about.matchAll(/• ([A-Za-z ]+): ([0-9]+)/g);
+      for (const m of skillMatches) {
+        const name = String(m[1] ?? '').trim();
+        const bonus = Number(m[2]);
+        if (Number.isFinite(bonus) && name) effects.push(`${name} ${formatSigned(bonus)}`);
+      }
+    }
+
+    // Deduplicate while preserving order
+    const seen = new Set<string>();
+    const uniq = effects.filter((e) => {
+      const k = e.trim();
+      if (!k) return false;
+      if (seen.has(k)) return false;
+      seen.add(k);
+      return true;
+    });
+
+    return { about, effects: uniq };
+  }, [actsByPerk, formatSigned, perkById, skillById, statById, spellById, statusById]);
+
+  const resetCharacterSheet = useCallback(() => {
+    setAdmin(false);
+    setCharacterName('Player');
+    setActiveTab('character');
+    setChosen([]);
+    setSheetZoom(1);
+    // Reset allocations to minimum values
+    const initial = new Map<number, number>();
+    for (const attr of attributes) {
+      initial.set(idOf(attr), minAttrAlloc);
+    }
+    for (const skill of skills) {
+      initial.set(idOf(skill), minSkillAlloc);
+    }
+    setAllocations(initial);
+    setExpandedRollId(null);
+    setRollInputs(new Map());
+    setActiveStatusIds(new Set());
+    setStatCurrentValues(new Map());
+    setStatusCategoryMap(new Map());
+    onPersistedStateChange?.(null);
+  }, [attributes, skills, minAttrAlloc, minSkillAlloc]);
+
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const sheetViewportRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = sheetViewportRef.current;
+    if (!el) return;
+
+    const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
+    const round1 = (v: number) => Math.round(v * 10) / 10;
+
+    const onWheel = (e: WheelEvent) => {
+      // Use Ctrl+wheel (or Meta+wheel) to avoid breaking normal scrolling.
+      if (!e.ctrlKey && !e.metaKey) return;
+
+      e.preventDefault();
+
+      const step = 0.1;
+      const dir = e.deltaY < 0 ? 1 : -1;
+      setSheetZoom((prev) => {
+        const next = round1(prev + dir * step);
+        return clamp(next, 0.5, 2.5);
+      });
+    };
+
+    el.addEventListener('wheel', onWheel, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', onWheel as EventListener);
+    };
+  }, []);
 
   const perksListClass = isChildWindow
     ? 'space-y-2 pr-1'
@@ -600,19 +926,30 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
 
   const inner = (
     <div
+      ref={sheetViewportRef}
       className={
         isChildWindow
-          ? 'w-full rounded-lg border theme-border theme-bg-base p-4'
-          : 'w-full max-w-7xl max-h-[90vh] overflow-y-auto rounded-lg border theme-border theme-bg-base p-4'
+          ? 'relative w-full'
+          : 'relative w-full max-w-7xl max-h-[90vh] overflow-y-auto'
       }
       onClick={(e) => {
         if (!isChildWindow) e.stopPropagation();
       }}
     >
+      <div
+        className={
+          isChildWindow
+            ? 'relative w-full rounded-lg border theme-border theme-bg-base p-4'
+            : 'relative w-full rounded-lg border theme-border theme-bg-base p-4'
+        }
+        // `zoom` is non-standard but works well in Chromium/Electron and preserves scroll sizing.
+        style={{ zoom: sheetZoom } as React.CSSProperties}
+      >
+        {/* Header */}
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <div className="text-sm font-semibold theme-text">Character Sheet</div>
-            <div className="text-xs theme-text-muted">Perks · Stats · Attributes/Skills · Allocations</div>
+            <div className="text-xs theme-text-muted">Perks · Stats · Attributes/Skills · Abilities</div>
           </div>
           <div className="flex items-center gap-3">
             <input
@@ -633,6 +970,18 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
             </label>
             <button
               type="button"
+              className={`rounded-md border theme-border px-3 py-2 text-sm ${
+                chatPanel.mode !== 'hidden'
+                  ? 'theme-bg-accent theme-text-accent-on hover:theme-bg-accent-hover'
+                  : 'theme-bg-input theme-text-secondary hover:theme-bg-elevated'
+              }`}
+              onClick={() => panelActions.toggle('chat')}
+              title={chatPanel.mode !== 'hidden' ? 'Hide chat' : 'Show chat'}
+            >
+              {chatPanel.mode !== 'hidden' ? 'Chat \u2715' : 'Chat'}
+            </button>
+            <button
+              type="button"
               className="rounded-md border theme-border theme-bg-input px-3 py-2 text-sm theme-text-secondary hover:theme-bg-elevated"
               onClick={onClose}
             >
@@ -641,57 +990,197 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
           </div>
         </div>
 
+        {/* Tab Bar */}
+        <div className="mt-3 flex gap-1 border-b theme-border">
+          <button
+            type="button"
+            className={`px-4 py-2 text-sm font-medium transition-colors ${
+              activeTab === 'character'
+                ? 'theme-text border-b-2 border-[var(--accent-primary)]'
+                : 'theme-text-muted hover:theme-text'
+            }`}
+            onClick={() => setActiveTab('character')}
+          >
+            Character
+          </button>
+          <button
+            type="button"
+            className={`px-4 py-2 text-sm font-medium transition-colors ${
+              activeTab === 'abilities'
+                ? 'theme-text border-b-2 border-[var(--accent-primary)]'
+                : 'theme-text-muted hover:theme-text'
+            }`}
+            onClick={() => setActiveTab('abilities')}
+          >
+            Abilities
+          </button>
+          <button
+            type="button"
+            className={`px-4 py-2 text-sm font-medium transition-colors ${
+              activeTab === 'ai-characters'
+                ? 'theme-text border-b-2 border-[var(--accent-primary)]'
+                : 'theme-text-muted hover:theme-text'
+            }`}
+            onClick={() => setActiveTab('ai-characters')}
+          >
+            AI Characters
+          </button>
+        </div>
+
         <div className="mt-4 grid grid-cols-1 gap-4 lg:grid-cols-8">
-          {/* Perks Sidebar */}
+          {/* Left Sidebar — Perks (character tab) or Active Statuses (abilities tab) */}
           <div className="rounded-lg border theme-border theme-bg-muted p-3 lg:col-span-2">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="font-semibold theme-text">Perks</h2>
-              <span className="text-xs theme-text-muted">{chosen.length} chosen</span>
-            </div>
 
-            <div className={perksListClass}>
-              {/* Available Points */}
-              <div className="mb-3 p-2 rounded theme-bg-surface border theme-border">
-                <div className="text-xs font-semibold theme-text mb-1">Available Points</div>
-                <div className="space-y-0.5 text-xs">
-                  <div className="flex justify-between theme-text-secondary">
-                    <span>Attributes:</span>
-                    <span className="font-mono">{attributePointsAvailable - attrPointsSpent} / {attributePointsAvailable}</span>
-                  </div>
-                  <div className="flex justify-between theme-text-secondary">
-                    <span>Skills:</span>
-                    <span className="font-mono">{skillPointsAvailable - skillPointsSpent} / {skillPointsAvailable}</span>
-                  </div>
-                  <div className="flex justify-between theme-text-secondary">
-                    <span>Perks:</span>
-                    <span className="font-mono">{perkPointsAvailable - perkPointsSpent} / {perkPointsAvailable}</span>
-                  </div>
+            {activeTab === 'abilities' ? (
+              /* Active Statuses sidebar for Abilities tab */
+              <>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="font-semibold theme-text">Active Statuses</h2>
+                  <span className="text-xs theme-text-muted">{activeStatusIds.size} active</span>
                 </div>
-              </div>
+                <div className={perksListClass}>
+                  {activeStatusIds.size === 0 ? (
+                    <div className="text-xs theme-text-muted text-center py-4">
+                      No active statuses. Toggle statuses on the Character tab.
+                    </div>
+                  ) : (
+                    <div className="space-y-1.5">
+                      {statusRows
+                        .filter((s) => activeStatusIds.has(idOf(s)) && !String(s.Name ?? '').startsWith('====='))
+                        .map((s) => {
+                          const sid = idOf(s);
+                          const name = String(s.Name ?? `Status ${sid}`);
+                          const colorStr = String(s.Color ?? '').trim();
+                          const parts = colorStr.split(',').map((v) => parseFloat(v.trim()));
+                          const cssColor =
+                            parts.length >= 3 && parts.every((p) => Number.isFinite(p))
+                              ? `rgba(${Math.round(parts[0] * 255)},${Math.round(parts[1] * 255)},${Math.round(parts[2] * 255)},${parts[3] ?? 1})`
+                              : 'rgba(128,128,128,1)';
+                          return (
+                            <div
+                              key={sid}
+                              className="flex items-center gap-2 p-2 rounded theme-bg-surface border theme-border-muted"
+                            >
+                              <span
+                                className="w-2.5 h-2.5 rounded-full shrink-0 border border-black/20"
+                                style={{ backgroundColor: cssColor }}
+                              />
+                              <span className="text-sm theme-text truncate flex-1">{name}</span>
+                              <button
+                                type="button"
+                                className="text-xs theme-text-muted hover:text-red-400 shrink-0"
+                                onClick={() => {
+                                  setActiveStatusIds((prev) => {
+                                    const next = new Set(prev);
+                                    next.delete(sid);
+                                    return next;
+                                  });
+                                }}
+                                title="Remove status"
+                              >
+                                ✕
+                              </button>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              /* Perks sidebar for Character tab */
+              <>
+                <div className="flex items-center justify-between mb-2">
+                  <h2 className="font-semibold theme-text">Perks</h2>
+                  <span className="text-xs theme-text-muted">{chosen.length} chosen</span>
+                </div>
 
-              {derivedPerkLists.available.filter(p => !chosenSet.has(Number(p.ID))).length > 0 && (
+                <div className={perksListClass}>
+                  {/* Available Points */}
+                  <div className="mb-3 p-2 rounded theme-bg-surface border theme-border">
+                    <div className="text-xs font-semibold theme-text mb-1">Available Points</div>
+                    <div className="space-y-0.5 text-xs">
+                      <div className="flex justify-between theme-text-secondary">
+                        <span>Attributes:</span>
+                        <span className="font-mono">{attributePointsAvailable - attrPointsSpent} / {attributePointsAvailable}</span>
+                      </div>
+                      <div className="flex justify-between theme-text-secondary">
+                        <span>Skills:</span>
+                        <span className="font-mono">{skillPointsAvailable - skillPointsSpent} / {skillPointsAvailable}</span>
+                      </div>
+                      <div className="flex justify-between theme-text-secondary">
+                        <span>Perks:</span>
+                        <span className="font-mono">{perkPointsAvailable - perkPointsSpent} / {perkPointsAvailable}</span>
+                      </div>
+                    </div>
+                  </div>
+
+              {chosen.length > 0 && (
+                <button
+                  type="button"
+                  className="w-full mb-3 px-3 py-2 text-sm rounded bg-rose-700 hover:bg-rose-600 text-white"
+                  onClick={resetCharacterSheet}
+                  title="Clears chosen perks, allocations, and roll inputs"
+                >
+                  Reset character sheet
+                </button>
+              )}
+
+              {/* Chosen perks */}
+              {chosen.length > 0 && (
                 <>
-                  <div className="text-xs uppercase tracking-wide theme-text-muted mb-2">Available</div>
-                  {derivedPerkLists.available.filter(p => !chosenSet.has(Number(p.ID))).map((p) => {
-                    const id = Number(p.ID);
-                    const cost = num(p.Cost, 0);
-                    const disabled = derivedPerkLists.denyCatActive(p) || (cost > (perkPointsAvailable - perkPointsSpent));
-                    const desc = String(p.Description ?? '');
-                    
-                    // Parse bonuses from description
-                    const bonuses: string[] = [];
-                    const attrMatches = desc.matchAll(/• \+([0-9]+) ([A-Za-z ]+)/g);
-                    for (const m of attrMatches) {
-                      bonuses.push(`${m[2]} +${m[1]}`);
-                    }
-                    const skillMatches = desc.matchAll(/• ([A-Za-z ]+): ([0-9]+)/g);
-                    for (const m of skillMatches) {
-                      bonuses.push(`${m[1]} +${m[2]}`);
-                    }
-                    
+                  <div className="text-xs uppercase tracking-wide theme-text-muted mb-2">Chosen</div>
+                  {chosen.map((pid) => {
+                    const perk = perkRows.find((x) => Number(x.ID) === pid);
+                    if (!perk) return null;
+                    const details = describePerk(pid);
                     return (
                       <div
-                        key={String(p.ID)}
+                        key={pid}
+                        className="p-2 rounded theme-bg-surface border theme-border-muted mb-2"
+                      >
+                        <div className="flex items-start justify-between">
+                          <div className="flex-1 min-w-0">
+                            <div className="font-medium text-sm theme-text">{String(perk.Name ?? `Perk ${pid}`)}</div>
+                            <div className="text-xs theme-text-muted">{String(perk.Category ?? '')}</div>
+                          </div>
+                          <button
+                            type="button"
+                            className="shrink-0 ml-2 px-2 py-0.5 text-xs rounded bg-rose-600 hover:bg-rose-500 text-white"
+                            onClick={() => removePerk(pid)}
+                          >
+                            ✕
+                          </button>
+                        </div>
+                        {details.effects.length > 0 && (
+                          <div className="text-xs theme-text-secondary mt-1 space-y-0.5">
+                            {details.effects.map((e, i) => (
+                              <div key={i}>• {e}</div>
+                            ))}
+                          </div>
+                        )}
+                        {details.about && (
+                          <div className="text-xs theme-text-muted mt-1 line-clamp-3">{details.about}</div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </>
+              )}
+
+              {/* Available perks */}
+              {derivedPerkLists.available.filter((p) => !chosenSet.has(idOf(p))).length > 0 && (
+                <>
+                  <div className="text-xs uppercase tracking-wide theme-text-muted mb-2 mt-3">Available</div>
+                  {derivedPerkLists.available.filter((p) => !chosenSet.has(idOf(p))).map((p) => {
+                    const id = idOf(p);
+                    const cost = num(p.Cost, 0);
+                    const disabled = derivedPerkLists.denyCatActive(p) || (cost > (perkPointsAvailable - perkPointsSpent));
+                    const details = describePerk(id);
+
+                    return (
+                      <div
+                        key={String(id)}
                         className="p-2 rounded theme-bg-elevated border theme-border-muted mb-2"
                       >
                         <div className="flex items-start justify-between mb-1">
@@ -701,12 +1190,15 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                           </div>
                           <div className="text-xs font-semibold theme-text-secondary ml-2">Cost {cost}</div>
                         </div>
-                        {bonuses.length > 0 && (
-                          <div className="text-xs theme-text-secondary mb-2 space-y-0.5">
-                            {bonuses.map((bonus, idx) => (
-                              <div key={idx}>• {bonus}</div>
+                        {details.effects.length > 0 && (
+                          <div className="text-xs theme-text-secondary mb-1 space-y-0.5">
+                            {details.effects.map((e, i) => (
+                              <div key={i}>• {e}</div>
                             ))}
                           </div>
+                        )}
+                        {details.about && (
+                          <div className="text-xs theme-text-muted mb-2 line-clamp-2">{details.about}</div>
                         )}
                         <button
                           type="button"
@@ -726,64 +1218,16 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                 </>
               )}
 
-              {chosen.length > 0 && (
-                <>
-                  <div className="text-xs uppercase tracking-wide theme-text-muted pt-3 mb-2">Chosen</div>
-                  {chosen
-                    .map((id) => {
-                      const p = perkRows.find((x) => Number(x.ID) === id);
-                      if (!p) return null;
-                      const cost = num(p.Cost, 0);
-                      const desc = String(p.Description ?? '');
-                      
-                      // Parse bonuses from description
-                      const bonuses: string[] = [];
-                      const attrMatches = desc.matchAll(/• \+([0-9]+) ([A-Za-z ]+)/g);
-                      for (const m of attrMatches) {
-                        bonuses.push(`${m[2]} +${m[1]}`);
-                      }
-                      const skillMatches = desc.matchAll(/• ([A-Za-z ]+): ([0-9]+)/g);
-                      for (const m of skillMatches) {
-                        bonuses.push(`${m[1]} +${m[2]}`);
-                      }
-                      
-                      return (
-                        <div
-                          key={id}
-                          className="p-2 rounded theme-bg-surface border theme-border-muted mb-2"
-                        >
-                          <div className="flex items-start justify-between mb-1">
-                            <div className="flex-1">
-                              <div className="font-medium text-sm theme-text">{String(p.Name ?? `Perk ${id}`)}</div>
-                              <div className="text-xs theme-text-faint">{String(p.Category ?? '')}</div>
-                            </div>
-                            <div className="text-xs font-semibold theme-text-secondary ml-2">Cost {cost}</div>
-                          </div>
-                          {bonuses.length > 0 && (
-                            <div className="text-xs theme-text-secondary mb-2 space-y-0.5">
-                              {bonuses.map((bonus, idx) => (
-                                <div key={idx}>• {bonus}</div>
-                              ))}
-                            </div>
-                          )}
-                          <button
-                            type="button"
-                            className="w-full px-2 py-1 text-xs rounded bg-rose-600 hover:bg-rose-500 text-white"
-                            onClick={() => removePerk(id)}
-                          >
-                            Remove
-                          </button>
-                        </div>
-                      );
-                    })
-                    .filter(Boolean)}
-                </>
-              )}
-            </div>
+                </div>
+              </>
+            )}
           </div>
 
           {/* Main Content */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="space-y-4 lg:col-span-6">
+            {/* Character Tab Content */}
+            {activeTab === 'character' && (
+              <>
             {/* Stats (collapsible) */}
             {publicStatsWithAlloc.length > 0 && (
               <details className="rounded-lg border theme-border theme-bg-muted" open>
@@ -793,12 +1237,14 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                 <div className="px-3 pb-3 grid grid-cols-1 gap-2">
                   {publicStatsWithAlloc.map((s) => {
                     const isPrivate = !tf(s.Public);
-                    const canModify = tf(s.Trainable); // Trainable field = "Can Modify" label
-                    const statId = Number(s.ID ?? s['Node ID']);
-                    const value = Number(s.__value);
-                    const statAlloc = allocations.get(statId) || 0;
-                    const computedValue = value + statAlloc;
-                    const display = Number.isFinite(computedValue) ? String(Math.round(computedValue * 100) / 100) : '0';
+                    const canModify = tf(s.Trainable) || tf(s.Active) || admin;
+                    const statId = idOf(s);
+                    const statMax = Math.round(Number(s.__max) * 100) / 100;
+                    const statMin = Number(s.__min);
+                    // Current defaults to max if not explicitly set
+                    const current = statCurrentValues.has(statId) ? statCurrentValues.get(statId)! : statMax;
+                    const displayMax = Number.isFinite(statMax) ? String(statMax) : '0';
+                    const displayCurrent = Number.isFinite(current) ? String(Math.round(current * 100) / 100) : '0';
                     
                     return (
                       <div
@@ -815,15 +1261,32 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                         </div>
                         <div className="flex items-center gap-2">
                           {canModify && (
-                            <input
-                              type="number"
-                              className="w-16 px-2 py-1 text-sm theme-bg-elevated border theme-border-muted rounded theme-text"
-                              value={statAlloc}
-                              onChange={(e) => updateAllocation(statId, Number(e.target.value) || 0, false)}
-                              placeholder="Mod"
-                            />
+                            <>
+                              <button
+                                type="button"
+                                className="w-6 h-6 rounded theme-bg-elevated border theme-border-muted text-xs font-bold theme-text hover:bg-red-500/20"
+                                onClick={() => setStatCurrentValue(statId, current - 1, statMax, statMin)}
+                              >
+                                −
+                              </button>
+                              <input
+                                type="number"
+                                className="w-14 px-1 py-1 text-sm text-center theme-bg-elevated border theme-border-muted rounded theme-text"
+                                value={displayCurrent}
+                                onChange={(e) => setStatCurrentValue(statId, Number(e.target.value) || 0, statMax, statMin)}
+                              />
+                              <button
+                                type="button"
+                                className="w-6 h-6 rounded theme-bg-elevated border theme-border-muted text-xs font-bold theme-text hover:bg-green-500/20"
+                                onClick={() => setStatCurrentValue(statId, current + 1, statMax, statMin)}
+                              >
+                                +
+                              </button>
+                            </>
                           )}
-                          <div className="theme-text-secondary font-semibold">{display}</div>
+                          <div className="theme-text-secondary font-semibold text-sm whitespace-nowrap">
+                            / {displayMax}
+                          </div>
                         </div>
                       </div>
                     );
@@ -861,6 +1324,22 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                   const attrId = idOf(g.attr);
                   const naturalBonus = num(g.attr['Natural Bonus'], 0);
                   const allocation = allocations.get(attrId) || 0;
+                  const attrMaxAlloc = num(g.attr['Max Allocation'], -1);
+                  const attrEffectiveMax = attrMaxAlloc === -1 ? maxAttrAlloc : attrMaxAlloc;
+                  const attrEffectiveMin = minAttrAlloc;
+                  const canDecAttr = allocation > attrEffectiveMin;
+                  const nextAttrInc = Math.max(attrEffectiveMin, Math.min(attrEffectiveMax, allocation + 1));
+                  const canIncAttr = (() => {
+                    if (nextAttrInc === allocation) return false;
+                    const oldCost = attrPointBuy
+                      ? calculatePointBuyCost(attrEffectiveMin, allocation)
+                      : allocation - attrEffectiveMin;
+                    const newCost = attrPointBuy
+                      ? calculatePointBuyCost(attrEffectiveMin, nextAttrInc)
+                      : nextAttrInc - attrEffectiveMin;
+                    const costChange = newCost - oldCost;
+                    return attrPointsSpent + costChange <= attributePointsAvailable;
+                  })();
                   const perkBonus = perkBonuses.get(attrId) || 0;
                   const total = naturalBonus + allocation + perkBonus;
                   const attrPrivate = !tf(g.attr.Public);
@@ -879,13 +1358,37 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                         </div>
                         <div className="flex items-center gap-2">
                           <span className="text-sm theme-text-muted">Base: {naturalBonus}</span>
-                          <input
-                            type="number"
-                            className="w-16 px-2 py-1 text-sm theme-bg-elevated border theme-border-muted rounded theme-text"
-                            value={allocation}
-                            onChange={(e) => updateAllocation(attrId, Number(e.target.value) || 0, true)}
-                            placeholder="Alloc"
-                          />
+                          <div className="flex items-center gap-1">
+                            <button
+                              type="button"
+                              className={
+                                canDecAttr
+                                  ? 'w-7 h-7 rounded theme-bg-elevated hover:theme-bg-surface theme-text'
+                                  : 'w-7 h-7 rounded theme-bg-elevated theme-text-muted cursor-not-allowed'
+                              }
+                              onClick={() => updateAllocation(attrId, allocation - 1, true)}
+                              disabled={!canDecAttr}
+                              aria-label="Decrease allocation"
+                            >
+                              −
+                            </button>
+                            <span className="w-8 text-center text-sm theme-text" title="Allocated points">
+                              {allocation}
+                            </span>
+                            <button
+                              type="button"
+                              className={
+                                canIncAttr
+                                  ? 'w-7 h-7 rounded bg-[var(--accent-primary)] text-[var(--accent-primary-text)] hover:bg-[var(--accent-primary-hover)]'
+                                  : 'w-7 h-7 rounded theme-bg-elevated theme-text-muted cursor-not-allowed'
+                              }
+                              onClick={() => updateAllocation(attrId, allocation + 1, true)}
+                              disabled={!canIncAttr}
+                              aria-label="Increase allocation"
+                            >
+                              +
+                            </button>
+                          </div>
                           <span className="text-sm text-[var(--accent-primary)]">{perkBonus > 0 ? `+${perkBonus}` : ''}</span>
                           <span className="text-lg font-semibold theme-text">= {total}</span>
                           {diceEnabled && (
@@ -920,7 +1423,7 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                             onChange={(e) => updateRollInput(attrId, { modifier: Number(e.target.value) || 0 })}
                             placeholder="+0"
                           />
-                          {enable5eAdvantage && (
+                          {enable5eAdvantage && diceSystem === 0 && (
                             <select
                               className="px-2 py-1 text-xs theme-bg-surface border theme-border-muted rounded theme-text"
                               value={attrRollInput.rollMod}
@@ -947,6 +1450,23 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                         {g.skills.map((sk) => {
                           const skId = idOf(sk);
                           const skAlloc = allocations.get(skId) || 0;
+                          const skMaxAlloc = num(sk['Max Allocation'], -1);
+                          const skEffectiveMax = skMaxAlloc === -1 ? maxSkillAlloc : skMaxAlloc;
+                          const skEffectiveMin = minSkillAlloc;
+                          const canDecSkill = skAlloc > skEffectiveMin;
+                          const nextSkillInc = Math.max(skEffectiveMin, Math.min(skEffectiveMax, skAlloc + 1));
+                          const canIncSkill = (() => {
+                            if (nextSkillInc === skAlloc) return false;
+                            const oldCost = skillPointBuy
+                              ? calculatePointBuyCost(skEffectiveMin, skAlloc)
+                              : skAlloc - skEffectiveMin;
+                            const newCost = skillPointBuy
+                              ? calculatePointBuyCost(skEffectiveMin, nextSkillInc)
+                              : nextSkillInc - skEffectiveMin;
+                            const costChange = newCost - oldCost;
+                            return skillPointsSpent + costChange <= skillPointsAvailable;
+                          })();
+
                           const skPerkBonus = perkBonuses.get(skId) || 0;
                           const skTotal = total + skAlloc + skPerkBonus;
                           const skPrivate = !tf(sk.Public);
@@ -959,13 +1479,37 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                               <div className="flex items-center justify-between">
                                 <span className="text-sm theme-text">{skName}</span>
                                 <div className="flex items-center gap-2">
-                                  <input
-                                    type="number"
-                                    className="w-12 px-1 py-0.5 text-xs theme-bg-elevated border theme-border-muted rounded theme-text"
-                                    value={skAlloc}
-                                    onChange={(e) => updateAllocation(skId, Number(e.target.value) || 0, false)}
-                                    placeholder="0"
-                                  />
+                                  <div className="flex items-center gap-1">
+                                    <button
+                                      type="button"
+                                      className={
+                                        canDecSkill
+                                          ? 'w-6 h-6 rounded theme-bg-elevated hover:theme-bg-surface theme-text text-xs'
+                                          : 'w-6 h-6 rounded theme-bg-elevated theme-text-muted cursor-not-allowed text-xs'
+                                      }
+                                      onClick={() => updateAllocation(skId, skAlloc - 1, false)}
+                                      disabled={!canDecSkill}
+                                      aria-label="Decrease skill allocation"
+                                    >
+                                      −
+                                    </button>
+                                    <span className="w-7 text-center text-xs theme-text" title="Allocated points">
+                                      {skAlloc}
+                                    </span>
+                                    <button
+                                      type="button"
+                                      className={
+                                        canIncSkill
+                                          ? 'w-6 h-6 rounded bg-[var(--accent-primary)] text-[var(--accent-primary-text)] hover:bg-[var(--accent-primary-hover)] text-xs'
+                                          : 'w-6 h-6 rounded theme-bg-elevated theme-text-muted cursor-not-allowed text-xs'
+                                      }
+                                      onClick={() => updateAllocation(skId, skAlloc + 1, false)}
+                                      disabled={!canIncSkill}
+                                      aria-label="Increase skill allocation"
+                                    >
+                                      +
+                                    </button>
+                                  </div>
                                   {skPerkBonus > 0 && (
                                     <span className="text-xs text-[var(--accent-primary)]">+{skPerkBonus}</span>
                                   )}
@@ -1012,7 +1556,7 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                                     onChange={(e) => updateRollInput(skId, { modifier: Number(e.target.value) || 0 })}
                                     placeholder="+0"
                                   />
-                                  {enable5eAdvantage && (
+                                  {enable5eAdvantage && diceSystem === 0 && (
                                     <select
                                       className="px-2 py-1 text-xs theme-bg-surface border theme-border-muted rounded theme-text"
                                       value={skRollInput.rollMod}
@@ -1044,6 +1588,24 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
               </div>
             </div>
 
+            {/* Status Tracker */}
+            <StatusPanel
+              statusRows={statusRows}
+              statusActionRows={statusActionRows}
+              skillById={skillById}
+              statById={statById}
+              spellById={spellById}
+              activeStatusIds={activeStatusIds}
+              onToggleStatus={(sid, active) => {
+                setActiveStatusIds((prev) => {
+                  const next = new Set(prev);
+                  if (active) next.add(sid);
+                  else next.delete(sid);
+                  return next;
+                });
+              }}
+            />
+
             {/* Perks (collapsible) */}
             {chosen.length > 0 && (
               <details className="rounded-lg border theme-border theme-bg-muted" open>
@@ -1055,43 +1617,40 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                     const perk = perkRows.find((x) => Number(x.ID) === pid);
                     if (!perk) return null;
 
-                    // Extract bonus effects from Description
-                    const desc = String(perk.Description ?? '');
-                    const effects: string[] = [];
-                    
-                    // Parse "• +X Attribute" style bonuses
-                    const attrMatches = desc.matchAll(/• \+([0-9]+) ([A-Za-z ]+)/g);
-                    for (const m of attrMatches) {
-                      effects.push(`${m[2].trim()} +${m[1]}`);
-                    }
-                    
-                    // Parse "• Skill: X" style bonuses
-                    const skillMatches = desc.matchAll(/• ([A-Za-z ]+): ([0-9]+)/g);
-                    for (const m of skillMatches) {
-                      effects.push(`${m[1].trim()} +${m[2]}`);
-                    }
-
-                    // If no parsed effects, show raw description bullets
-                    if (effects.length === 0) {
-                      const bullets = desc.match(/• [^•]+/g);
-                      if (bullets) {
-                        for (const b of bullets) {
-                          effects.push(b.replace(/^• /, '').trim());
-                        }
-                      }
-                    }
+                    const details = describePerk(pid);
 
                     return (
                       <div
                         key={pid}
                         className="theme-bg-surface border theme-border-muted rounded px-3 py-2"
                       >
-                        <div className="font-medium text-sm theme-text">
-                          {String(perk.Category ?? 'Perk')}: {String(perk.Name ?? `Perk ${pid}`)}
+                        <div className="flex items-start justify-between gap-2">
+                          <div className="font-medium text-sm theme-text">
+                            {String(perk.Category ?? 'Perk')}: {String(perk.Name ?? `Perk ${pid}`)}
+                          </div>
+                          <button
+                            type="button"
+                            className="shrink-0 px-2 py-1 text-xs rounded bg-rose-600 hover:bg-rose-500 text-white"
+                            onClick={() => removePerk(pid)}
+                          >
+                            Remove
+                          </button>
                         </div>
-                        {effects.length > 0 && (
-                          <div className="text-xs theme-text-muted mt-1">
-                            {effects.join(', ')}
+
+                        {details.effects.length > 0 && (
+                          <div className="text-xs theme-text-secondary mt-1">
+                            <div className="font-semibold theme-text-muted">Bonuses</div>
+                            <div className="mt-1 space-y-0.5">
+                              {details.effects.map((e) => (
+                                <div key={e}>• {e}</div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {details.about && (
+                          <div className="text-xs theme-text-muted mt-2 whitespace-pre-wrap">
+                            {details.about}
                           </div>
                         )}
                       </div>
@@ -1100,23 +1659,142 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
                 </div>
               </details>
             )}
+              </>
+            )}
+
+            {/* Abilities Tab Content */}
+            {activeTab === 'abilities' && (
+              <div className="h-[70vh] relative">
+                <AbilitiesTab
+                  spellDefs={spellRows}
+                  spellReqDefs={spellReqRows}
+                  perkActions={perkActs}
+                  mutatorActions={mutatorActionRows}
+                  statusActions={statusActionRows}
+                  schemaData={data as Record<string, Row[]>}
+                  chosenPerkIds={chosenSet}
+                  activeStatusIds={activeStatusIds}
+                  activeMutatorIds={activeMutatorIds}
+                  adminMode={admin}
+                  allocations={allocations}
+                  perkBonuses={perkBonuses}
+                  statValues={allStatValues}
+                  activeStatusCategories={activeStatusCategories}
+                  statusCategoryMap={statusCategoryMap}
+                  characterName={characterName}
+                  numDice={numDice}
+                  diceSides={diceSides}
+                  onAbilityResult={(result, messages) => {
+                    // Log ability execution to chat
+                    addMessage({
+                      tab: 'local',
+                      sender: 'user',
+                      content: messages.join('\n'),
+                      type: 'ability',
+                      metadata: {
+                        abilityId: result.spellId,
+                        abilityName: result.spellName,
+                      },
+                    });
+
+                    // Propagate effects to the character sheet ONLY when they applied to the caster.
+                    // Target effects should never mutate the player's tracked stats/statuses.
+                    const casterEffects = result.effects.filter((e) => e.appliedToId === 0);
+
+                    // Propagate status grants/removals from effects to character sheet
+                    const grantedStatuses = casterEffects
+                      .filter((e) => e.statusGranted !== undefined)
+                      .map((e) => ({ id: e.statusGranted!, category: e.statusGrantCategory }));
+                    const removedStatuses = casterEffects
+                      .flatMap((e) => e.statusRemoved ?? []);
+
+                    if (grantedStatuses.length > 0 || removedStatuses.length > 0) {
+                      setActiveStatusIds((prev) => {
+                        const next = new Set(prev);
+                        for (const s of grantedStatuses) next.add(s.id);
+                        for (const s of removedStatuses) next.delete(s);
+                        return next;
+                      });
+                      // Track categories for granted statuses
+                      setStatusCategoryMap((prev) => {
+                        const next = new Map(prev);
+                        for (const s of grantedStatuses) {
+                          if (s.category) next.set(s.id, s.category);
+                        }
+                        for (const s of removedStatuses) {
+                          next.delete(s);
+                        }
+                        return next;
+                      });
+                    }
+
+                    // Propagate caster stat changes into the sheet's current values.
+                    // This is how action economy counters (often Function 10 SetStat) stay in sync.
+                    const statChanges = casterEffects.filter(
+                      (e) => e.statChanged && (e.function === 1 || e.function === 5 || e.function === 10)
+                    );
+                    if (statChanges.length > 0) {
+                      setStatCurrentValues((prev) => {
+                        const next = new Map(prev);
+                        for (const e of statChanges) {
+                          if (e.statChanged) {
+                            next.set(e.statChanged.statId, e.statChanged.newValue);
+                          }
+                        }
+                        return next;
+                      });
+                    }
+                  }}
+                />
+              </div>
+            )}
+
+            {/* AI Characters Tab Content */}
+            {activeTab === 'ai-characters' && (
+              <div className="lg:col-span-8">
+                <AiCharactersTab
+                  schemaData={data}
+                  onCreateNew={() => {
+                    // Switch to chat panel and suggest command
+                    if (panelActions.show) {
+                      panelActions.show('chat');
+                    }
+                    addMessage({
+                      tab: 'local',
+                      sender: 'system',
+                      content: 'Use /create-opponent [level] [role] to create a new AI character.\nExample: /create-opponent 5 warrior',
+                      type: 'system',
+                    });
+                  }}
+                />
+              </div>
+            )}
           </div>
 
-          {/* Chat Panel for rolls */}
-          <div className="lg:col-span-2 rounded-lg border theme-border overflow-hidden h-[70vh]">
-            <ChatPanel 
-              className="h-full"
-              schemaData={data as Record<string, unknown[]>}
-            />
-          </div>
         </div>
+      </div>
     </div>
+  );
+
+  // Chat panel managed by PanelShell
+  const chatPanelElement = (
+    <PanelShell
+      title="Chat"
+      mode={chatPanel.mode}
+      onPopout={() => panelActions.popout('chat')}
+      onHide={() => panelActions.hide('chat')}
+    >
+      <ChatPanel
+        className="flex-1 min-h-0"
+      />
+    </PanelShell>
   );
 
   if (isChildWindow) {
     return (
-      <div className="h-full w-full overflow-auto theme-bg-base p-4">
-        {inner}
+      <div className="h-full w-full overflow-auto theme-bg-base p-4 flex gap-4">
+        <div className="flex-1 min-w-0">{inner}</div>
+        {chatPanelElement}
       </div>
     );
   }
@@ -1126,8 +1804,9 @@ export default function CharacterSheetModal({ data, onClose, isChildWindow = fal
       ref={overlayRef}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 overflow-auto p-4"
     >
-      <div className="my-auto">
+      <div className="my-auto flex gap-4 items-start">
         {inner}
+        {chatPanelElement}
       </div>
     </div>
   );

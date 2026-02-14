@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from 'react';
 
 import {
   type ChatTab,
@@ -9,6 +9,11 @@ import {
 } from '@/types/chat';
 
 const CHAT_STORAGE_KEY = 'project-omen:chat:v1';
+const CHAT_BROADCAST_CHANNEL = 'project-omen:chat';
+
+type BroadcastPayload =
+  | { type: 'message'; message: ChatMessage }
+  | { type: 'clear'; tab?: ChatTab };
 
 function loadChatState(): ChatState {
   try {
@@ -60,6 +65,7 @@ type ChatContextValue = {
   // Actions
   setActiveTab: (tab: ChatTab) => void;
   addMessage: (message: Omit<ChatMessage, 'id' | 'timestamp'>) => ChatMessage;
+  updateMessage: (id: string, tab: ChatTab, updates: Partial<Pick<ChatMessage, 'content' | 'metadata'>>) => void;
   sendUserMessage: (content: string, tab?: ChatTab) => ChatMessage;
   addSystemMessage: (content: string, tab?: ChatTab) => ChatMessage;
   clearHistory: (tab?: ChatTab) => void;
@@ -70,6 +76,51 @@ const ChatContext = createContext<ChatContextValue | null>(null);
 
 export function ChatProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<ChatState>(loadChatState);
+
+  // BroadcastChannel for live cross-window sync
+  const channelRef = useRef<BroadcastChannel | null>(null);
+  // Guard to avoid re-processing our own broadcasts
+  const ignoreNextBroadcast = useRef(false);
+
+  useEffect(() => {
+    const ch = new BroadcastChannel(CHAT_BROADCAST_CHANNEL);
+    channelRef.current = ch;
+
+    ch.onmessage = (ev: MessageEvent<BroadcastPayload>) => {
+      if (ignoreNextBroadcast.current) {
+        ignoreNextBroadcast.current = false;
+        return;
+      }
+      const payload = ev.data;
+      if (payload.type === 'message') {
+        // Append message from another window
+        setState((prev) => ({
+          ...prev,
+          messages: {
+            ...prev.messages,
+            [payload.message.tab]: [...prev.messages[payload.message.tab], payload.message],
+          },
+          unreadCounts: {
+            ...prev.unreadCounts,
+            [payload.message.tab]:
+              prev.activeTab === payload.message.tab ? 0 : prev.unreadCounts[payload.message.tab] + 1,
+          },
+        }));
+      } else if (payload.type === 'clear') {
+        setState((prev) => {
+          if (payload.tab) {
+            return { ...prev, messages: { ...prev.messages, [payload.tab]: [] } };
+          }
+          return { ...prev, messages: createEmptyChatState().messages };
+        });
+      }
+    };
+
+    return () => {
+      ch.close();
+      channelRef.current = null;
+    };
+  }, []);
 
   // Persist to localStorage on changes (debounced)
   useEffect(() => {
@@ -112,7 +163,22 @@ export function ChatProvider({ children }: { children: ReactNode }) {
       },
     }));
 
+    // Broadcast to other windows
+    channelRef.current?.postMessage({ type: 'message', message: fullMessage } satisfies BroadcastPayload);
+
     return fullMessage;
+  }, []);
+
+  const updateMessage = useCallback((id: string, tab: ChatTab, updates: Partial<Pick<ChatMessage, 'content' | 'metadata'>>) => {
+    setState((prev) => ({
+      ...prev,
+      messages: {
+        ...prev.messages,
+        [tab]: prev.messages[tab].map((msg) =>
+          msg.id === id ? { ...msg, ...updates } : msg
+        ),
+      },
+    }));
   }, []);
 
   const sendUserMessage = useCallback(
@@ -159,6 +225,9 @@ export function ChatProvider({ children }: { children: ReactNode }) {
         messages: createEmptyChatState().messages,
       };
     });
+
+    // Broadcast to other windows
+    channelRef.current?.postMessage({ type: 'clear', tab: targetTab } satisfies BroadcastPayload);
   }, []);
 
   const getMessages = useCallback(
@@ -178,6 +247,7 @@ export function ChatProvider({ children }: { children: ReactNode }) {
     // Actions
     setActiveTab,
     addMessage,
+    updateMessage,
     sendUserMessage,
     addSystemMessage,
     clearHistory,

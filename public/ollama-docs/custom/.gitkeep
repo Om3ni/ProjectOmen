@@ -1,0 +1,8 @@
+# Custom Documentation Folder
+
+Place your custom RPR design documentation here. Ollama will search both default and custom folders when helping you design systems.
+
+Supported formats:
+- .md (Markdown)
+- .txt (Plain text)
+- .json (Structured data)

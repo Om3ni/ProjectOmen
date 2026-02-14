@@ -1,0 +1,48 @@
+# Abilities Tab Help
+
+Abilities (SpellDef) are rollable actions with effects, requirements, and targeting.
+
+## SpellDef key fields:
+- TargetType: 0=Selected target, 1=Caster only, 2=All, 3=All Others, 4=Selected Others
+- CasterRollType: 0=Roll Skill, 1=Roll Stat, 2=Custom Formula
+- RollStatSkillID: Which skill/stat to roll (depends on CasterRollType)
+- CasterRollFormula: Custom formula when CasterRollType=2
+- DCType: 0=Target Roll, 1=Target Stat, 2=Fixed, 3=Target Roll Stat, 4=Custom
+- AllowMods: "t" if modifiers (runes, mutators) apply to this ability
+- Category: Groups abilities in UI
+
+## SpellEffect functions (all 13):
+| Fn | Name | TargetID → | Key fields |
+|----|------|-----------|------------|
+| 0 | Print Message | (none) | Formula/Text = message |
+| 1 | Modify Stat | Stat | Formula/Text = amount formula |
+| 2 | Give Item | (game ID) | Value = item count |
+| 3 | Remove Item | (game ID) | Value = item count |
+| 4 | Buff Skill | SkillDef | Duration, Formula/Text = amount |
+| 5 | Buff Stat | Stat | Duration, Formula/Text = amount |
+| 6 | Buff Perk | PerkDef | Duration |
+| 7 | Dispel Buff | (none) | Category = buff category to dispel |
+| 8 | Buff Ability | SpellDef | Duration |
+| 9 | Auto Use Ability | SpellDef | Chains into another ability |
+| 10 | Set Stat | Stat | Sets (not modifies) stat value |
+| 11 | Buff Grant Status | StatusDef | Duration |
+| 12 | Buff Unlock Status | StatusDef | Duration |
+
+## SpellReqDef — Requirements:
+Functions: 0=Stat check, 1=Skill check, 2=Skill Allocation check, 3=Perk check, 4=Conan Level, 5=Status Category, 6=Conan Item
+Column 7 (Text) MUST exist even when blank.
+
+## SpellTargetCond — Target conditions:
+Same conditions as RuneCondition. **1-INDEXED** (no Perk at index 0).
+Column 8 (Text) MUST exist even when blank.
+
+Design patterns:
+- Attack ability: CasterRollType=0 (Roll Skill), DCType=0 (Target Roll), SpellEffect function 1 (Modify Stat on Health)
+- Buff ability: TargetType=1 (Caster), SpellEffect function 5 (Buff Stat) with Duration
+- Healing: SpellEffect function 1 (Modify Stat) with positive formula on Health stat
+- Chain abilities: SpellEffect function 9 (Auto Use Ability) triggers another SpellDef
+
+Gotchas:
+- SpellTargetCond is 1-indexed (shifted from MutatorCondition which is 0-indexed)
+- If vs Outcome in SpellEffect: If = condition for applying, Outcome = which roll result triggers it
+- Formula variables: {c.StatName} = caster, {t.StatName} = target

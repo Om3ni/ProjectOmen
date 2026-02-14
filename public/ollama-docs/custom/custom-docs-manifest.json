@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "documents": [
+    {
+      "id": "dnd5e-style-system",
+      "filename": "DnD5e-Style-System.txt",
+      "title": "D&D 5e-Style RPR System",
+      "description": "Complete implementation of D&D 5e mechanics including Attack Bonus, Armor Class, Spell Save DC, attribute modifiers, 69 mutators for stat calculations, armor weight classes, and weapon properties. Demonstrates that complex D&D mechanics ARE possible in RPR.",
+      "tags": ["example", "dnd", "5e", "combat", "attributes", "mutators", "armor", "weapons", "spells", "skills"],
+      "addedAt": 1738886400000
+    },
+    {
+      "id": "comprehensive-combat-system",
+      "filename": "Comprehensive-Combat-System.txt",
+      "title": "Comprehensive Combat & Profession System",
+      "description": "Production-quality RPR system from RpR dev featuring Action/Reaction combat, social skills, crafting professions (Fishing, Mining, Cooking, Blacksmithing), status effects, casino mechanics, teaching system, sparring with grappling, and 177+ abilities across Melee, Range, Magic, and Healing styles.",
+      "tags": ["example", "combat", "professions", "crafting", "social", "status-effects", "actions", "reactions", "casino", "teaching"],
+      "addedAt": 1738886400000
+    },
+    {
+      "id": "beatrix-learning-journey",
+      "filename": "Beatrix-RPR-Learning-Journey.txt",
+      "title": "Beatrix's RPR Learning Journey",
+      "description": "Real-world learning progression from Discord showing someone building an RPR system from scratch (Oct 2025 - Jan 2026). Includes problem-solving, formula evolution, common pitfalls (rune conditions don't work, status nameplate clutter, separator bugs), workarounds, and community solutions. Critical discoveries: use mutators not rune conditions, use perks not statuses for hidden tracking, configure separators properly.",
+      "tags": ["learning", "tutorial", "formulas", "damage", "dual-wielding", "ward", "mutators", "perks", "troubleshooting", "workarounds", "performance", "deflection", "threat", "finesse", "action-economy"],
+      "addedAt": 1738886400000
+    }
+  ]
+}

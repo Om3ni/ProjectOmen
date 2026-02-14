@@ -1,7 +1,7 @@
 {
   "name": "project-omen",
   "private": true,
-  "version": "0.0.6",
+  "version": "0.0.08",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
@@ -59,6 +59,22 @@
   "build": {
     "appId": "com.omen.projectomen",
     "productName": "Project Omen",
+    "extraResources": [
+      {
+        "from": "resources/ollama-win/",
+        "to": "ollama",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "prompts/",
+        "to": "prompts",
+        "filter": [
+          "**/*.txt"
+        ]
+      }
+    ],
     "files": [
       "dist/**",
       "electron/**",

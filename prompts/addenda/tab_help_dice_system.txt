@@ -1,0 +1,18 @@
+# Dice System Tab Help
+
+The DiceConfig table controls point budgets and system-wide dice settings.
+
+Key fields:
+- AttributePoints: Total points players can spend on attributes
+- SkillPoints: Total points for skills
+- PerkPoints: Total points for perks
+- TotalNodes: MUST equal the highest Node ID in SkillDef
+
+Design patterns:
+- Typical ratios: 2-4x more skill points than attribute points
+- TotalNodes is a system invariant — update it when adding/removing skills
+- Point budgets define character breadth vs depth
+
+Gotchas:
+- If TotalNodes doesn't match SkillDef, the dice system breaks silently
+- Setting points to 0 doesn't disable that allocation type — it gives 0 points

@@ -1,0 +1,40 @@
+# Runes Tab Help
+
+Runes (RuneDef) represent equipment items that modify character stats.
+
+## RuneDef fields:
+- NodeID: Unique identifier
+- ItemID: Game item ID (external, not RPR ID)
+- Slot: Equipment slot
+- IncludeAll/ExcludeAll: Tag-based filtering
+
+## RuneAction — effects when equipped:
+Columns: RuneID, TargetID, Value, Effect, Reserved(0)
+
+Note: RuneAction's parent is "Rune" (not RuneDef!)
+
+| Effect | Name | TargetID → |
+|--------|------|-----------|
+| 0 | Dice Modifier | SkillDef |
+| 1 | Grant Perk | PerkDef |
+| 3 | Stat Modifier | Stat |
+| 4 | Grant Ability | SpellDef |
+| 5 | Grant Status | StatusDef |
+| 6 | Unlock Status | StatusDef |
+
+Note: Effect 2 is missing (skipped in the enum).
+
+## RuneCondition — equip requirements:
+Columns: RuneID, Inclusion, Condition, Operator, NodeAffected, Value, MaxValue, Category
+
+**1-INDEXED** — same conditions as MutatorCondition but shifted +1 (no Perk at index 0).
+
+Design patterns:
+- Weapon: RuneAction effect 0 (Dice Modifier) on combat skill
+- Magical item: RuneAction effect 4 (Grant Ability) to give special attacks
+- Armor: RuneAction effect 3 (Stat Modifier) on Defense stat
+
+Gotchas:
+- RuneConditions are documented but NOT ENFORCED by the live RPR engine
+- RuneAction parent FK is "Rune" table, not "RuneDef" table
+- Effect enum skips 2 (goes 0, 1, 3, 4, 5, 6)

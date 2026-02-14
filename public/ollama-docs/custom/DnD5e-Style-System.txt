@@ -1,0 +1,233 @@
+=== D&D 5e-Style RPR System Example ===
+
+Source: Alymer (Epsindi)
+Purpose: Demonstrates that complex D&D 5e mechanics ARE implementable in RPR
+Key Features:
+- Attack Bonus, Damage Bonus, Armor Class, Spell Save DC
+- 6 Core Attributes (STR, DEX, CON, INT, WIS, CHA)
+- Organized skill hierarchy using hidden attributes
+- 69 Mutators for attribute-based calculations
+- Armor weight classes with DEX modifiers
+- Weapon properties (Finesse, Ranged)
+- Proficiency bonus system
+
+=== DESIGN PATTERNS EXPLAINED ===
+
+Pattern for Adding Attribute-Based Bonuses to Stats:
+1. Create an item that's a rune (Optional, can be done with just perks)
+2. Create a prerequisite perk
+3. Apply this perk to the rune OR nest it in a grander perk
+4. Perk follows the pattern to add to stats based on attribute points
+5. Modify other mutators to exclude their modifications when another perk is active
+
+Mutator Organization Pattern (6 mutators per stat):
+- 2 Points: +1 bonus
+- 4 Points: +2 bonus (exclude if 6/8 point perk active)
+- 6 Points: +3 bonus (exclude if 8 point perk active)
+- 8 Points: +4 bonus
+- Skill Perk: +2 bonus (for skill proficiency)
+- Expertise Perk: +4 bonus (double proficiency)
+
+Example: Attack Bonus gets 6 mutators from each attribute
+- "Attack Bonus - Strength 2": +1 if STR >= 2
+- "Attack Bonus - Strength 4": +1 if STR >= 4 (exclude if 6/8 perk)
+- "Attack Bonus - Strength 6": +1 if STR >= 6 (exclude if 8 perk)
+- "Attack Bonus - Strength 8": +1 if STR >= 8
+- "Attack Bonus - Str Profi": +2 if has STR proficiency perk
+- "Attack Bonus - Str Expert": +2 if has STR expertise perk (total +4)
+
+Armor Class Pattern:
+- Base AC = 10
+- Light Armor: +Armor bonus +DEX modifier
+- Medium Armor: +Armor bonus +DEX modifier (max +2)
+- Heavy Armor: +Armor bonus only (no DEX)
+
+Weapon Properties:
+- Finesse: Can use DEX OR STR for attack/damage
+- Ranged: Uses DEX for attack/damage typically
+
+=== COMPLETE RPR TEXT ===
+
+A_RPR
+Name = Dnd 5E Example
+Description = An Example system that attempts to emulate the mechanics of the 5th edition of dungeons and dragons using the omen RpR system. This example was created to disprove that it was possible to do so, when before it was said to be impossible to do so at all. This proves that RpR CAN in fact use stats dynamically to add to other stats using mutators, for an organized "Skill" stat system, and many other things.
+DefaultCombatStyle = 0
+
+A_DiceConfig
+CombatRounds = 1
+RoundsPer = 1
+DiceType = 1d20
+
+A_Attributes
+Expansion Table
+
+A_SpellDef
+
+
+A_Status
+
+
+A_Mutations
+Expansion Table
+
+A_Resource
+
+
+A_PerkDef
+Expansion Table
+
+A_Runes
+
+
+--- BEGIN EXPORT ---
+
+Attribute|0|Strength|hidden = 1
+Attribute|1|Dexterity|hidden = 1
+Attribute|2|Constitution|hidden = 1
+Attribute|3|Intelligence|hidden = 1
+Attribute|4|Wisdom|hidden = 1
+Attribute|5|Charisma|hidden = 1
+Attribute|6|Attack Bonus|start = 2;max = 99
+Attribute|7|Damage Bonus|max = 99
+Attribute|8|Armor Class|start = 10;max = 99
+Attribute|9|Spell Save DC|start = 10;max = 99
+Attribute|10|Spell Attack Bonus|start = 2;max = 99
+Attribute|11|Skills|max = 0
+Attribute|12|Acrobatics|parent = 11
+Attribute|13|Animal-Handling|parent = 11
+Attribute|14|Arcana|parent = 11
+Attribute|15|Athletics|parent = 11
+Attribute|16|Deception|parent = 11
+Attribute|17|History|parent = 11
+Attribute|18|Insight|parent = 11
+Attribute|19|Intimidation|parent = 11
+Attribute|20|Investigation|parent = 11
+Attribute|21|Medicine|parent = 11
+Attribute|22|Nature|parent = 11
+Attribute|23|Perception|parent = 11
+Attribute|24|Performance|parent = 11
+Attribute|25|Persuasion|parent = 11
+Attribute|26|Religion|parent = 11
+Attribute|27|Sleight-of-Hand|parent = 11
+Attribute|28|Stealth|parent = 11
+Attribute|29|Survival|parent = 11
+
+Mutations|0|Attack Bonus - Strength 2|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 0,2
+Mutations|1|Attack Bonus - Strength 4|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 0,4;ExcludePerks = 4,5
+Mutations|2|Attack Bonus - Strength 6|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 0,6;ExcludePerks = 5
+Mutations|3|Attack Bonus - Strength 8|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 0,8
+Mutations|4|Attack Bonus - Str Profi|targets = 6;add = 2;MatchAny = 1;IfPerks = 0
+Mutations|5|Attack Bonus - Str Expert|targets = 6;add = 2;MatchAny = 1;IfPerks = 1
+Mutations|6|Attack Bonus - Dexterity 2|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 1,2
+Mutations|7|Attack Bonus - Dexterity 4|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 1,4;ExcludePerks = 6,7
+Mutations|8|Attack Bonus - Dexterity 6|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 1,6;ExcludePerks = 7
+Mutations|9|Attack Bonus - Dexterity 8|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 1,8
+Mutations|10|Attack Bonus - Dex Profi|targets = 6;add = 2;MatchAny = 1;IfPerks = 2
+Mutations|11|Attack Bonus - Dex Expert|targets = 6;add = 2;MatchAny = 1;IfPerks = 3
+Mutations|12|Attack Bonus - Intelligence 2|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 3,2
+Mutations|13|Attack Bonus - Intelligence 4|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 3,4;ExcludePerks = 12,13
+Mutations|14|Attack Bonus - Intelligence 6|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 3,6;ExcludePerks = 13
+Mutations|15|Attack Bonus - Intelligence 8|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 3,8
+Mutations|16|Attack Bonus - Int Profi|targets = 6;add = 2;MatchAny = 1;IfPerks = 8
+Mutations|17|Attack Bonus - Int Expert|targets = 6;add = 2;MatchAny = 1;IfPerks = 9
+Mutations|18|Attack Bonus - Wisdom 2|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 4,2
+Mutations|19|Attack Bonus - Wisdom 4|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 4,4;ExcludePerks = 14,15
+Mutations|20|Attack Bonus - Wisdom 6|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 4,6;ExcludePerks = 15
+Mutations|21|Attack Bonus - Wisdom 8|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 4,8
+Mutations|22|Attack Bonus - Wis Profi|targets = 6;add = 2;MatchAny = 1;IfPerks = 10
+Mutations|23|Attack Bonus - Wis Expert|targets = 6;add = 2;MatchAny = 1;IfPerks = 11
+Mutations|24|Attack Bonus - Charisma 2|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 5,2
+Mutations|25|Attack Bonus - Charisma 4|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 5,4;ExcludePerks = 16,17
+Mutations|26|Attack Bonus - Charisma 6|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 5,6;ExcludePerks = 17
+Mutations|27|Attack Bonus - Charisma 8|targets = 6;add = 1;MatchAny = 1;IfAttributeEQ = 5,8
+Mutations|28|Attack Bonus - Cha Profi|targets = 6;add = 2;MatchAny = 1;IfPerks = 14
+Mutations|29|Attack Bonus - Cha Expert|targets = 6;add = 2;MatchAny = 1;IfPerks = 15
+Mutations|30|Damage Bonus - Strength 2|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 0,2
+Mutations|31|Damage Bonus - Strength 4|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 0,4;ExcludePerks = 4,5
+Mutations|32|Damage Bonus - Strength 6|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 0,6;ExcludePerks = 5
+Mutations|33|Damage Bonus - Strength 8|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 0,8
+Mutations|34|Damage Bonus - Str Profi|targets = 7;add = 2;MatchAny = 1;IfPerks = 0
+Mutations|35|Damage Bonus - Str Expert|targets = 7;add = 2;MatchAny = 1;IfPerks = 1
+Mutations|36|Damage Bonus - Dexterity 2|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 1,2
+Mutations|37|Damage Bonus - Dexterity 4|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 1,4;ExcludePerks = 6,7
+Mutations|38|Damage Bonus - Dexterity 6|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 1,6;ExcludePerks = 7
+Mutations|39|Damage Bonus - Dexterity 8|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 1,8
+Mutations|40|Damage Bonus - Dex Profi|targets = 7;add = 2;MatchAny = 1;IfPerks = 2
+Mutations|41|Damage Bonus - Dex Expert|targets = 7;add = 2;MatchAny = 1;IfPerks = 3
+Mutations|42|Damage Bonus - Intelligence 2|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 3,2
+Mutations|43|Damage Bonus - Intelligence 4|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 3,4;ExcludePerks = 12,13
+Mutations|44|Damage Bonus - Intelligence 6|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 3,6;ExcludePerks = 13
+Mutations|45|Damage Bonus - Intelligence 8|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 3,8
+Mutations|46|Damage Bonus - Int Profi|targets = 7;add = 2;MatchAny = 1;IfPerks = 8
+Mutations|47|Damage Bonus - Int Expert|targets = 7;add = 2;MatchAny = 1;IfPerks = 9
+Mutations|48|Damage Bonus - Wisdom 2|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 4,2
+Mutations|49|Damage Bonus - Wisdom 4|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 4,4;ExcludePerks = 14,15
+Mutations|50|Damage Bonus - Wisdom 6|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 4,6;ExcludePerks = 15
+Mutations|51|Damage Bonus - Wisdom 8|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 4,8
+Mutations|52|Damage Bonus - Wis Profi|targets = 7;add = 2;MatchAny = 1;IfPerks = 10
+Mutations|53|Damage Bonus - Wis Expert|targets = 7;add = 2;MatchAny = 1;IfPerks = 11
+Mutations|54|Damage Bonus - Charisma 2|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 5,2
+Mutations|55|Damage Bonus - Charisma 4|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 5,4;ExcludePerks = 16,17
+Mutations|56|Damage Bonus - Charisma 6|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 5,6;ExcludePerks = 17
+Mutations|57|Damage Bonus - Charisma 8|targets = 7;add = 1;MatchAny = 1;IfAttributeEQ = 5,8
+Mutations|58|Damage Bonus - Cha Profi|targets = 7;add = 2;MatchAny = 1;IfPerks = 14
+Mutations|59|Damage Bonus - Cha Expert|targets = 7;add = 2;MatchAny = 1;IfPerks = 15
+Mutations|60|Armor Class - Dexterity 2|targets = 8;add = 1;MatchAny = 1;IfAttributeEQ = 1,2
+Mutations|61|Armor Class - Dexterity 4|targets = 8;add = 1;MatchAny = 1;IfAttributeEQ = 1,4;ExcludePerks = 6,7
+Mutations|62|Armor Class - Dexterity 6|targets = 8;add = 1;MatchAny = 1;IfAttributeEQ = 1,6;ExcludePerks = 7
+Mutations|63|Armor Class - Dexterity 8|targets = 8;add = 1;MatchAny = 1;IfAttributeEQ = 1,8
+Mutations|64|Armor Class - Dex Profi|targets = 8;add = 2;MatchAny = 1;IfPerks = 2
+Mutations|65|Armor Class - Dex Expert|targets = 8;add = 2;MatchAny = 1;IfPerks = 3
+Mutations|66|Armor|targets = 8;add = 3;matchany = 1;IfItemsEQ = 833101
+Mutations|67|Armor Mod1|targets = 60,61;setvalue = 0;matchany = 1;IfItemsEQ = 833101
+Mutations|68|Armor|targets = 8;add = 5;matchany = 1;IfItemsEQ = 833126
+Mutations|69|Armor Mod1|targets = 62,63,64,65;setvalue = 0;matchany = 1;IfItemsEQ = 833126
+Mutations|70|Armor|targets = 8;add = 8;matchany = 1;IfItemsEQ = 833151
+Mutations|71|Armor Mod2|targets = 60,61,62,63,64,65;setvalue = 0;matchany = 1;IfItemsEQ = 833151
+
+PerkDef|0|Strength Proficiency
+PerkDef|1|Strength Expertise
+PerkDef|2|Dexterity Proficiency
+PerkDef|3|Dexterity Expertise
+PerkDef|4|Constitution Proficiency
+PerkDef|5|Constitution Expertise
+PerkDef|6|Strength Proficiency 6
+PerkDef|7|Strength Proficiency 8
+PerkDef|8|Intelligence Proficiency
+PerkDef|9|Intelligence Expertise
+PerkDef|10|Wisdom Proficiency
+PerkDef|11|Wisdom Expertise
+PerkDef|12|Intelligence Proficiency 6
+PerkDef|13|Intelligence Proficiency 8
+PerkDef|14|Charisma Proficiency
+PerkDef|15|Charisma Expertise
+PerkDef|16|Charisma Proficiency 6
+PerkDef|17|Charisma Proficiency 8
+PerkDef|18|Wisdom Proficiency 6
+PerkDef|19|Wisdom Proficiency 8
+
+--- END EXPORT ---
+
+=== IMPLEMENTATION NOTES ===
+
+Armor Examples:
+- 833101 = Studded Leather (+3 AC, Light Armor, full DEX bonus)
+- 833126 = Half Plate (+5 AC, Medium Armor, DEX bonus capped at +2)
+- 833151 = Full Plate (+8 AC, Heavy Armor, no DEX bonus)
+
+The mutator exclusion system ensures correct behavior:
+- Light armor: Mutators 60-65 apply (all DEX bonuses)
+- Medium armor: Mutator 69 excludes 62-65, allowing only +2 DEX
+- Heavy armor: Mutator 71 excludes all DEX bonuses (60-65)
+
+Proficiency vs Expertise:
+- Proficiency: +2 bonus to stat
+- Expertise: Additional +2 bonus (total +4)
+- Expertise perks should require proficiency perks as prerequisites
+
+Attribute Point Allocation Strategy:
+- Even numbers (2,4,6,8) give +1 per 2 points
+- Odd numbers waste points (5 gets same bonus as 4)
+- This matches D&D 5e's modifier progression
+
+=== END OF DOCUMENT ===

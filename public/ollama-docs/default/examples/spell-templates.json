@@ -1,0 +1,150 @@
+{
+  "comment": "Example spell/ability templates demonstrating balanced design",
+  "templates": [
+    {
+      "name": "Basic Attack",
+      "tier": "cantrip",
+      "cost": 0,
+      "cooldown": 0,
+      "damage": "1d6",
+      "targets": "single",
+      "range": "melee",
+      "description": "Standard melee attack. No cost, always available. Baseline for comparison.",
+      "designNotes": "Cantrips should deal ~1d6 damage for single-target. This is the baseline all other abilities are measured against."
+    },
+    {
+      "name": "Power Strike",
+      "tier": "common",
+      "cost": 10,
+      "cooldown": 0,
+      "damage": "2d6+4",
+      "targets": "single",
+      "range": "melee",
+      "description": "A powerful melee strike dealing extra damage.",
+      "designNotes": "Common abilities cost 10-20 resources and deal 2-3x cantrip damage. Avg damage: 11 vs cantrip's 3.5 = 3.1x multiplier."
+    },
+    {
+      "name": "Fireball",
+      "tier": "uncommon",
+      "cost": 30,
+      "cooldown": 0,
+      "damage": "3d6",
+      "targets": "3-5 enemies (AOE)",
+      "range": "30 feet",
+      "description": "Classic AOE fire spell hitting multiple targets.",
+      "designNotes": "AOE abilities hit 3-5 targets for 60-70% per-target damage. Total potential: 3d6 × 3 = 31.5, single-target equivalent would be ~45 damage. Balanced by setup and miss risk."
+    },
+    {
+      "name": "Healing Touch",
+      "tier": "common",
+      "cost": 15,
+      "cooldown": 0,
+      "healing": "2d6+3",
+      "targets": "single ally",
+      "range": "touch",
+      "description": "Restore health to an ally.",
+      "designNotes": "Healing should cost 1.5x what damage costs (to prevent stalemate). Avg heal: 10. Equivalent damage ability would cost ~10. 15 = 10 × 1.5."
+    },
+    {
+      "name": "Stun Strike",
+      "tier": "major",
+      "cost": 45,
+      "cooldown": 0,
+      "damage": "1d6",
+      "effect": "Stun for 1 turn",
+      "targets": "single",
+      "range": "melee",
+      "description": "Strike that stuns the enemy, preventing their next action.",
+      "designNotes": "Hard CC (stun) is worth ~10 budget per turn. Low damage (3.5 avg) + 1-turn stun (10 value) = 13.5 total value. Cost 45 is appropriate for major tier."
+    },
+    {
+      "name": "Poison Dart",
+      "tier": "common",
+      "cost": 15,
+      "cooldown": 0,
+      "damage": "1d4 immediate",
+      "dot": "1d4 per turn for 4 turns",
+      "targets": "single",
+      "range": "40 feet",
+      "description": "Ranged attack that deals damage over time.",
+      "designNotes": "Total damage: 2.5 immediate + (2.5 × 4) = 12.5 damage. Direct damage ability would deal ~18 for same cost. DOT is 70% as efficient but bypasses some defenses."
+    },
+    {
+      "name": "Shield Bash",
+      "tier": "common",
+      "cost": 12,
+      "cooldown": 0,
+      "damage": "1d6+2",
+      "effect": "Push enemy 10 feet back",
+      "targets": "single",
+      "range": "melee",
+      "description": "Bash with shield, dealing damage and pushing enemy away.",
+      "designNotes": "Minor CC (knockback) worth ~2-3 budget. Damage (avg 5.5) + knockback = decent value for 12 cost."
+    },
+    {
+      "name": "Meteor Strike",
+      "tier": "legendary",
+      "cost": 100,
+      "cooldown": 10,
+      "damage": "8d6",
+      "targets": "6+ enemies (large AOE)",
+      "range": "60 feet",
+      "description": "Massive AOE fire damage from above.",
+      "designNotes": "Ultimate ability. High cost + long cooldown. Avg 28 damage × 6 targets = 168 total potential. Single-target equivalent would be ~180-200 damage."
+    },
+    {
+      "name": "Berserker Rage",
+      "tier": "major",
+      "cost": 40,
+      "cooldown": 0,
+      "effect": "+100% damage for 3 turns, +50% damage taken",
+      "targets": "self",
+      "range": "self",
+      "description": "Enter a rage, doubling damage but taking more damage.",
+      "designNotes": "High-risk, high-reward. Extra damage over 3 turns (+100% = 3 extra attacks worth ~10 damage each = 30 value). Taking +50% damage is risky but balanced by offense."
+    },
+    {
+      "name": "Stealth",
+      "tier": "uncommon",
+      "cost": 25,
+      "cooldown": 0,
+      "effect": "Become invisible for 2 turns or until you attack",
+      "targets": "self",
+      "range": "self",
+      "description": "Become invisible, avoiding detection and attacks.",
+      "designNotes": "Utility ability. Value is contextual (escape, positioning, surprise). Moderate cost for strong tactical value."
+    },
+    {
+      "name": "Life Drain",
+      "tier": "major",
+      "cost": 50,
+      "cooldown": 0,
+      "damage": "4d6",
+      "healing": "2d6 to self",
+      "targets": "single enemy",
+      "range": "30 feet",
+      "description": "Dark magic that damages enemy and heals caster.",
+      "designNotes": "Damage (avg 14) + healing (avg 7) = 21 total value. Premium cost (50) for versatility and sustain."
+    },
+    {
+      "name": "Chain Lightning",
+      "tier": "rare",
+      "cost": 60,
+      "cooldown": 0,
+      "damage": "5d6 to first target, 3d6 to second, 2d6 to third",
+      "targets": "3 enemies (chained)",
+      "range": "40 feet",
+      "description": "Lightning that jumps between enemies, dealing less to each subsequent target.",
+      "designNotes": "Creative AOE design. Total: 17.5 + 10.5 + 7 = 35 damage across 3 targets. Interesting mechanic with positioning strategy."
+    }
+  ],
+  "designPrinciples": {
+    "damageScaling": "Tier 0 (cantrip): 1d4-1d6, Tier 1 (common): 2d6-3d6, Tier 2 (uncommon): 3d6-5d6, Tier 3 (rare): 5d6-8d6, Tier 4 (legendary): 8d6-12d6",
+    "costScaling": "Cantrip: 0-5, Common: 10-20, Uncommon: 25-40, Rare: 45-70, Legendary: 75-150",
+    "aoeMultiplier": "AOE abilities deal 60-70% damage per target compared to single-target",
+    "dotEfficiency": "Damage over time totals to 70-80% of equivalent direct damage",
+    "healingCost": "Healing costs 1.5x what equivalent damage costs",
+    "ccValue": "1 turn of hard CC (stun) is worth ~10 power budget, soft CC worth ~5 budget",
+    "riskReward": "Risky abilities should have expected value equal to safe alternatives"
+  }
+}

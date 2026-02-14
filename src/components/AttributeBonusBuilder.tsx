@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 
 import type { SchemaData } from '@/models/schema';
+import { str } from '@/utils/rprHelpers';
 
 type Option = { value: number; label: string };
 
@@ -12,10 +13,6 @@ type Props = {
   onChange: (next: string) => void;
   addButtonLabel?: string;
 };
-
-function str(value: unknown): string {
-  return value === undefined || value === null ? '' : String(value);
-}
 
 function attributeOptions(allData: SchemaData): Option[] {
   const skills = Array.isArray(allData.SkillDef) ? (allData.SkillDef as Array<Record<string, unknown>>) : [];
@@ -75,10 +72,15 @@ export default function AttributeBonusBuilder({
   const opts = useMemo(() => attributeOptions(allData), [allData]);
   const entries = useMemo(() => parseBonusText(str(value)), [value]);
 
+  // UI-only state for value inputs. We keep the canonical data in `value`.
+  const [editingMultText, setEditingMultText] = useState<Record<number, string>>({});
+  const [clearedMultOnce, setClearedMultOnce] = useState<Record<number, boolean>>({});
+
   // State for the "add new" row
   const [isAdding, setIsAdding] = useState(false);
   const [draftAttrId, setDraftAttrId] = useState<number>(0);
-  const [draftMult, setDraftMult] = useState<number>(1.0);
+  const [draftMultText, setDraftMultText] = useState<string>('1.0');
+  const [draftMultClearedOnce, setDraftMultClearedOnce] = useState<boolean>(false);
 
   const baseInput =
     'rounded-md border theme-border-muted theme-bg-input px-3 py-2 text-sm theme-text placeholder-current theme-text-muted focus:outline-none theme-ring';
@@ -96,13 +98,16 @@ export default function AttributeBonusBuilder({
 
   const startAdding = () => {
     setDraftAttrId(opts[0]?.value ?? 0);
-    setDraftMult(1.0);
+    setDraftMultText('1.0');
+    setDraftMultClearedOnce(false);
     setIsAdding(true);
   };
 
   const confirmAdd = () => {
     if (!draftAttrId) return;
-    const nextEntries = entries.concat([{ attrId: draftAttrId, mult: draftMult }]);
+    const parsed = Number(draftMultText);
+    if (!Number.isFinite(parsed)) return;
+    const nextEntries = entries.concat([{ attrId: draftAttrId, mult: parsed }]);
     onChange(formatBonusText(nextEntries));
     setIsAdding(false);
   };
@@ -137,8 +142,35 @@ export default function AttributeBonusBuilder({
                 className={`${baseInput} w-20`}
                 type="number"
                 step="0.1"
-                value={String(e.mult)}
-                onChange={(ev) => updateEntry(idx, { ...e, mult: Number(ev.target.value || 1.0) })}
+                value={Object.prototype.hasOwnProperty.call(editingMultText, idx) ? editingMultText[idx]! : String(e.mult)}
+                onFocus={() => {
+                  const alreadyCleared = clearedMultOnce[idx] === true;
+                  if (alreadyCleared) return;
+                  const isDefault = Number(e.mult) === 1.0;
+                  if (isDefault) {
+                    setEditingMultText((prev) => ({ ...prev, [idx]: '' }));
+                    setClearedMultOnce((prev) => ({ ...prev, [idx]: true }));
+                  }
+                }}
+                onBlur={() => {
+                  const raw = editingMultText[idx];
+                  if (raw === undefined) return;
+                  const parsed = Number(raw);
+                  if (raw.trim() === '' || !Number.isFinite(parsed)) {
+                    setEditingMultText((prev) => {
+                      const next = { ...prev };
+                      delete next[idx];
+                      return next;
+                    });
+                  }
+                }}
+                onChange={(ev) => {
+                  const raw = ev.target.value;
+                  setEditingMultText((prev) => ({ ...prev, [idx]: raw }));
+                  const parsed = Number(raw);
+                  if (raw.trim() === '' || !Number.isFinite(parsed)) return;
+                  updateEntry(idx, { ...e, mult: parsed });
+                }}
               />
               <button
                 type="button"
@@ -175,13 +207,29 @@ export default function AttributeBonusBuilder({
                 className={`${baseInput} w-20`}
                 type="number"
                 step="0.1"
-                value={String(draftMult)}
-                onChange={(e) => setDraftMult(Number(e.target.value || 1.0))}
+                value={draftMultText}
+                onFocus={() => {
+                  if (draftMultClearedOnce) return;
+                  const parsed = Number(draftMultText);
+                  const isDefault = draftMultText.trim() === '1.0' || draftMultText.trim() === '1' || parsed === 1.0;
+                  if (isDefault) {
+                    setDraftMultText('');
+                    setDraftMultClearedOnce(true);
+                  }
+                }}
+                onBlur={() => {
+                  const parsed = Number(draftMultText);
+                  if (draftMultText.trim() === '' || !Number.isFinite(parsed)) {
+                    setDraftMultText('1.0');
+                    setDraftMultClearedOnce(false);
+                  }
+                }}
+                onChange={(e) => setDraftMultText(e.target.value)}
               />
               <button
                 type="button"
                 onClick={confirmAdd}
-                disabled={!draftAttrId}
+                disabled={!draftAttrId || !Number.isFinite(Number(draftMultText))}
                 className="rounded-md theme-bg-accent px-3 py-1.5 text-sm font-medium theme-text-accent-on hover:theme-bg-accent-hover disabled:opacity-50"
               >
                 Add

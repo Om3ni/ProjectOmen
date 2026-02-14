@@ -8,12 +8,18 @@ import TopMenuBar from '@/components/TopMenuBar';
 import CategoryTabs from '@/components/CategoryTabs';
 import RecordListSidebar from '@/components/RecordListSidebar';
 import RawModal from '@/components/RawModal';
+import FormulaEditorModal from '@/components/FormulaEditorModal';
 import { getElectron } from '@/types/electron';
 import CharacterSheetModal from '@/components/CharacterSheetModal';
+import type { PersistedCharacterSheetStateV1 } from '@/components/CharacterSheetModal';
 import HelpPanel from '@/components/HelpPanel';
 import { SettingsModal } from '@/components/SettingsModal';
 import { SetupGuideModal } from '@/components/SetupGuideModal';
 import { ChatPanel } from '@/components/chat';
+import { PanelShell } from '@/components/panels';
+import { usePanelManager } from '@/hooks/usePanelManager';
+import { RecentChangesPanel } from '@/components/OllamaPreviewPanel';
+import { useRecentChanges, type RecentChange } from '@/contexts/PendingChangesContext';
 
 import { AttributesLayout, DiceSystemLayout, SkillsLayout, StatsLayout } from '@/layouts';
 import { getAdapter } from '@/services/PlatformAdapter';
@@ -23,6 +29,8 @@ import { SettingsService } from '@/services/SettingsService';
 
 export default function SchemaDataEditorPage() {
   const state = useEditorState();
+  const { schema, data } = state;
+  const { addChange } = useRecentChanges();
 
   const isDesktop = useMemo(() => isElectron(), []);
 
@@ -34,11 +42,94 @@ export default function SchemaDataEditorPage() {
   const [rawInitialText, setRawInitialText] = useState('');
 
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [sheetPoppedOut, setSheetPoppedOut] = useState(false);
+  const [sheetPersistedState, setSheetPersistedState] = useState<PersistedCharacterSheetStateV1 | null>(null);
   const [aboutOpen, setAboutOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [formulaCalcOpen, setFormulaCalcOpen] = useState(false);
   const [setupGuideOpen, setSetupGuideOpen] = useState(false);
-  const [chatOpen, setChatOpen] = useState(false);
+  const [panelState, panelActions] = usePanelManager({ chat: { mode: 'hidden' } });
+  const chatPanel = panelState.chat;
   const [wipUnlocked, setWipUnlocked] = useState(() => SettingsService.isWipUnlocked());
+
+  // Handle undo for recent changes
+  const handleUndo = useCallback((change: RecentChange) => {
+    if (!data) return;
+
+    const { type, table, data: recordData, previousData } = change;
+
+    switch (type) {
+      case 'create': {
+        // Remove the created record from the table
+        const tableRecords = data[table] || [];
+        const filteredRecords = tableRecords.filter((r: any) => r.ID !== recordData.ID);
+        state.setTableRows(table, filteredRecords);
+        console.log(`[Undo] Removed created record ${recordData.ID} from ${table}`);
+        break;
+      }
+
+      case 'update': {
+        // Restore previous values
+        if (!previousData) {
+          console.error('[Undo] No previous data for update operation');
+          return;
+        }
+        const tableRecords = data[table] || [];
+        const updatedRecords = tableRecords.map((r: any) =>
+          r.ID === recordData.ID ? { ...r, ...previousData } : r
+        );
+        state.setTableRows(table, updatedRecords);
+        console.log(`[Undo] Restored previous values for ${recordData.ID} in ${table}`);
+        break;
+      }
+
+      case 'delete': {
+        // Re-add the deleted record
+        if (!previousData) {
+          console.error('[Undo] No previous data for delete operation');
+          return;
+        }
+        const tableRecords = data[table] || [];
+        const restoredRecords = [...tableRecords, previousData];
+        state.setTableRows(table, restoredRecords);
+        console.log(`[Undo] Restored deleted record ${previousData.ID} to ${table}`);
+        break;
+      }
+    }
+  }, [data, state]);
+
+  const RPR_CHAR_LIMIT = 400_000;
+  const [rprCharCount, setRprCharCount] = useState(0);
+
+  // Debounced: exporting can be moderately expensive on every keystroke.
+  useEffect(() => {
+    if (!schema || !data) {
+      setRprCharCount(0);
+      return;
+    }
+
+    const handle = window.setTimeout(() => {
+      try {
+        const text = exportSchemaDataToRprText(schema, data);
+        setRprCharCount(text.length);
+      } catch {
+        // ignore export errors; size meter is best-effort
+      }
+    }, 250);
+
+    return () => {
+      window.clearTimeout(handle);
+    };
+  }, [schema, data]);
+
+  const rprRatio = useMemo(() => {
+    if (RPR_CHAR_LIMIT <= 0) return 0;
+    return Math.max(0, rprCharCount / RPR_CHAR_LIMIT);
+  }, [rprCharCount]);
+
+  const rprPercent = useMemo(() => Math.min(100, Math.round(rprRatio * 100)), [rprRatio]);
+  const rprWarn = rprRatio >= 0.95;
+  const rprOver = rprRatio >= 1;
 
   // Open Raw editor - in Electron opens a separate window, in browser opens modal
   const openRawForCategory = useCallback(async (cat: RprCategory) => {
@@ -92,8 +183,6 @@ export default function SchemaDataEditorPage() {
   }, [state, isDesktop]);
 
   const {
-    schema,
-    data,
     schemaVersion,
     tooltips,
     error,
@@ -114,6 +203,7 @@ export default function SchemaDataEditorPage() {
     setTableRows,
     reorderFilteredRows,
     addRecord,
+    cloneSelectedRecord,
     deleteSelected,
     newFile,
     requestLoadFile,
@@ -140,7 +230,8 @@ export default function SchemaDataEditorPage() {
 
     const handle = window.setTimeout(() => {
       try {
-        electron?.send?.('sheet:update', { data });
+        const settings = SettingsService.load();
+        electron?.send?.('sheet:update', { data, settings });
       } catch {
         // ignore
       }
@@ -148,6 +239,32 @@ export default function SchemaDataEditorPage() {
 
     return () => {
       window.clearTimeout(handle);
+    };
+  }, [isDesktop, data]);
+
+  // Desktop: also push settings updates to the Character Sheet window.
+  useEffect(() => {
+    if (!isDesktop) return;
+    if (!data) return;
+
+    const electron = getElectron();
+    if (!electron?.send) return;
+
+    const onSettingsChanged = () => {
+      try {
+        const settings = SettingsService.load();
+        electron?.send?.('sheet:update', { data, settings });
+      } catch {
+        // ignore
+      }
+    };
+
+    window.addEventListener('project-omen:settings-changed', onSettingsChanged as EventListener);
+    window.addEventListener('storage', onSettingsChanged);
+
+    return () => {
+      window.removeEventListener('project-omen:settings-changed', onSettingsChanged as EventListener);
+      window.removeEventListener('storage', onSettingsChanged);
     };
   }, [isDesktop, data]);
 
@@ -191,9 +308,11 @@ export default function SchemaDataEditorPage() {
             try {
               const { getElectron } = await import('@/types/electron');
               const electron = getElectron();
-              const result = await electron?.sheetWindow?.open?.({ data }) as { success: boolean; reused?: boolean } | undefined;
+              const settings = SettingsService.load();
+              const result = await electron?.sheetWindow?.open?.({ data, settings }) as { success: boolean; reused?: boolean } | undefined;
               console.log('[SchemaDataEditorPage] sheetWindow.open result:', result);
               if (result?.success) {
+                setSheetPoppedOut(true);
                 return;
               }
               console.warn('[SchemaDataEditorPage] sheetWindow.open failed, falling back to modal');
@@ -203,6 +322,10 @@ export default function SchemaDataEditorPage() {
             }
           }
           setSheetOpen(true);
+          return;
+        }
+        if (command === 'tools:formula') {
+          setFormulaCalcOpen(true);
           return;
         }
         if (command === 'help:about') {
@@ -218,7 +341,7 @@ export default function SchemaDataEditorPage() {
           return;
         }
         if (command === 'tools:chat') {
-          setChatOpen((prev) => !prev);
+          panelActions.toggle('chat');
           return;
         }
         if (command === 'tools:discord-backup') {
@@ -285,6 +408,30 @@ export default function SchemaDataEditorPage() {
     setError,
   ]);
 
+  // Desktop: keep the character sheet child window in sync with the latest schema data.
+  // Otherwise, the sheet window only receives a one-time init payload, and edits won't
+  // reflect until the user reopens the sheet or re-imports exported data.
+  useEffect(() => {
+    if (!isDesktop) return;
+    if (!sheetPoppedOut) return;
+    if (!data) return;
+
+    const electron = getElectron();
+    if (!electron?.sheetWindow?.update) return;
+
+    const handle = window.setTimeout(() => {
+      try {
+        electron.sheetWindow?.update?.({ data });
+      } catch {
+        // ignore
+      }
+    }, 250);
+
+    return () => {
+      window.clearTimeout(handle);
+    };
+  }, [isDesktop, sheetPoppedOut, data]);
+
   // Listen for raw editor apply results from child window
   useEffect(() => {
     if (!isDesktop) return;
@@ -313,29 +460,45 @@ export default function SchemaDataEditorPage() {
     };
   }, [isDesktop, applyRawToSelection, applyRawToAll, setError]);
 
+  // Global hotkey: Ctrl+Delete deletes the selected record regardless of focus.
+  useEffect(() => {
+    const onKeyDown = (e: globalThis.KeyboardEvent) => {
+      const key = String(e.key ?? '');
+      if (!e.ctrlKey) return;
+      if (key !== 'Delete') return;
+      if (e.repeat) return;
+      if (!selected) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+      deleteSelected();
+    };
+
+    window.addEventListener('keydown', onKeyDown, true);
+    return () => window.removeEventListener('keydown', onKeyDown, true);
+  }, [deleteSelected, selected]);
+
   return (
     <div className="h-full overflow-hidden theme-bg-base theme-text flex">
       {/* Main content area */}
-      <div className="flex-1 flex flex-col min-w-0">
+      <div className="flex-1 flex flex-col min-w-0 pb-10">
       {!isDesktop ? (
         <TopMenuBar
         schema={schema}
         data={data}
         schemaVersion={schemaVersion}
         tooltips={tooltips}
-        activeCategory={activeCategory}
         activeTable={activeView.table}
         filteredRowsCount={filteredRows.length}
         fileInputRef={fileInputRef}
         onNewFile={newFile}
         onLoadFile={requestLoadFile}
         onLoadFileSelected={onLoadFileSelected}
-        onOpenRawAll={openRawAll}
-        onOpenRawForCategory={openRawForCategory}
         onOpenCharacterSheet={() => setSheetOpen(true)}
+        onOpenFormulaCalculator={() => setFormulaCalcOpen(true)}
         onOpenSettings={() => setSettingsOpen(true)}
-        onToggleChat={() => setChatOpen((prev) => !prev)}
-        chatOpen={chatOpen}
+        onToggleChat={() => panelActions.toggle('chat')}
+        chatOpen={chatPanel.mode !== 'hidden'}
         onError={setError}
         wipUnlocked={wipUnlocked}
         />
@@ -349,6 +512,8 @@ export default function SchemaDataEditorPage() {
             onCategoryChange={setActiveCategory}
             columnCount={tableSchema?.columns?.length ?? 0}
             tableCount={schema ? Object.keys(schema.tables ?? {}).length : 0}
+            onImportExport={openRawAll}
+            onImportExportCategory={() => openRawForCategory(activeCategory)}
           />
         </div>
       </div>
@@ -383,6 +548,15 @@ export default function SchemaDataEditorPage() {
               </button>
               <button
                 type="button"
+                onClick={cloneSelectedRecord}
+                className="rounded-md border theme-border theme-bg-input px-3 py-2 text-sm theme-text-secondary hover:theme-bg-surface"
+                disabled={!schema || !data || !tableSchema || !selected}
+                title={!selected ? 'Select a record to clone' : 'Clone selected record'}
+              >
+                Clone
+              </button>
+              <button
+                type="button"
                 onClick={deleteSelected}
                 className="rounded-md border theme-border-danger theme-bg-danger px-3 py-2 text-sm theme-text-danger hover:theme-bg-danger-hover"
                 disabled={!selected}
@@ -396,11 +570,11 @@ export default function SchemaDataEditorPage() {
                 rows={filteredRows}
                 selectedIndex={selectedIndex}
                 onSelect={setSelectedIndex}
+                onDeleteSelected={deleteSelected}
                 title={String(activeCategory)}
                 enableFilter={true}
                 filterPlaceholder={`Search ${String(activeCategory).toLowerCase()}…`}
-                groupBy={activeCategory === 'Perks' || activeCategory === 'Abilities' ? 'Category' : undefined}
-                onReorder={activeCategory === 'Perks' || activeCategory === 'Abilities' ? undefined : reorderFilteredRows}
+                onReorder={reorderFilteredRows}
               />
 
               <main className="rounded-lg border theme-border theme-bg-muted overflow-auto">
@@ -486,6 +660,7 @@ export default function SchemaDataEditorPage() {
                         />
                       ) : activeView.table === 'Stat' && activeCategory === 'Stats' ? (
                         <StatsLayout
+                          key={`${activeView.table}:${selected.ID ?? selectedIndex}`}
                           tableSchema={tableSchema}
                           record={selected}
                           allData={data}
@@ -517,18 +692,26 @@ export default function SchemaDataEditorPage() {
       </div>
       </div>
 
-      {/* Chat Sidebar */}
-      {chatOpen && (
+      {/* Chat Panel */}
+      <PanelShell
+        title="Chat"
+        mode={chatPanel.mode}
+        onPopout={() => panelActions.popout('chat')}
+        onHide={() => panelActions.hide('chat')}
+      >
         <ChatPanel
-          className="w-[380px] flex-shrink-0"
-          onClose={() => setChatOpen(false)}
-          onPopOut={() => {
-            // Open chat in new window
-            const url = `${window.location.origin}${window.location.pathname}?chat=1`;
-            window.open(url, 'project-omen-chat', 'width=420,height=600,menubar=no,toolbar=no');
-            setChatOpen(false);
-          }}
-          schemaData={data ?? undefined}
+          className="flex-1 min-h-0"
+          editorState={state}
+          recentChangesHandler={addChange}
+        />
+      </PanelShell>
+
+      {formulaCalcOpen && (
+        <FormulaEditorModal
+          label="Formula Calculator"
+          value=""
+          onApply={() => {}}
+          onClose={() => setFormulaCalcOpen(false)}
         />
       )}
 
@@ -549,6 +732,8 @@ export default function SchemaDataEditorPage() {
         <CharacterSheetModal
           data={data}
           onClose={() => setSheetOpen(false)}
+          persistedState={sheetPersistedState}
+          onPersistedStateChange={setSheetPersistedState}
         />
       ) : null}
 
@@ -589,8 +774,8 @@ export default function SchemaDataEditorPage() {
             const nowUnlocked = SettingsService.isWipUnlocked();
             setWipUnlocked(nowUnlocked);
             // Close chat if WIP was locked
-            if (!nowUnlocked && chatOpen) {
-              setChatOpen(false);
+            if (!nowUnlocked && chatPanel.mode !== 'hidden') {
+              panelActions.hide('chat');
             }
           }}
           wipPasswordHash={schema?.wipPassword}
@@ -606,6 +791,51 @@ export default function SchemaDataEditorPage() {
           }}
         />
       ) : null}
+
+      {/* RPR size meter */}
+      {schema && data ? (
+        <div className="fixed bottom-0 left-0 right-0 z-40 border-t theme-border theme-bg-base">
+          <div className="px-4 py-2 flex items-center gap-3">
+            <div className="flex-1">
+              <div className="h-2 w-full rounded theme-bg-muted overflow-hidden">
+                <div
+                  className={
+                    rprOver
+                      ? 'h-full bg-rose-600'
+                      : rprWarn
+                        ? 'h-full bg-amber-500'
+                        : 'h-full bg-[var(--accent-primary)]'
+                  }
+                  style={{ width: `${Math.min(100, Math.max(0, rprPercent))}%` }}
+                />
+              </div>
+            </div>
+
+            <div className="text-xs whitespace-nowrap theme-text-secondary">
+              RPR size: <span className="font-mono theme-text">{rprCharCount.toLocaleString()}</span> /{' '}
+              <span className="font-mono">{RPR_CHAR_LIMIT.toLocaleString()}</span> ({rprPercent}%)
+            </div>
+
+            {rprWarn ? (
+              <div
+                className={
+                  rprOver
+                    ? 'text-xs font-semibold text-rose-300 whitespace-nowrap'
+                    : 'text-xs font-semibold text-amber-300 whitespace-nowrap'
+                }
+                title="RPR has a 400,000 character save limit. Consider baking into a mod if you exceed it."
+              >
+                {rprOver
+                  ? 'Over limit: RPR save will be rejected'
+                  : 'Warning: near 400k — may need mod'}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      ) : null}
+
+      {/* Recent Changes Panel */}
+      <RecentChangesPanel onUndo={handleUndo} />
     </div>
   );
 }

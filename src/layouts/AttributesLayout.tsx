@@ -1,4 +1,5 @@
 import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 import FieldEditor from '@/components/FieldEditor';
 import DescriptionField from '@/components/DescriptionField';
 
@@ -9,14 +10,6 @@ type Props = {
   onChange: (next: Record<string, unknown>) => void;
   allowIdEdit?: boolean;
 };
-
-function col(schema: TableSchema, name: string) {
-  return schema.columns.find((c) => c.name === name);
-}
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
 
 /**
  * Layout for Attributes (SkillDef where TypeFlag = 't').

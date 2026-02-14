@@ -1,4 +1,5 @@
 import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 import FieldEditor from '@/components/FieldEditor';
 import DescriptionField from '@/components/DescriptionField';
 
@@ -9,14 +10,6 @@ type Props = {
   onChange: (next: Record<string, unknown>) => void;
 };
 
-function col(schema: TableSchema, name: string) {
-  return schema.columns.find((c) => c.name === name);
-}
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
-
 /**
  * Layout for Runes (RuneDef).
  * 
@@ -25,6 +18,7 @@ function str(v: unknown): string {
 export default function RunesLayout({ tableSchema, record, onChange }: Props) {
   const set = (field: string, value: unknown) => onChange({ ...record, [field]: value });
 
+  const nameCol = col(tableSchema, 'Name');
   const gameItemIdCol = col(tableSchema, 'Game Item ID');
   const runeSlotCol = col(tableSchema, 'Rune Slot');
   const broadcastCol = col(tableSchema, 'Broadcast Equip');
@@ -39,6 +33,30 @@ export default function RunesLayout({ tableSchema, record, onChange }: Props) {
 
   return (
     <div className="space-y-4">
+      {/* Row 0: Name (if present in schema) */}
+      {nameCol && (
+        <FieldEditor
+          column={nameCol}
+          value={record.Name}
+          label="Name"
+          onFocus={() => {
+            const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+            const alreadyCleared = record.__autoNameCleared === true;
+            const current = String(record.Name ?? '');
+            if (!alreadyCleared && autoName && current === autoName) {
+              onChange({ ...record, Name: '', __autoNameCleared: true });
+            }
+          }}
+          onChange={(v) => {
+            const nextRecord: Record<string, unknown> = { ...record, Name: v, __autoNameCleared: true };
+            const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+            const nextName = String(v ?? '');
+            if (autoName && nextName !== autoName) delete nextRecord.__autoName;
+            onChange(nextRecord);
+          }}
+        />
+      )}
+
       {/* Row 1: Game Item ID */}
       {gameItemIdCol && (
         <FieldEditor

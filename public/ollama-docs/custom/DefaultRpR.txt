@@ -1,0 +1,394 @@
+DiceConfig|177|15|25|6|6|0|t|3|5|0|0|-3|3|-3|3|-3|3|t|t|3
+DiceRules|0|1|20|1|20|f|f
+Gear|f|t|t|t|t|t|0
+SkillDef|t|1|Body|Body measures your physical strength, health and resiliency.&brk;It affects your athletic and combat prowess, you ability to recover from poisons and diseases, and things of that nature.|f|-1||0|t|0
+SkillDef|t|2|Agility|Agility measures things like hand-eye coordination, flexibility, nimbleness, and balance. &brk;Agility is the most important in non-combat situations, such as sneaking quietly past guards or smoothly lifting a coin purse from its rightful owner.|f|-1||0|t|0
+SkillDef|t|3|Mind|The control of mind measures control over your body, mental resilience, attention to detail, and your ability to draw logical conclusions.|f|-1||0|t|0
+SkillDef|t|4|Charisma|Charisma is your force of personality, the persuasiveness and charm you can call on to get people to do what you want without having to go to the trouble of pulling Truncheon out.|f|-1||0|t|0
+SkillDef|f|5|Athletics|Measures your all-around ability to use your body. &brk;Balance, running, swimming, jumping, acrobatics, etc.|f|-1|1*1.0|0|t|0
+SkillDef|f|8|Fortitude|Measures your ability to stand up to physical punishment or attacks against your vitality and health. Use this to resist the effects of spells that directly affect your body, alcohol, drugs, posions, etc.|f|3|1*1.0|0|t|0
+SkillDef|f|9|Escape Artist|Escape Artist measures the character’s ability to escape from bindings by using body contortion and manual dexterity.&brk;Use this skill against your captor’s Use Rope skill.|f|-1|2*1.0|0|t|0
+SkillDef|f|10|Locksmith|This skill covers building, repairing, and opening mechanical locks.|t|-1|2*1.0|0|f|0
+SkillDef|f|108|Reflex|Measures your ability evade area attacks and unexpected situations.|f|3|2*1.0|0|t|0
+SkillDef|f|11|Sleight of Hand|Sleight of Hand is a skill that gives a character the ability to snag, hide, and pass off small objects.&brk;Use it to pick pockets, conceal small items, poison someone’s drink, etc.&brk;Roll against the opponent’s Perception skill.|t|-1|2*1.0|0|f|0
+SkillDef|f|12|Stealth|Need to get where you’re not supposed to be? This skill allows you to remain inconspicuous in various situations. &brk;Roll against your opponent’s Perception skill.|f|-1|2*1.0|0|t|0
+SkillDef|f|13|Use Rope|Most tasks with a rope are relatively simple. Use this skill to tie knots, secure grappling hooks, bind other characters, etc.&brk;To escape from your bindings, your captive may roll Escape Artist against your Use Rope check.|f|-1|2*1.0|10|t|0
+SkillDef|f|35|Alchemy|This skill provides a bonus for identifying and mixing various non-magical substances with relatively predictable results. Acids, itching powders, toxins, etc. are just a few of the possible results.&brk;Roll this skill against your opponent’s Toxin Resistance skill to determine how effective your potions and poisons are.|f|-1|3*1.0|0|t|0
+SkillDef|f|15|First Aid|Measures your ability to provide emergency medical assistance similar to that of a paramedic. This skill may be used to stabilize wounds and prevent characters from dying.|t|-1|3*1.0|0|t|0
+SkillDef|f|14|Forgery|Forgery is used to produce counterfeit items or alter existing items to a specific purpose, as well as detect such items.&brk;Roll your Forgery skill against the Forgery skill of your opponent to determine if the item in question passes off as authentic.|f|-1|3*1.0|0|t|0
+SkillDef|f|23|Medicine|Medicine can also be used to perform advanced medical procedures such as surgeries. It includes long-term medical support for disease and illness, and the skill can be used to diagnose a character’s medical condition.|t|-1|3*1.0|0|f|0
+SkillDef|f|16|Perception|Perception refers to the ability to spot anomalies in everyday situations. &brk;Use this skill to spot sneaking or disguised characters, Sleight of Hand attempts, etc.|f|-1|3*1.0|0|t|0
+SkillDef|f|17|Spellcasting|The Spellcasting skill permits the character to channel mana into effects known as spells. Spells can be anything you agree to roleplay, such as casting/removing curses, enchanting items, summoning spirits, etc.&brk;Use this against the opponent’s Spell Resistance skill.|t|-1|3*1.0|0|f|0
+SkillDef|f|22|Willpower|Willpower is your character’s desire to push through adversity, to resist exhaustion, and to stay upright after being nailed in the head with a Truncheon.&brk;Willpower may be used to resist Intimidation and interrogation attempts.|f|3|3*1.0|0|t|0
+SkillDef|f|19|Disguise|Disguise covers non-magical forms of masking your identity, including makeup, costumes, and the ability to to manipulate or fool another character during a social encounter.&brk;Use this skill against your opponent’s Perception to see if you arouse suspicion.|f|-1|4*1.0|0|t|0
+SkillDef|f|20|Intimidation|Intimidation is about creating the impression that you are more menacing than another person in order to get them to do what you want. The skill may be applied multiple ways, from negotiation to interrogation.&brk;Roll against the target’s Willpower skill.|f|-1|4*1.0|0|t|0
+SkillDef|f|21|Negotiation|Negotiation governs your ability to apply their charisma, tactics, and knowledge of situational psychology in order to create a better position when making deals, or simply convince someone to do what you want.|f|-1|4*1.0|0|t|0
+PerkDef|66|t|Race: Human||0|Race
+PerkAction|66|14|0|0|Race||0.0
+PerkAction|66|4|1|22|||0.0
+PerkDef|75|t|Race: Cambion||0|Race
+PerkAction|75|14|0|0|Race||0.0
+PerkAction|75|3|0|68|||0.0
+PerkAction|75|6|0|62|||0.0
+PerkAction|75|0|0|17|||0.0
+PerkAction|75|4|1|17|||0.0
+PerkAction|75|13|0|0|Magic School||0.0
+PerkDef|74|t|Race: Half-Giant||0|Race
+PerkAction|74|14|0|0|Race||0.0
+PerkAction|74|3|0|69|||0.0
+PerkAction|74|3|0|70|||0.0
+PerkAction|74|4|2|1|||0.0
+PerkAction|74|4|-2|2|||0.0
+PerkDef|67|t|Class: Warrior||0|Class
+PerkAction|67|14|0|0|Class||0.0
+PerkAction|67|7|4|65|||0.0
+PerkAction|67|7|4|61|||0.0
+PerkDef|68|t|Class: Healer||0|Class
+PerkAction|68|14|0|0|Class||0.0
+PerkAction|68|3|0|75|||0.0
+PerkAction|68|0|0|23|||0.0
+PerkAction|68|7|2|61|||0.0
+PerkAction|68|8|0|122|||0.0
+PerkDef|69|t|Class: Rogue||0|Class
+PerkAction|69|14|0|0|Class||0.0
+PerkAction|69|3|0|74|||0.0
+PerkAction|69|7|2|65|||0.0
+PerkAction|69|7|2|61|||0.0
+PerkAction|69|0|0|10|||0.0
+PerkAction|69|0|0|11|||0.0
+PerkDef|70|t|Class: Sorcerer||0|Class
+PerkAction|70|14|0|0|Class||0.0
+PerkAction|70|3|0|74|||0.0
+PerkAction|70|6|0|62|||0.0
+PerkAction|70|0|0|17|||0.0
+PerkAction|70|13|0|0|Magic School||0.0
+PerkDef|71|t|Class: Layman||0|Class
+PerkAction|71|14|0|0|Class||0.0
+PerkDef|72|f|Vampirism||1|
+PerkAction|72|4|1|12|||0.0
+PerkAction|72|4|1|4|||0.0
+PerkAction|72|7|2|65|||0.0
+PerkAction|72|8|0|120|||0.0
+PerkAction|72|8|0|133|||0.0
+PerkAction|72|8|0|135|||0.0
+PerkDef|134|f|Blood Thrall||1|
+PerkAction|134|7|1|65|||0.0
+PerkAction|134|4|-1|22|||0.0
+PerkDef|142|f|Blood Thrall: Withdrawal|You have not been fed Vampire blood for a while and are suffering from severe withdrawal symptoms.|1|
+PerkAction|142|4|-2|1|||0.0
+PerkAction|142|4|-1|2|||0.0
+PerkDef|73|f|Werebeast||1|
+PerkAction|73|4|1|5|||0.0
+PerkAction|73|4|1|20|||0.0
+PerkAction|73|7|2|65|||0.0
+PerkAction|73|8|0|143|||0.0
+PerkDef|144|f|Werebeast: Transformation||1|
+PerkAction|144|4|-1|1|||0.0
+PerkDef|81|t|Armor proficiency: Medium||1|
+PerkDef|82|t|Armor proficiency: Heavy||1|
+PerkDef|137|f|Magic: Abjuration||1|Magic School
+PerkAction|137|8|0|131|||0.0
+PerkAction|137|8|0|136|||0.0
+PerkAction|137|8|0|132|||0.0
+PerkDef|114|f|Magic: Enchantment|Spells within the School of Enchantment are designed to manipulate the mental state of the target. This entire school is very similar to hypnotism, where the affected creature may act completely differently than how they normally behave.|1|Magic School
+PerkAction|114|8|0|106|||0.0
+PerkAction|114|8|0|116|||0.0
+PerkAction|114|8|0|117|||0.0
+PerkAction|114|8|0|104|||0.0
+PerkDef|115|f|Magic: Evocation|Casters within the school of evocation unleash a raw magical energy upon their enemies.|1|Magic School
+PerkAction|115|8|0|110|||0.0
+PerkAction|115|8|0|107|||0.0
+PerkAction|115|8|0|119|||0.0
+PerkDef|123|t|Awareness||1|
+PerkAction|123|4|1|16|||0.0
+PerkDef|125|t|Cat's Reflexes||1|
+PerkAction|125|4|1|108|||0.0
+PerkDef|126|t|Great Fortitude||1|
+PerkAction|126|4|1|8|||0.0
+PerkDef|124|t|Iron Will||1|
+PerkAction|124|4|1|22|||0.0
+PerkDef|127|t|Toughness||1|
+PerkAction|127|7|1|61|||0.0
+PerkDef|128|t|Sneaky||1|
+PerkAction|128|4|1|12|||0.0
+PerkDef|139|f|Plague: Phase 1|You don't feel so great. Perhaps you have caught a cold?|1|
+PerkAction|139|4|-1|1|||0.0
+PerkDef|140|f|Plague: Phase 2|Fever, chills, muscle soreness, lack of appetite... You're not doing all too well. Maybe you should seek out a healer?|1|
+PerkAction|140|4|-2|1|||0.0
+PerkAction|140|4|-1|2|||0.0
+PerkAction|140|8|0|138|||0.0
+PerkDef|141|f|Plague: Phase 3|You suffer from headaches, high fever, chest pains. Sometimes you cough up blood. |1|
+PerkAction|141|4|-3|1|||0.0
+PerkAction|141|4|-1|2|||0.0
+PerkAction|141|4|-1|3|||0.0
+PerkAction|141|4|-1|4|||0.0
+PerkAction|141|8|0|138|||0.0
+Rune|109|833102|0|0|t|||f|f|f|f
+RuneAction|109|64|1|3|0
+Rune|129|833103|0|0|t|||f|f|f|f
+RuneAction|129|65|1|3|0
+Rune|130|833104|0|0|t|||f|f|f|f
+RuneAction|130|12|1|0|0
+RuneCondition|130|0|6|0|0|3.0|0.0|
+Rune|145|51971|0|0|f|||f|f|f|f
+RuneAction|145|146|0|4|0
+Stat|61|HP|6|1*1.0|1|t|t|t||1.0|t|f|0
+Stat|62|Mana|0|3*1.5|0|t|t|f||1.0|t|f|0
+Stat|64|Armor Class|10|2*1.0|0|f|t|t||1.0|f|f|0
+Stat|65|Attack Bonus|0|1*1.0;2*1.0|0|f|t|t||1.0|f|f|3
+Stat|76|Humanity|8||0|f|f|t||1.0|f|f|0
+SpellDef|149|Melee: One-Handed||1.0|0|1|1|65||1|64|f|t|f|f|0|Icon174|f|t|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|149|2|0|{caster} attacks {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|149|0|1|-(1d4 + {c.Body})|61|2|0|1||0||1
+SpellEffect|149|0|1|-(2d4 + {c.Body})|61|1|0|1||0||1
+SpellDef|150|Melee: Two-handed||1.0|0|1|1|65||1|64|f|t|f|f|0|Icon390|f|t|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|150|2|0|{caster} attacks {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|150|0|1|-(2d3 + {c.Body})|61|2|0|1||0||1
+SpellEffect|150|0|1|-(3d3 + {c.Body})|61|1|0|1||0||1
+SpellDef|152|Ranged: Bow||5.0|0|1|1|65||1|64|f|t|f|f|0|Icon288|f|t|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|152|2|0|{caster} shoots an arrow at {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|152|0|1|-(1d4 + {c.Body})|61|2|0|1||0||1
+SpellEffect|152|0|1|-(2d4 + {c.Body})|61|1|0|1||0||1
+SpellDef|154|Ranged: Throwing Weapon||3.0|0|1|1|65||1|64|f|t|f|f|0|Icon288|f|t|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|154|2|0|{caster} throws a weapons at {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|154|0|1|-(1d4 + {c.Body})|61|2|0|1||0||1
+SpellEffect|154|0|1|-(2d4 + {c.Body})|61|1|0|1||0||1
+SpellDef|105|Unarmed Attack||1.0|0|1|1|65||1|64|f|t|t|f|0|Icon334|f|t|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|105|2|0|{caster} attacks {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|105|0|1|-(1d3 + {c.Body})|61|2|0|1||0||1
+SpellEffect|105|0|1|-(2d3 + {c.Body})|61|1|0|1||0||1
+SpellDef|146|Throw Demon-Fire orb|Throw a Demon-Fire orb at a single target. If you hit the orb explodes and damages everyone in a 1.5 tile radius. Each target will roll a Reflex save fo reduced damage.|5.0|0|1|1|65||1|64|f|f|f|f|0|51971|f|f|0.0,0.0,0.0,0.0|Combat|f|f|4|1|
+SpellEffect|146|2|0|{caster} throws a Demon-Fire orb at {target}.&brk;{roll}|0|0|0|0||||1
+SpellEffect|146|0|3|1|51971|0|1|0||||1
+SpellEffect|146|2|0|It the ground right at {target}'s feet and explodes!|0|0|0|1||||1
+SpellEffect|146|0|9||147|0|0|1||||1
+SpellEffect|146|2|0|It misses its mark and explodes a safe distance away.|0|0|0|2||||1
+SpellDef|138|Cough|Your chest and throat are killing you. You have an irresistible urge to cough and alleviate some of that discomfort.|2.0|3|1|2|0|15|0|8|f|f|f|f|0|Icon160|f|f|0.335653,0.796498,0.413386,1.0||f|f|4|1|
+SpellEffect|138|2|0|{caster} coughs repeatedly, unable to hold it in any longer. They don't look so well.|0|0|0|0||||1
+SpellEffect|138|2|4|1|1|0|1|0|30|Plague||1
+SpellEffect|138|0|6||139|0|1|1|1440|Plague|120|1
+SpellEffect|138|0|6||140|0|1|1|4320|Plague|1560|1
+SpellEffect|138|0|6||141|0|1|1|-1|Plague|5880|1
+SpellTargetCond|138|1|0|0|72|0.0|0.0|
+SpellTargetCond|138|1|0|0|73|0.0|0.0|
+SpellTargetCond|138|1|1|0|0|0.0|0.0|Plague
+SpellDef|121|Treat Wounds|Attempt to treat another character's wounds to restore some of their HP.&brk;Rolls First Aid vs DC 10.|1.0|0|1|0|15||2|10|f|t|t|f|0|Icon130|f|t|0.249592,0.926978,0.244039,1.0|Medicine|f|f|4|1|
+SpellReqDef|121|2|3|15|1.0|0.0|
+SpellEffect|121|0|0|{caster} attempts to treat {target}'s wounds.|0|0|0|0||0||1
+SpellEffect|121|0|0|{target}'s wounds were successfully treated, they are in no immediate danger.|0|0|0|1||0||1
+SpellEffect|121|0|1|1|61|0|0|1||0||1
+SpellEffect|121|0|0|{caster} failed to treat {target}'s wounds, but at least they did no harm.|0|2|0|2||0||1
+SpellEffect|121|0|0|{caster} really messed this up. Be it lack of attention or ability, they only managed to inflict more pain on {target}.|0|1|0|2||0||1
+SpellEffect|121|0|1|-(1)|61|1|0|2||0||1
+SpellDef|122|Perform Surgery|Attempt complex medical procedures on a patient. &brk;Rolls Medicine vs DC 15.|1.0|0|1|0|23||2|15|f|t|f|t|0|Icon297|f|t|1.0,0.191292,0.152426,1.0|Medicine|f|f|4|1|
+SpellEffect|122|2|0|{caster} attempts to perform surgery on {target}.|0|0|0|0||0||1
+SpellEffect|122|0|0|The procedure went well and {target} should be on their way to recovery.|0|0|0|1||0||1
+SpellEffect|122|0|1|4|61|0|0|1||0||1
+SpellEffect|122|0|0|The procedure failed, but it seems that {caster} did not do much damage to {target}.|0|2|0|2||0||1
+SpellEffect|122|0|1|-(1)|61|2|0|2||0||1
+SpellEffect|122|2|0|{caster} really screwed this one up, it's not at all where this thing is supposed to go! If they're lucky, {target} will come out of this will a permanent injury. If they're not, they won't come out of it at all.&brk;&brk;Roll "PD: Hand of Fate" to determine the outcome.|0|1|0|2||0||1
+SpellEffect|122|0|1|-(4)|61|1|0|2||0||1
+SpellDef|110|Spell: Magic Missile|You create a glowing dart of magical force which hits a creature of your choice that you can see within range. Deals 1d4 force damage to your target.|5.0|0|1|2|0|1|2|0|f|f|f|f|0|Icon330|f|f|0.616047,0.327324,0.863126,1.0|Magic|f|f|4|1|
+SpellReqDef|110|0|3|62|1.0|0.0|
+SpellEffect|110|2|0|{caster} casts Magic Missle at {target}.|0|0|0|0||0||1
+SpellEffect|110|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|110|0|1|-(1d4)|61|0|0|0||0||1
+SpellDef|119|Spell: Scorching Ray|You create a ray of fire and hurl it at a target within range.|5.0|0|1|0|17||0|108|f|t|f|f|0|Icon340|f|f|1.0,0.413091,0.0,1.0|Magic|f|f|4|1|
+SpellReqDef|119|0|3|62|1.0|0.0|
+SpellReqDef|119|6|0|14183|0.0|0.0|1
+SpellEffect|119|2|0|{caster} casts Scorching Ray at {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|119|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|119|2|3|1|14183|0|1|0||0||1
+SpellEffect|119|0|0|{target} was hit by {caster}'s Scortching Ray.|0|0|0|1||0||1
+SpellEffect|119|0|1|-(2d4)|61|0|0|1||0||1
+SpellEffect|119|0|0|{target} dodged {caster}'s spell.|0|0|0|2||0||1
+SpellDef|107|Spell: Chain Lightning|Shoot a lightning bolt from your hands that hits up to 3 targets, dealing 1d6 damage to each.|5.0|0|3|0|17||0|108|f|t|f|f|60|Icon195|f|f|0.408064,0.455817,1.0,1.0|Magic|f|f|4|1|
+SpellReqDef|107|0|3|62|2.0|0.0|
+SpellReqDef|107|6|0|14183|0.0|0.0|1
+SpellEffect|107|2|0|{caster} casts Chain Lightning at {target}!&brk;{roll}|0|0|0|0||0||1
+SpellEffect|107|2|1|-(2)|62|0|0|0||0||1
+SpellEffect|107|2|3|1|14183|0|1|0||0||1
+SpellEffect|107|0|0|{target} got hit by {caster}'s lightning bolt.|0|0|0|1||0||1
+SpellEffect|107|0|1|-(1d6)|61|0|0|1||0||1
+SpellEffect|107|0|0|{target} dodged {caster}'s lightning bolt.|0|0|0|2||0||1
+SpellDef|104|Spell: Cause Fear|Make a single target feel fear towards you for 1 RL hour.&brk;A frightened creature has a -1 penalty on all ability checks and attack rolls while the source of its fear is within line of sight.&brk;The creature can't willingly move closer to the source of its fear.|3.0|0|1|0|17||0|22|f|t|f|f|60|Icon230|f|f|0.543783,0.425657,0.785059,1.0|Magic|f|f|4|1|
+SpellReqDef|104|0|3|62|1.0|0.0|
+SpellReqDef|104|6|0|11087|0.0|0.0|3
+SpellEffect|104|2|0|{caster} casts Cause Fear on {target}.|0|0|0|0||0||1
+SpellEffect|104|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|104|2|3|-3|11087|0|1|0||0||1
+SpellEffect|104|0|0|{target} feel a terrible fear of {caster}. &brk;{target} receives a -1 penalty on all ability checks and attack rolls while {caster} is within line of sight.&brk;{target} can't willingly move closer to {caster}.&brk;This effect will last for 1 RL hour.|0|0|0|1||0||1
+SpellEffect|104|0|4|-1|3|0|0|1|60|Magic||1
+SpellEffect|104|0|4|-1|4|0|0|1|60|Magic||1
+SpellEffect|104|0|5|-1|65|0|0|1|60|Magic||1
+SpellEffect|104|0|0|{target} resists {caster}'s spell.|0|0|0|2||0||1
+SpellDef|116|Spell: Charm Person|You attempt to charm a humanoid you can see within range. It must make a Willpower saving throw. If it fails the saving throw, it is charmed by you for 2 RL hours, or until you or your companions do anything harmful to it.|3.0|0|1|0|17||0|22|f|t|f|f|120|Icon197|f|f|1.0,0.131601,0.377905,1.0|Magic|f|f|4|1|
+SpellReqDef|116|0|3|62|1.0|0.0|
+SpellReqDef|116|6|0|11122|0.0|0.0|3
+SpellEffect|116|0|0|{caster} casts Charm Person on {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|116|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|116|2|3|3|11122|0|1|0||0||1
+SpellEffect|116|0|0|{target} is charmed by {caster}.&brk;They cannot take any hostile actions against {caster} for 2 RL hours, and must take a -2 penalty to all social checks against {caster} for the duration of the spell.&brk;If {caster} does anything harmful to {target} the spell will break.|0|0|0|1||0||1
+SpellEffect|116|0|0|{target} resists {caster}'s spell.|0|0|0|2||0||1
+SpellDef|106|Spell: Hysteria|The target must succeed on a Willpower saving throw or be suffer a -2 penalty to all Mind and Charisma rolls for 1 RL hour.|3.0|0|1|0|1||0|22|f|t|f|f|60|Icon169|f|f|0.307532,0.782546,1.0,1.0|Magic|f|f|4|1|
+SpellReqDef|106|6|0|11092|0.0|0.0|3
+SpellReqDef|106|0|3|62|1.0|0.0|
+SpellEffect|106|2|0|{caster} casts Hysteria on {target}.&brk;{roll}|0|0|0|0||0||1
+SpellEffect|106|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|106|2|3|3|11092|0|1|0||0||1
+SpellEffect|106|0|0|{target}'s mind and sanity is temporarily weakened by {caster}'s spell, causing them to giggle, weep, or both. They may still attempt to act normal, but must take a -2 penalty to all Mind and Charisma related rolls for 1 RL hour.|0|0|0|1||0||1
+SpellEffect|106|0|4|-2|3|0|0|1|60|Magic||1
+SpellEffect|106|0|4|-2|4|0|0|1|60|Magic||1
+SpellEffect|106|0|0|{target} resists {caster}'s spell.|0|0|0|2||0||1
+SpellDef|117|Spell: Paralyze|The target must succeed on a Willpower saving throw or be paralyzed for the next combat turn.|3.0|0|1|0|17||0|22|f|t|f|f|60|Icon304|f|f|1.0,0.204487,0.19946,1.0|Magic|f|f|4|1|
+SpellReqDef|117|0|3|62|1.0|0.0|
+SpellReqDef|117|6|0|11084|0.0|0.0|3
+SpellEffect|117|2|0|{caster} casts Paralyze on {target}.|0|0|0|0||0||1
+SpellEffect|117|2|1|-(1)|62|0|0|0||0||1
+SpellEffect|117|2|3|3|11084|0|1|0||0||1
+SpellEffect|117|0|0|{target} is paralyzed. They cannot move or speak for the next combat turn.|0|0|0|1||0||1
+SpellEffect|117|0|0|{target} resists {caster}'s spell.|0|0|0|2||0||1
+SpellDef|131|Spell: Aid|Your spell bolsters your allies with toughness and resolve. Choose up to three creatures within range. Each target's hit point maximum and current hit points increase by 2 for 2 RL hours.|5.0|0|2|2|0|1|2|0|f|f|f|f|120|Icon287|f|f|0.405551,1.0,0.108982,1.0|Magic|f|f|4|1|
+SpellReqDef|131|0|3|62|1.0|0.0|
+SpellEffect|131|2|0|{caster} casts Aid on {target}.|0|0|0|0||||1
+SpellEffect|131|0|5|2|61|0|0|0|120|Magic||1
+SpellEffect|131|0|1|2|61|0|0|0|1|Test||1
+SpellEffect|131|2|1|-(1)|62|0|0|0||||1
+SpellDef|136|Spell: Dispel Magic|Cleanse all Magic effects from a selected target. Rolls Spellcasting vs DC 15.|1.0|0|1|0|17||2|15|f|t|f|f|60|Icon327|f|f|0.857945,0.284913,0.666934,1.0|Magic|f|f|4|1|
+SpellReqDef|136|0|3|62|1.0|0.0|
+SpellEffect|136|2|0|{caster} casts Dispel Magic on {target}.|0|0|0|0||||1
+SpellEffect|136|2|1|-(1)|62|0|0|0||||1
+SpellEffect|136|0|7||0|0|0|1||Magic||1
+SpellEffect|136|0|0|{target} remains under the influence of magic, despite all of {caster}'s attempts to remove it.|0|0|0|2||||1
+SpellDef|132|Spell: Mage Armor|You touch a willing creature and a protective magical force surrounds it until the spell ends. The target gains a +2 bonus to AC for 2 RL hours.|1.0|0|1|2|0|1|2|0|f|f|f|f|120|Icon368|f|f|0.217054,0.583995,1.0,1.0|Magic|f|f|4|1|
+SpellReqDef|132|0|3|62|1.0|0.0|
+SpellEffect|132|2|0|{caster} casts Mage Armor on {target}.|0|0|0|0||Test||1
+SpellEffect|132|2|1|-(1)|62|0|0|0||||1
+SpellEffect|132|0|5|2|64|0|0|0|120|Magic||1
+SpellDef|120|Vampire: Feed on prey|Feed on a mortal to restore health.&brk;The target must be willing, or unable to resist|1.0|0|1|2|0|1|2|0|f|f|f|t|240|Icon252|f|f|1.0,1.0,1.0,1.0|Vampirism|f|f|4|1|
+SpellEffect|120|2|0|{caster} feeds on {target}.|0|0|0|0||0||1
+SpellEffect|120|2|1|4|61|0|0|0||0||1
+SpellEffect|120|0|1|-(2)|61|0|0|0||0||1
+SpellTargetCond|120|1|0|0|72|0.0|0.0|
+SpellDef|133|Vampire: Feed Blood Thrall|Give your vampiric blood to a Human to create a Blood Thrall. You must continue giving them your blood at least once every 3 RL days, or they will lose the powers they received from you.|1.0|0|1|2|0|1|2|0|f|f|f|f|0|Icon252|f|f|1.0,1.0,1.0,1.0|Vampirism|f|f|4|1|
+SpellEffect|133|2|0|{caster} gives {target} some of their blood.|0|0|0|0||0||1
+SpellEffect|133|0|6||134|0|0|1|4320|Curse||1
+SpellEffect|133|0|6||142|0|1|1|5760|Curse|4320|1
+SpellTargetCond|133|0|0|0|66|0.0|0.0|
+SpellDef|135|Vampire: Transfusion|Bestow the Gift of Hunger on a mortal.&brk;This turns a Human into a Vampire.|1.0|0|1|2|0|1|2|0|f|f|f|t|0|Icon252|f|f|1.0,1.0,1.0,1.0|Vampirism|f|f|4|1|
+SpellReqDef|135|0|2|76|0.0|0.0|
+SpellEffect|135|2|0|{caster} has turned {target} into a Vampire.|0|0|0|0||0||1
+SpellEffect|135|2|1|-(1)|76|0|0|0||0||1
+SpellEffect|135|0|6||72|0|0|1|-1|Curse||1
+SpellTargetCond|135|0|0|0|66|0.0|0.0|
+SpellTargetCond|135|1|0|0|72|0.0|0.0|
+SpellTargetCond|135|1|0|0|73|0.0|0.0|
+SpellDef|143|Werebeast: Infectious Bite|Bite another Human to turn them into a Werebeast. The process takes 2 RL days.|1.0|0|1|2|0|15|0|8|f|f|f|t|1440|Icon252|f|f|1.0,1.0,1.0,1.0|Werebeast|f|f|4|1|
+SpellEffect|143|0|0|{caster} bites {target}.|0|0|0|0||||1
+SpellEffect|143|0|6||144|0|1|1|2880|Curse||1
+SpellEffect|143|0|6||73|0|1|1|-1|Curse|2880|1
+SpellTargetCond|143|0|0|0|66|0.0|0.0|
+SpellTargetCond|143|1|0|0|72|0.0|0.0|
+SpellTargetCond|143|1|0|0|73|0.0|0.0|
+SpellDef|112|PD: Hand of Fate|Perma-kill another character with a 50% chance of success.&brk;If you fail the roll, you must still assume your victim is dead.&brk;Costs 1 Humanity.|5.0|0|1|2|0|1d2|2|1|f|f|t|t|0|Icon139|f|f|1.0,0.22208,0.19946,1.0|Perma-death|f|f|4|1|
+SpellEffect|112|2|1|-(1)|76|0|0|0||0||1
+SpellEffect|112|0|0|{target} dies at the hand of {caster}.|0|0|0|1||0||1
+SpellEffect|112|0|0|Even though {caster} delivers the final blow, {target} manages to cling on to life. {caster} assumes {target} is dead.|0|0|0|2||0||1
+SpellDef|113|PD: Forced|Perma-kill another character with a 100% success.&brk;Costs 2 Humanity.|5.0|0|1|2|0|1|2|0|f|f|t|t|0|Icon220|f|f|1.0,0.174327,0.144168,1.0|Perma-death|f|f|4|1|
+SpellEffect|113|0|0|{target} dies at the hand of {caster}.|0|0|0|0||0||1
+SpellEffect|113|2|1|-(2)|76|0|0|0||0||1
+SpellDef|147|Effect: Demon-Fire explosion||1.5|2|0|2|0|15|0|108|f|f|f|f|0|None|f|f|0.0,0.0,0.0,0.0||f|f|4|1|
+SpellEffect|147|0|0|{target} got hit by the explosion.|0|0|0|1||||1
+SpellEffect|147|0|1|-(1d4)|61|0|0|1||||1
+SpellEffect|147|0|0|{target} managed to dodge most of the Demon-Fire orb shrapnel.|0|0|0|2||||1
+SpellEffect|147|0|1|-(1)|61|0|0|2||||1
+MutatorDef|155|One Handed weapon|f|f
+MutatorCondition|155|0|7|0|0|1.0|0.0|
+MutatorCondition|155|0|7|0|0|5.0|0.0|
+MutatorCondition|155|0|7|0|0|6.0|0.0|
+MutatorCondition|155|0|7|0|0|8.0|0.0|
+MutatorCondition|155|0|7|0|0|10.0|0.0|
+MutatorAction|155|3|149|0
+MutatorDef|156|Two Handed weapon|f|f
+MutatorCondition|156|0|7|0|0|2.0|0.0|
+MutatorCondition|156|0|7|0|0|7.0|0.0|
+MutatorCondition|156|0|7|0|0|9.0|0.0|
+MutatorCondition|156|0|7|0|0|11.0|0.0|
+MutatorAction|156|3|150|0
+MutatorDef|157|Bow|f|f
+MutatorCondition|157|0|7|0|0|3.0|0.0|
+MutatorCondition|157|0|7|0|0|4.0|0.0|
+MutatorAction|157|3|152|0
+MutatorDef|158|Throwing Weapon|f|f
+MutatorCondition|158|0|8|0|0|2.0|0.0|
+MutatorAction|158|3|154|0
+MutatorDef|159|Shield|f|f
+MutatorCondition|159|0|8|0|0|1.0|0.0|
+MutatorAction|159|1|64|1
+MutatorDef|160|Light Armor|f|f
+MutatorCondition|160|0|9|0|0|1.0|0.0|
+MutatorAction|160|1|64|2
+MutatorDef|161|Medium Armor|f|f
+MutatorCondition|161|0|9|0|0|2.0|0.0|
+MutatorAction|161|1|64|4
+MutatorDef|162|Heavy Armor|f|f
+MutatorCondition|162|0|9|0|0|3.0|0.0|
+MutatorAction|162|1|64|6
+MutatorDef|163|No armor proficiency|t|f
+MutatorCondition|163|0|9|0|0|2.0|0.0|
+MutatorCondition|163|0|0|1|81|0.0|0.0|
+MutatorAction|163|0|2|-2
+MutatorDef|164|No armor proficiency|t|f
+MutatorCondition|164|0|9|0|0|3.0|0.0|
+MutatorCondition|164|0|0|1|82|0.0|0.0|
+MutatorAction|164|0|2|-3
+MutatorDef|165|Vampire in day time|t|f
+MutatorCondition|165|0|0|0|72|0.0|0.0|
+MutatorCondition|165|0|6|1|0|3.0|0.0|
+MutatorCondition|165|0|5|1|0|2.0|0.0|
+MutatorAction|165|0|1|-2
+MutatorAction|165|1|65|-2
+MutatorDef|166|Werebeast at night|t|f
+MutatorCondition|166|0|0|0|73|0.0|0.0|
+MutatorCondition|166|0|6|0|0|3.0|0.0|
+MutatorCondition|166|0|5|0|0|0.0|0.0|
+MutatorAction|166|0|1|1
+MutatorAction|166|0|2|1
+MutatorDef|167|Half-Giant in warm climate|t|f
+MutatorCondition|167|0|0|0|74|0.0|0.0|
+MutatorCondition|167|0|4|0|0|0.0|0.0|
+MutatorAction|167|0|1|-2
+MutatorDef|168|Field Surgery|t|f
+MutatorCondition|168|0|0|0|68|0.0|0.0|
+MutatorCondition|168|0|5|0|0|0.0|0.0|
+MutatorAction|168|0|23|-2
+StatusDef|169|Disguised|1.0,1.0,1.0,0.701961|t
+StatusDef|170|Bound|1.0,1.0,1.0,0.701961|t
+StatusAction|170|2|-5|0
+StatusDef|171|Intoxicated|0.376471,1.0,0.329412,0.701961|t
+StatusAction|171|2|-1|0
+StatusAction|171|3|-1|0
+StatusDef|172|Bruised|1.0,0.843137,0.345098,0.701961|t
+StatusDef|177|Injured|1.0,0.631455,0.266527,0.7|t
+StatusAction|177|61|-2|1
+StatusDef|173|Badly Injured|1.0,0.364706,0.211765,0.701961|t
+StatusAction|173|61|-4|1
+StatusDef|174|Unconscious|0.372549,0.756863,1.0,0.701961|t
+StatusAction|174|2|-5|0
+StatusAction|174|16|-5|0
+StatusAction|174|22|-5|0
+StatusDef|175|Sleeping|0.431373,0.568627,1.0,0.701961|t
+StatusAction|175|2|-5|0
+StatusAction|175|16|-2|0
+Mechanic|1|f|1|13|18|20|3|15|None
+Mechanic|2|f|10|20|23|26|3|15|833002
+Mechanic|3|f|1|16|22|24|3|15|None
+Mechanic|4|f|10|20|22|24|3|15|833002
+Mechanic|5|f|1|18|20|22|3|15|833004
+Mechanic|6|f|10|22|25|27|3|15|833002
+Mechanic|7|f|1|22|24|26|3|15|833004
+Mechanic|8|f|10|24|27|30|3|15|833002
+Mechanic|9|t|16|15|0|0|0|0|None
+Mechanic|10|f|0|30|0|0|0|0|None
+Megascope|11|f|f
+MechanicCondition|11|0|0|0|70|0.0|0.0|

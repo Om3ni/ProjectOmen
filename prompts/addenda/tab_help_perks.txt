@@ -1,0 +1,39 @@
+# Perks Tab Help
+
+Perks are passive or active bonuses with 19 PerkAction function types.
+
+## PerkDef fields:
+- Cost: Perk point cost (from DiceConfig.PerkPoints budget)
+- Category: Groups perks in the UI. Used by PerkAction functions 13/14 (Allow/Deny Category)
+
+## PerkAction functions (all 19):
+| Fn | Name | TargetID references | Notes |
+|----|------|---------------------|-------|
+| 0 | Allow Skill | SkillDef | Unlocks a trained skill |
+| 1 | Deny Skill | SkillDef | Locks a skill |
+| 2 | Allow Perk | PerkDef | Makes perk available |
+| 3 | Deny Perk | PerkDef | Hides/locks a perk |
+| 4 | Dice Modifier | SkillDef | Adds Value to dice roll |
+| 5 | Give Feat | (game ID) | Grants in-game feat |
+| 6 | Grant Stat | Stat | Reveals stat on character sheet |
+| 7 | Stat Modifier | Stat | Adds Value to stat |
+| 8 | Grant Ability | SpellDef | Gives access to ability |
+| 9 | Grant Status | StatusDef | Applies status effect |
+| 10 | Unlock Status | StatusDef | Makes status available |
+| 11 | Grant Perk | PerkDef | Force-gives another perk |
+| 12 | Grant Sudo Role | (external) | Server admin role |
+| 13 | Allow Perk Category | (uses Modifier col) | Unlocks entire category |
+| 14 | Deny Perk Category | (uses Modifier col) | Locks entire category |
+| 15 | Teach Language | (external) | Language system |
+| 16 | Give CharTag | (external) | Character tag |
+| 17 | Set Float CharVar | (external) | Float variable |
+| 18 | Set String CharVar | (external) | String variable |
+
+Design patterns:
+- Race/Class perks: Use function 6 (Grant Stat) + 8 (Grant Ability) to define racial packages
+- Prerequisite chains: Use function 2 (Allow Perk) to gate advanced perks behind basic ones
+- Skill trees: Use function 0 (Allow Skill) to unlock skill progression
+
+Gotchas:
+- Functions 13/14 use the Modifier column for the category name, NOT TargetID
+- Functions 5, 12, 15-18 reference external game systems, not RPR table IDs

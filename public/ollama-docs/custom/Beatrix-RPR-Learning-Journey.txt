@@ -1,0 +1,669 @@
+=== Beatrix's RPR Learning Journey ===
+
+Source: Discord progress thread (October 2025 - January 2026)
+Purpose: Real-world learning progression showing problem-solving and techniques
+Format: Progress log with explanations, formulas, and community solutions
+
+This document captures someone learning RPR system design from scratch, including:
+- Thought processes and iterations
+- Common problems and their solutions
+- Formula evolution and refinement
+- Community troubleshooting and advice
+- Workarounds for engine limitations
+
+=== KEY LESSONS LEARNED ===
+
+**Critical Discovery #1: Rune Conditions Don't Work**
+- Include/Exclude conditions on Runes never got hooked up in the engine
+- Solution: Use Mutators to detect equipped items and grant perks
+- Confirmed by Eyeless Dice (developer)
+
+**Critical Discovery #2: Status Nameplate Clutter**
+- All statuses show above player heads, causing visual bloat
+- No way to hide individual statuses from nameplates
+- Solution: Use Perks with Categories instead of Statuses for hidden tracking
+- Perks can be detected by mutators but don't show on nameplates
+
+**Critical Discovery #3: Skills Hierarchy Breaking**
+- Skills with only one bonus source should collapse under their parent attribute
+- Issue: Invisible separator skills must be properly configured
+- If separator skills aren't tied to stats correctly, the entire hierarchy breaks
+- Solution: Configure all divider/separator entries with appropriate parent stats
+
+**Performance Considerations**
+- Cloning damage stats for dual wielding: 43k characters total
+- Basic attack ability: 3.5k characters
+- Server FPS impact: Drops from 30 to 21-25 when using complex abilities
+- Character count matters for server performance
+
+=== COMPLETE PROGRESS LOG ===
+
+--- Day 1: Starting with Damage Dice ---
+
+**Initial Concept: Dynamic Damage Dice**
+Started by making weapons increase hidden stats representing damage dice instead of flat bonuses.
+
+Example stats: "1d4 Fire", "1d6 Fire", "1d10 Fire", "1d12 Fire"
+- The stat value = number of dice you have
+- Roll the die, multiply by your dice count
+
+**First Formula (FLAWED):**
+```
+f.clamp[(({c.1D4_Fire}*1d4) + ({c.1D6_Fire}*1d6) +
+({c.1D10_Fire}*1d10) + ({c.1D12_Fire}*1d12) - {t.DR_Fire}), 0, 999]
+```
+
+**Problem Discovered:**
+- Rolling 1d4 and getting 10 would multiply by dice count (wrong!)
+- Having 2d4 could never roll a 5 (breaks dice math)
+
+**Fixed Formula:**
+```
+f.clamp[(({c.1D4_Fire}d4 + {c.1D6_Fire}d6 +
+{c.1D10_Fire}d10 + {c.1D12_Fire}d12), 0, 999]
+```
+Using `{c.1D4_Fire}d4` properly rolls multiple dice and sums them.
+
+--- Day 1 (Continued): Adding Immunity ---
+
+**Adding Percentage-Based Immunity:**
+Process: Roll damage → Apply immunity % → Subtract resistance
+
+Formula structure:
+1. Clamp damage dice roll between 0-999
+2. Calculate immunity: (100 - immunity%) / 100
+3. Multiply damage by immunity factor
+4. Subtract flat resistance
+
+**Complete Formula with Immunity:**
+```
+f.min[f.max[((f.clamp[({c.1D4_Fire}d4 + {c.1D6_Fire}d6 +
+{c.1D10_Fire}d10 + {c.1D12_Fire}d12), 0, 999] *
+(100 - f.clamp[{t.F_Imun}, 0, 100])) / 100) -
+{t.DR_Fire}), 0], 999]
+```
+
+**Example Calculation:**
+- Roll 120 fire damage
+- Target has 30% fire immunity
+- (100 - 30) / 100 = 0.7
+- 120 * 0.7 = 84 damage
+- Subtract fire resistance for final damage
+
+--- Day 1 (Continued): Armor Class System ---
+
+**Goal: D&D-Style AC with DEX Modifiers and Armor Weight Classes**
+
+Design:
+1. Base Defense stat = 10
+2. Add (DEX * 0.5) as multiplier bonus
+3. Limit DEX bonus based on armor weight
+
+**Solution: Max DEX Bonus Stat**
+Created hidden attribute "Max Dex Bonus" with +100 natural bonus
+- Defense stat takes (DEX * 0.5) AND (Max Dex Bonus * 0.5)
+- Use lowest value between the two
+- Armor grants statuses that reduce Max Dex Bonus
+
+**Armor Types:**
+- Light Armor: No DEX cap (Max Dex Bonus stays at 100)
+- Medium Armor: Status reduces Max Dex Bonus to simulate +2 DEX cap
+- Heavy Armor: Status reduces Max Dex Bonus to 0 (no DEX to AC)
+
+Statuses are granted by equipped rune (armor piece).
+
+--- Day 1 (Continued): Threat Range / Critical Hits ---
+
+**Goal: Implement D&D 3.5 Threat Range (19-20 on d20 = auto-hit + crit confirmation)**
+
+**Problem:** Can't detect raw die roll vs. modified roll to see if you rolled 19-20 naturally.
+
+**Solution: Threat as a Bonus Stat**
+- Instead of threat range 19-20, weapons give +1 to "Threat" stat
+- Threat adds to attack roll
+- Create "Threat Immunity" to counter it (works like damage immunity)
+
+**Threat Immunity Formula:**
+```
+f.max[({c.Threat} * (100 - f.clamp[{t.Threat Immunity}, 0, 100]) / 100), 0]
+```
+If target has threat immunity, the attacker's threat bonus is reduced/negated.
+
+Not perfect D&D replication, but functional alternative.
+
+--- Day 1 (Continued): Finesse Weapons ---
+
+**Goal: Use STR or DEX (whichever is higher) for attack modifier**
+
+**Finesse Stat:** 0 = no finesse, 1 = has finesse
+
+**Formula:**
+```
+{c.STR Modifier} + f.clamp[{c.Finesse}, 0, 1] *
+(f.max[{c.STR Modifier}, {c.DEX Modifier}] - {c.STR Modifier})
+```
+
+**How it works:**
+- Start with STR Modifier
+- If Finesse = 1, add the difference between max(STR, DEX) and STR
+- If Finesse = 0, the multiplication zeros out and you just use STR
+
+**Math Example:**
+- STR = +3, DEX = +5, Finesse = 1
+- 3 + 1 * (max(3, 5) - 3) = 3 + 1 * 2 = 5 ✓
+
+--- Day 1 (Continued): Complete Attack Roll ---
+
+**Attack Roll with Threat and Finesse:**
+```
+1d20 + f.max[({c.Threat} * (100 - f.clamp[{t.Threat Immunity}, 0, 100]) / 100), 0] +
+({c.STR Modifier} + f.clamp[{c.Finesse}, 0, 1] *
+(f.max[{c.STR Modifier}, {c.DEX Modifier}] - {c.STR Modifier})) +
+{c.Melee Main Hand Accuracy} + {c.Accuracy}
+```
+
+--- Day 2: Ward System (Second Health Pool) ---
+
+**Challenge:** Can't directly create a second health pool that damage hits first, then overflows to health.
+
+**Solution: Flat Ward Reduction**
+Created "Ward" stats for each damage type that reduce damage before percentages apply.
+
+**Damage Process:**
+1. Roll damage dice
+2. Subtract type-specific Ward (flat reduction)
+3. Apply type-specific Immunity (percentage)
+4. Apply universal "Tough" (percentage)
+5. Subtract universal "Extra Tough" (flat)
+6. Subtract type-specific Resistance (flat)
+
+**Universal Mitigation Stats:**
+- "Tough" = Universal % damage reduction
+- "Extra Tough" = Universal flat damage reduction
+
+**Complete Damage Formula:**
+```
+f.min[f.max[((f.max[(f.clamp[({c.1D4 Fire}d4 + {c.1D6 Fire}d6 +
+{c.1D8 Fire}d8 + {c.1D10 Fire}d10 + {c.1D12 Fire}d12), 0, 999] -
+{t.Fire Ward}), 0] * (100 - f.clamp[{t.Fire Immunity}, 0, 100]) / 100 *
+(100 - f.clamp[{t.Tough}, 0, 100]) / 100) -
+{t.Extra Tough} - {t.Fire Resistance}), 0], 999]
+```
+
+**Example Calculation:**
+- Roll 100 fire damage
+- Ward (-20) → 80 damage
+- Fire Immunity 50% → 40 damage
+- Universal Tough 50% → 20 damage
+- Extra Tough (-2) → 18 damage
+- Fire Resistance (-15) → 3 damage
+- 3 damage applied to Health
+
+**Ward Depletion:**
+After health damage resolves, trigger auto-ability that damages the Ward stat itself.
+This creates RNG ward depletion (not a true second HP pool, but interesting mechanics).
+
+--- Day 2: Dual Wielding Mechanics ---
+
+**Design Goals:**
+- Main Hand (MH) and Off Hand (OH) attacks
+- Untrained dual wielding: -10 OH, -6 MH penalties
+- Perks reduce penalties: -6/-6, then -4/-4, then -2/-2
+- Two-handing a weapon: Double STR modifier damage
+
+**Implementation Strategy:**
+1. Create MH and OH versions of every weapon
+2. Use Mutators to detect equipped items
+3. Grant statuses based on weapon configuration
+4. Perks modify penalties when dual wielding detected
+
+**Physical Multiplier Stat:**
+- Base value: 1
+- Two-handing: Mutator adds +1 → Physical Multiplier = 2
+- Used in damage formula: `f.max[{c.STR Modifier}, 0] * {c.MH Physical Multiplier}`
+
+**Flat Damage Bonuses:**
+Created "Bonus [Type] Damage" stats for flat additions to rolls.
+
+**Updated Formula with Bonuses and Multiplier:**
+```
+f.min[f.max[((f.max[(f.clamp[({c.Bonus Fire Damage} +
+{c.1D4 Fire}d4 + {c.1D6 Fire}d6 + {c.1D8 Fire}d8 +
+{c.1D10 Fire}d10 + {c.1D12 Fire}d12), 0, 999] -
+{t.Fire Ward}), 0] * (100 - f.clamp[{t.Toughness}, 0, 100]) / 100 *
+(100 - f.clamp[{t.Fire Immunity}, 0, 100] +
+f.max[(0 - {t.Fire Immunity}), 0]) / 100) -
+{t.Extra Toughness} - {t.Fire Resistance}), 0], 999]
+```
+
+**Physical Damage with STR Multiplier:**
+```
+f.clamp[({c.MH Bonus Physical Damage} + {c.MH 1D4 Physical}d4 +
+{c.MH 1D6 Physical}d6 + {c.MH 1D8 Physical}d8 +
+{c.MH 1D10 Physical}d10 + {c.MH 1D12 Physical}d12 +
+f.max[{c.STR Modifier}, 0] * {c.MH Physical Multiplier}), 0, 999]
+```
+
+--- Day 2: Negative Immunity (Vulnerability) ---
+
+**Goal:** Constructs immune to poison/thunder but vulnerable to spirit damage.
+
+**Solution:** Allow negative immunity values to increase damage beyond 100%.
+
+**Formula Modification:**
+```
+((100 - f.clamp[{t.Spirit Immunity}, 0, 100] + f.max[(0 - {t.Spirit Immunity}), 0]) / 100)
+```
+
+**How it works:**
+1. Start at 100% damage
+2. Subtract positive immunity (capped at 100)
+3. Add absolute value of negative immunity
+
+**Example:**
+- 100 spirit damage
+- Spirit Immunity = -50 (vulnerable)
+- (100 - 0 + 50) / 100 = 1.5
+- 100 * 1.5 = 150 damage ✓
+
+--- Day 2: Deflection System ---
+
+**Goal:** Ranged attacks can be deflected by melee fighters (AC before AC for ranged only).
+
+**Design:**
+- "Deflection" stat reduces ranged accuracy
+- If Accuracy < Deflection, ranged attack auto-fails
+- If Accuracy ≥ Deflection, attack proceeds normally
+
+**Formula:**
+```
+f.min[f.max[f.ceil[((({c.Accuracy stat 1} + {c.Accuracy stat 2} +
+{c.Accuracy stat 3}) - f.max[{t.Deflection}, 0]) / 999], 0], 1] * 1d20
+```
+
+**How it works:**
+1. Sum all accuracy bonuses
+2. Subtract target's Deflection
+3. Divide by 999 and ceiling (result is large positive or negative number)
+4. Clamp between 0 and 1
+5. Multiply by 1d20
+
+**Result:**
+- If Accuracy ≥ Deflection: Result = 1, multiply by full 1d20
+- If Accuracy < Deflection: Result = 0, multiply by 0 (auto-miss)
+
+Then continue with normal attack roll vs Defense.
+
+**Usage:**
+- Only applies to ranged attacks vs melee opponents
+- May be exclusive to two-handed melee weapons
+- Items/perks can grant or reduce Deflection
+
+--- Day 2: Unarmed Detection ---
+
+**Challenge:** Need to detect if player is unarmed for special abilities.
+
+**Solution:**
+Created mutator that detects:
+- No MH weapon equipped
+- No OH weapon equipped
+- Grants "Unarmed" status
+
+**Weapon State Statuses:**
+- Main Hand Equipped
+- Off Hand Equipped
+- Dual Wielding
+- Unarmed
+- Wielding Melee
+- Wielding Ranged
+
+These statuses enable/disable specific abilities via requirements.
+
+--- Day 3: Consolidated Damage Output ---
+
+**Problem:** Multiple damage types each creating separate health change messages = combat log spam.
+
+**Bad Approach:** 8 separate effects for each damage type
+Result: "Fire: 0 damage, Cold: 0 damage, Physical: 15 damage..." (clutter)
+
+**Solution:** Stack all damage calculations into ONE formula using + operators.
+
+**Mega-Formula (All Damage Types Combined):**
+```
+[Physical Damage Formula] + [Fire Damage Formula] +
+[Cold Damage Formula] + [Lightning Damage Formula] +
+[Poison Damage Formula] + [Psychic Damage Formula] +
+[Spiritual Damage Formula] + [Radiant Damage Formula]
+```
+
+Result: Single health change message showing total damage.
+
+**Ward Problem:** Wards for each type still need separate calculations.
+
+**Ward Solution:**
+- Create secret auto-use abilities for each ward type
+- Ability roll: Target's own Ward stat vs DC 1
+- If ward = 0, roll fails, ability doesn't trigger
+- If ward > 0, roll succeeds, damage calculation runs against ward
+- Only wards that actually get hit show in combat log
+
+**Result:** Clean combat log showing only relevant damage/ward changes.
+
+--- Day 3: Action Economy System ---
+
+**Goal:** D&D-style action economy with main/off-hand attacks and extra attacks.
+
+**Stats Created:**
+- "MH Action" (Main Hand Action) - starts at 1 per turn
+- "OH Action" (Off Hand Action) - starts at 1 per turn
+- "Extra Attack" - starts at 0, granted by certain actions
+
+**Rules:**
+1. MH attacks cost 1 MH Action
+2. Some MH attacks grant +1 Extra Attack
+3. OH attacks cost 1 OH Action (requires Extra Attack > 0)
+4. Spells cost 1 MH Action and remove 1 from both MH and OH
+
+**Desired Behavior:** Force players to use MH action before OH action.
+
+**Challenge:** How to enforce action order?
+
+**Proposed Solution:** Mutator detects dual wielding and buffs max values appropriately.
+
+**Noted Concerns:**
+- Lowering accuracy/defense mid-combat via abilities could cause issues
+- Character count after cloning all stats for OH: 43k characters
+- Basic attack ability alone: 3.5k characters
+- Performance concern: Server FPS drops from 30 to 21-25
+
+--- Day 3: Referencing Max Stat Values ---
+
+**Question:** How to reference the maximum value of a stat (e.g., 100 in 0/100 Health) instead of current value?
+
+**Answer:** (Discussion occurred but solution not documented in thread)
+
+--- Day 3: Status Infliction on Hit ---
+
+**Goal:** Weapons have random chance to inflict status on hit (e.g., 25% chance to stun).
+
+**Solution:** Roll vs threshold, convert to 0 or 1, multiply by DC.
+
+**Formula:**
+```
+f.min[f.max[f.ceil[(1d100 + {c.Chance to Stun}) - 100) / 999], 0], 1] * DC
+```
+
+**How it works:**
+1. Roll 1d100 + Chance to Stun bonus
+2. Subtract 100 (threshold)
+3. Divide by 999 and ceiling
+4. Clamp between 0 and 1
+5. Multiply by DC value
+
+**Result:**
+- If roll + bonus > 100: Result = 1, DC check occurs
+- If roll + bonus ≤ 100: Result = 0, no DC check
+
+**Implementation:**
+- Place on auto-use ability
+- Success effect grants status (Stunned, etc.)
+- Can be adapted for any status infliction
+
+--- Day 3-4: Rune Conditions Don't Work ---
+
+**Problem:** Include/Exclude conditions on runes fail to prevent equipping.
+
+**Test Case:**
+- Weapon rune grants: +1 Main Hand, +1 Melee
+- Upgrade rune has conditions: Include if Main Hand ≥ 1 AND Melee ≥ 1
+- Result: Can equip upgrade without weapon equipped (broken)
+
+**Tried:** All combinations of Include/Exclude with skill allocation conditions.
+
+**Community Response:**
+- Mara: Had same issue with racial bonuses (not allocated, so not counted)
+- **Eyeless Dice: "The logic never got hooked up. You'll need to do Mutators for it."**
+
+**CONFIRMED ENGINE LIMITATION:** Rune conditions don't work.
+
+**Workaround:**
+1. Weapon grants status with unique name (e.g., "Equipped: Longsword")
+2. Mutator detects status
+3. If status active, mutator grants upgrade bonuses
+4. If status inactive, no bonuses
+
+Tedious but functional.
+
+--- Day 4: Status Nameplate Clutter ---
+
+**Problem:** All statuses appear above player heads, causing visual bloat.
+
+**Question:** Can statuses be hidden from nameplates?
+
+**Community Responses:**
+- Invellous: "The only way to do that to my knowledge is for the player to hide on client side in their own setting."
+- Invellous: "A perk may be a better choice for something you want to be mostly hidden from plain view and utilized in other functions."
+
+**Solution: Use Perks Instead of Statuses**
+- Perks can be detected by mutators
+- Perks don't show on nameplates (unless you look at character sheet)
+- Use Perk Categories for detection
+
+**Implementation:**
+1. Create perks with matching category names
+2. Runes grant perks instead of statuses
+3. Mutators use "Include if Perk Category ≥ 1"
+4. Bonuses granted via mutator when perk detected
+
+**Trade-off:** More tedious to write mutators, but cleaner UI.
+
+**Alternative Approaches:**
+- Use abbreviated text or alt code icons for status names (♠, ♦, ♣, ♥)
+- Reduces visual clutter but doesn't eliminate it
+
+**Note on UTF16:**
+Some complex Unicode characters count as double character limit per line.
+Simple alt code symbols are safer.
+
+--- Day 4: Perk-Based Weapon State Detection ---
+
+**Final Implementation for Clean UI:**
+
+**Perk Categories Created:**
+- "Main Hand Equipped"
+- "Off Hand Equipped"
+- "Dual Wielding"
+- "Unarmed"
+- "Wielding Melee"
+- "Wielding Ranged"
+
+**How it works:**
+1. Weapon runes grant perks in these categories
+2. Mutators detect perk categories
+3. If "Dual Wielding" perk exists, grant dual wielding bonuses
+4. If "Unarmed" perk exists (via unarmed mutator), grant unarmed bonuses
+5. No visible nameplate clutter
+
+**Dual Wielding Bonuses:**
+- Mutator grants perk to offset MH/OH penalties
+- Progression: -10/-6 → -6/-6 → -4/-4 → -2/-2
+- Each level requires perk purchase
+
+**Crisis Averted:** System works cleanly without UI spam.
+
+--- Month Later: Skills Hierarchy Issue ---
+
+**Problem (The Void):** Skills refuse to collapse under parent attributes.
+
+**Setup:**
+- Athletics skill depends only on Strength
+- Should appear nested under Strength
+- Instead appears at top level (broken)
+
+**Initial Thoughts:** Multiple bonus sources break hierarchy.
+
+**The Void:** "I only have one single bonus per skill."
+
+**Investigation:** All skills properly configured, all depend on single attribute.
+
+**Root Cause Discovered:** Separator/Divider Skills
+
+**Solution:**
+- Even invisible separator skills must be properly configured
+- Separators need correct parent stat assignments
+- If separators are misconfigured, entire hierarchy breaks
+
+**The Void (Fixed):**
+"For the record, in case anyone happens to be passing by: In your skills, if, like me, you create separators like these, even if they are invisible to players, they must be correctly configured with the appropriate statistics so that everything appear in the drop-down menus."
+
+**Tss_Zoro Response:**
+"Ye good ol' dividers error. Sad you had to deal with it but glad you got it figured out haha! I spent like 2 weeks digging into that after someone added them to our system after we had a few months into building it and playing with it. Couldn't figure out why so much wasn't working all the sudden."
+
+**LESSON:** Separators are a common source of mysterious bugs. Configure them properly or avoid them.
+
+=== FORMULA REFERENCE LIBRARY ===
+
+**Dice Rolling Pattern:**
+```
+{c.Stat_Name}d4
+```
+Rolls X dice where X = value of Stat_Name.
+
+**Percentage Reduction:**
+```
+(100 - f.clamp[{t.Immunity}, 0, 100]) / 100
+```
+Converts immunity % to multiplier, clamped between 0-100%.
+
+**Negative Immunity (Vulnerability):**
+```
+(100 - f.clamp[{t.Immunity}, 0, 100] + f.max[(0 - {t.Immunity}), 0]) / 100
+```
+Allows negative immunity to increase damage beyond 100%.
+
+**Binary Gate (0 or 1 Result):**
+```
+f.min[f.max[f.ceil[((VALUE) - THRESHOLD) / 999], 0], 1]
+```
+If VALUE > THRESHOLD, result = 1; else result = 0.
+
+**Finesse Modifier:**
+```
+{c.STR Modifier} + f.clamp[{c.Finesse}, 0, 1] *
+(f.max[{c.STR Modifier}, {c.DEX Modifier}] - {c.STR Modifier})
+```
+Use STR, or upgrade to higher of STR/DEX if Finesse = 1.
+
+**Physical Multiplier:**
+```
+f.max[{c.STR Modifier}, 0] * {c.Physical Multiplier}
+```
+Prevents negative damage, allows 2x modifier when two-handing.
+
+**Complete Damage Formula (All Types Stacked):**
+```
+[Type1 Formula] + [Type2 Formula] + [Type3 Formula]...
+```
+Each type formula follows pattern:
+```
+f.min[f.max[((f.max[(f.clamp[({c.Bonus Type Damage} +
+{c.1D4 Type}d4 + {c.1D6 Type}d6 + {c.1D8 Type}d8 +
+{c.1D10 Type}d10 + {c.1D12 Type}d12 + [MODIFIERS]), 0, 999] -
+{t.Type Ward}), 0] * (100 - f.clamp[{t.Type Immunity}, 0, 100] +
+f.max[(0 - {t.Type Immunity}), 0]) / 100 *
+(100 - f.clamp[{t.Tough}, 0, 100]) / 100) -
+{t.Extra Tough} - {t.Type Resistance}), 0], 999]
+```
+
+=== SYSTEM DESIGN PATTERNS ===
+
+**Pattern 1: Mutator-Based Item Detection**
+When rune conditions don't work:
+1. Rune grants perk in specific category
+2. Mutator includes bonus "if Perk Category ≥ 1"
+3. Bonus applies only when rune equipped
+
+**Pattern 2: Secret Auto-Abilities for Clean Output**
+When separate effects cause spam:
+1. Main ability does primary effect (damage to health)
+2. Secret auto-abilities trigger for secondary effects (ward damage)
+3. Auto-abilities use target's own stats as roll
+4. Only relevant effects show in log
+
+**Pattern 3: Action Economy via Stats**
+For D&D-style action system:
+1. Create action point stats (MH Action, OH Action, Extra Attack)
+2. Abilities cost/grant action points
+3. Mutators adjust maximums based on build
+4. Requirements prevent actions when points unavailable
+
+**Pattern 4: Binary Gates for Conditionals**
+When you need "if X then Y, else 0":
+1. Create formula that goes positive when condition met
+2. Divide by large number (999) and ceiling
+3. Clamp between 0 and 1
+4. Multiply by desired effect value
+
+**Pattern 5: Invisible State Tracking**
+For mechanics that shouldn't show on nameplates:
+1. Use Perks instead of Statuses
+2. Create Perk Categories matching state names
+3. Mutators detect perk categories
+4. Perks hidden from nameplate display
+
+**Pattern 6: Order of Operations for Mitigation**
+Standard damage reduction sequence:
+1. Roll dice (clamped)
+2. Flat ward reduction
+3. Type-specific immunity %
+4. Universal immunity %
+5. Universal flat reduction
+6. Type-specific resistance
+
+**Pattern 7: Max vs Current Stat Values**
+Challenge: Formulas only reference current values.
+Workaround: Create companion "Max [Stat]" attribute
+- Not ideal but functional
+- Requires manual tracking/updating
+
+=== COMMUNITY WISDOM ===
+
+**From Mara:**
+"My issue may not be yours BUT, for our server some of our races start with either a bonus or a negative to certain skills. Since those are a given they are not 'allocated' so it doesn't count them. I ended up needing to do a mutator for 0 and 1."
+
+**From Eyeless Dice:**
+"You mean the conditions in Runes? Yeah, those don't work. The logic never got hooked up. You'll need to do Mutators for it."
+
+**From Invellous:**
+"One of the work arounds people use including the server I work for; The Witcher: Trial of the Valley, is abbreviated and text icons to help reduce that. There was limited desire to remove them entirely but their purpose, in most cases, should be to provide information that would readily identifiable at a glance."
+
+**From Tss_Zoro:**
+"Ye good ol' dividers error. Sad you had to deal with it but glad you got it figured out haha! I spent like 2 weeks digging into that after someone added them to our system after we had a few months into building it and playing with it."
+
+=== PERFORMANCE NOTES ===
+
+**Character Count Impact:**
+- Complete system with dual wielding: 43k characters
+- Single basic attack ability: 3.5k characters
+- Server FPS impact observed: 30 → 21-25 during ability use
+
+**Optimization Considerations:**
+- UTF16 characters may double line character count
+- Simple alt codes safer for performance
+- Consider impact of cloning stats for variants (MH/OH)
+- Complex formulas impact server processing
+
+=== TAKEAWAYS FOR NEW DESIGNERS ===
+
+1. **Rune conditions don't work** - Always use mutators for equipment detection
+2. **Status clutter is real** - Use perks for hidden state tracking
+3. **Test early and often** - Issues like dice multiplication caught through testing
+4. **Separators can break everything** - Configure dividers properly
+5. **Formula iteration is normal** - Expect to refine formulas multiple times
+6. **Community is helpful** - Discord has experienced developers willing to help
+7. **Performance matters** - Watch character counts and complexity
+8. **Workarounds exist** - Engine limitations can be worked around creatively
+9. **Document your formulas** - Complex math needs explanation for future you
+10. **Start simple, add complexity** - Begin with basic damage, add layers gradually
+
+=== END OF DOCUMENT ===

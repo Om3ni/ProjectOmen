@@ -1,6 +1,7 @@
 import { useEffect, useMemo } from 'react';
 
-import type { SchemaColumn, SchemaData, TableSchema } from '@/models/schema';
+import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 
 type Props = {
   tableSchema: TableSchema;
@@ -10,14 +11,6 @@ type Props = {
 };
 
 type Opt = { value: number; label: string };
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
-
-function col(schema: TableSchema, name: string): SchemaColumn | undefined {
-  return schema.columns.find((c) => c.name === name);
-}
 
 const OP_ENUM_FALLBACK: Record<string, string> = {
   '0': '==',

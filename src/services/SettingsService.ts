@@ -18,10 +18,28 @@ export type LLMSettings = {
   temperature?: number;
 };
 
+export type OllamaFreedomLevel = 'conservative' | 'balanced' | 'autonomous';
+
+export type OllamaSettings = {
+  enabled: boolean;
+  useBundled: boolean;
+  freedomLevel: OllamaFreedomLevel;
+  endpoint: string;
+  model: string;
+  temperature: number;
+  contextSize: number;
+};
+
 export type Settings = {
   // Integrations
   discord: DiscordSettings;
   llm: LLMSettings;
+  ollama: OllamaSettings;
+
+  // UI
+  ui: {
+    chatLayout: 'below' | 'right' | 'floating';
+  };
 
   // General
   theme: ThemeName;
@@ -33,6 +51,8 @@ export type Settings = {
 };
 
 const SETTINGS_KEY = 'project-omen:settings:v1';
+
+const SETTINGS_CHANGED_EVENT = 'project-omen:settings-changed';
 
 const DEFAULT_SETTINGS: Settings = {
   discord: {
@@ -47,6 +67,18 @@ const DEFAULT_SETTINGS: Settings = {
     endpoint: '',
     model: '',
     temperature: 0.7,
+  },
+  ollama: {
+    enabled: true,
+    useBundled: true,
+    freedomLevel: 'balanced',
+    endpoint: 'http://localhost:11434',
+    model: 'llama3.2',
+    temperature: 0.7,
+    contextSize: 8192,
+  },
+  ui: {
+    chatLayout: 'below',
   },
   theme: 'slate',
   autoSave: true,
@@ -113,6 +145,11 @@ export const SettingsService = {
 
     try {
       window.localStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
+      try {
+        window.dispatchEvent(new CustomEvent(SETTINGS_CHANGED_EVENT, { detail: settings }));
+      } catch {
+        // ignore
+      }
     } catch {
       // localStorage can fail (quota, privacy mode)
     }

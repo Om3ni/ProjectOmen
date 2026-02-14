@@ -10,6 +10,9 @@ contextBridge.exposeInMainWorld('electron', {
   fs: {
     readTextFile: (filePath) => ipcRenderer.invoke('fs:readTextFile', filePath),
     writeTextFile: (filePath, content) => ipcRenderer.invoke('fs:writeTextFile', filePath, content),
+    listFiles: (dirPath) => ipcRenderer.invoke('fs:listFiles', dirPath),
+    deleteFile: (filePath) => ipcRenderer.invoke('fs:deleteFile', filePath),
+    readAppResourceFile: (relativePath) => ipcRenderer.invoke('fs:readAppResourceFile', relativePath),
   },
   dialog: {
     openFile: (options) => ipcRenderer.invoke('dialog:openFile', options),
@@ -24,6 +27,7 @@ contextBridge.exposeInMainWorld('electron', {
 
   app: {
     getSaveFolder: () => ipcRenderer.invoke('app:getSaveFolder'),
+    getAppRoot: () => ipcRenderer.invoke('app:getAppRoot'),
   },
 
   // Native menu integration
@@ -71,9 +75,34 @@ contextBridge.exposeInMainWorld('electron', {
     },
   },
 
+  // Bundled Ollama management
+  ollamaLocal: {
+    getStatus: () => ipcRenderer.invoke('ollama:status'),
+    start: () => ipcRenderer.invoke('ollama:start'),
+    stop: () => ipcRenderer.invoke('ollama:stop'),
+    listModels: () => ipcRenderer.invoke('ollama:listModels'),
+    pullModel: (modelName) => ipcRenderer.invoke('ollama:pullModel', modelName),
+    deleteModel: (modelName) => ipcRenderer.invoke('ollama:deleteModel', modelName),
+    getModelsDir: () => ipcRenderer.invoke('ollama:getModelsDir'),
+    setModelsDir: (newPath) => ipcRenderer.invoke('ollama:setModelsDir', newPath),
+    browseModelsDir: () => ipcRenderer.invoke('ollama:browseModelsDir'),
+    onPullProgress: (listener) => {
+      const wrapped = (_event, data) => {
+        try {
+          listener(data);
+        } catch {
+          // ignore
+        }
+      };
+      ipcRenderer.on('ollama:pullProgress', wrapped);
+      return () => ipcRenderer.removeListener('ollama:pullProgress', wrapped);
+    },
+  },
+
   sheetWindow: {
     open: (payload) => ipcRenderer.invoke('window:openCharacterSheet', payload),
     getData: () => ipcRenderer.invoke('window:getCharacterSheetData'),
+    update: (payload) => ipcRenderer.send('sheet:update', payload),
     onInit: (listener) => {
       const wrapped = (_event, data) => {
         try {

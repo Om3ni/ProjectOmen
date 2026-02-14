@@ -15,6 +15,9 @@ dist-ssr
 # Build outputs
 release/
 
+# Bundled Ollama binary (downloaded via scripts/download-ollama.cjs)
+resources/ollama-win/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -25,3 +28,8 @@ release/
 *.njsproj
 *.sln
 *.sw?
+
+# Local-only / artifacts
+/.claude/settings.local.json
+*.zip
+/nul

@@ -1,0 +1,588 @@
+DiceConfig|177|19|20|8|5|0|t|0|10|0|0|0|0|0|0|0|0|f|f|0
+DiceRules|0|1|20|1|20|f|f
+Gear|f|t|t|t|t|t|0
+SkillDef|t|1|Strength||f|-1||0|t|0
+SkillDef|t|2|Dexterity||f|-1||0|t|0
+SkillDef|t|3|Constitution||f|-1||0|t|0
+SkillDef|t|4|Intelligence||f|-1||0|t|0
+SkillDef|t|5|Wisdom||f|-1||0|t|0
+SkillDef|t|6|Charisma||f|-1||0|t|0
+SkillDef|t|14|ADMIN||f|0||0|f|0
+SkillDef|f|13|~Strength Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|20|Athletics||f|-1|1*0.5|0|t|0
+SkillDef|f|15|~Dexterity Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|21|Acrobatics||f|-1|2*0.5|0|t|0
+SkillDef|f|34|Stealth||f|-1|2*0.5|0|t|0
+SkillDef|f|36|Thievery||f|-1|2*0.5|0|t|0
+SkillDef|f|16|~Constitution Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|17|~Intelligence Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|22|Crafting||f|-1|4*0.5|0|t|0
+SkillDef|f|26|Lore||f|-1|4*0.5|0|t|0
+SkillDef|f|29|Occultism||f|-1|4*0.5|0|t|0
+SkillDef|f|33|Society||f|-1|4*0.5|0|t|0
+SkillDef|f|18|~Wisdom Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|27|Medicine||f|-1|5*0.5|0|t|0
+SkillDef|f|28|Nature||f|-1|5*0.5|0|t|0
+SkillDef|f|30|Perception||f|-1|5*0.5|0|t|0
+SkillDef|f|32|Religion||f|-1|5*0.5|0|t|0
+SkillDef|f|35|Survival||f|-1|5*0.5|0|t|0
+SkillDef|f|19|~Charisma Skills~||t|-1|14*1.0|0|f|0
+SkillDef|f|23|Deception||f|-1|6*0.5|0|t|0
+SkillDef|f|24|Diplomacy||f|-1|6*0.5|0|t|0
+SkillDef|f|25|Intimidation||f|-1|6*0.5|0|t|0
+SkillDef|f|31|Performance||f|-1|6*0.5|0|t|0
+SkillDef|f|63|Armor Bonus||t|-1|2*1.0|0|f|0
+SkillDef|f|160|Attack Bonus Modifier||f|-1|14*1.0|0|f|0
+SkillDef|f|162|Damage Modifier||f|-1|14*1.0|0|f|0
+SkillDef|f|161|Spell Attack Bonus Modifier||f|-1|14*1.0|0|f|0
+SkillDef|f|163|Spell Save DC Modifier||f|-1|14*1.0|0|f|0
+PerkDef|7|f|Unarmored Defense (Barbarian)||0|
+PerkDef|8|f|Unarmored Defense (Monk)||0|
+PerkDef|9|f|Spellcasting (Intelligence)||0|
+PerkDef|10|f|Spellcasting (Wisdom)||0|
+PerkDef|11|f|Spellcasting (Charisma)||0|
+PerkDef|39|t|Strength, +2||0|MjrAB
+PerkAction|39|3|0|40|||0.0
+PerkAction|39|14|0|0|MjrAB||0.0
+PerkAction|39|4|2|1|||0.0
+PerkDef|40|t|Strength, +1||0|MnrAB
+PerkAction|40|4|1|1|||0.0
+PerkAction|40|14|0|0|MnrAB||0.0
+PerkAction|40|3|0|39|||0.0
+PerkDef|51|t|Dexterity, +2||0|MjrAB
+PerkAction|51|3|0|52|||0.0
+PerkAction|51|14|0|0|MjrAB||0.0
+PerkAction|51|4|2|2|||0.0
+PerkDef|52|t|Dexterity, +1||0|MnrAB
+PerkAction|52|4|1|2|||0.0
+PerkAction|52|14|0|0|MnrAB||0.0
+PerkAction|52|3|0|51|||0.0
+PerkDef|53|t|Constitution, +2||0|MjrAB
+PerkAction|53|3|0|54|||0.0
+PerkAction|53|14|0|0|MjrAB||0.0
+PerkAction|53|4|2|3|||0.0
+PerkDef|54|t|Constitution, +1||0|MnrAB
+PerkAction|54|4|1|3|||0.0
+PerkAction|54|14|0|0|MnrAB||0.0
+PerkAction|54|3|0|53|||0.0
+PerkDef|55|t|Intelligence, +2||0|MjrAB
+PerkAction|55|3|0|56|||0.0
+PerkAction|55|14|0|0|MjrAB||0.0
+PerkAction|55|4|2|4|||0.0
+PerkDef|56|t|Intelligence, +1||0|MnrAB
+PerkAction|56|4|1|4|||0.0
+PerkAction|56|14|0|0|MnrAB||0.0
+PerkAction|56|3|0|55|||0.0
+PerkDef|57|t|Wisdom, +2||0|MjrAB
+PerkAction|57|3|0|58|||0.0
+PerkAction|57|14|0|0|MjrAB||0.0
+PerkAction|57|4|2|5|||0.0
+PerkDef|58|t|Wisdom, +1||0|MnrAB
+PerkAction|58|4|1|5|||0.0
+PerkAction|58|14|0|0|MnrAB||0.0
+PerkAction|58|3|0|57|||0.0
+PerkDef|59|t|Charisma, +2||0|MjrAB
+PerkAction|59|3|0|60|||0.0
+PerkAction|59|14|0|0|MjrAB||0.0
+PerkAction|59|4|2|6|||0.0
+PerkDef|60|t|Charisma, +1||0|MnrAB
+PerkAction|60|4|1|6|||0.0
+PerkAction|60|14|0|0|MnrAB||0.0
+PerkAction|60|3|0|59|||0.0
+PerkDef|61|t|Class: Monk||0|Cls
+PerkAction|61|11|0|8|||0.0
+PerkDef|62|t|Class: Barbarian||0|Cls
+PerkAction|62|11|0|7|||0.0
+PerkDef|112|t|Class: Wizard||0|Cls
+PerkAction|112|11|0|9|||0.0
+PerkAction|112|6|0|114|||0.0
+PerkAction|112|6|0|115|||0.0
+PerkDef|113|t|Class: Cleric||0|Cls
+PerkAction|113|11|0|10|||0.0
+PerkAction|113|6|0|114|||0.0
+PerkAction|113|6|0|115|||0.0
+PerkDef|111|t|Class: Sorcerer||0|Cls
+PerkAction|111|11|0|11|||0.0
+PerkAction|111|6|0|114|||0.0
+PerkAction|111|6|0|115|||0.0
+PerkDef|94|f|Unarmored||0|
+PerkDef|66|f|Armor Equipped||0|
+PerkDef|95|f|Equipment: Light Armor||0|
+PerkDef|85|f|Equipment: Medium Armor||0|
+PerkDef|86|f|Equipment: Heavy Armor||0|
+PerkDef|88|f|Equipment: Shield||0|
+PerkDef|98|f|Med. AC Bonus (+1)||0|
+PerkDef|97|f|Med. AC Bonus (+2)||0|
+PerkDef|137|f|Trait: Finesse||0|
+PerkDef|157|f|Trait: Ranged||0|
+PerkDef|164|f|Trait: Plate Armor||0|
+PerkDef|144|f|Finesse: Dexterity||0|
+PerkDef|145|f|Finesse: Strength||0|
+PerkDef|175|f|Dexterity Attacks||0|
+Rune|108|833101|0|0|f|||f|f|f|f
+RuneAction|108|66|0|1|0
+RuneAction|108|95|0|1|0
+RuneAction|108|65|3|3|0
+Rune|87|833126|0|0|f|Armor||f|f|f|f
+RuneAction|87|66|0|1|0
+RuneAction|87|85|0|1|0
+RuneAction|87|65|5|3|0
+Rune|109|833151|0|0|f|||f|f|f|f
+RuneAction|109|66|0|1|0
+RuneAction|109|86|0|1|0
+RuneAction|109|65|8|3|0
+RuneAction|109|164|0|1|0
+Rune|110|833175|0|0|f|||f|f|f|f
+RuneAction|110|88|0|1|0
+RuneAction|110|65|2|3|0
+Rune|135|833174|0|0|f|Mainhand||f|f|f|f
+RuneAction|135|137|0|1|0
+Rune|156|833171|0|0|f|Mainhand||f|f|f|f
+RuneAction|156|157|0|1|0
+Rune|177|833161|0|0|f|Mainhand||f|f|f|f
+Stat|168|Initiative|0|2*0.5|0|f|f|t||1.0|f|f|0
+Stat|159|Movement Speed|10||0|f|f|t|This is as far as your character can move in tiles.  1 tile = 1 foundation.  1 foundation = 2.56 meters. 9.144 meters  = 30ft.  The usual  movement speed for D&D characters is about 30 ft.  However, 9 tiles doesn't really feel nice so I bumped it to 10 for easier maths.|1.0|f|f|0
+Stat|136|Attack Bonus|2||0|f|f|t||1.0|f|f|0
+Stat|143|Damage Bonus|0||0|f|f|t||1.0|f|f|0
+Stat|65|Armor Class|10|63*1.0|0|f|f|t||1.0|f|f|0
+Stat|114|Spell Save DC|10||0|f|f|f||1.0|f|f|0
+Stat|115|Spell Attack Bonus|2||0|f|f|f||1.0|f|f|0
+SpellDef|141|Finesse: Dexterity||0.0|1|0|2|0|1|2|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Utility|f|f|4|1|
+SpellReqDef|141|3|0|137|0.0|0.0|
+SpellReqDef|141|3|1|144|0.0|0.0|
+SpellEffect|141|2|0|You've been granted Finesse: Dexterity.  Your Attack Bonus and Damage Bonus for melee weapons is now scaling with Dexterity instead of Strength.|0|0|1|0||||1
+SpellEffect|141|2|6||144|0|1|0|-1|Finesse: Dexterity||1
+SpellEffect|141|2|7||0|0|1|0||Finesse: Strength||1
+SpellDef|155|Finesse: Strength||0.0|1|0|2|0|1|4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Utility|f|f|4|1|0
+SpellReqDef|155|3|0|137|0.0|0.0|
+SpellReqDef|155|3|1|145|0.0|0.0|
+SpellEffect|155|2|0|You've been granted Finesse: Strength.  Your Attack Bonus and Damage Bonus for melee  weapons is now scaling with Strength instead of Dexterity.  |0|0|1|0||||1
+SpellEffect|155|2|6||145|0|1|0|-1|Finesse: Strength||1
+SpellEffect|155|2|7||0|0|1|0||Finesse: Dexterity||1
+MutatorDef|176|Finesse: Dexterity|t|f
+MutatorCondition|176|0|0|0|144|0.0|0.0|
+MutatorCondition|176|0|0|0|137|0.0|0.0|
+MutatorAction|176|2|175|0
+MutatorDef|142|Finesse Swap|f|f
+MutatorCondition|142|0|0|0|137|0.0|0.0|
+MutatorAction|142|3|141|0
+MutatorAction|142|3|155|0
+MutatorDef|92|Unarmored|t|f
+MutatorCondition|92|0|0|1|95|0.0|0.0|
+MutatorCondition|92|0|0|1|85|0.0|0.0|
+MutatorCondition|92|0|0|1|86|0.0|0.0|
+MutatorCondition|92|0|0|1|66|0.0|0.0|
+MutatorAction|92|2|94|0
+MutatorDef|73|UAD (Basic) +2 DEX|t|f
+MutatorCondition|73|1|0|0|86|0.0|0.0|
+MutatorCondition|73|0|2|3|2|2.0|0.0|
+MutatorCondition|73|1|0|0|85|0.0|0.0|
+MutatorAction|73|1|65|1
+MutatorDef|74|UAD (Basic) +4 DEX|t|f
+MutatorCondition|74|1|0|0|86|0.0|0.0|
+MutatorCondition|74|0|2|3|2|4.0|0.0|
+MutatorCondition|74|1|0|0|85|0.0|0.0|
+MutatorAction|74|1|65|1
+MutatorDef|75|UAD (Basic) +6 DEX|t|f
+MutatorCondition|75|1|0|0|86|0.0|0.0|
+MutatorCondition|75|0|2|3|2|6.0|0.0|
+MutatorCondition|75|1|0|0|85|0.0|0.0|
+MutatorAction|75|1|65|1
+MutatorDef|76|UAD (Basic) +8 DEX|t|f
+MutatorCondition|76|1|0|0|86|0.0|0.0|
+MutatorCondition|76|0|2|3|2|8.0|0.0|
+MutatorCondition|76|1|0|0|85|0.0|0.0|
+MutatorAction|76|1|65|1
+MutatorDef|77|UAD (Basic) +2 DEX Perk|t|f
+MutatorCondition|77|1|0|0|86|0.0|0.0|
+MutatorCondition|77|0|0|0|51|0.0|0.0|
+MutatorCondition|77|1|0|0|85|0.0|0.0|
+MutatorAction|77|1|65|1
+MutatorDef|78|UAD (Basic) +1 DEX Perk|t|f
+MutatorCondition|78|1|0|0|85|0.0|0.0|
+MutatorCondition|78|0|0|0|52|0.0|0.0|
+MutatorCondition|78|1|2|0|2|0.0|0.0|
+MutatorCondition|78|1|2|0|2|2.0|0.0|
+MutatorCondition|78|1|2|0|2|4.0|0.0|
+MutatorCondition|78|1|2|0|2|6.0|0.0|
+MutatorCondition|78|1|2|0|2|8.0|0.0|
+MutatorCondition|78|1|0|0|86|0.0|0.0|
+MutatorAction|78|1|65|1
+MutatorDef|79|UAD (Monk) +2 WIS|t|f
+MutatorCondition|79|0|0|0|8|0.0|0.0|
+MutatorCondition|79|1|0|0|66|0.0|0.0|
+MutatorCondition|79|0|2|3|5|2.0|0.0|
+MutatorCondition|79|1|0|0|88|0.0|0.0|
+MutatorAction|79|1|65|1
+MutatorDef|82|UAD (Monk) +4 WIS|t|f
+MutatorCondition|82|0|0|0|8|0.0|0.0|
+MutatorCondition|82|1|0|0|66|0.0|0.0|
+MutatorCondition|82|0|2|3|5|4.0|0.0|
+MutatorCondition|82|1|0|0|88|0.0|0.0|
+MutatorAction|82|1|65|1
+MutatorDef|83|UAD (Monk) +6 WIS|t|f
+MutatorCondition|83|0|0|0|8|0.0|0.0|
+MutatorCondition|83|1|0|0|66|0.0|0.0|
+MutatorCondition|83|0|2|3|5|6.0|0.0|
+MutatorCondition|83|1|0|0|88|0.0|0.0|
+MutatorAction|83|1|65|1
+MutatorDef|84|UAD (Monk) +8 WIS|t|f
+MutatorCondition|84|0|0|0|8|0.0|0.0|
+MutatorCondition|84|1|0|0|66|0.0|0.0|
+MutatorCondition|84|0|2|3|5|8.0|0.0|
+MutatorCondition|84|1|0|0|88|0.0|0.0|
+MutatorAction|84|1|65|1
+MutatorDef|80|UAD (Monk) +2 WIS Perk|t|f
+MutatorCondition|80|0|0|0|8|0.0|0.0|
+MutatorCondition|80|1|0|0|66|0.0|0.0|
+MutatorCondition|80|0|0|0|57|0.0|0.0|
+MutatorCondition|80|1|0|0|88|0.0|0.0|
+MutatorAction|80|1|65|1
+MutatorDef|81|UAD (Monk) +1 WIS Perk|t|f
+MutatorCondition|81|0|0|0|8|0.0|0.0|
+MutatorCondition|81|1|0|0|66|0.0|0.0|
+MutatorCondition|81|0|0|0|58|0.0|0.0|
+MutatorCondition|81|1|2|0|5|0.0|0.0|
+MutatorCondition|81|1|2|0|5|2.0|0.0|
+MutatorCondition|81|1|2|0|5|4.0|0.0|
+MutatorCondition|81|1|2|0|5|6.0|0.0|
+MutatorCondition|81|1|2|0|5|8.0|0.0|
+MutatorCondition|81|1|0|0|88|0.0|0.0|
+MutatorAction|81|1|65|1
+MutatorDef|64|UAD (Barb) +2 CON|t|f
+MutatorCondition|64|0|0|0|7|0.0|0.0|
+MutatorCondition|64|1|0|0|66|0.0|0.0|
+MutatorCondition|64|0|2|3|3|2.0|0.0|
+MutatorAction|64|1|65|1
+MutatorDef|68|UAD (Barb) +4 CON|t|f
+MutatorCondition|68|0|0|0|7|0.0|0.0|
+MutatorCondition|68|1|0|0|66|0.0|0.0|
+MutatorCondition|68|0|2|3|3|4.0|0.0|
+MutatorAction|68|1|65|1
+MutatorDef|69|UAD (Barb) +6 CON|t|f
+MutatorCondition|69|0|0|0|7|0.0|0.0|
+MutatorCondition|69|1|0|0|66|0.0|0.0|
+MutatorCondition|69|0|2|3|3|6.0|0.0|
+MutatorAction|69|1|65|1
+MutatorDef|70|UAD (Barb) +8 CON|t|f
+MutatorCondition|70|0|0|0|7|0.0|0.0|
+MutatorCondition|70|1|0|0|66|0.0|0.0|
+MutatorCondition|70|0|2|3|3|8.0|0.0|
+MutatorAction|70|1|65|1
+MutatorDef|71|UAD (Barb) +2 CON Perk|t|f
+MutatorCondition|71|0|0|0|7|0.0|0.0|
+MutatorCondition|71|1|0|0|66|0.0|0.0|
+MutatorCondition|71|0|0|0|53|0.0|0.0|
+MutatorCondition|71|1|0|0|85|0.0|0.0|
+MutatorAction|71|1|65|1
+MutatorDef|72|UAD (Barb) +1 CON Perk|t|f
+MutatorCondition|72|0|0|0|7|0.0|0.0|
+MutatorCondition|72|1|0|0|66|0.0|0.0|
+MutatorCondition|72|0|0|0|54|0.0|0.0|
+MutatorCondition|72|1|2|0|3|0.0|0.0|
+MutatorCondition|72|1|2|0|3|2.0|0.0|
+MutatorCondition|72|1|2|0|3|4.0|0.0|
+MutatorCondition|72|1|2|0|3|6.0|0.0|
+MutatorCondition|72|1|2|0|3|8.0|0.0|
+MutatorAction|72|1|65|1
+MutatorDef|96|Med Armor Calc 1|t|f
+MutatorCondition|96|0|0|0|51|0.0|0.0|
+MutatorCondition|96|0|2|0|2|1.0|0.0|
+MutatorCondition|96|1|2|0|2|0.0|0.0|
+MutatorAction|96|2|98|0
+MutatorDef|99|Med Armor Calc 2|t|f
+MutatorCondition|99|0|0|0|52|0.0|0.0|
+MutatorCondition|99|0|2|5|2|2.0|0.0|
+MutatorCondition|99|1|2|0|2|0.0|0.0|
+MutatorAction|99|2|98|0
+MutatorDef|100|Med Armor Calc 3|t|f
+MutatorCondition|100|0|0|0|51|0.0|0.0|
+MutatorCondition|100|1|2|2|2|0.0|0.0|
+MutatorAction|100|2|98|0
+MutatorDef|101|Med Armor Calc 4|t|f
+MutatorCondition|101|0|2|2|2|1.0|0.0|
+MutatorCondition|101|0|2|5|2|3.0|0.0|
+MutatorCondition|101|1|0|0|51|0.0|0.0|
+MutatorCondition|101|1|0|0|52|0.0|0.0|
+MutatorAction|101|2|98|0
+MutatorDef|102|Med Armor Calc 5|t|f
+MutatorCondition|102|0|0|0|51|0.0|0.0|
+MutatorCondition|102|0|2|3|2|2.0|0.0|
+MutatorAction|102|2|97|0
+MutatorDef|104|Med Armor Calc 6|t|f
+MutatorCondition|104|0|0|0|52|0.0|0.0|
+MutatorCondition|104|0|2|3|2|3.0|0.0|
+MutatorAction|104|2|97|0
+MutatorDef|105|Med Armor Calc 7|t|f
+MutatorCondition|105|0|2|3|2|4.0|0.0|
+MutatorAction|105|2|97|0
+MutatorDef|107|Medium Armor +1|t|f
+MutatorCondition|107|0|0|0|98|0.0|0.0|
+MutatorCondition|107|0|0|0|85|0.0|0.0|
+MutatorAction|107|1|65|1
+MutatorDef|106|Medium Armor +2|t|f
+MutatorCondition|106|0|0|0|97|0.0|0.0|
+MutatorCondition|106|0|0|0|85|0.0|0.0|
+MutatorAction|106|1|65|2
+MutatorDef|129|INT Casting +2 INT|t|f
+MutatorCondition|129|0|2|3|4|2.0|0.0|
+MutatorCondition|129|0|0|0|9|0.0|0.0|
+MutatorAction|129|1|114|1
+MutatorAction|129|1|115|1
+MutatorDef|132|INT Casting +4 INT|t|f
+MutatorCondition|132|0|2|3|4|4.0|0.0|
+MutatorCondition|132|0|0|0|9|0.0|0.0|
+MutatorAction|132|1|114|1
+MutatorAction|132|1|115|1
+MutatorDef|133|INT Casting +6 INT|t|f
+MutatorCondition|133|0|2|3|4|6.0|0.0|
+MutatorCondition|133|0|0|0|9|0.0|0.0|
+MutatorAction|133|1|114|1
+MutatorAction|133|1|115|1
+MutatorDef|134|INT Casting +8 INT|t|f
+MutatorCondition|134|0|2|3|4|8.0|0.0|
+MutatorCondition|134|0|0|0|9|0.0|0.0|
+MutatorAction|134|1|114|1
+MutatorAction|134|1|115|1
+MutatorDef|130|INT Casting +1 INT Perk|t|f
+MutatorCondition|130|0|0|0|56|0.0|0.0|
+MutatorCondition|130|1|2|0|4|0.0|0.0|
+MutatorCondition|130|1|2|0|4|2.0|0.0|
+MutatorCondition|130|1|2|0|4|4.0|0.0|
+MutatorCondition|130|1|2|0|4|6.0|0.0|
+MutatorCondition|130|1|2|0|4|8.0|0.0|
+MutatorCondition|130|0|0|0|9|0.0|0.0|
+MutatorAction|130|1|114|1
+MutatorAction|130|1|115|1
+MutatorDef|131|INT Casting +2 INT Perk|t|f
+MutatorCondition|131|0|0|0|55|0.0|0.0|
+MutatorCondition|131|0|0|0|9|0.0|0.0|
+MutatorAction|131|1|114|1
+MutatorAction|131|1|115|1
+MutatorDef|122|WIS Casting +2 WIS|t|f
+MutatorCondition|122|0|2|3|5|2.0|0.0|
+MutatorCondition|122|0|0|0|10|0.0|0.0|
+MutatorAction|122|1|114|1
+MutatorAction|122|1|115|1
+MutatorDef|123|WIS Casting +4 WIS|t|f
+MutatorCondition|123|0|2|3|5|4.0|0.0|
+MutatorCondition|123|0|0|0|10|0.0|0.0|
+MutatorAction|123|1|114|1
+MutatorAction|123|1|115|1
+MutatorDef|124|WIS Casting +6 WIS|t|f
+MutatorCondition|124|0|2|3|5|6.0|0.0|
+MutatorCondition|124|0|0|0|10|0.0|0.0|
+MutatorAction|124|1|114|1
+MutatorAction|124|1|115|1
+MutatorDef|125|WIS Casting +8 WIS|t|f
+MutatorCondition|125|0|2|3|5|8.0|0.0|
+MutatorCondition|125|0|0|0|10|0.0|0.0|
+MutatorAction|125|1|114|1
+MutatorAction|125|1|115|1
+MutatorDef|120|WIS Casting +1 WIS Perk|t|f
+MutatorCondition|120|0|0|0|58|0.0|0.0|
+MutatorCondition|120|1|2|0|5|0.0|0.0|
+MutatorCondition|120|1|2|0|5|2.0|0.0|
+MutatorCondition|120|1|2|0|5|4.0|0.0|
+MutatorCondition|120|1|2|0|5|6.0|0.0|
+MutatorCondition|120|1|2|0|5|8.0|0.0|
+MutatorCondition|120|0|0|0|10|0.0|0.0|
+MutatorAction|120|1|114|1
+MutatorAction|120|1|115|1
+MutatorDef|121|WIS Casting +2 WIS Perk|t|f
+MutatorCondition|121|0|0|0|57|0.0|0.0|
+MutatorCondition|121|0|0|0|10|0.0|0.0|
+MutatorAction|121|1|114|1
+MutatorAction|121|1|115|1
+MutatorDef|117|CHA Casting +2 CHA|t|f
+MutatorCondition|117|0|2|3|6|2.0|0.0|
+MutatorCondition|117|0|0|0|11|0.0|0.0|
+MutatorAction|117|1|114|1
+MutatorAction|117|1|115|1
+MutatorDef|126|CHA Casting +4 CHA|t|f
+MutatorCondition|126|0|2|3|6|4.0|0.0|
+MutatorCondition|126|0|0|0|11|0.0|0.0|
+MutatorAction|126|1|114|1
+MutatorAction|126|1|115|1
+MutatorDef|127|CHA Casting +6 CHA|t|f
+MutatorCondition|127|0|2|3|6|6.0|0.0|
+MutatorCondition|127|0|0|0|11|0.0|0.0|
+MutatorAction|127|1|114|1
+MutatorAction|127|1|115|1
+MutatorDef|128|CHA Casting +8 CHA|t|f
+MutatorCondition|128|0|2|3|6|8.0|0.0|
+MutatorCondition|128|0|0|0|11|0.0|0.0|
+MutatorAction|128|1|114|1
+MutatorAction|128|1|115|1
+MutatorDef|119|CHA Casting +1 CHA Perk|t|f
+MutatorCondition|119|0|0|0|60|0.0|0.0|
+MutatorCondition|119|1|2|0|6|0.0|0.0|
+MutatorCondition|119|1|2|0|6|2.0|0.0|
+MutatorCondition|119|1|2|0|6|4.0|0.0|
+MutatorCondition|119|1|2|0|6|6.0|0.0|
+MutatorCondition|119|1|2|0|6|8.0|0.0|
+MutatorCondition|119|0|0|0|11|0.0|0.0|
+MutatorAction|119|1|114|1
+MutatorAction|119|1|115|1
+MutatorDef|118|CHA Casting +2 CHA Perk|t|f
+MutatorCondition|118|0|0|0|59|0.0|0.0|
+MutatorCondition|118|0|0|0|11|0.0|0.0|
+MutatorAction|118|1|114|1
+MutatorAction|118|1|115|1
+MutatorDef|140|STR Attack Bonus +2 STR|t|f
+MutatorCondition|140|0|2|3|1|2.0|0.0|
+MutatorCondition|140|1|0|0|175|0.0|0.0|
+MutatorCondition|140|1|0|0|157|0.0|0.0|
+MutatorAction|140|1|136|1
+MutatorAction|140|1|143|1
+MutatorDef|146|STR Attack Bonus +4 STR|t|f
+MutatorCondition|146|0|2|3|1|4.0|0.0|
+MutatorCondition|146|1|0|0|175|0.0|0.0|
+MutatorCondition|146|1|0|0|157|0.0|0.0|
+MutatorAction|146|1|136|1
+MutatorAction|146|1|143|1
+MutatorDef|147|STR Attack Bonus +6 STR|t|f
+MutatorCondition|147|0|2|3|1|6.0|0.0|
+MutatorCondition|147|1|0|0|175|0.0|0.0|
+MutatorCondition|147|1|0|0|157|0.0|0.0|
+MutatorAction|147|1|136|1
+MutatorAction|147|1|143|1
+MutatorDef|148|STR Attack Bonus +8 STR|t|f
+MutatorCondition|148|0|2|3|1|8.0|0.0|
+MutatorCondition|148|1|0|0|175|0.0|0.0|
+MutatorCondition|148|1|0|0|157|0.0|0.0|
+MutatorAction|148|1|136|1
+MutatorAction|148|1|143|1
+MutatorDef|139|STR Attack Bonus +1 STR Perk|t|f
+MutatorCondition|139|0|0|0|40|0.0|0.0|
+MutatorCondition|139|1|2|0|1|0.0|0.0|
+MutatorCondition|139|1|2|0|1|2.0|0.0|
+MutatorCondition|139|1|2|0|1|4.0|0.0|
+MutatorCondition|139|1|2|0|1|6.0|0.0|
+MutatorCondition|139|1|2|0|1|8.0|0.0|
+MutatorCondition|139|1|0|0|175|0.0|0.0|
+MutatorCondition|139|1|0|0|157|0.0|0.0|
+MutatorAction|139|1|136|1
+MutatorAction|139|1|143|1
+MutatorDef|138|STR Attack Bonus +2 STR Perk|t|f
+MutatorCondition|138|0|0|0|39|0.0|0.0|
+MutatorCondition|138|1|0|0|175|0.0|0.0|
+MutatorCondition|138|1|0|0|157|0.0|0.0|
+MutatorAction|138|1|136|1
+MutatorAction|138|1|143|1
+MutatorDef|151|DEX Attack Bonus +2 DEX|t|f
+MutatorCondition|151|0|2|3|2|2.0|0.0|
+MutatorCondition|151|1|0|0|145|0.0|0.0|
+MutatorCondition|151|1|0|0|157|0.0|0.0|
+MutatorCondition|151|0|0|0|175|0.0|0.0|
+MutatorAction|151|1|136|1
+MutatorAction|151|1|143|1
+MutatorDef|152|DEX Attack Bonus +4 DEX|t|f
+MutatorCondition|152|0|2|3|2|4.0|0.0|
+MutatorCondition|152|1|0|0|145|0.0|0.0|
+MutatorCondition|152|1|0|0|157|0.0|0.0|
+MutatorCondition|152|0|0|0|175|0.0|0.0|
+MutatorAction|152|1|136|1
+MutatorAction|152|1|143|1
+MutatorDef|153|DEX Attack Bonus +6 DEX|t|f
+MutatorCondition|153|0|2|3|2|6.0|0.0|
+MutatorCondition|153|1|0|0|145|0.0|0.0|
+MutatorCondition|153|1|0|0|157|0.0|0.0|
+MutatorCondition|153|0|0|0|175|0.0|0.0|
+MutatorAction|153|1|136|1
+MutatorAction|153|1|143|1
+MutatorDef|154|DEX Attack Bonus +8 DEX|t|f
+MutatorCondition|154|0|2|3|2|8.0|0.0|
+MutatorCondition|154|1|0|0|145|0.0|0.0|
+MutatorCondition|154|1|0|0|157|0.0|0.0|
+MutatorCondition|154|0|0|0|175|0.0|0.0|
+MutatorAction|154|1|136|1
+MutatorAction|154|1|143|1
+MutatorDef|150|DEX Attack Bonus +1 DEX Perk|t|f
+MutatorCondition|150|0|0|0|52|0.0|0.0|
+MutatorCondition|150|1|2|0|2|0.0|0.0|
+MutatorCondition|150|1|2|0|2|2.0|0.0|
+MutatorCondition|150|1|2|0|2|4.0|0.0|
+MutatorCondition|150|1|2|0|2|6.0|0.0|
+MutatorCondition|150|1|2|0|2|8.0|0.0|
+MutatorCondition|150|1|0|0|145|0.0|0.0|
+MutatorCondition|150|1|0|0|157|0.0|0.0|
+MutatorCondition|150|0|0|0|175|0.0|0.0|
+MutatorAction|150|1|136|1
+MutatorAction|150|1|143|1
+MutatorDef|149|DEX Attack Bonus +2 DEX Perk|t|f
+MutatorCondition|149|0|0|0|51|0.0|0.0|
+MutatorCondition|149|1|0|0|145|0.0|0.0|
+MutatorCondition|149|1|0|0|157|0.0|0.0|
+MutatorCondition|149|0|0|0|175|0.0|0.0|
+MutatorAction|149|1|136|1
+MutatorAction|149|1|143|1
+MutatorDef|165|Heavy Armor STR Req. Check 1|t|f
+MutatorCondition|165|0|0|0|164|0.0|0.0|
+MutatorCondition|165|0|2|4|1|5.0|0.0|
+MutatorCondition|165|1|0|0|39|0.0|0.0|
+MutatorCondition|165|1|0|0|40|0.0|0.0|
+MutatorAction|165|4|158|0
+MutatorDef|166|Heavy Armor STR Req. Check 2|t|f
+MutatorCondition|166|0|0|0|164|0.0|0.0|
+MutatorCondition|166|0|2|4|1|3.0|0.0|
+MutatorCondition|166|0|0|0|39|0.0|0.0|
+MutatorAction|166|4|158|0
+MutatorDef|167|Heavy Armor STR Req. Check 3|t|f
+MutatorCondition|167|0|0|0|164|0.0|0.0|
+MutatorCondition|167|0|2|4|1|4.0|0.0|
+MutatorCondition|167|0|0|0|40|0.0|0.0|
+MutatorAction|167|4|158|0
+MutatorDef|169|Ranged Attack Bonus +2 DEX|t|f
+MutatorCondition|169|0|2|3|2|2.0|0.0|
+MutatorCondition|169|0|0|0|157|0.0|0.0|
+MutatorAction|169|1|136|1
+MutatorAction|169|1|143|1
+MutatorDef|170|Ranged Attack Bonus +4 DEX|t|f
+MutatorCondition|170|0|2|3|2|4.0|0.0|
+MutatorCondition|170|0|0|0|157|0.0|0.0|
+MutatorAction|170|1|136|1
+MutatorAction|170|1|143|1
+MutatorDef|171|Ranged Attack Bonus +6 DEX|t|f
+MutatorCondition|171|0|2|3|2|6.0|0.0|
+MutatorCondition|171|0|0|0|157|0.0|0.0|
+MutatorAction|171|1|136|1
+MutatorAction|171|1|143|1
+MutatorDef|172|Ranged Attack Bonus +8 DEX|t|f
+MutatorCondition|172|0|2|3|2|8.0|0.0|
+MutatorCondition|172|0|0|0|157|0.0|0.0|
+MutatorAction|172|1|136|1
+MutatorAction|172|1|143|1
+MutatorDef|173|Ranged Attack Bonus +1 DEX Perk|t|f
+MutatorCondition|173|0|0|0|52|0.0|0.0|
+MutatorCondition|173|1|2|0|2|0.0|0.0|
+MutatorCondition|173|1|2|0|2|2.0|0.0|
+MutatorCondition|173|1|2|0|2|4.0|0.0|
+MutatorCondition|173|1|2|0|2|6.0|0.0|
+MutatorCondition|173|1|2|0|2|8.0|0.0|
+MutatorCondition|173|0|0|0|157|0.0|0.0|
+MutatorAction|173|1|136|1
+MutatorAction|173|1|143|1
+MutatorDef|174|Ranged Attack Bonus +2 DEX Perk|t|f
+MutatorCondition|174|0|0|0|51|0.0|0.0|
+MutatorCondition|174|0|0|0|157|0.0|0.0|
+MutatorAction|174|1|136|1
+MutatorAction|174|1|143|1
+StatusDef|158|Encumbered|0.375,0.306507,0.124512,1.0|f
+StatusAction|158|20|-5|0
+StatusAction|158|21|-5|0
+StatusAction|158|34|-5|0
+StatusAction|158|36|-5|0
+StatusAction|158|159|-5|1
+StatusAction|158|160|-5|0
+Mechanic|1|f|0|0|0|0|0|0|None
+Mechanic|2|f|0|0|0|0|0|0|None
+Mechanic|3|f|0|0|0|0|0|0|None
+Mechanic|4|f|0|0|0|0|0|0|None
+Mechanic|5|f|0|0|0|0|0|0|None
+Mechanic|6|f|0|0|0|0|0|0|None
+Mechanic|7|f|0|0|0|0|0|0|None
+Mechanic|8|f|0|0|0|0|0|0|None
+Mechanic|9|f|0|0|0|0|0|0|None
+Mechanic|10|f|0|0|0|0|0|0|None
+Megascope|11|f|f

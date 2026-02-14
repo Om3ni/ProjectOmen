@@ -1,4 +1,5 @@
 import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 import FieldEditor from '@/components/FieldEditor';
 import DescriptionField from '@/components/DescriptionField';
 import AttributeBonusBuilder from '@/components/AttributeBonusBuilder';
@@ -9,14 +10,6 @@ type Props = {
   allData: SchemaData;
   onChange: (next: Record<string, unknown>) => void;
 };
-
-function col(schema: TableSchema, name: string) {
-  return schema.columns.find((c) => c.name === name);
-}
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
 
 /**
  * Layout for Skills (SkillDef where TypeFlag = 'f').

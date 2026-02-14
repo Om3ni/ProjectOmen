@@ -3,9 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 import type { SchemaData } from '@/models/schema';
 import CharacterSheetModal from '@/components/CharacterSheetModal';
 import { isElectron, getElectron } from '@/types/electron';
+import { SchemaService } from '@/services/SchemaService';
+import type { Settings } from '@/services/SettingsService';
 
 type InitPayload = {
   data: SchemaData;
+  settings?: Settings;
 };
 
 export default function CharacterSheetPage() {
@@ -14,19 +17,28 @@ export default function CharacterSheetPage() {
   const isDesktop = useMemo(() => isElectron(), []);
 
   useEffect(() => {
-    if (!isDesktop) return;
-
-    const electron = getElectron();
+    const electron = isDesktop ? getElectron() : null;
 
     const unsub = electron?.sheetWindow?.onInit?.((data: unknown) => {
-      const payload = data as InitPayload;
-      setPayload(payload);
+      const next = data as InitPayload;
+      if (next?.data) setPayload(next);
     });
 
+    // Always self-load schema-data.json so the EXE build can populate even if
+    // the init payload is missed/too large. IPC updates can still override.
     (async () => {
       try {
+        const loaded = await SchemaService.loadSchemaData();
+        if (loaded?.data) setPayload({ data: loaded.data });
+      } catch {
+        // ignore
+      }
+
+      // If the main process has a newer in-memory snapshot, apply it.
+      try {
         const existing = await electron?.sheetWindow?.getData?.();
-        if (existing && !payload) setPayload(existing as InitPayload);
+        const next = existing as InitPayload | null;
+        if (next?.data) setPayload(next);
       } catch {
         // ignore
       }
@@ -39,7 +51,6 @@ export default function CharacterSheetPage() {
         // ignore
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDesktop]);
 
   if (!payload?.data) {

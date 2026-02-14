@@ -123,10 +123,9 @@ export default function FormulaEditorModal({ label, value: initialValue, onApply
   const labelCls = 'text-xs font-semibold text-slate-400 uppercase tracking-wide';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 p-4" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 p-4">
       <div
         className="mt-16 w-full max-w-2xl rounded-lg border border-slate-800 bg-slate-950 p-4"
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between mb-4">

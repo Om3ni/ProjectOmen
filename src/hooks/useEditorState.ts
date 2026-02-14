@@ -2,132 +2,75 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 import type { RprCategory, SchemaData, SchemaStructure, TableSchema } from '@/models/schema';
 import { SchemaService } from '@/services/SchemaService';
-import { normalizeDataToRanges } from '@/utils/normalize';
-import { parseRprTextToSchemaData } from '@/utils/rprImport';
-import { exportSchemaDataToRprText, stripRprPreviewPrefixes } from '@/utils/rprText';
-import { createDefaultRecord, inferIdField, nextGlobalNumericId } from '@/utils/schemaDefaults';
+import { createDefaultRecord, inferIdField } from '@/utils/schemaDefaults';
+import { CHILDREN_BY_PARENT } from '@/components/childrenConfigs';
+import { readAutosave } from '@/utils/autosave';
+import { allocateNextNodeId, asRows, toSafeNonNegativeInt, maxNumericIdInData } from '@/utils/editorHelpers';
+import { CATEGORY_VIEWS } from '@/constants/categoryViews';
+import { useEditorAutosave } from './useEditorAutosave';
+import { useEditorBroadcast } from './useEditorBroadcast';
+import { useEditorFileIO } from './useEditorFileIO';
+import { useEditorRawIO } from './useEditorRawIO';
 
-export type CategoryView = {
-  category: RprCategory;
-  table: string;
-  filter?: (row: Record<string, unknown>) => boolean;
-};
+// Re-export for backward compatibility (consumed by RawModal, RecordListSidebar, etc.)
+export { CATEGORY_VIEWS } from '@/constants/categoryViews';
+export type { CategoryView } from '@/constants/categoryViews';
+export { asRows, inferLabel } from '@/utils/editorHelpers';
 
-export const CATEGORY_VIEWS: CategoryView[] = [
-  // Dice System is a special combined settings view (DiceConfig + DiceRules + Gear)
-  { category: 'Dice System', table: 'DiceConfig' },
-  {
-    category: 'Attributes',
-    table: 'SkillDef',
-    filter: (row) => String(row.TypeFlag ?? 'f').toLowerCase() === 't',
-  },
-  {
-    category: 'Skills',
-    table: 'SkillDef',
-    filter: (row) => String(row.TypeFlag ?? 'f').toLowerCase() === 'f',
-  },
-  { category: 'Perks', table: 'PerkDef' },
-  { category: 'Stats', table: 'Stat' },
-  { category: 'Runes', table: 'RuneDef' },
-  { category: 'Statuses', table: 'StatusDef' },
-  { category: 'Mutators', table: 'MutatorDef' },
-  { category: 'Abilities', table: 'SpellDef' },
-];
+const CORE_SINGLE_ROW_TABLES: Array<'DiceConfig' | 'DiceRules' | 'Gear'> = ['DiceConfig', 'DiceRules', 'Gear'];
 
+function ensureCoreTables(schema: SchemaStructure, data: SchemaData): SchemaData {
+  const next: SchemaData = { ...data };
+  const maxNodeId = maxNumericIdInData(data);
 
-export function asRows(data: SchemaData | null, table: string): Array<Record<string, unknown>> {
-  const raw = data?.[table];
-  return Array.isArray(raw) ? (raw as Array<Record<string, unknown>>) : [];
-}
+  for (const tableName of CORE_SINGLE_ROW_TABLES) {
+    const tableSchema = schema.tables?.[tableName];
+    if (!tableSchema) continue;
 
-export function inferLabel(row: Record<string, unknown>): string {
-  const candidates = ['Name', 'Literal', 'ID', 'Node ID'];
-  for (const key of candidates) {
-    const value = row[key];
-    if (value === undefined || value === null) continue;
-    const text = String(value).trim();
-    if (text) return text;
-  }
-  return '(unnamed)';
-}
+    const existing = next[tableName];
+    const existingRows = Array.isArray(existing) ? (existing as Array<Record<string, unknown>>) : [];
 
-const NEW_AUTOSAVE_KEY = 'project-omen:autosave:v1';
-const OLD_AUTOSAVE_KEY = 'rpr-parser-editor:autosave:v1';
+    const defaults = createDefaultRecord(tableName, tableSchema);
 
-type AutosavePayloadV1 = {
-  v: 1;
-  savedAt: number;
-  schemaVersion?: string;
-  tooltips?: Record<string, string>;
-  data: SchemaData;
-  activeCategory?: RprCategory;
-  selectedIndex?: number;
-};
-
-function canUseLocalStorage(): boolean {
-  try {
-    return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
-  } catch {
-    return false;
-  }
-}
-
-function stripUiMetadataFromRecord(row: Record<string, unknown>): Record<string, unknown> {
-  const next: Record<string, unknown> = {};
-  for (const [k, v] of Object.entries(row)) {
-    if (k.startsWith('__')) continue;
-    next[k] = v;
-  }
-  return next;
-}
-
-function stripUiMetadataFromData(data: SchemaData): SchemaData {
-  const next: SchemaData = {};
-  for (const [tableName, tableRows] of Object.entries(data)) {
-    const rows = Array.isArray(tableRows) ? (tableRows as Array<Record<string, unknown>>) : [];
-    next[tableName] = rows.map(stripUiMetadataFromRecord);
-  }
-  return next;
-}
-
-function readAutosave(): AutosavePayloadV1 | null {
-  if (!canUseLocalStorage()) return null;
-  try {
-    const rawNew = window.localStorage.getItem(NEW_AUTOSAVE_KEY);
-    const raw = rawNew ?? window.localStorage.getItem(OLD_AUTOSAVE_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw) as unknown;
-    if (!parsed || typeof parsed !== 'object') return null;
-    const p = parsed as Partial<AutosavePayloadV1>;
-    if (p.v !== 1) return null;
-    if (!p.data || typeof p.data !== 'object') return null;
-    // If we read from the old key and the new key wasn't present, migrate and remove the old key
-    if (!rawNew) {
-      try {
-        window.localStorage.setItem(NEW_AUTOSAVE_KEY, raw);
-        window.localStorage.removeItem(OLD_AUTOSAVE_KEY);
-      } catch {
-        // ignore quota or privacy failures
-      }
+    // Product requirement: dice is enabled by default.
+    if (tableName === 'DiceConfig') {
+      (defaults as Record<string, unknown>).EnableDiceCheck = 't';
     }
-    return p as AutosavePayloadV1;
-  } catch {
-    return null;
-  }
-}
 
-function writeAutosave(payload: AutosavePayloadV1): void {
-  if (!canUseLocalStorage()) return;
-  window.localStorage.setItem(NEW_AUTOSAVE_KEY, JSON.stringify(payload));
-}
+    const hydrateRecord = (record: Record<string, unknown>): Record<string, unknown> => {
+      const out: Record<string, unknown> = { ...record };
+      for (const col of tableSchema.columns ?? []) {
+        const key = col?.name;
+        if (!key) continue;
+        const current = out[key];
+        const isBlank = current === undefined || current === null || current === '';
+        if (!isBlank) continue;
+        if (defaults[key] !== undefined) out[key] = defaults[key];
+      }
+      return out;
+    };
 
-function clearAutosave(): void {
-  if (!canUseLocalStorage()) return;
-  try {
-    window.localStorage.removeItem(NEW_AUTOSAVE_KEY);
-  } catch {
-    // ignore
+    if (existingRows.length > 0) {
+      const hydrated = hydrateRecord(existingRows[0] ?? {});
+
+      if (tableName === 'DiceConfig') {
+        const baseNum = toSafeNonNegativeInt(hydrated.TotalNodes);
+        hydrated.TotalNodes = Math.max(baseNum, maxNodeId);
+      }
+
+      next[tableName] = [hydrated];
+      continue;
+    }
+
+    if (tableName === 'DiceConfig') {
+      const baseNum = toSafeNonNegativeInt((defaults as Record<string, unknown>).TotalNodes);
+      (defaults as Record<string, unknown>).TotalNodes = Math.max(baseNum, maxNodeId);
+    }
+
+    next[tableName] = [defaults];
   }
+
+  return next;
 }
 
 export function useEditorState() {
@@ -139,11 +82,9 @@ export function useEditorState() {
   const [activeCategory, setActiveCategory] = useState<RprCategory>('Attributes');
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
-  const autosaveTimerRef = useRef<number | null>(null);
-
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  // Load initial data
+  // --- Initialization ---
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -159,7 +100,7 @@ export function useEditorState() {
 
         setSchema(structure);
         if (autosave?.data) {
-          setData(autosave.data);
+          setData(ensureCoreTables(structure, autosave.data));
           setSchemaVersion(autosave.schemaVersion ?? dataFile.schemaVersion);
           setTooltips(autosave.tooltips ?? dataFile.tooltips);
 
@@ -174,7 +115,7 @@ export function useEditorState() {
           );
           setSelectedIndex(Number.isFinite(Number(autosave.selectedIndex)) ? (autosave.selectedIndex ?? 0) : 0);
         } else {
-          setData(dataFile.data);
+          setData(ensureCoreTables(structure, dataFile.data));
           setSchemaVersion(dataFile.schemaVersion);
           setTooltips(dataFile.tooltips);
         }
@@ -189,74 +130,19 @@ export function useEditorState() {
     };
   }, []);
 
-  // Persist edits across refreshes until the user explicitly New/Loads.
-  useEffect(() => {
-    if (!data) return;
+  // --- Sub-hooks ---
+  useEditorAutosave(data, schemaVersion, tooltips, activeCategory, selectedIndex, setError);
+  useEditorBroadcast(data, schemaVersion, tooltips);
 
-    if (autosaveTimerRef.current !== null) {
-      window.clearTimeout(autosaveTimerRef.current);
-      autosaveTimerRef.current = null;
-    }
+  const { newFile, requestLoadFile, onLoadFileSelected } = useEditorFileIO(
+    schema, ensureCoreTables, setData, setSchemaVersion, setTooltips, setSelectedIndex, setError, fileInputRef,
+  );
 
-    autosaveTimerRef.current = window.setTimeout(() => {
-      try {
-        writeAutosave({
-          v: 1,
-          savedAt: Date.now(),
-          schemaVersion,
-          tooltips,
-          data: stripUiMetadataFromData(data),
-          activeCategory,
-          selectedIndex,
-        });
-      } catch (e) {
-        // localStorage can fail (quota, privacy mode). Don't break the editor.
-        setError((prev) => prev ?? (e instanceof Error ? e.message : String(e)));
-      }
-    }, 300);
+  const { exportSelectionToRaw, exportAllToRaw, applyRawToSelection, applyRawToAll } = useEditorRawIO(
+    schema, data, setData, setError,
+  );
 
-    return () => {
-      if (autosaveTimerRef.current !== null) {
-        window.clearTimeout(autosaveTimerRef.current);
-        autosaveTimerRef.current = null;
-      }
-    };
-  }, [data, schemaVersion, tooltips, activeCategory, selectedIndex]);
-
-  // Broadcast data changes to sheet.html via BroadcastChannel
-  const broadcastChannelRef = useRef<BroadcastChannel | null>(null);
-
-  useEffect(() => {
-    try {
-      broadcastChannelRef.current = new BroadcastChannel('rpr-sheet-sync');
-    } catch {
-      // BroadcastChannel not supported (e.g., older browsers, some privacy modes)
-    }
-    return () => {
-      try {
-        broadcastChannelRef.current?.close();
-      } catch {
-        // ignore
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!data || !broadcastChannelRef.current) return;
-
-    try {
-      broadcastChannelRef.current.postMessage({
-        type: 'rpr-data',
-        data: stripUiMetadataFromData(data),
-        schemaVersion,
-        tooltips,
-      });
-    } catch {
-      // ignore broadcast failures
-    }
-  }, [data, schemaVersion, tooltips]);
-
-  // Derived state
+  // --- Derived state ---
   const categories = useMemo(() => {
     const fromSchema = schema?.categories ?? [];
     if (fromSchema.length) return fromSchema;
@@ -279,7 +165,16 @@ export function useEditorState() {
   }, [allRows, activeView]);
 
   const selected = filteredRows[selectedIndex] ?? null;
-  const selectedLabel = selected ? inferLabel(selected) : '';
+  const selectedLabel = selected ? ((): string => {
+    const candidates = ['Name', 'Literal', 'ID', 'Node ID'];
+    for (const key of candidates) {
+      const value = selected[key];
+      if (value === undefined || value === null) continue;
+      const text = String(value).trim();
+      if (text) return text;
+    }
+    return '(unnamed)';
+  })() : '';
 
   const hasEmbeddedChildren =
     activeView.table === 'PerkDef' ||
@@ -288,12 +183,13 @@ export function useEditorState() {
     activeView.table === 'MutatorDef' ||
     activeView.table === 'SpellDef';
 
-  // Actions
+  // --- Navigation ---
   const setActiveCategorySafe = (next: RprCategory) => {
     setActiveCategory(next);
     setSelectedIndex(0);
   };
 
+  // --- Row CRUD ---
   const updateSelectedRecord = (next: Record<string, unknown>) => {
     if (!data) return;
 
@@ -386,6 +282,8 @@ export function useEditorState() {
     const tableRows = asRows(data, tableName);
     const nextRecord = createDefaultRecord(tableName, ts);
 
+    let nextData: SchemaData = data;
+
     if (tableName === 'SkillDef') {
       if (activeCategory === 'Attributes') nextRecord.TypeFlag = 't';
       if (activeCategory === 'Skills') nextRecord.TypeFlag = 'f';
@@ -393,7 +291,9 @@ export function useEditorState() {
 
     const idField = inferIdField(ts);
     if (idField) {
-      nextRecord[idField] = nextGlobalNumericId(data);
+      const alloc = allocateNextNodeId(nextData);
+      nextRecord[idField] = alloc.id;
+      nextData = alloc.nextData;
     }
 
     // Default Name: "<Category> <ID>" (one-time clear on first click)
@@ -414,35 +314,153 @@ export function useEditorState() {
       const singular = singularByCategory[activeCategory] ?? String(activeCategory);
       const autoName = `${singular} ${idForName}`;
       nextRecord.Name = autoName;
-      // Non-schema metadata used by UI; ignored by export.
       nextRecord.__autoName = autoName;
       nextRecord.__autoNameCleared = false;
     }
 
-    // Preserve canonical file ordering on export by assigning new rows an order within their table section.
-    // Find the max __rprOrder for rows in the same table, and place the new row right after.
     const currentTableRows = tableRows;
     const maxOrderInTable = currentTableRows.reduce((m, r) => {
       const n = Number((r as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
       return Number.isFinite(n) ? Math.max(m, n) : m;
     }, -1);
-    
-    // If no rows in this table have __rprOrder yet, find the max across all tables to append at the end
+
     const maxOrderGlobal = Object.values(data)
       .flatMap((v) => (Array.isArray(v) ? (v as Array<Record<string, unknown>>) : []))
       .reduce((m, r) => {
         const n = Number((r as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
         return Number.isFinite(n) ? Math.max(m, n) : m;
       }, -1);
-    
+
     (nextRecord as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder = maxOrderInTable >= 0 ? maxOrderInTable + 1 : maxOrderGlobal + 1;
 
     const nextRows = [...tableRows, nextRecord];
     setData({
-      ...data,
+      ...nextData,
       [tableName]: nextRows,
     });
     setSelectedIndex(filteredRows.length);
+  };
+
+  const cloneSelectedRecord = () => {
+    if (!schema || !data || !selected) return;
+    const tableName = activeView.table;
+    const ts = schema.tables?.[tableName];
+    if (!ts) return;
+
+    const tableRows = asRows(data, tableName);
+    const tableIndex = tableRows.findIndex((r) => r === selected);
+    if (tableIndex < 0) return;
+
+    const idField = inferIdField(ts);
+    const nextRecord = createDefaultRecord(tableName, ts);
+
+    for (const col of ts.columns ?? []) {
+      const name = col?.name;
+      if (!name) continue;
+      if (name === 'Node ID') continue;
+      if (name === 'ID') continue;
+      if (idField && name === idField) continue;
+
+      if (Object.prototype.hasOwnProperty.call(selected, name)) {
+        nextRecord[name] = (selected as Record<string, unknown>)[name];
+      }
+    }
+
+    const oldParentId = Number((selected as Record<string, unknown>).ID);
+    const oldParentIdValid = Number.isFinite(oldParentId) && oldParentId > 0;
+
+    let nextData: SchemaData = data;
+    if (idField) {
+      const alloc = allocateNextNodeId(nextData);
+      nextRecord[idField] = alloc.id;
+      nextData = alloc.nextData;
+    }
+
+    const newParentId = Number((nextRecord as Record<string, unknown>).ID);
+    const newParentIdValid = Number.isFinite(newParentId) && newParentId > 0;
+
+    const maxOrderInTable = tableRows.reduce((m, r) => {
+      const n = Number((r as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
+      return Number.isFinite(n) ? Math.max(m, n) : m;
+    }, -1);
+
+    const maxOrderGlobal = Object.values(data)
+      .flatMap((v) => (Array.isArray(v) ? (v as Array<Record<string, unknown>>) : []))
+      .reduce((m, r) => {
+        const n = Number((r as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
+        return Number.isFinite(n) ? Math.max(m, n) : m;
+      }, -1);
+
+    (nextRecord as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder =
+      maxOrderInTable >= 0 ? maxOrderInTable + 1 : maxOrderGlobal + 1;
+
+    let nextOrder = Number((nextRecord as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
+    if (!Number.isFinite(nextOrder)) nextOrder = maxOrderGlobal + 1;
+
+    const children = CHILDREN_BY_PARENT[tableName] ?? [];
+    const childTableKeys = new Set(children.map((c) => `${c.table}::${c.fk}`));
+    const childRowsByTable: Record<string, Array<Record<string, unknown>>> = {};
+
+    if (children.length && oldParentIdValid && newParentIdValid) {
+      for (const key of childTableKeys) {
+        const [childTable, fk] = key.split('::');
+        if (!childTable || !fk) continue;
+
+        const allChildRows = asRows(nextData, childTable);
+        const rowsToClone = allChildRows.filter((r) => Number(r[fk]) === oldParentId);
+        if (!rowsToClone.length) continue;
+
+        let insertAt = -1;
+        for (let i = 0; i < allChildRows.length; i += 1) {
+          const row = allChildRows[i];
+          if (Number(row?.[fk]) === oldParentId) insertAt = i;
+        }
+        insertAt = insertAt >= 0 ? insertAt + 1 : allChildRows.length;
+
+        const sorted = [...rowsToClone].sort((a, b) => {
+          const ao = Number((a as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
+          const bo = Number((b as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder);
+          if (!Number.isFinite(ao) && !Number.isFinite(bo)) return 0;
+          if (!Number.isFinite(ao)) return 1;
+          if (!Number.isFinite(bo)) return -1;
+          return ao - bo;
+        });
+
+        const clonedChildren: Array<Record<string, unknown>> = sorted.map((row) => {
+          const cloned: Record<string, unknown> = { ...row };
+          cloned[fk] = newParentId;
+          delete cloned['Node ID'];
+          delete cloned.ID;
+
+          nextOrder += 1;
+          (cloned as Record<string, unknown> & { __rprOrder?: unknown }).__rprOrder = nextOrder;
+          return cloned;
+        });
+
+        childRowsByTable[childTable] = [
+          ...allChildRows.slice(0, insertAt),
+          ...clonedChildren,
+          ...allChildRows.slice(insertAt),
+        ];
+      }
+    }
+
+    const nextRows = [...tableRows];
+    nextRows.splice(tableIndex + 1, 0, nextRecord);
+    const merged: SchemaData = {
+      ...nextData,
+      [tableName]: nextRows,
+    };
+
+    for (const [childTable, rows] of Object.entries(childRowsByTable)) {
+      merged[childTable] = rows;
+    }
+
+    setData(merged);
+
+    const nextFilteredRows = activeView.filter ? nextRows.filter(activeView.filter) : nextRows;
+    const nextSelectedIndex = nextFilteredRows.findIndex((r) => r === nextRecord);
+    setSelectedIndex(nextSelectedIndex >= 0 ? nextSelectedIndex : selectedIndex);
   };
 
   const deleteSelected = () => {
@@ -460,144 +478,11 @@ export function useEditorState() {
     setSelectedIndex((idx) => Math.max(0, Math.min(idx, filteredRows.length - 2)));
   };
 
-  const newFile = () => {
-    if (!schema) return;
-    const ok = window.confirm('Start a new file? This will clear the current data (and the autosave).');
-    if (!ok) return;
-    clearAutosave();
-    setError(null);
-    setData({});
-    setTooltips({});
-    setSchemaVersion(schema.version);
-    setSelectedIndex(0);
-  };
-
-  const requestLoadFile = () => {
-    fileInputRef.current?.click();
-  };
-
-  const onLoadFileSelected = (file: File | null) => {
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const text = String(reader.result ?? '');
-        const filename = String(file.name ?? '').toLowerCase();
-
-        if (filename.endsWith('.json') || text.trimStart().startsWith('{') || text.trimStart().startsWith('[')) {
-          const json = JSON.parse(text) as unknown;
-          const parsed = SchemaService.parseSchemaDataFile(json);
-          clearAutosave();
-          setError(null);
-          setData(parsed.data);
-          setSchemaVersion(parsed.schemaVersion);
-          setTooltips(parsed.tooltips as Record<string, string> | undefined);
-          setSelectedIndex(0);
-          return;
-        }
-
-        if (!schema) {
-          throw new Error('Schema not loaded yet; cannot import .rpr');
-        }
-
-        const parsedData = parseRprTextToSchemaData(schema, text);
-        clearAutosave();
-        setError(null);
-        setData(parsedData);
-        setSelectedIndex(0);
-      } catch (e) {
-        setError(e instanceof Error ? e.message : String(e));
-      }
-    };
-    reader.onerror = () => setError('Failed to read file');
-    reader.readAsText(file);
-  };
-
-  const normalizeInPlace = () => {
-    if (!schema || !data) return;
-    const ok = window.confirm(
-      'Normalize IDs now? This renumbers IDs into a single global sequential space starting at 1 (Attributes first), and updates known references. This modifies your in-memory data.',
-    );
-    if (!ok) return;
-    try {
-      const normalized = normalizeDataToRanges(schema, data);
-      setData(normalized);
-      setError(null);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-    }
-  };
-
-  // Raw export helpers
-  const exportSelectionToRaw = (cat: RprCategory): string => {
-    if (!schema || !data) return '';
-    const view = CATEGORY_VIEWS.find((v) => v.category === cat);
-    if (!view) return '';
-
-    const includeTables = new Set([view.table]);
-    const filterRow = view.filter
-      ? (t: string, row: Record<string, unknown>) => (t === view.table ? view.filter!(row) : false)
-      : undefined;
-    return exportSchemaDataToRprText(schema, data, { includeTables, filterRow });
-  };
-
-  const exportAllToRaw = (): string => {
-    if (!schema || !data) return '';
-    return exportSchemaDataToRprText(schema, data);
-  };
-
-  const applyRawToSelection = (rawText: string, rawCategory: RprCategory) => {
-    if (!schema || !data) return;
-    const view = CATEGORY_VIEWS.find((v) => v.category === rawCategory);
-    if (!view) return;
-
-    try {
-      const cleaned = stripRprPreviewPrefixes(rawText);
-      const parsedData = parseRprTextToSchemaData(schema, cleaned);
-      const parsedRows = asRows(parsedData, view.table);
-
-      if (view.table === 'SkillDef' && (rawCategory === 'Attributes' || rawCategory === 'Skills')) {
-        const keep = asRows(data, 'SkillDef').filter((r) => {
-          const isAttr = String(r.TypeFlag ?? 'f').toLowerCase() === 't';
-          return rawCategory === 'Attributes' ? !isAttr : isAttr;
-        });
-
-        const flag = rawCategory === 'Attributes' ? 't' : 'f';
-        const withFlag = parsedRows.map((r) => ({ ...r, TypeFlag: flag }));
-
-        setData({
-          ...data,
-          SkillDef: keep.concat(withFlag),
-        });
-      } else {
-        setData({
-          ...data,
-          [view.table]: parsedRows,
-        });
-      }
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      throw e;
-    }
-  };
-
-  const applyRawToAll = (rawText: string) => {
-    if (!schema || !data) return;
-    try {
-      const cleaned = stripRprPreviewPrefixes(rawText);
-      const next = parseRprTextToSchemaData(schema, cleaned);
-      setData(next);
-      setError(null);
-    } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
-      throw e;
-    }
-  };
-
   return {
     // State
     schema,
     data,
+    setData,
     schemaVersion,
     tooltips,
     error,
@@ -623,11 +508,11 @@ export function useEditorState() {
     setTableRows,
     reorderFilteredRows,
     addRecord,
+    cloneSelectedRecord,
     deleteSelected,
     newFile,
     requestLoadFile,
     onLoadFileSelected,
-    normalizeInPlace,
     exportSelectionToRaw,
     exportAllToRaw,
     applyRawToSelection,

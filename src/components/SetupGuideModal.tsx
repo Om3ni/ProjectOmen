@@ -24,11 +24,9 @@ export function SetupGuideModal({ onClose, onOpenSettings }: Props) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
-      onClick={onClose}
     >
       <div
         className="rounded-lg border theme-border theme-bg-base shadow-xl w-full max-w-2xl mx-4 max-h-[85vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b theme-border">

@@ -132,7 +132,7 @@ function getDefaultModel(provider: LLMProvider): string {
     case 'openai':
       return 'gpt-4o-mini';
     case 'ollama':
-      return 'llama3.2';
+      return 'llama3.2:latest';
     case 'custom':
       return 'default';
   }

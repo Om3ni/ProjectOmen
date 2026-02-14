@@ -1,4 +1,122 @@
+import { num } from '@/utils/rprHelpers';
+
 export type FormulaContext = Record<string, number>;
+
+type Row = Record<string, unknown>;
+
+/**
+ * Combat context for evaluating RPR formulas with {c.Name} and {t.Name} syntax
+ */
+export interface CombatFormulaContext {
+  // Caster's stats (Stat ID -> value)
+  casterStats: Map<number, number>;
+  // Caster's skills (Skill ID -> total value)
+  casterSkills: Map<number, number>;
+  // Target's stats (Stat ID -> value)
+  targetStats: Map<number, number>;
+  // Target's skills (Skill ID -> total value)
+  targetSkills: Map<number, number>;
+  // Name lookup tables
+  statNameToId: Map<string, number>;
+  skillNameToId: Map<string, number>;
+  // Names for message formatting
+  casterName?: string;
+  targetName?: string;
+}
+
+/**
+ * Build name-to-ID lookup maps from schema data
+ */
+export function buildNameLookups(
+  statRows: Row[],
+  skillRows: Row[]
+): { statNameToId: Map<string, number>; skillNameToId: Map<string, number> } {
+  const statNameToId = new Map<string, number>();
+  const skillNameToId = new Map<string, number>();
+
+  for (const row of statRows) {
+    const id = num(row.ID);
+    const name = String(row.Name ?? '').trim().toLowerCase();
+    if (id > 0 && name) {
+      statNameToId.set(name, id);
+    }
+  }
+
+  for (const row of skillRows) {
+    const id = num(row.ID);
+    const name = String(row.Name ?? '').trim().toLowerCase();
+    if (id > 0 && name) {
+      skillNameToId.set(name, id);
+    }
+  }
+
+  return { statNameToId, skillNameToId };
+}
+
+/**
+ * Resolve {c.Name} and {t.Name} variables to their numeric values
+ * Returns a flat FormulaContext for use with evaluateFormulaForTest
+ */
+export function resolveCombatVariables(
+  formula: string,
+  context: CombatFormulaContext
+): { resolvedFormula: string; variableValues: FormulaContext } {
+  const variableValues: FormulaContext = {};
+
+  // Match {c.Name} or {t.Name} patterns
+  const COMBAT_VAR_PATTERN = /\{(c|t)\.([^}]+)\}/gi;
+
+  const resolvedFormula = formula.replace(COMBAT_VAR_PATTERN, (_match, prefix, name) => {
+    const isCaster = prefix.toLowerCase() === 'c';
+    const lookupName = name.trim().toLowerCase();
+
+    // Create a unique key for this variable
+    const key = `${prefix.toLowerCase()}_${lookupName.replace(/\s+/g, '_')}`;
+
+    let value = 0;
+
+    // Try stat lookup first
+    const statId = context.statNameToId.get(lookupName);
+    if (statId !== undefined) {
+      value = isCaster
+        ? context.casterStats.get(statId) ?? 0
+        : context.targetStats.get(statId) ?? 0;
+    } else {
+      // Try skill lookup
+      const skillId = context.skillNameToId.get(lookupName);
+      if (skillId !== undefined) {
+        value = isCaster
+          ? context.casterSkills.get(skillId) ?? 0
+          : context.targetSkills.get(skillId) ?? 0;
+      }
+    }
+
+    variableValues[key] = value;
+    return `{${key}}`;
+  });
+
+  return { resolvedFormula, variableValues };
+}
+
+/**
+ * Evaluate an RPR combat formula with {c.Name} and {t.Name} syntax
+ */
+export function evaluateCombatFormula(
+  formula: string,
+  context: CombatFormulaContext,
+  rng?: () => number
+): FormulaTestResult {
+  const trimmed = String(formula ?? '').trim();
+  // Some WHRpR datasets embed codex placeholders like "[codex:M19]" in fields that
+  // otherwise hold numeric formulas. Those references aren't resolvable in this editor,
+  // so surface a clear error message (callers should catch and display it).
+  if (/^\[codex:[^\]]+\]$/i.test(trimmed)) {
+    throw new Error(`Codex placeholder cannot be evaluated as a numeric formula: ${trimmed}`);
+  }
+
+  const { resolvedFormula, variableValues } = resolveCombatVariables(formula, context);
+  return evaluateFormulaForTest(resolvedFormula, variableValues, rng);
+}
 
 export type DiceRollEntry = {
   operator: 'd' | 'h';

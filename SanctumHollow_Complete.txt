@@ -1,0 +1,148 @@
+DiceConfig|1|20|1|20|20|21|f
+SkillDef|t|1|Strength|Raw physical power - affects melee damage, Athletics, carrying capacity|t|10|0|0|t|0
+SkillDef|t|2|Dexterity|Agility and reflexes - affects AC, ranged attacks, Initiative, Stealth|t|10|0|0|t|0
+SkillDef|t|3|Constitution|Endurance and health - affects HP, Fortitude saves, stamina|t|10|0|0|t|0
+SkillDef|t|4|Intelligence|Mental acuity - affects Arcana, spellcasting, knowledge|t|10|0|0|t|0
+SkillDef|t|5|Wisdom|Intuition and perception - affects Perception, Will saves, divine magic|t|10|0|0|t|0
+SkillDef|t|6|Willpower|Mental fortitude - affects Will saves, resisting fear and charm|t|10|0|0|t|0
+SkillDef|t|10|Strength Modifier|Modifier derived from Strength (-5 to +5)|f|0|1*0.5+-5|0|f|0
+SkillDef|t|11|Dexterity Modifier|Modifier derived from Dexterity (-5 to +5)|f|0|2*0.5+-5|0|f|0
+SkillDef|t|12|Constitution Modifier|Modifier derived from Constitution (-5 to +5)|f|0|3*0.5+-5|0|f|0
+SkillDef|t|13|Intelligence Modifier|Modifier derived from Intelligence (-5 to +5)|f|0|4*0.5+-5|0|f|0
+SkillDef|t|14|Wisdom Modifier|Modifier derived from Wisdom (-5 to +5)|f|0|5*0.5+-5|0|f|0
+SkillDef|t|15|Willpower Modifier|Modifier derived from Willpower (-5 to +5)|f|0|6*0.5+-5|0|f|0
+SkillDef|t|20|Acrobatics|Balance, tumbling, aerial maneuvers [Dexterity]|t|0|2*1.0|0|f|0
+SkillDef|t|21|Athletics|Climbing, jumping, swimming, breaking objects [Strength]|t|0|1*1.0|0|f|0
+SkillDef|t|22|Arcana|Knowledge of magic, spells, magical creatures [Intelligence]|t|0|4*1.0|0|f|0
+SkillDef|t|23|Nature|Knowledge of natural world, beasts, plants [Wisdom]|t|0|5*1.0|0|f|0
+SkillDef|t|24|Perception|Spotting hidden threats, noticing details [Wisdom]|t|0|5*1.0|0|f|0
+SkillDef|t|25|Religion|Knowledge of gods, rituals, divine magic [Wisdom]|t|0|5*1.0|0|f|0
+SkillDef|t|26|Stealth|Hiding, moving silently, avoiding detection [Dexterity]|t|0|2*1.0|0|f|0
+SkillDef|t|27|Sleight of Hand|Pickpocketing, lockpicking, trickery [Dexterity]|t|0|2*1.0|0|f|0
+SkillDef|t|28|Intimidation|Threatening, coercing through force [Strength]|t|0|1*1.0|0|f|0
+SkillDef|t|29|Persuasion|Diplomacy, convincing through charm [Intelligence]|t|0|4*1.0|0|f|0
+SkillDef|t|30|Insight|Reading body language, detecting lies [Wisdom]|t|0|5*1.0|0|f|0
+SkillDef|t|31|Investigation|Finding clues, logical deduction [Intelligence]|t|0|4*1.0|0|f|0
+PerkDef|t|200|Human Blood|Versatile and adaptable - bonus skill proficiency||1|f|f|f||Racial|
+PerkAction|200|1|1|28|1|0|0|0||f||||f
+PerkDef|t|201|Elven Grace|+2 Dexterity, +1 Intelligence, -1 Constitution - graceful and magical||1|f|f|f||Racial|
+PerkAction|201|1|1|2|2|0|0|0||f||||f
+PerkAction|201|2|1|4|1|0|0|0||f||||f
+PerkAction|201|3|1|3|-1|0|0|0||f||||f
+PerkDef|t|202|Elven Senses|Keen perception - advantage on Perception checks||1|f|f|f||Racial|
+PerkAction|202|1|1|24|2|0|0|0||f||||f
+PerkDef|t|203|Magic Resistance|Elven blood resists magic - +2 to Will saves vs spells||1|f|f|f||Racial|
+PerkAction|203|1|1|112|2|0|0|0||f||||f
+PerkDef|t|204|Dwarven Resilience|+2 Constitution, +1 Strength, +1 Willpower - tough and stubborn||1|f|f|f||Racial|
+PerkAction|204|1|1|3|2|0|0|0||f||||f
+PerkAction|204|2|1|1|1|0|0|0||f||||f
+PerkAction|204|3|1|6|1|0|0|0||f||||f
+PerkDef|t|205|Stone Sense|Attuned to underground - advantage on Nature checks in caves||1|f|f|f||Racial|
+PerkAction|205|1|1|23|2|0|0|0||f||||f
+PerkDef|t|206|Dwarven Fortitude|Hardy constitution - +3 to Fortitude saves||1|f|f|f||Racial|
+PerkAction|206|1|1|110|3|0|0|0||f||||f
+PerkDef|t|207|Halfling Nimbleness|+2 Dexterity, -2 Strength - small and quick||1|f|f|f||Racial|
+PerkAction|207|1|1|2|2|0|0|0||f||||f
+PerkAction|207|2|1|1|-2|0|0|0||f||||f
+PerkDef|t|208|Lucky|Fortune favors the small - reroll natural 1s once per day||1|f|f|f||Racial|
+PerkDef|t|209|Halfling Stealth|Expert at hiding - +3 Stealth bonus||1|f|f|f||Racial|
+PerkAction|209|1|1|26|3|0|0|0||f||||f
+PerkDef|t|300|Fighter Training|Weapon and armor mastery - proficient with all weapons||1|f|f|f||Class|
+PerkDef|t|301|Combat Superiority|Extra attack action - +2 to Melee Attack Bonus||1|f|f|f||Class|
+PerkAction|301|1|1|104|2|0|0|0||f||||f
+PerkDef|t|302|Heavy Armor Proficiency|Trained in heavy armor - +2 AC||1|f|f|f||Class|
+PerkAction|302|1|1|102|2|0|0|0||f||||f
+PerkDef|t|303|Second Wind|Once per combat, heal 2d10 + Constitution modifier HP||1|f|f|f||Class|
+PerkDef|t|310|Sneak Attack|Deal +2d6 damage when attacking from advantage||1|f|f|f||Class|
+PerkDef|t|311|Evasion|When taking area damage, succeed on Reflex save to take no damage||1|f|f|f||Class|
+PerkAction|311|1|1|111|3|0|0|0||f||||f
+PerkDef|t|312|Cunning Action|Bonus action for Stealth or Sleight of Hand||1|f|f|f||Class|
+PerkAction|312|1|1|26|3|0|0|0||f||||f
+PerkAction|312|2|1|27|3|0|0|0||f||||f
+PerkDef|t|313|Uncanny Dodge|Expert reflexes - +2 Reflex saves||1|f|f|f||Class|
+PerkAction|313|1|1|111|2|0|0|0||f||||f
+PerkDef|t|320|Arcane Mastery|Trained in arcane magic - +3 Arcana bonus||1|f|f|f||Class|
+PerkAction|320|1|1|22|3|0|0|0||f||||f
+PerkDef|t|321|Spellcasting Focus|Channel magic through focus - +2 Spell Attack Bonus||1|f|f|f||Class|
+PerkAction|321|1|1|106|2|0|0|0||f||||f
+PerkDef|t|322|Arcane Recovery|Once per day, regain spell slots equal to Int modifier||1|f|f|f||Class|
+PerkDef|t|323|Scholar|Deep knowledge - +2 to Intelligence||1|f|f|f||Class|
+PerkAction|323|1|1|4|2|0|0|0||f||||f
+PerkDef|t|330|Divine Conduit|Channel divine power - +3 Religion bonus||1|f|f|f||Class|
+PerkAction|330|1|1|25|3|0|0|0||f||||f
+PerkDef|t|331|Turn Undead|Force undead to flee - Wisdom check vs undead Will||1|f|f|f||Class|
+PerkDef|t|332|Divine Healing|Heal target for 2d8 + Wisdom modifier HP||1|f|f|f||Class|
+PerkDef|t|333|Spiritual Armor|Divine protection - +1 AC||1|f|f|f||Class|
+PerkAction|333|1|1|102|1|0|0|0||f||||f
+RuneDef|t|6000|Longsword|+2 Melee Attack, 1d8 damage|f|f|f|||Weapon||
+RuneAction|6000|1|1|104|2|0|0||f||||
+RuneDef|t|6001|Longbow|+2 Ranged Attack, 1d8 damage|f|f|f|||Weapon||
+RuneAction|6001|1|1|105|2|0|0||f||||
+RuneDef|t|6002|Plate Armor|+5 AC, -1 Reflex save (heavy)|f|f|f|||Armor||
+RuneAction|6002|1|1|102|5|0|0||f||||
+RuneAction|6002|2|1|111|-1|0|0||f||||
+RuneDef|t|6003|Leather Armor|+2 AC|f|f|f|||Armor||
+RuneAction|6003|1|1|102|2|0|0||f||||
+RuneDef|t|6004|Amulet of Health|+2 Constitution|f|f|f|||Accessory||
+RuneAction|6004|1|1|3|2|0|0||f||||
+RuneDef|t|6005|Ring of Protection|+1 AC, +1 all saves|f|f|f|||Accessory||
+RuneAction|6005|1|1|102|1|0|0||f||||
+RuneAction|6005|2|1|110|1|0|0||f||||
+RuneAction|6005|3|1|111|1|0|0||f||||
+RuneAction|6005|4|1|112|1|0|0||f||||
+Stat|t|100|Health Points|Maximum hit points|t|30|3*5.0+30|100|0|0|0|HP|Health|f|0|1|0|f|Characters
+Stat|t|101|Current HP|Current health|t|30|3*5.0+30|100|0|0|0|HP|Health|f|1|1|0|f|Characters
+Stat|t|102|Armor Class|Defense against attacks (10 + Dex mod)|t|10|2*0.5+5|30|0|0|0|AC|Defense|f|0|1|0|f|Characters
+Stat|t|103|Initiative|Turn order bonus (Dex mod)|t|0|2*0.5+-5|10|0|0|0|Init|Combat|f|0|1|0|f|Characters
+Stat|t|104|Melee Attack Bonus|Bonus to melee attack rolls (Str mod)|t|0|1*0.5+-5|10|0|0|0|MAB|Combat|f|0|1|0|f|Characters
+Stat|t|105|Ranged Attack Bonus|Bonus to ranged attack rolls (Dex mod)|t|0|2*0.5+-5|10|0|0|0|RAB|Combat|f|0|1|0|f|Characters
+Stat|t|106|Spell Attack Bonus|Bonus to spell attack rolls (Int or Wis mod)|t|0|4*0.5+-5|10|0|0|0|SAB|Combat|f|0|1|0|f|Characters
+Stat|t|110|Fortitude Save|Physical resilience (Con mod + Will mod)|t|0|3*0.5+6*0.5+-10|10|0|0|0|Fort|Saves|f|0|1|0|f|Characters
+Stat|t|111|Reflex Save|Quick reactions (Dex mod)|t|0|2*0.5+-5|10|0|0|0|Ref|Saves|f|0|1|0|f|Characters
+Stat|t|112|Will Save|Mental fortitude (Wis mod + Will mod)|t|0|5*0.5+6*0.5+-10|10|0|0|0|Will|Saves|f|0|1|0|f|Characters
+SpellDef|t|1000|Melee Strike|Basic melee weapon attack|0|0|0|5||physical|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Default|||0|t|0|Weapon|f|f||
+SpellReqDef|1000|1|1|f||f|
+SpellEffect|1000|1|1|1|1|2|{s.MeleeAttackBonus}|1d20+{s.MeleeAttackBonus}|{s.TargetAC}||{s.StrengthModifier}|1d8+{s.StrengthModifier}|{s.TargetCurrentHP}||0||0||Physical weapon damage||
+SpellDef|t|1001|Ranged Shot|Basic ranged weapon attack|0|0|0|30||physical|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Default|||0|t|0|Weapon|f|f||
+SpellReqDef|1001|1|1|f||f|
+SpellEffect|1001|1|1|1|1|2|{s.RangedAttackBonus}|1d20+{s.RangedAttackBonus}|{s.TargetAC}||{s.DexterityModifier}|1d8+{s.DexterityModifier}|{s.TargetCurrentHP}||0||0||Ranged weapon damage||
+SpellDef|t|1002|Power Attack|Heavy melee strike with extra damage|1|0|0|5||physical|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Default|||0|t|0|Weapon|f|f||
+SpellReqDef|1002|1|1|f||f|
+SpellEffect|1002|1|1|1|1|2|{s.MeleeAttackBonus}|1d20+{s.MeleeAttackBonus}-2|{s.TargetAC}||{s.StrengthModifier}|2d8+{s.StrengthModifier}*2|{s.TargetCurrentHP}||0||0||Powerful strike with -2 to hit, +damage||
+SpellDef|t|2000|Fireball|Hurl a ball of flame at target|2|1|5|30||fire|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Evocation|||0|t|0|Spell|f|f||
+SpellReqDef|2000|1|4|f|10|f|Intelligence required
+SpellEffect|2000|1|1|1|1|2|{s.SpellAttackBonus}|1d20+{s.SpellAttackBonus}|{s.TargetAC}||{s.IntelligenceModifier}|3d6+{s.IntelligenceModifier}|{s.TargetCurrentHP}||0||0||Explosive fire damage||
+SpellDef|t|2001|Magic Missile|Unerring bolts of magical force|1|1|3|40||arcane|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Evocation|||0|t|0|Spell|f|f||
+SpellReqDef|2001|1|4|f|8|f|Intelligence required
+SpellEffect|2001|1|1|1|1|1|0|0|0||{s.IntelligenceModifier}|2d4+{s.IntelligenceModifier}|{s.TargetCurrentHP}||0||0||Auto-hit force damage||
+SpellDef|t|2002|Shield|Magical barrier deflects attacks|0|0|3|0||arcane|0||t|f|f|f|0|||||0|3|f|f|f|f|f|f||0|f||10|f|Abjuration|||0|t|0|Spell|f|f||
+SpellReqDef|2002|1|4|f|8|f|Intelligence required
+SpellEffect|2002|1|1|10|1|1|0|0|0||0|5|102||0||0||+5 AC for duration||
+SpellDef|t|2003|Lightning Bolt|Channel electric fury at target|2|1|4|40||lightning|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Evocation|||0|t|0|Spell|f|f||
+SpellReqDef|2003|1|4|f|12|f|Intelligence required
+SpellEffect|2003|1|1|1|1|2|{s.SpellAttackBonus}|1d20+{s.SpellAttackBonus}|{s.TargetReflex}||{s.IntelligenceModifier}|4d6+{s.IntelligenceModifier}|{s.TargetCurrentHP}||0||0||Electric damage, Reflex save for half||
+SpellDef|t|3000|Healing Word|Divine energy mends wounds|1|1|3|30||holy|0||t|f|f|f|0|||||0|3|f|f|f|f|f|f||0|f||10|f|Restoration|||0|t|0|Spell|f|f||
+SpellReqDef|3000|1|5|f|10|f|Wisdom required
+SpellEffect|3000|1|1|10|1|1|0|0|0||{s.WisdomModifier}|2d6+{s.WisdomModifier}|101||0||0||Heal target's HP||
+SpellDef|t|3001|Bless|Divine favor enhances abilities|2|1|5|30||holy|0||t|f|f|f|0|||||0|3|f|f|f|f|f|f||0|f||10|f|Enhancement|||0|t|0|Spell|f|f||
+SpellReqDef|3001|1|5|f|10|f|Wisdom required
+SpellEffect|3001|1|1|10|1|1|0|0|0||0|2|104||0||0||+2 to attack rolls||
+SpellEffect|3001|2|1|10|1|1|0|0|0||0|2|110||0||0||+2 to Fortitude saves||
+SpellDef|t|3002|Smite|Divine wrath strikes evil|2|1|4|20||holy|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Evocation|||0|t|0|Spell|f|f||
+SpellReqDef|3002|1|5|f|11|f|Wisdom required
+SpellEffect|3002|1|1|1|1|2|{s.SpellAttackBonus}|1d20+{s.SpellAttackBonus}|{s.TargetWill}||{s.WisdomModifier}|3d8+{s.WisdomModifier}|{s.TargetCurrentHP}||0||0||Radiant damage vs evil||
+SpellDef|t|3003|Sacred Flame|Divine fire never misses|1|1|2|40||holy|0||t|f|f|f|0|||||0|3|f|f|f|t|f|f||0|f||10|f|Evocation|||0|t|0|Spell|f|f||
+SpellReqDef|3003|1|5|f|9|f|Wisdom required
+SpellEffect|3003|1|1|1|1|1|0|0|0||{s.WisdomModifier}|2d4+{s.WisdomModifier}|{s.TargetCurrentHP}||0||0||Auto-hit radiant damage||
+StatusDef|t|5000|Blessed|Divine favor grants combat bonuses|t|10|f|f|f|||||Enhancement||
+StatusAction|5000|1|1|104|2|0|0||f||||
+StatusAction|5000|2|1|110|2|0|0||f||||
+StatusDef|t|5001|Shielded|Magical barrier protects from harm|t|5|f|f|f|||||Protection||
+StatusAction|5001|1|1|102|5|0|0||f||||
+StatusDef|t|5002|Poisoned|Toxin weakens the body|t|10|f|f|f|||||Debuff||
+StatusAction|5002|1|1|3|-2|0|0||f||||
+StatusAction|5002|2|1|110|-2|0|0||f||||
+StatusDef|t|5003|Stunned|Unable to act or defend effectively|t|3|f|f|f|||||Control||
+StatusAction|5003|1|1|102|-5|0|0||f||||
+StatusAction|5003|2|1|111|-5|0|0||f||||
+

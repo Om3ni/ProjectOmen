@@ -100,6 +100,20 @@ export function sequenceIds(rows: string[][]): string[][] {
     nextId++;
   }
 
+  // After resequencing parent IDs, keep DiceConfig.TotalNodes in sync with the new max.
+  // DiceConfig column 1 is TotalNodes (includes deleted IDs), and sequencing is an explicit
+  // operation that can change the maximum ID (e.g., compressing gaps). In that case we want
+  // TotalNodes to reflect the new max so future node creation continues from the new ceiling.
+  const newMaxId = nextId - 1;
+  if (Number.isFinite(newMaxId) && newMaxId > 0) {
+    for (let i = 0; i < next.length; i++) {
+      if (next[i][0] !== 'DiceConfig') continue;
+      if (next[i].length > 1) {
+        next[i][1] = String(newMaxId);
+      }
+    }
+  }
+
   // PASS 2: Update child rows to use their parent's new ID (col 1)
   for (const [parent, children] of Object.entries(parentChildMap)) {
     const pMap = idMap.get(parent);

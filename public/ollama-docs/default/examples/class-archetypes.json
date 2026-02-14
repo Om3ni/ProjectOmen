@@ -1,0 +1,271 @@
+{
+  "comment": "Example character archetypes demonstrating distinct builds and roles",
+  "archetypes": [
+    {
+      "name": "Tank - Sword & Board",
+      "role": "Tank",
+      "playstyle": "Frontline defender who protects allies and controls enemies",
+      "stats": {
+        "strength": 14,
+        "dexterity": 10,
+        "constitution": 16,
+        "intelligence": 8,
+        "wisdom": 12,
+        "charisma": 10,
+        "comment": "High CON for survivability, moderate STR for threat, low INT (doesn't need it)"
+      },
+      "derivedStats": {
+        "hp": 120,
+        "mana": 40,
+        "armor": 25,
+        "initiative": 10,
+        "comment": "Emphasizes survivability over damage output"
+      },
+      "keyPerks": [
+        "Fortified: +5 armor",
+        "Taunt: Force enemies to target you",
+        "Shield Master: Block reflects 20% damage",
+        "Immovable: Cannot be knocked back or moved"
+      ],
+      "keyAbilities": [
+        "Shield Bash: Damage + knockback",
+        "Taunt: Force enemy to attack you",
+        "Shield Wall: +50% armor for 2 turns",
+        "Bodyguard: Intercept attacks targeting allies"
+      ],
+      "strengths": ["High survivability", "Protects team", "Zone control"],
+      "weaknesses": ["Low damage output", "Slow movement", "Resource intensive"],
+      "designNotes": "Tank archetypes need high HP, armor, and threat generation. Trade damage for durability. Should feel rewarding to play by protecting allies, not just by being unkillable."
+    },
+    {
+      "name": "DPS - Dual Wield Rogue",
+      "role": "DPS (Burst)",
+      "playstyle": "High mobility assassin who strikes from stealth for massive damage",
+      "stats": {
+        "strength": 10,
+        "dexterity": 18,
+        "constitution": 12,
+        "intelligence": 10,
+        "wisdom": 12,
+        "charisma": 8,
+        "comment": "Max DEX for damage/accuracy/dodge, moderate CON for survival, dump CHA"
+      },
+      "derivedStats": {
+        "hp": 70,
+        "mana": 60,
+        "armor": 10,
+        "initiative": 18,
+        "comment": "High initiative and dodge, low HP/armor (glass cannon)"
+      },
+      "keyPerks": [
+        "Dual Wielding: Attack with both weapons",
+        "Critical Strikes: +10% crit chance, +50% crit damage",
+        "Shadow Step: Teleport behind enemy",
+        "Assassinate: +200% damage from stealth"
+      ],
+      "keyAbilities": [
+        "Stealth: Become invisible",
+        "Backstab: Massive damage from behind",
+        "Poison Blade: Apply DOT",
+        "Evasion: Dodge next attack"
+      ],
+      "strengths": ["Extremely high burst damage", "High mobility", "Fast initiative"],
+      "weaknesses": ["Low HP/armor (dies easily)", "Setup dependent", "Single-target focused"],
+      "designNotes": "Burst DPS should excel at eliminating priority targets quickly. High skill ceiling with stealth positioning and timing. Vulnerable if caught out of position."
+    },
+    {
+      "name": "DPS - Fire Mage",
+      "role": "DPS (AOE)",
+      "playstyle": "Ranged spellcaster who excels at damaging multiple enemies with fire magic",
+      "stats": {
+        "strength": 8,
+        "dexterity": 10,
+        "constitution": 12,
+        "intelligence": 18,
+        "wisdom": 14,
+        "charisma": 8,
+        "comment": "Max INT for spell damage, moderate WIS for mana regen, dump STR/CHA"
+      },
+      "derivedStats": {
+        "hp": 60,
+        "mana": 150,
+        "armor": 5,
+        "initiative": 12,
+        "comment": "Huge mana pool, minimal defense, moderate initiative"
+      },
+      "keyPerks": [
+        "Pyromancer: +30% fire damage",
+        "Ignite: Fire spells spread to nearby enemies",
+        "Spell Echo: 20% chance to cast spell twice",
+        "Arcane Power: +50% spell damage, 2x mana cost"
+      ],
+      "keyAbilities": [
+        "Fireball: AOE fire damage (3-5 targets)",
+        "Flame Wall: Creates burning barrier",
+        "Meteor: Massive AOE ultimate",
+        "Fire Shield: Absorb damage, explode on break"
+      ],
+      "strengths": ["Excellent AOE damage", "Long range", "High burst potential"],
+      "weaknesses": ["Very fragile", "Mana dependent", "Weak against fire resistance"],
+      "designNotes": "AOE mages should dominate multi-target fights but struggle in single-target scenarios. High mana costs force resource management. Positioning is critical for survival."
+    },
+    {
+      "name": "Support - Healer",
+      "role": "Support",
+      "playstyle": "Keeps allies alive with healing, buffs, and protective magic",
+      "stats": {
+        "strength": 8,
+        "dexterity": 10,
+        "constitution": 14,
+        "intelligence": 12,
+        "wisdom": 18,
+        "charisma": 10,
+        "comment": "Max WIS for healing potency, moderate CON for survival, INT for mana"
+      },
+      "derivedStats": {
+        "hp": 75,
+        "mana": 120,
+        "armor": 8,
+        "initiative": 11,
+        "comment": "Moderate survivability, large mana pool for sustained healing"
+      },
+      "keyPerks": [
+        "Divine Touch: +30% healing done",
+        "Group Heal: Healing spells affect 2 targets",
+        "Beacon: Passively heal nearby allies each turn",
+        "Resurrection: Revive fallen ally once per combat"
+      ],
+      "keyAbilities": [
+        "Heal: Restore HP to single ally",
+        "Mass Heal: Restore HP to all allies (reduced)",
+        "Shield: Grant temporary HP",
+        "Dispel: Remove debuffs from ally"
+      ],
+      "strengths": ["Strong sustained healing", "Keeps team alive", "Counters debuffs"],
+      "weaknesses": ["No offensive power", "Focused by enemies", "Mana intensive"],
+      "designNotes": "Supports should feel impactful by enabling allies, not just healing. Include buffs, dispels, and utility. Healing should be slightly less efficient than damage to prevent stalemates."
+    },
+    {
+      "name": "Hybrid - Battlemage",
+      "role": "Hybrid (Tank/DPS)",
+      "playstyle": "Durable spellcaster who combines melee combat with offensive magic",
+      "stats": {
+        "strength": 13,
+        "dexterity": 10,
+        "constitution": 15,
+        "intelligence": 15,
+        "wisdom": 10,
+        "charisma": 8,
+        "comment": "Balanced STR/INT/CON, no extremes (jack of all trades)"
+      },
+      "derivedStats": {
+        "hp": 95,
+        "mana": 90,
+        "armor": 15,
+        "initiative": 11,
+        "comment": "Moderate stats across the board, no weaknesses or strengths"
+      },
+      "keyPerks": [
+        "Spellblade: Melee attacks deal bonus magic damage",
+        "Battle Trance: Regen mana when dealing damage",
+        "Arcane Armor: Convert INT to armor",
+        "Versatile: Can use any weapon/armor type"
+      ],
+      "keyAbilities": [
+        "Flame Weapon: Enchant weapon with fire",
+        "Lightning Strike: Melee attack + chain lightning",
+        "Magic Shield: Absorb damage, converts to mana",
+        "Arcane Explosion: AOE around self"
+      ],
+      "strengths": ["Flexible playstyle", "No hard counters", "Good survivability"],
+      "weaknesses": ["Master of none", "Lower peak damage than pure DPS", "Moderate at everything"],
+      "designNotes": "Hybrids should feel versatile but never dominate specialists in their niche. Decent at many tasks but not best at any single role. Reward adaptability and tactical flexibility."
+    },
+    {
+      "name": "Controller - Crowd Control Mage",
+      "role": "Support",
+      "playstyle": "Battlefield controller who disables enemies and controls combat flow",
+      "stats": {
+        "strength": 8,
+        "dexterity": 12,
+        "constitution": 12,
+        "intelligence": 16,
+        "wisdom": 14,
+        "charisma": 10,
+        "comment": "High INT for spell effectiveness, WIS for awareness, DEX for positioning"
+      },
+      "derivedStats": {
+        "hp": 65,
+        "mana": 110,
+        "armor": 6,
+        "initiative": 14,
+        "comment": "Low HP/armor, moderate mana, good initiative to act early"
+      },
+      "keyPerks": [
+        "Lasting Effects: Status effects last +1 turn",
+        "Chain Control: CC spells jump to second target",
+        "Unbreakable: Your CC cannot be dispelled",
+        "Control Master: Reduce CC duration on self by 50%"
+      ],
+      "keyAbilities": [
+        "Freeze: Stun enemy for 1 turn",
+        "Slow: Reduce enemy speed by 50%",
+        "Web: Root multiple enemies",
+        "Polymorph: Transform enemy into harmless creature"
+      ],
+      "strengths": ["Disables dangerous enemies", "Creates tactical advantages", "Supports team"],
+      "weaknesses": ["Low damage", "Fragile", "Boss resistance/immunity"],
+      "designNotes": "Controllers should feel powerful by shutting down key threats, not by dealing damage. CC durations must be carefully balanced (1-2 turns for hard CC). Bosses should resist but not be immune."
+    },
+    {
+      "name": "Summoner - Pet Master",
+      "role": "DPS (Sustained)",
+      "playstyle": "Commands summons to fight while providing support and additional damage",
+      "stats": {
+        "strength": 8,
+        "dexterity": 10,
+        "constitution": 12,
+        "intelligence": 15,
+        "wisdom": 13,
+        "charisma": 16,
+        "comment": "Max CHA for pet power, INT for mana, moderate CON/WIS"
+      },
+      "derivedStats": {
+        "hp": 70,
+        "mana": 100,
+        "armor": 7,
+        "initiative": 11,
+        "comment": "Moderate survivability, relies on pets for defense"
+      },
+      "keyPerks": [
+        "Beast Bond: +50% pet damage and HP",
+        "Pack Leader: Can have 2 pets instead of 1",
+        "Symbiosis: Share buffs with pet",
+        "Sacrifice: Kill pet to heal self for its remaining HP"
+      ],
+      "keyAbilities": [
+        "Summon Wolf: Melee pet with moderate damage",
+        "Summon Elemental: Ranged pet with AOE",
+        "Command: Order pet to use special ability",
+        "Frenzy: Pet gains +100% damage for 2 turns"
+      ],
+      "strengths": ["Sustained damage output", "Meat shield (pet)", "Action economy (pets act independently)"],
+      "weaknesses": ["Weak when pet dies", "Setup time", "Complex to manage"],
+      "designNotes": "Summoners should feel like they have an army. Pets should be meaningful damage sources, not just disposable. Balance by making pets vulnerable to AOE or requiring resources to maintain."
+    }
+  ],
+  "designPrinciples": {
+    "roleDistinction": "Each archetype should excel in specific situations and struggle in others. No universal best build.",
+    "statAllocation": "Specialized builds (16-18 in primary stat) are stronger than balanced builds (all 13s) in their niche.",
+    "tradeoffs": "Every strength should have a corresponding weakness. High damage = low defense. High utility = low damage.",
+    "viability": "All archetypes should achieve 45-55% win rate in balanced encounters.",
+    "buildFlexibility": "Allow customization within archetypes (fire mage vs ice mage vs lightning mage).",
+    "lateGameScaling": "Ensure all archetypes remain relevant throughout progression. Adjust HP/damage multipliers per level."
+  },
+  "pointBuyExample": {
+    "startingPool": 27,
+    "baseStats": "All stats start at 8",
+    "costTable": "8-13: 1 point per increase, 14-15: 2 points per increase, 16-18: 3 points per increase",
+    "example": "To get STR 16 starting from 8: (8→13 = 5 pts) + (13→15 = 4 pts) + (15→16 = 3 pts) = 12 points total"
+  }
+}

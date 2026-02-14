@@ -7,23 +7,28 @@ import {
   type LLMProvider,
   type DiscordSettings,
   type LLMSettings,
+  type OllamaSettings,
 } from '@/services/SettingsService';
+import { OllamaSettingsPanel } from '@/ollama/components/OllamaSettingsPanel';
 
 // Type for partial nested updates
 type PartialSettings = {
   discord?: Partial<DiscordSettings>;
   llm?: Partial<LLMSettings>;
+  ollama?: Partial<OllamaSettings>;
+  ui?: Partial<Settings['ui']>;
   theme?: ThemeName;
   autoSave?: boolean;
   autoSaveInterval?: number;
 };
 
-type SettingsTab = 'general' | 'discord' | 'llm' | 'developer';
+type SettingsTab = 'general' | 'discord' | 'llm' | 'ollama' | 'developer';
 
 const TABS: Array<{ id: SettingsTab; label: string }> = [
   { id: 'general', label: 'General' },
   { id: 'discord', label: 'Discord' },
   { id: 'llm', label: 'LLM' },
+  { id: 'ollama', label: 'Sigil' },
   { id: 'developer', label: 'Developer' },
 ];
 
@@ -69,6 +74,12 @@ export function SettingsModal({ onClose, wipPasswordHash }: Props) {
       if (partial.llm) {
         next.llm = { ...prev.llm, ...partial.llm };
       }
+      if (partial.ollama) {
+        next.ollama = { ...prev.ollama, ...partial.ollama };
+      }
+      if (partial.ui) {
+        next.ui = { ...prev.ui, ...partial.ui };
+      }
       if (partial.theme !== undefined) next.theme = partial.theme;
       if (partial.autoSave !== undefined) next.autoSave = partial.autoSave;
       if (partial.autoSaveInterval !== undefined) next.autoSaveInterval = partial.autoSaveInterval;
@@ -104,11 +115,9 @@ export function SettingsModal({ onClose, wipPasswordHash }: Props) {
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
-      onClick={onClose}
     >
       <div
         className="rounded-lg border theme-border theme-bg-base shadow-xl w-full max-w-2xl mx-4 max-h-[90vh] flex flex-col"
-        onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b theme-border">
@@ -167,6 +176,12 @@ export function SettingsModal({ onClose, wipPasswordHash }: Props) {
               onTest={testLLM}
             />
           )}
+          {activeTab === 'ollama' && (
+            <OllamaSettingsPanel
+              settings={settings.ollama}
+              onUpdate={(updates) => updateSettings({ ollama: updates })}
+            />
+          )}
           {activeTab === 'developer' && (
             <DeveloperTab
               settings={settings}
@@ -212,6 +227,23 @@ type TabProps = {
 function GeneralTab({ settings, onUpdateSettings }: TabProps) {
   return (
     <div className="space-y-6">
+      {/* Chat layout */}
+      <div>
+        <label className="block text-sm font-medium theme-text mb-2">Chat layout</label>
+        <select
+          className="w-full rounded-md border theme-border-muted theme-bg-input px-3 py-2 text-sm theme-text focus:outline-none theme-ring"
+          value={settings.ui?.chatLayout ?? 'below'}
+          onChange={(e) => onUpdateSettings({ ui: { chatLayout: e.target.value as Settings['ui']['chatLayout'] } })}
+        >
+          <option value="below">Below (stacked)</option>
+          <option value="right">Right (side-by-side)</option>
+          <option value="floating">Floating (overlay)</option>
+        </select>
+        <p className="mt-1 text-xs theme-text-secondary">
+          Controls where chat appears inside the character sheet.
+        </p>
+      </div>
+
       {/* Theme */}
       <div>
         <label className="block text-sm font-medium theme-text mb-2">Theme</label>

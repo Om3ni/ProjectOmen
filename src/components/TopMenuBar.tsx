@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import type { RefObject } from 'react';
 
-import type { RprCategory, SchemaData, SchemaStructure } from '@/models/schema';
+import type { SchemaData, SchemaStructure } from '@/models/schema';
 import { getAdapter } from '@/services/PlatformAdapter';
 import { exportSchemaDataToRprText } from '@/utils/rprText';
 import ThemeSwitcher from '@/components/ThemeSwitcher';
@@ -11,16 +11,14 @@ type Props = {
   data: SchemaData | null;
   schemaVersion: string | undefined;
   tooltips: Record<string, string> | undefined;
-  activeCategory: RprCategory;
   activeTable: string;
   filteredRowsCount: number;
   fileInputRef: RefObject<HTMLInputElement | null>;
   onNewFile: () => void;
   onLoadFile: () => void;
   onLoadFileSelected: (file: File | null) => void;
-  onOpenRawAll: () => void;
-  onOpenRawForCategory: (cat: RprCategory) => void;
   onOpenCharacterSheet: () => void;
+  onOpenFormulaCalculator: () => void;
   onOpenSettings: () => void;
   onToggleChat: () => void;
   chatOpen: boolean;
@@ -31,16 +29,14 @@ type Props = {
 export default function TopMenuBar({
   schema,
   data,
-  activeCategory,
   activeTable,
   filteredRowsCount,
   fileInputRef,
   onNewFile,
   onLoadFile,
   onLoadFileSelected,
-  onOpenRawAll,
-  onOpenRawForCategory,
   onOpenCharacterSheet,
+  onOpenFormulaCalculator,
   onOpenSettings,
   onToggleChat,
   chatOpen,
@@ -160,32 +156,20 @@ export default function TopMenuBar({
                       className="w-full rounded px-2 py-2 text-left text-sm theme-text hover:theme-bg-surface"
                       onClick={() => {
                         setOpenMenu(null);
-                        onOpenRawAll();
-                      }}
-                    >
-                      Import from Raw…
-                    </button>
-                    <button
-                      type="button"
-                      className="w-full rounded px-2 py-2 text-left text-sm theme-text hover:theme-bg-surface"
-                      onClick={() => {
-                        setOpenMenu(null);
-                        onOpenRawForCategory(activeCategory);
-                      }}
-                    >
-                      Select Raw Category…
-                    </button>
-                    <div className="my-1 border-t theme-border" />
-
-                    <button
-                      type="button"
-                      className="w-full rounded px-2 py-2 text-left text-sm theme-text hover:theme-bg-surface"
-                      onClick={() => {
-                        setOpenMenu(null);
                         onOpenCharacterSheet();
                       }}
                     >
                       Character Sheet…
+                    </button>
+                    <button
+                      type="button"
+                      className="w-full rounded px-2 py-2 text-left text-sm theme-text hover:theme-bg-surface"
+                      onClick={() => {
+                        setOpenMenu(null);
+                        onOpenFormulaCalculator();
+                      }}
+                    >
+                      Formula Calculator…
                     </button>
                   </div>
                 ) : null}

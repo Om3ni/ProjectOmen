@@ -1,0 +1,46 @@
+# Mutators Tab Help
+
+Mutators (MutatorDef) are conditional modifiers that apply when conditions are met.
+
+## MutatorDef fields:
+- AllIncludesMustMatch: "t" = ALL include conditions must be true (AND logic)
+- AllExcludesMustMatch: "t" = ALL exclude conditions must be true (AND logic)
+
+## MutatorCondition — when the mutator applies:
+Columns: MutatorID, Inclusion, Condition, Operator, NodeAffected, Value, MaxValue, Category
+
+**0-INDEXED** (unlike RuneCondition and SpellTargetCond which are 1-indexed)
+
+| Cond | Name | NodeAffected → |
+|------|------|---------------|
+| 0 | Perk | PerkDef |
+| 1 | Buff Category | (uses Category col) |
+| 2 | Skill Allocation | SkillDef |
+| 3 | Level | (none) |
+| 4-19 | Various game state | (external) |
+| 20 | Status | StatusDef |
+| 21 | Perk Category | (uses Category col) |
+
+Inclusion: 0 = Include condition, 1 = Exclude condition
+
+## MutatorAction — what it does:
+Columns: MutatorID, Function, TargetID, Value
+
+| Fn | Name | TargetID → |
+|----|------|-----------|
+| 0 | Modify Skill | SkillDef |
+| 1 | Modify Stat | Stat |
+| 2 | Grant Perk | PerkDef |
+| 3 | Grant Ability | SpellDef |
+| 4 | Grant Status | StatusDef |
+| 5 | Unlock Status | StatusDef |
+
+Design patterns:
+- "If has perk X, get +2 to skill Y": Condition 0 (Perk) → Action 0 (Modify Skill)
+- "If level > 10, grant ability": Condition 3 (Level) → Action 3 (Grant Ability)
+- Mutator-heavy systems (like CXRpR with 2,998 mutators) use them instead of stat formulas
+
+Gotchas:
+- 0-indexed conditions (Perk=0), unlike RuneCondition/SpellTargetCond (1-indexed, Perk=1)
+- Conditions 4-19 reference game state (time of day, weather, etc.), not RPR tables
+- AllIncludesMustMatch/AllExcludesMustMatch control AND vs OR logic for condition groups

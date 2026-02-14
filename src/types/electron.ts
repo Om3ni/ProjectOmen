@@ -15,6 +15,7 @@ export interface ElectronRawWindowApi {
 
 export interface ElectronSheetWindowApi {
   open?: (data: unknown) => Promise<void>;
+  update?: (data: unknown) => Promise<void> | void;
   close?: () => Promise<void>;
   getData?: () => Promise<unknown>;
   onInit?: (callback: (data: unknown) => void) => () => void;
@@ -24,12 +25,47 @@ export interface ElectronMenuApi {
   onCommand?: (callback: (payload: unknown) => void) => () => void;
 }
 
+export interface OllamaLocalStatus {
+  available: boolean;
+  running: boolean;
+  endpoint: string;
+  port: number;
+}
+
+export interface OllamaLocalModel {
+  name: string;
+  size: number;
+  modified: string;
+}
+
+export interface OllamaPullProgress {
+  model: string;
+  status: string;
+  total: number;
+  completed: number;
+  done: boolean;
+}
+
+export interface ElectronOllamaLocalApi {
+  getStatus: () => Promise<OllamaLocalStatus>;
+  start: () => Promise<{ running: boolean; endpoint: string }>;
+  stop: () => Promise<{ running: boolean }>;
+  listModels: () => Promise<{ success: boolean; models: OllamaLocalModel[]; error?: string }>;
+  pullModel: (modelName: string) => Promise<{ success: boolean; status?: string; error?: string }>;
+  deleteModel: (modelName: string) => Promise<{ success: boolean; error?: string }>;
+  getModelsDir: () => Promise<{ path: string }>;
+  setModelsDir: (newPath: string) => Promise<{ success: boolean; path?: string; error?: string }>;
+  browseModelsDir: () => Promise<{ canceled: boolean; path?: string; error?: string }>;
+  onPullProgress: (listener: (progress: OllamaPullProgress) => void) => () => void;
+}
+
 export interface ElectronApi {
   debug?: ElectronDebugApi;
   rawWindow?: ElectronRawWindowApi;
   sheetWindow?: ElectronSheetWindowApi;
   characterSheet?: ElectronSheetWindowApi;
   menu?: ElectronMenuApi;
+  ollamaLocal?: ElectronOllamaLocalApi;
   send?: (channel: string, data?: unknown) => Promise<void>;
 }
 

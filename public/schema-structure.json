@@ -1,5 +1,5 @@
 {
-  "version": "2025-10-30-full-rpr-schema-gold; VER 0.0.06",
+  "version": "2025-10-30-full-rpr-schema-gold; VER 0.0.07",
   "notes": [
     "RuneDef: admin-only, no Public flag (spawn/script controlled).",
     "SpellEffect.TargetMode enum corrected: 0=Target, 1=AllTargets, 2=Caster.",
@@ -47,8 +47,8 @@
         { "index": 1, "name": "TotalNodes", "type": "int", "default": 0 },
         { "index": 2, "name": "AttributePoints", "type": "int", "default": 0 },
         { "index": 3, "name": "SkillPoints", "type": "int", "default": 0 },
-        { "index": 4, "name": "MaxAttributeAllocation", "type": "int", "default": 0 },
-        { "index": 5, "name": "MaxSkillAllocation", "type": "int", "default": 0 },
+        { "index": 4, "name": "MaxAttributeAllocation", "type": "int", "default": 10 },
+        { "index": 5, "name": "MaxSkillAllocation", "type": "int", "default": 10 },
         { "index": 6, "name": "Reserved6", "type": "int", "default": 0 },
         { "index": 7, "name": "EnableDiceCheck", "type": "bool_tf", "default": "f" },
         { "index": 8, "name": "PerkPoints", "type": "int", "default": 0 },

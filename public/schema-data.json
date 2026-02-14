@@ -1,6 +1,55 @@
 {
   "schemaVersion": "2025-10-30-designer",
   "data": {
+    "DiceConfig": [
+      {
+        "Literal": "DiceConfig",
+        "TotalNodes": 0,
+        "AttributePoints": 0,
+        "SkillPoints": 0,
+        "MaxAttributeAllocation": 0,
+        "MaxSkillAllocation": 0,
+        "Reserved6": 0,
+        "EnableDiceCheck": "t",
+        "PerkPoints": 0,
+        "MaxRunes": 0,
+        "MinAttributeAllocation": 0,
+        "MinSkillAllocation": 0,
+        "MaxAttributeDebuff": 0,
+        "MaxAttributeBuff": 0,
+        "MaxSkillDebuff": 0,
+        "MaxSkillBuff": 0,
+        "MaxStatDebuff": 0,
+        "MaxStatBuff": 0,
+        "AttributePointBuy": "f",
+        "SkillPointBuy": "f",
+        "MaxPlayersPerAbility": 0
+      }
+    ],
+    "DiceRules": [
+      {
+        "Literal": "DiceRules",
+        "Dice System": 0,
+        "Number of Dice": 1,
+        "Sides of Dice": 20,
+        "Critical Failure Threshold": 1,
+        "Critical Success Threshold": 20,
+        "Roll vs Meet to Beat": "f",
+        "Enable D8D 5e Advantage Modifiers": "f"
+      }
+    ],
+    "Gear": [
+      {
+        "Literal": "Gear",
+        "UseArmorAppearance": "f",
+        "ScanHead": "t",
+        "ScanTorso": "t",
+        "ScanHands": "t",
+        "ScanLegs": "t",
+        "ScanFeet": "t",
+        "ArmorWeightFunction": 0
+      }
+    ],
     "SkillDef": [],
     "PerkDef": [],
     "PerkAction": [],

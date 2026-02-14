@@ -1,0 +1,72 @@
+# SCHEMA TRUTH
+
+## Core Tables
+
+**SkillDef** — Skills and attributes
+Columns: TypeFlag(t=attr/f=skill), Node ID, Name, Description, Trained, Max Allocation, Bonus Source, Natural Bonus, Public, Bonus Function(0=Sum/1=Avg/2=Min/3=Max)
+
+**PerkDef** — Perks (passive/active bonuses)
+Columns: ID, Public, Name, Description, Cost, Category
+
+**PerkAction** — Child of PerkDef (FK: PerkID)
+Columns: PerkID, Function(0-18), TargetType, TargetID, Modifier, Extra, Value
+Functions: 0=Allow Skill, 1=Deny Skill, 2=Allow Perk, 3=Deny Perk, 4=Dice Modifier, 5=Give Feat, 6=Grant Stat, 7=Stat Modifier, 8=Grant Ability, 9=Grant Status, 10=Unlock Status, 11=Grant Perk, 12=Grant Sudo Role, 13=Allow Perk Category, 14=Deny Perk Category, 15=Teach Language, 16=Give CharTag, 17=Set Float CharVar, 18=Set String CharVar
+
+**Stat** — Numeric values
+Columns: ID, Name, Base, Formula, Bonus, Public, Show, Active, Description, Scale, Trainable, Display, CategoryID, BonusFunction(0-3)
+
+**SpellDef** — Abilities
+Columns: ID, Name, Description, Range, TargetType(0=Selected/1=Caster/2=All/3=All Others/4=Selected Others), #Targets, CasterRollType(0=Skill/1=Stat/2=Custom), RollStatSkillID, CasterRollFormula, DCType(0=Target Roll/1=Target Stat/2=Fixed/3=Target Roll Stat/4=Custom), FixedDCValue, ReqMode, AllowMods, Common, Log, Cooldown, Icon, AllowComment, Critical, IconColor, Category, IncludeAll, ExcludeAll, ChatRadius, DCTypeFormula, TargetDCFormula
+
+**SpellEffect** — Child of SpellDef (FK: SpellID)
+Columns: SpellID, Targets, Effect(0-12), Formula/Text, TargetID, If, Broadcast, Outcome, Duration, Category, Delay, Reserved
+Functions: 0=Print Message, 1=Modify Stat, 2=Give Item, 3=Remove Item, 4=Buff Skill, 5=Buff Stat, 6=Buff Perk, 7=Dispel Buff, 8=Buff Ability, 9=Auto Use Ability, 10=Set Stat, 11=Buff Grant Status, 12=Buff Unlock Status
+
+**SpellReqDef** — Requirements for SpellDef (FK: SpellID)
+Columns: SpellID, Function(0-6), Operator, Param, ValueMin, ValueMax, Text
+
+**SpellTargetCond** — Target conditions for SpellDef (FK: SpellID) [1-INDEXED]
+Columns: SpellID, Mode, Function, Operator, Param, ValueMin, ValueMax, Text
+
+**StatusDef** — Persistent conditions
+Columns: ID, Name, Color(RGBA floats), Public
+
+**StatusAction** — Child of StatusDef (FK: StatusID)
+Columns: StatusAction, StatusID, TargetID, Value, Function(col 4! 0=Modify Skill, 1=Modify Stat, 2=Grant Perk, 3=Grant Ability, 4=Grant Status)
+
+**RuneDef** — Equipment items
+Columns: NodeID, ItemID, Broadcast, Slot, Description, IncludeAll, ExcludeAll, AutoEquipAdd, AutoEquipEquip
+
+**RuneAction** — Child of Rune (FK: RuneID)
+Columns: RuneID, TargetID, Value, Effect(0=Dice Mod/1=Grant Perk/3=Stat Mod/4=Grant Ability/5=Grant Status/6=Unlock Status), Reserved
+
+**RuneCondition** — Child of RuneDef (FK: RuneID) [1-INDEXED, NOT ENFORCED]
+Columns: RuneID, Inclusion, Condition, Operator, NodeAffected, Value, MaxValue, Category
+
+**MutatorDef** — Conditional modifiers
+Columns: ID, Name, AllIncludesMustMatch, AllExcludesMustMatch
+
+**MutatorAction** — Child of MutatorDef (FK: MutatorID)
+Columns: MutatorID, Function(0-5), TargetID, Value
+
+**MutatorCondition** — Child of MutatorDef (FK: MutatorID) [0-INDEXED]
+Columns: MutatorID, Inclusion, Condition(0=Perk/1=Buff Category/2=Skill Alloc/3=Level/20=Status/21=Perk Category), Operator, NodeAffected, Value, MaxValue, Category
+
+**DiceConfig** — Core dice settings
+Key fields: AttributePoints, SkillPoints, PerkPoints, TotalNodes
+
+## Formulas
+Variables: {c.StatName} (caster), {t.StatName} (target), {s.StatName} (source)
+Functions: f.clamp[val,min,max], f.max[a,b], f.min[a,b], f.ceil[val], f.floor[val]
+Dice: 2d6+5, 2d20kh1 (advantage), 1d20+{c.Dexterity}
+Bonus Source format: NodeID*Multiplier;NodeID*Multiplier (e.g., 2*1.0;1*0.5)
+
+## Operators
+0==, 1!=, 2>, 3>=, 4<, 5<=, 6=Between, 7=Outside
+
+## Critical Invariants
+- PerkAction: 19 functions (0-18). SpellEffect: 13 functions (0-12).
+- RuneCondition: 1-indexed. SpellTargetCond: 1-indexed. MutatorCondition: 0-indexed.
+- StatusAction Function is in COLUMN 4, not column 2.
+- RuneConditions exist in schema but are NOT enforced by the live RPR engine.
+- DiceConfig.TotalNodes must equal the highest Node ID in SkillDef.

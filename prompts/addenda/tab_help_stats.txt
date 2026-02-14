@@ -1,0 +1,26 @@
+# Stats Tab Help
+
+Stats are numeric values (Health, Mana, Strength score, Initiative, etc.).
+
+Key fields:
+- Formula: Derives stat value from skills. Format: "NodeID*Mult;NodeID*Mult"
+  These reference SkillDef Node IDs, NOT other Stat IDs
+- Base: Starting value before formula
+- Bonus: Minimum value floor
+- Scale: Final multiplier applied after formula
+- Active: "t" if stat is active/visible
+- BonusFunction: How formula sources combine (0=Sum, 1=Average, 2=Min, 3=Max)
+
+Formulas:
+- Stats can use {c.StatName} syntax in ability formulas
+- Formula field uses Bonus Source format (NodeID*Multiplier), NOT {c.StatName}
+- {c.StatName} is for SpellDef/SpellEffect formulas, not Stat.Formula
+
+Design patterns:
+- Derived stats: Health = Base + STR*2 (Formula: "1*2.0" where Node ID 1 is STR attribute)
+- Resource pools: Set Base for starting amount, Scale for level multiplier
+- Hidden stats: Set Public="f", Show="f" for internal tracking values
+
+Gotchas:
+- Stat.Formula references SkillDef Node IDs, not Stat IDs
+- Don't confuse Stat.Formula (Bonus Source format) with {c.StatName} (ability formula syntax)

@@ -9,6 +9,7 @@ import {
 } from 'react';
 
 import { inferLabel } from '@/hooks/useEditorState';
+import { str } from '@/utils/rprHelpers';
 
 function ChevronIcon({ collapsed }: { collapsed: boolean }) {
   return (
@@ -27,16 +28,13 @@ type Props = {
   rows: Array<Record<string, unknown>>;
   selectedIndex: number;
   onSelect: (index: number) => void;
+  onDeleteSelected?: () => void;
   title?: string;
   enableFilter?: boolean;
   filterPlaceholder?: string;
   groupBy?: string;
   onReorder?: (fromIndex: number, toIndex: number, dropAfter: boolean) => void;
 };
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
 
 function isHeaderRow(row: Record<string, unknown>): boolean {
   const name = str(row.Name ?? '');
@@ -51,6 +49,7 @@ export default function RecordListSidebar({
   rows,
   selectedIndex,
   onSelect,
+  onDeleteSelected,
   title = 'Records',
   enableFilter = false,
   filterPlaceholder = 'Filter…',
@@ -213,6 +212,15 @@ export default function RecordListSidebar({
     (rowIndex: number, totalRows: number) =>
       (e: ReactKeyboardEvent<HTMLButtonElement>) => {
         const key = e.key;
+
+        // Allow quick delete from the node browser when a row is focused.
+        if ((key === 'Delete' || key === 'Backspace') && onDeleteSelected) {
+          e.preventDefault();
+          e.stopPropagation();
+          onDeleteSelected();
+          return;
+        }
+
         const isNavKey =
           key === 'ArrowUp' ||
           key === 'ArrowDown' ||
@@ -281,7 +289,7 @@ export default function RecordListSidebar({
         e.stopPropagation();
         onSelect(target.index);
       },
-    [dragEnabled, onReorder, itemIndexLookup, items, onSelect],
+    [dragEnabled, onReorder, itemIndexLookup, items, onSelect, onDeleteSelected],
   );
 
   const totalRows = rows.length;

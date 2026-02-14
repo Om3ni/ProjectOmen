@@ -1,0 +1,2546 @@
+DiceConfig|0|20|20|0|0|0|t|50|0|0|0|0|0|0|0|0|0|t|t|0
+DiceRules|0|1|20|1|20|f|f
+Gear|f|t|t|t|t|t|0
+SkillDef|t|1|Strength|Measures physical power and athletic ability. Determines how hard you hit, how much you can lift, and affects Athletics.|f|-1||0|t|0
+SkillDef|t|2|Dexterity|Agility, reflexes, balance, and coordination. Governs armor class, ranged attacks, and skills like Acrobatics, Stealth, and Thievery.|f|-1||0|t|0
+SkillDef|t|3|Constitution|Endurance, stamina, and overall toughness. Influences hit points, fortitude saves, and resistance to fatigue, poison, and disease.|f|-1||0|t|0
+SkillDef|t|4|Intelligence|Reasoning, knowledge, and memory. Affects skills like Arcana, Crafting, Lore, Occultism, and Society. Determines how well you recall and apply information.|f|-1||0|t|0
+SkillDef|t|5|Wisdom|Perception, Willpower, and attunement to the world. Guides intuition, awareness, and Survival instincts. Governs skills like Medicine, Nature, Religion, and Survival.|f|6||0|t|0
+SkillDef|t|6|Charisma|Force of personality, charm, and social presence. Affects interactions with others, performance, leadership, and magic for some classes. Governs Deception, Diplomacy, Intimidation, and Performance.|f|-1||0|t|0
+SkillDef|t|34|Willpower|This is a measure of your will to resist player charm, intimidation, and fear type effects. This is mainly an RP stat.|f|-1||0|t|0
+SkillDef|f|8|Acrobatics|Stay on your feet in a dangerous situation:&brk;&brk;• Balance on tightrope&brk;• Run on ice&brk;• Perform stunts, dives, rolls, flips, and somersaults&brk;• Keep balance on a stormy ship's deck&brk;|f|-1|2*1.0|0|t|0
+SkillDef|f|9|Arcana|Recall knowledge about spells, magic items, symbols, magic traditions, the planes of existence, and the creatures on the planes. Craft or change a spells essence. |f|-1|4*1.0|0|t|0
+SkillDef|f|25|Athletics|When climbing, jumping, swimming, fighting or feats of raw physical might:&brk;&brk;• Grappling or shoving&brk;• Climb a sheer or slippery cliff&brk;• Jump extra far or do a tricky stunt while jumping&brk;• Climbing while something is trying to knock you off&brk;• Swimming or keeping your head above water in strong currents, storms, or thick weeds|f|-1|1*1.0|0|t|0
+SkillDef|f|10|Crafting|Create, repair, or appraise items, alchemical goods, and equipment.|f|-1|4*1.0|0|t|0
+SkillDef|f|11|Deception|Convincingly hide the truth:&brk;&brk;• Fast-talk&brk;• Con&brk;• Trick&brk;• Pass yourself off in a disguise&brk;• Maintain a straight face and body language when telling a blatant lie&brk;|f|-1|6*1.0|0|t|0
+SkillDef|f|572|Escape Artist|Escaping ropes, chains, straps, etc.|f|-1|2*1.0|0|t|0
+SkillDef|f|12|Diplomacy|Negotiate, make requests, gather information, earn trust.|f|-1|6*1.0|0|t|0
+SkillDef|f|88|Insight|Determine a creature's true intent:&brk;• Tell if someone is lying&brk;• Predict someone's next move&brk;• Detect a change in movements, speech habits, and mannerisms&brk;|f|-1|5*1.0|0|t|0
+SkillDef|f|13|Intimidation|Influence through threats, hostile actions, and physical violence:&brk;&brk;• Coerce, frighten, or assert dominance through presence.&brk;• Pry information from a prisoner&brk;• Convince thugs to back down from a mugging&brk;• Use an improvised weapon to get someone to reconsider their choice&brk;|f|-1|6*1.0|0|t|0
+SkillDef|f|15|Medicine|Diagnose, treat wounds, diseases, and poisons or stabalize those on the verge of death.|f|-1|5*1.0|0|t|0
+SkillDef|f|16|Nature|Identify plants, animals, weather, terrain, natural cycles and command primal magic.&brk;|f|-1|5*1.0|0|t|0
+SkillDef|f|17|Occultism|Knowledge of the hidden, supernatural, and esoteric.|f|-1|4*1.0|0|t|0
+SkillDef|f|86|Perception|Spot, hear, or otherwise detect something&brk;&brk;• Hear a conversation through a closed door&brk;• Eavesdrop under a window&brk;• Hear a creature moving stealthily&brk;• Spot something obscured or easily missed&brk;|f|-1|5*1.0|0|t|0
+SkillDef|f|18|Performance|Delight an audience with music, dancing, acting, storytelling, arts, oration or other entertainment.|f|-1|6*1.0|0|t|0
+SkillDef|f|87|Persuasion|Influence others with your social graces:&brk;&brk;• Act in good faith&brk;• Foster friendships&brk;• Make a civil request&brk;• Exercise proper etiquette&brk;• Convince a chamberlain to grant audience with the king&brk;• Negotiating peace between warring tribes&brk;• Inspire a crowd&brk;|f|-1|6*1.0|0|t|0
+SkillDef|f|19|Religion|Recall divine knowledge, recognize omens, understand faiths.|f|-1|5*1.0|0|t|0
+SkillDef|f|196|Sleight of Hand|Skillful hand use and manual trickery:&brk;&brk; • Pick someone elses pocket (coins, object, etc)&brk; • Conceal an object on yourself&brk; • Plant an object on someone&brk;|f|-1|2*1.0|0|t|0
+SkillDef|f|21|Stealth|Remain out of sight:&brk;&brk;• Slip away in a busy crowd&brk;• Hide from enemies in shadows and behind objects&brk;• Slip past some guards unnoticed&brk;• Sneak up behind someone without being seen or heard&brk;|f|-1|2*1.0|0|t|0
+SkillDef|f|22|Survival|Track creatures, live off the land, navigate, endure the wilds.|f|-1|5*1.0|0|t|0
+SkillDef|f|23|Thievery|Pick locks, disable devices, palm objects, or pick pockets.|f|-1|2*1.0|0|t|0
+SkillDef|f|32|===============================||f|-1|4*1.0|0|f|0
+SkillDef|f|30|(Save) Strength|Drawing on your strength to withstand, hold on or break out of a attack or situation.|f|0|1*1.0|0|t|0
+SkillDef|f|27|(Save) Dexterity|Dodging area effects, traps, blasts, or sudden dangers.|f|0|2*1.0|0|t|0
+SkillDef|f|26|(Save) Constitution|Resisting physical effects like poison, disease, fatigue, or bodily harm.|f|0|3*1.0|0|t|0
+SkillDef|f|28|(Save) Wisdom|Resisting mental influence, charm, fear, and effects on the spirit or mind.|f|0|5*1.0|0|t|0
+SkillDef|f|29|(Save) Intelligence|Your clever so use your logic, education, memory, deductive reasoning to deduce, investigate or escape a situation.|f|0|4*1.0|0|t|0
+SkillDef|f|31|(Save) Charisma|Your inner charm shines through not allowing you to fall for others charisma or threats. |f|0|6*1.0|0|t|0
+SkillDef|f|35|(Save) Willpower|Your will is your own, a solid fortress and nothing will influence it. |f|0|34*1.0|0|t|0
+SkillDef|f|282|=====Modifiers=====||f|-1|772*1.0|0|f|0
+SkillDef|f|849|Ki Armor|Using your inner Ki to coat and cloathe yourself with a shimmering barrier of pure Ki.|f|0|5*0.85|0|f|0
+SkillDef|f|854|Armor Mod|The protective capbilities of your clothing or armour.|f|-1|2*1.0|0|f|0
+SkillDef|f|878|Medium Armor Mod||f|-1|2*0.5|0|f|0
+PerkDef|36|f|=====Races=====||0|Category
+PerkDef|58|t|Aberration|Beings from beyond reality, warped or alien.&brk;Subraces: Mind Flayers, Beholders, Aboleths, Starspawn, Gibbering Horrors, Changeling-touched.&brk;• +1 Intelligence&brk;• Arcana: 2|0|Races
+PerkAction|58|14|0|0|Races||0.0
+PerkAction|58|13|0|0|Attributes||0.0
+PerkAction|58|4|1|4|||0.0
+PerkAction|58|4|2|9|||0.0
+PerkDef|59|t|Beastfolk|Animal-inspired humanoids.&brk;Subraces: Catfolk, Wolfkin, Fox-folk , Ratkin, Lizardfolk, Birdfolk (Kenku, Aarakocra), Minotaurs.&brk;• +1 Dexterity&brk;• Stealth: 2|0|Races
+PerkAction|59|14|0|0|Races||0.0
+PerkAction|59|13|0|0|Attributes||0.0
+PerkAction|59|4|1|2|||0.0
+PerkAction|59|4|2|21|||0.0
+PerkDef|60|t|Celestials|Radiant or divine beings.&brk;Subraces: Angels, Archons, Aasimar, Seraphim, Planetars, Devas.&brk;• +1 Wisdom&brk;• Religion: 2|0|Races
+PerkAction|60|14|0|0|Races||0.0
+PerkAction|60|13|0|0|Attributes||0.0
+PerkAction|60|4|1|5|||0.0
+PerkAction|60|4|2|19|||0.0
+PerkDef|61|t|Constructs|Created beings such as golems, alchemical golems, experimental lifeforms, etc. &brk;• Constitution +1&brk;• Athletics:2|0|Races
+PerkAction|61|14|0|0|Races||0.0
+PerkAction|61|13|0|0|Attributes||0.0
+PerkAction|61|4|1|3|||0.0
+PerkAction|61|4|2|25|||0.0
+PerkDef|63|t|Dragonkin|Humanoid draconic offspring.&brk;Subraces mirror dragon types.&brk;• +1 Strength&brk;• Intimidation:2|0|Races
+PerkAction|63|14|0|0|Races||0.0
+PerkAction|63|13|0|0|Attributes||0.0
+PerkAction|63|4|1|1|||0.0
+PerkAction|63|4|2|13|||0.0
+PerkDef|89|t|Dragons|Majestic, ancient, or draconic-blooded.&brk;Subraces: Chromatic (Red, Blue, Green, Black, White), Metallic (Gold, Silver, Bronze, Copper, Brass), Gem (Amethyst, Sapphire, Emerald, Ruby, Crystal).&brk;• Intelligence +1&brk;• Arcana:2|0|Races
+PerkAction|89|14|0|0|Races||0.0
+PerkAction|89|13|0|0|Attributes||0.0
+PerkAction|89|4|1|4|||0.0
+PerkAction|89|4|2|9|||0.0
+PerkDef|52|t|Dwarves|Stout, industrious, and tradition-bound. &brk;Subraces: Mountain Dwarves, Hill Dwarves, Duergar (deep dwarves), Arctic Dwarves.&brk;• Constitution +1&brk;• Crafting: 2|0|Races
+PerkAction|52|14|0|0|Races||0.0
+PerkAction|52|4|1|3|||0.0
+PerkAction|52|13|0|0|Attributes||0.0
+PerkAction|52|4|2|10|||0.0
+PerkDef|51|t|Elves|Graceful and long-lived. Subraces include High Elves, Wood Elves, Dark Elves (Drow), Sea Elves, Star Elves, and Fey-touched variants.&brk;• Dexterity +1&brk;• Perception:2|0|Races
+PerkAction|51|14|0|0|Races||0.0
+PerkAction|51|13|0|0|Attributes||0.0
+PerkAction|51|4|1|2|||0.0
+PerkAction|51|4|2|86|||0.0
+PerkDef|62|t|Elementals/Djinn|Greater elemental beings tied to the planes.&brk;• Charisma +1&brk;• Persuasion:2|0|Races
+PerkAction|62|14|0|0|Races||0.0
+PerkAction|62|13|0|0|Attributes||0.0
+PerkAction|62|4|1|6|||0.0
+PerkAction|62|4|2|87|||0.0
+PerkDef|64|t|Fae|Beings tied to glamour, dreams, and the otherworld.&brk;Subtypes: Sidhe, Redcaps, Satyrs, Nockers, Sluagh, Trolls, Pooka, Boggan, Selkies.&brk;• Charisma +1&brk;• Performance:2|0|Races
+PerkAction|64|14|0|0|Races||0.0
+PerkAction|64|13|0|0|Attributes||0.0
+PerkAction|64|4|1|6|||0.0
+PerkAction|64|4|2|18|||0.0
+PerkDef|65|t|Genasi/Elemental Touched|Mortals infused with primal forces.&brk;Subraces: Fire, Water, Earth, Air, Storm, Magma, Ice&brk;• Constitution +1&brk;• Survival:2|0|Races
+PerkAction|65|14|0|0|Races||0.0
+PerkAction|65|13|0|0|Attributes||0.0
+PerkAction|65|4|1|3|||0.0
+PerkAction|65|4|2|22|||0.0
+PerkDef|67|t|Giants/Giantkin|Large kin.&brk;Subraces: Hill Giants, Frost Giants, Fire Giants, Stone Giants, Cloud Giants, Ettins, Ogres.&brk;• Strength +1&brk;• Athletics:2|0|Races
+PerkAction|67|14|0|0|Races||0.0
+PerkAction|67|13|0|0|Attributes||0.0
+PerkAction|67|4|1|1|||0.0
+PerkAction|67|4|2|25|||0.0
+PerkDef|53|t|Halflings / Gnomes|Small folk with resilience and cunning. &brk;Subraces: Lightfoot, Stout, Rock Gnomes, Forest Gnomes, Tinker gnomes&brk;• Dexterity +1&brk;• Thievery:2|0|Races
+PerkAction|53|14|0|0|Races||0.0
+PerkAction|53|4|1|2|||0.0
+PerkAction|53|13|0|0|Attributes||0.0
+PerkAction|53|4|2|23|||0.0
+PerkDef|37|t|Human|Versatile and ambitious, thriving in every environment. &brk;Subtypes: varied ethnicities, nomadic tribes, city-born lineages, magically altered bloodlines.&brk;• Willpower +1&brk;• Survival:2|0|Races
+PerkAction|37|14|0|0|Races||0.0
+PerkAction|37|13|0|0|Attributes||0.0
+PerkAction|37|4|1|34|||0.0
+PerkAction|37|4|2|22|||0.0
+PerkDef|68|t|Infernals|Dark counterparts to celestials.&brk;Subraces: Demons, Devils, Tieflings, Imps, Succubi/Incubi, Pit Fiends, Balors.&brk;• Charisma +1&brk;• Deception:2|0|Races
+PerkAction|68|14|0|0|Races||0.0
+PerkAction|68|13|0|0|Attributes||0.0
+PerkAction|68|4|1|6|||0.0
+PerkAction|68|4|2|11|||0.0
+PerkDef|90|t|Kitsune|Shapeshifting fox-spirits tied to illusion, trickery, and mysticism.&brk;Subraces:&brk;Wild Kitsune, Celestial Kitsune, Void Kitsune, Shadow Kitsune, Spirit Kitsune, Nine-Tails.&brk;• Willpower +1 &brk;• Perception:2|0|Races
+PerkAction|90|14|0|0|Races||0.0
+PerkAction|90|13|0|0|Attributes||0.0
+PerkAction|90|4|1|34|||0.0
+PerkAction|90|4|2|86|||0.0
+PerkDef|57|t|Orcs / Goblinoids|Brutal or cunning tribes. &brk;Subraces: Orcs, Half-Orcs, Goblins, Hobgoblins, Bugbears.&brk;• Strength +1&brk;• Intimidation:2|0|Races
+PerkAction|57|14|0|0|Races||0.0
+PerkAction|57|13|0|0|Attributes||0.0
+PerkAction|57|4|1|1|||0.0
+PerkAction|57|4|2|13|||0.0
+PerkDef|69|t|Plantfolk|Verdant or fungal humanoids.&brk;Subraces: Dryads, Myconids, Treants, Blight-born, Spriggans.&brk;• Wisdom +1&brk;• Nature:2|0|Races
+PerkAction|69|14|0|0|Races||0.0
+PerkAction|69|13|0|0|Attributes||0.0
+PerkAction|69|4|1|5|||0.0
+PerkAction|69|4|2|16|||0.0
+PerkDef|70|t|Shadowkin|Beings tied to darkness, entropy, or the void.&brk;Subraces: Shades, Wraithborn, Umbral Elves, Hollowed, Nightmares-made-flesh.&brk;• Dexterity +1&brk;• Stealth:2|0|Races
+PerkAction|70|14|0|0|Races||0.0
+PerkAction|70|13|0|0|Attributes||0.0
+PerkAction|70|4|1|2|||0.0
+PerkAction|70|4|2|21|||0.0
+PerkDef|71|t|Trolls|Regenerative or warped kin.&brk;Subraces: Swamp Trolls, Ice Trolls, Cave Trolls.&brk;• Constitution +1&brk;• Intimidation:2|0|Races
+PerkAction|71|14|0|0|Races||0.0
+PerkAction|71|13|0|0|Attributes||0.0
+PerkAction|71|4|1|3|||0.0
+PerkAction|71|4|2|13|||0.0
+PerkDef|72|t|Undead|The cursed or risen dead.&brk;Subraces: Wights, Revenants, Mummies, Ghouls, Ghosts, Banshees. This List excludes Vampires and Lichs&brk;• Constitution +1&brk;• Intimidation: 2|0|Races
+PerkAction|72|14|0|0|Races||0.0
+PerkAction|72|13|0|0|Attributes||0.0
+PerkAction|72|4|1|3|||0.0
+PerkAction|72|4|2|13|||0.0
+PerkDef|221|t|Vampires|It's a Vampire, need we say more?&brk;• Charisma +1&brk;• Persuasiom:2|0|Races
+PerkAction|221|14|0|0|Races||0.0
+PerkAction|221|13|0|0|Attributes||0.0
+PerkAction|221|4|1|6|||0.0
+PerkAction|221|4|2|87|||0.0
+PerkDef|222|t|Lich|A lich is a powerful undead sorcerer or wizard who has achieved immortality through dark magic and necromancy. Typically depicted as emaciated, skeletal figures clad in rotting robes, liches are cunning, sinister beings who seek to extend their dominion beyond death. They are often guardians of forbidden knowledge and wield formidable magical powers.&brk;• Intelligence +1&brk;• Arcana:2|0|Races
+PerkAction|222|14|0|0|Races||0.0
+PerkAction|222|13|0|0|Attributes||0.0
+PerkAction|222|4|1|4|||0.0
+PerkAction|222|4|2|9|||0.0
+PerkDef|73|f|=====Bonuses=====||0|Category
+PerkAction|73|14|0|0|Races||0.0
+PerkAction|73|13|0|0|Attributes||0.0
+PerkAction|73|4|0|0|||0.0
+PerkAction|73|4|0|0|||0.0
+PerkAction|73|8|0|0|||0.0
+PerkDef|74|f|(Bonus) Strength|A bonus to Strength.|0|Attributes
+PerkAction|74|4|1|1|||0.0
+PerkAction|74|14|0|0|Attributes||0.0
+PerkAction|74|13|0|0|Class||0.0
+PerkDef|80|f|(Bonus) Dexterity|A bonus to Dexterity.|0|Attributes
+PerkAction|80|4|1|2|||0.0
+PerkAction|80|14|0|0|Attributes||0.0
+PerkAction|80|13|0|0|Class||0.0
+PerkDef|81|f|(Bonus) Constitution|A bonus to Constitution.|0|Attributes
+PerkAction|81|4|1|3|||0.0
+PerkAction|81|14|0|0|Attributes||0.0
+PerkAction|81|13|0|0|Class||0.0
+PerkDef|83|f|(Bonus) Intelligence|A bonus to Intelligence.|0|Attributes
+PerkAction|83|4|1|4|||0.0
+PerkAction|83|14|0|0|Attributes||0.0
+PerkAction|83|13|0|0|Class||0.0
+PerkDef|82|f|(Bonus) Wisdom|A bonus to Wisdom.|0|Attributes
+PerkAction|82|4|1|5|||0.0
+PerkAction|82|14|0|0|Attributes||0.0
+PerkAction|82|13|0|0|Class||0.0
+PerkDef|912|t|(Bonus) Charisma|A bonus to Charisma.|0|Attributes
+PerkAction|912|4|1|6|||0.0
+PerkAction|912|14|0|0|Attributes||0.0
+PerkAction|912|13|0|0|Class||0.0
+PerkDef|84|f|(Bonus) Willpower|A bonus to Willpower.|0|Attributes
+PerkAction|84|14|0|0|Attributes||0.0
+PerkAction|84|4|1|34|||0.0
+PerkAction|84|13|0|0|Class||0.0
+PerkDef|359|f|=====Classes=====||0|
+PerkDef|620|f|Alchemist|Alchemical Masters whose concoctions can wreak havoc and change the nature of things.  They balance healing and damage over time events to control the flow of combat. &brk;•	+1 Int&brk;•	+1 Dex&brk;•	+2 Crafting&brk;•	24 HP&brk;•	20 Mana|1|Class
+PerkAction|620|14|0|0|Class||0.0
+PerkAction|620|7|24|92|||0.0
+PerkAction|620|7|20|93|||0.0
+PerkAction|620|4|1|4|||0.0
+PerkAction|620|4|1|2|||0.0
+PerkAction|620|4|2|10|||0.0
+PerkAction|620|1|0|849|||0.0
+PerkAction|620|2|0|867|||0.0
+PerkAction|620|2|0|846|||0.0
+PerkAction|620|13|0|0|Weapon Spec||0.0
+PerkAction|620|8|0|654|||0.0
+PerkAction|620|8|0|655|||0.0
+PerkAction|620|8|0|656|||0.0
+PerkAction|620|8|0|657|||0.0
+PerkDef|614|f|Arcanist|Wizards and Sorcerors whose studious nature has elevated them through hard work and study. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Intelligence&brk;• +1 Willpower&brk;• +2 Arcana&brk;• 24 HP&brk;• 22 Mana|1|Class
+PerkAction|614|14|0|0|Class||0.0
+PerkAction|614|13|0|0|Weapon Spec||0.0
+PerkAction|614|7|24|92|||0.0
+PerkAction|614|7|22|93|||0.0
+PerkAction|614|4|1|4|||0.0
+PerkAction|614|4|1|34|||0.0
+PerkAction|614|4|2|9|||0.0
+PerkAction|614|1|0|849|||0.0
+PerkAction|614|8|0|674|||0.0
+PerkAction|614|8|0|671|||0.0
+PerkAction|614|8|0|672|||0.0
+PerkAction|614|8|0|673|||0.0
+PerkDef|615|f|Barbarian|Brutal Fighters whose power comes from deep seated rage.&brk;• +1 Str&brk;• +1 Con&brk;• +2 Survival&brk;• 32 Health&brk;• 24 Stamina|1|Class
+PerkAction|615|14|0|0|Class||0.0
+PerkAction|615|13|0|0|Weapon Spec||0.0
+PerkAction|615|3|0|566|||0.0
+PerkAction|615|3|0|567|||0.0
+PerkAction|615|3|0|568|||0.0
+PerkAction|615|4|1|1|||0.0
+PerkAction|615|4|1|3|||0.0
+PerkAction|615|4|2|22|||0.0
+PerkAction|615|7|32|92|||0.0
+PerkAction|615|7|24|277|||0.0
+PerkAction|615|1|0|849|||0.0
+PerkAction|615|2|0|867|||0.0
+PerkAction|615|2|0|846|||0.0
+PerkAction|615|2|0|847|||0.0
+PerkAction|615|2|0|848|||0.0
+PerkAction|615|8|0|686|||0.0
+PerkAction|615|8|0|687|||0.0
+PerkAction|615|8|0|689|||0.0
+PerkAction|615|8|0|688|||0.0
+PerkDef|616|f|Bard|Performers and Artists who control the flow of battle through enchantment and illusion. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Cha&brk;• +1 Dex&brk;• +2 Perform&brk;• 26 Health&brk;• 18 Mana|1|Class
+PerkAction|616|14|0|0|Class||0.0
+PerkAction|616|13|0|0|Weapon Spec||0.0
+PerkAction|616|4|1|2|||0.0
+PerkAction|616|4|1|6|||0.0
+PerkAction|616|4|2|18|||0.0
+PerkAction|616|7|26|92|||0.0
+PerkAction|616|7|18|93|||0.0
+PerkAction|616|1|0|849|||0.0
+PerkAction|616|2|0|867|||0.0
+PerkAction|616|2|0|846|||0.0
+PerkAction|616|2|0|847|||0.0
+PerkDef|617|f|Cleric|Servants of a path who have gained power through faith and experience. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Wisdom&brk;• +1 Constitution&brk;• +2 Religion&brk;• 26 Health&brk;• 18 Mana|1|Class
+PerkAction|617|14|0|0|Class||0.0
+PerkAction|617|13|0|0|Weapon Spec||0.0
+PerkAction|617|4|1|5|||0.0
+PerkAction|617|4|1|3|||0.0
+PerkAction|617|4|2|19|||0.0
+PerkAction|617|7|26|92|||0.0
+PerkAction|617|7|18|93|||0.0
+PerkAction|617|3|0|562|||0.0
+PerkAction|617|3|0|565|||0.0
+PerkAction|617|3|0|564|||0.0
+PerkAction|617|1|0|849|||0.0
+PerkDef|622|f|Druid|Defenders of Nature equally dangerous by themselves or with others. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Wisdom&brk;• +1 Constitution&brk;• +2 Nature&brk;• 26 Health&brk;• 20 Mana|1|
+PerkAction|622|14|0|0|Class||0.0
+PerkAction|622|4|1|5|||0.0
+PerkAction|622|4|1|3|||0.0
+PerkAction|622|4|2|16|||0.0
+PerkAction|622|7|30|92|||0.0
+PerkAction|622|7|24|93|||0.0
+PerkAction|622|2|0|867|||0.0
+PerkAction|622|2|0|846|||0.0
+PerkAction|622|2|0|847|||0.0
+PerkAction|622|2|0|566|||0.0
+PerkAction|622|2|0|567|||0.0
+PerkAction|622|2|0|568|||0.0
+PerkDef|373|f|Fighter|Students of war and contest. They utilize stances and technique to tear apart their enemies. &brk;• +1 Strength&brk;• +1 Dex&brk;• +2 Athletics&brk;• 30 Health&brk;• 22 Stamina|1|Class
+PerkAction|373|14|0|0|Class||0.0
+PerkAction|373|13|0|0|Weapon Spec||0.0
+PerkAction|373|7|30|92|||0.0
+PerkAction|373|4|1|2|||0.0
+PerkAction|373|4|1|1|||0.0
+PerkAction|373|4|2|25|||0.0
+PerkAction|373|7|22|277|||0.0
+PerkAction|373|3|0|567|||0.0
+PerkAction|373|1|0|849|||0.0
+PerkDef|843|f|Monk|Studious and skilled fighters that specialize in a variety of weapons and techniques but are limited to unarmored combat. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• Wisdom modifier is included in their AC&brk;• +1 Wisdom&brk;• +1 Dexterity&brk;• +2 Perception&brk;• 26 Health&brk;• 20 Stamina|1|Class
+PerkAction|843|14|0|0|Class||0.0
+PerkAction|843|2|0|565|||0.0
+PerkAction|843|2|0|569|||0.0
+PerkAction|843|2|0|568|||0.0
+PerkAction|843|2|0|567|||0.0
+PerkAction|843|2|0|566|||0.0
+PerkAction|843|4|1|5|||0.0
+PerkAction|843|4|1|2|||0.0
+PerkAction|843|4|2|86|||0.0
+PerkAction|843|0|0|849|||0.0
+PerkAction|843|14|0|0|Armor Spec||0.0
+PerkAction|843|7|26|92|||0.0
+PerkAction|843|7|20|277|||0.0
+PerkDef|907|f|Paladin|Righteous and often Holy, Paladins are the stalwart defenders of what they believe is right. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Constitution&brk;• +1 Charisma&brk;• +2 Perception&brk;• 28 Health&brk;• 14 Stamina&brk;• 14 Mana|1|Class
+PerkAction|907|14|0|0|Class||0.0
+PerkAction|907|4|1|3|||0.0
+PerkAction|907|4|1|6|||0.0
+PerkAction|907|4|2|86|||0.0
+PerkAction|907|7|28|92|||0.0
+PerkAction|907|7|14|277|||0.0
+PerkAction|907|7|14|93|||0.0
+PerkAction|907|3|0|564|||0.0
+PerkAction|907|3|0|566|||0.0
+PerkAction|907|3|0|568|||0.0
+PerkAction|907|1|0|849|||0.0
+PerkAction|907|13|0|0|Weapon Spec||0.0
+PerkDef|618|f|Rogue|No one actually knows what a rogue does. They are impossible to see. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Dex&brk;• +1 Intelligence&brk;• +2 Thievery&brk;• 24 Health&brk;• 24 Stamina|1|Class
+PerkAction|618|14|0|0|Class||0.0
+PerkAction|618|13|0|0|Weapon Spec||0.0
+PerkAction|618|7|24|92|||0.0
+PerkAction|618|7|24|277|||0.0
+PerkAction|618|4|1|2|||0.0
+PerkAction|618|4|1|4|||0.0
+PerkAction|618|4|2|23|||0.0
+PerkAction|618|1|0|849|||0.0
+PerkDef|619|f|Ranger|Hunters and trackers, rangers are the backbone of a well rounded assault group. &brk;(Abilities and Subclasses Are a work in progress.)&brk;• +1 Dexterity&brk;• +1 Wisdom&brk;• +2 Survival&brk;• 26 Health&brk;• 20 Stamina|1|Class
+PerkAction|619|14|0|0|Class||0.0
+PerkAction|619|13|0|0|Weapon Spec||0.0
+PerkAction|619|4|1|2|||0.0
+PerkAction|619|4|1|5|||0.0
+PerkAction|619|4|2|16|||0.0
+PerkAction|619|3|0|848|||0.0
+PerkAction|619|7|26|92|||0.0
+PerkAction|619|1|0|849|||0.0
+PerkAction|619|7|20|277|||0.0
+PerkDef|626|f|=====Subclasses=====||0|
+PerkDef|425|f|Fighter Class: Blade Dancer|• Primary: DEX&brk;• Secondary: STR&brk;• Bonuses: +1 DEX, +1 STR; +2 Acrobatics; +14 Health|0|Fighter:Subclass
+PerkAction|425|14|0|0|Fighter:Subclass||0.0
+PerkAction|425|13|0|0|Armor Spec||0.0
+PerkAction|425|4|1|2|||0.0
+PerkAction|425|4|1|1|||0.0
+PerkAction|425|4|2|8|||0.0
+PerkAction|425|7|14|92|||0.0
+PerkAction|425|8|0|430|||0.0
+PerkAction|425|8|0|430|||0.0
+PerkAction|425|8|0|0|||0.0
+PerkAction|425|8|0|0|||0.0
+PerkAction|425|8|0|628|||0.0
+PerkAction|425|8|0|431|||0.0
+PerkAction|425|8|0|432|||0.0
+PerkAction|425|8|0|433|||0.0
+PerkDef|420|f|Knight TBD|• Primary: STR&brk;• Secondary: CON&brk;• Bonuses: +1 STR, +1 CON; +2 Athletics; +14 Health|0|Fighter:Subclass
+PerkAction|420|14|0|0|Fighter:Subclass||0.0
+PerkAction|420|13|0|0|Armor Spec||0.0
+PerkAction|420|4|1|1|||0.0
+PerkAction|420|4|1|3|||0.0
+PerkAction|420|4|2|25|||0.0
+PerkAction|420|7|14|92|||0.0
+PerkAction|420|8|0|361|||0.0
+PerkAction|420|8|0|362|||0.0
+PerkAction|420|8|0|363|||0.0
+PerkAction|420|8|0|364|||0.0
+PerkAction|420|8|0|365|||0.0
+PerkAction|420|8|0|366|||0.0
+PerkAction|420|8|0|367|||0.0
+PerkAction|420|8|0|368|||0.0
+PerkDef|410|f|Fighter Class: Pit Fighter***|• Primary: STR&brk;• Secondary: CON&brk;• Bonuses: +1 STR, +1 CON; +2 Athletics; +14 Health|0|Fighter:Subclass
+PerkAction|410|14|0|0|Fighter:Subclass||0.0
+PerkAction|410|13|0|0|Armor Spec||0.0
+PerkAction|410|4|1|1|||0.0
+PerkAction|410|4|1|3|||0.0
+PerkAction|410|4|2|25|||0.0
+PerkAction|410|7|14|92|||0.0
+PerkAction|410|8|0|411|||0.0
+PerkAction|410|8|0|412|||0.0
+PerkAction|410|8|0|413|||0.0
+PerkAction|410|8|0|414|||0.0
+PerkAction|410|8|0|415|||0.0
+PerkAction|410|8|0|416|||0.0
+PerkAction|410|8|0|417|||0.0
+PerkAction|410|8|0|418|||0.0
+PerkDef|394|f|Rogue: Shadow Duelist|• Primary: DEX&brk;• Secondary: INT&brk;• Bonuses: +1 DEX, +1 INT; +2 Acrobatics; +14 Health|0|Fighter:Subclass
+PerkAction|394|14|0|0|Fighter:Subclass||0.0
+PerkAction|394|13|0|0|Armor Spec||0.0
+PerkAction|394|4|1|2|||0.0
+PerkAction|394|4|1|4|||0.0
+PerkAction|394|4|2|8|||0.0
+PerkAction|394|7|14|92|||0.0
+PerkAction|394|8|0|400|||0.0
+PerkAction|394|8|0|401|||0.0
+PerkAction|394|8|0|402|||0.0
+PerkAction|394|8|0|403|||0.0
+PerkAction|394|8|0|404|||0.0
+PerkAction|394|8|0|405|||0.0
+PerkAction|394|8|0|406|||0.0
+PerkAction|394|8|0|407|||0.0
+PerkDef|729|f|=====Conditionals=====||0|Conditionals
+PerkDef|745|f|Raging|+5 temporary HP&brk;+1 attack power&brk;-2 AC&brk;+1 tiles movement&brk;-1 Bonus|0|Conditionals
+PerkAction|745|7|5|92|||0.0
+PerkAction|745|7|1|245|||0.0
+PerkAction|745|7|-2|94|||0.0
+PerkAction|745|6|0|685|||0.0
+PerkDef|322|f|Grapple||0|Conditionals
+PerkAction|322|8|0|803|||0.0
+PerkAction|322|8|0|212|||0.0
+PerkAction|322|8|0|319|||0.0
+PerkDef|755|f|DamageImmune||0|
+PerkDef|559|f|====Weapon Specialization====|Primary: Dexterity &pipe; Secondary: Intelligence&brk;Bonuses: +1 Dexterity, +1 Intelligence; +2 AB; +10 Stamina|1|
+PerkAction|559|7|1|0|||0.0
+PerkAction|559|7|1|0|||0.0
+PerkAction|559|7|0|0|||0.0
+PerkAction|559|7|12|0|||0.0
+PerkAction|559|8|0|0|||0.0
+PerkAction|559|8|0|0|||0.0
+PerkAction|559|8|0|0|||0.0
+PerkAction|559|8|0|0|||0.0
+PerkDef|560|f|Archery|Bows/Crossbows/Slinghosts/Slings, encompasses thrown objects as well etc. &brk;• Primary: Dexterity &pipe; Secondary: Intelligence&brk;• Bonuses: +1 Dexterity, +1 Intelligence; +10 Stamina|1|Weapon Spec
+PerkAction|560|4|1|2|||0.0
+PerkAction|560|4|1|4|||0.0
+PerkAction|560|7|10|277|||0.0
+PerkAction|560|14|0|0|Weapon Spec||0.0
+PerkAction|560|13|0|0|Armor Spec||0.0
+PerkDef|561|f|Dual Wielding|Ambidexterous weapon use. &brk;• Primary: Dexterity &pipe; Secondary: Strength&brk;• Bonuses: +1 Dexterity, +1 Strength; +10 Stamina|1|Weapon Spec
+PerkAction|561|4|1|2|||0.0
+PerkAction|561|4|1|1|||0.0
+PerkAction|561|7|10|277|||0.0
+PerkAction|561|14|0|0|Weapon Spec||0.0
+PerkAction|561|13|0|0|Armor Spec||0.0
+PerkDef|569|f|Flexible Weapons|Flexible weapons of all sorts. Chains, Whips, Nets, Etc.&brk;• Capable of striking oppnents 2 tiles away&brk;• Primary: Dexterity &pipe; Secondary: Charisma&brk;• Bonuses: +1 Dexterity, +1 Charisma; +5 Health, +5 Stamina|1|Weapon Spec
+PerkAction|569|4|1|2|||0.0
+PerkAction|569|4|1|6|||0.0
+PerkAction|569|7|5|92|||0.0
+PerkAction|569|7|5|277|||0.0
+PerkAction|569|14|0|0|Weapon Spec||0.0
+PerkAction|569|13|0|0|Armor Spec||0.0
+PerkDef|562|f|Great Weapons|Polearms/Spears/Great Axes, etc&brk;• Capable of striking oppnents 2 tiles away&brk;• Primary: Strength &pipe; Secondary: Constitution&brk;• Bonuses: +1 Strength, +1 Constitution; +10 Health|1|Weapon Spec
+PerkAction|562|4|1|1|||0.0
+PerkAction|562|4|1|3|||0.0
+PerkAction|562|7|10|92|||0.0
+PerkAction|562|14|0|0|Weapon Spec||0.0
+PerkAction|562|13|0|0|Armor Spec||0.0
+PerkDef|564|f|Improvised Weaponry|You have learned to fight with everything from broken bottles to a thrown rock. &brk;• Primary: Dexterity &pipe; Secondary: Strength&brk;• Bonuses: +1 Dexterity, +1 Strength; +10 Stamina|1|Weapon Spec
+PerkAction|564|4|1|2|||0.0
+PerkAction|564|4|1|1|||0.0
+PerkAction|564|7|10|277|||0.0
+PerkAction|564|14|0|0|Weapon Spec||0.0
+PerkAction|564|13|0|0|Armor Spec||0.0
+PerkDef|563|f|Sword & Board|Sword and Shield or any combination of 1 handed weapon + a shield. &brk;• Primary: Strength &pipe; Secondary: Constitution&brk;• Bonuses: +1 Strength, +1 Constitution; +2 Armor Class|1|Weapon Spec
+PerkAction|563|4|1|1|||0.0
+PerkAction|563|4|1|3|||0.0
+PerkAction|563|7|2|94|||0.0
+PerkAction|563|14|0|0|Weapon Spec||0.0
+PerkAction|563|13|0|0|Armor Spec||0.0
+PerkDef|1000|f|Staves|The preferred weapon of wizards across the multiverse!&brk;• Primary: Intelligence &pipe; Secondary: Constitution&brk;• Bonuses: +1 Intelligence, +1 Constitution; +10 Mana|0|Weapon Spec
+PerkAction|1000|14|0|0|Weapon Spec||0.0
+PerkAction|1000|13|0|0|Armor Spec||0.0
+PerkAction|1000|4|1|4|||0.0
+PerkAction|1000|4|1|3|||0.0
+PerkAction|1000|7|10|93|||0.0
+PerkDef|565|f|Unarmed Combat|This does not mean fighting with no arms. Your body is the weapon.&brk;• Primary: Dexterity &pipe; Secondary: Intelligence&brk;• Bonuses: +1 Dexterity, +1 Intelligence; +5 Stamina, +5 Health|1|Weapon Spec
+PerkAction|565|4|1|2|||0.0
+PerkAction|565|4|1|4|||0.0
+PerkAction|565|7|5|92|||0.0
+PerkAction|565|7|5|277|||0.0
+PerkAction|565|14|0|0|Weapon Spec||0.0
+PerkAction|565|13|0|0|Armor Spec||0.0
+PerkDef|566|f|Arcane Focus|A suite of abilities for the arcane caster. &brk;• Primary: Willpower &pipe; Secondary: Intelligence&brk;• Bonuses: +1 Willpower, +1 Intelligence;  +12 Mana|1|Weapon Spec
+PerkAction|566|4|1|34|||0.0
+PerkAction|566|4|1|4|||0.0
+PerkAction|566|7|12|93|||0.0
+PerkAction|566|14|0|0|Weapon Spec||0.0
+PerkAction|566|13|0|0|Armor Spec||0.0
+PerkDef|567|f|Divine Focus|A suite of abilities for the divine caster.&brk;• Primary: Wisdom &pipe; Secondary: Intelligence&brk;• Bonuses: +1 Wisdom, +1 Strength; +6 Health, +6 Mana|1|Weapon Spec
+PerkAction|567|4|1|5|||0.0
+PerkAction|567|4|1|4|||0.0
+PerkAction|567|7|6|92|||0.0
+PerkAction|567|14|0|0|Weapon Spec||0.0
+PerkAction|567|13|0|0|Armor Spec||0.0
+PerkAction|567|7|6|93|||0.0
+PerkDef|568|f|Psionic Focus|A suite of abilities for the psionic caster. &brk;• Primary: Willpower &pipe; Secondary: Intelligence&brk;• Bonuses: +1 Willpower, +1 Intelligence; +10 Mana|1|Weapon Spec
+PerkAction|568|4|1|4|||0.0
+PerkAction|568|4|1|34|||0.0
+PerkAction|568|7|10|93|||0.0
+PerkAction|568|14|0|0|Weapon Spec||0.0
+PerkAction|568|13|0|0|Armor Spec||0.0
+PerkDef|844|f|=====Armor Spec=====||0|
+PerkAction|844|4|0|0|||0.0
+PerkAction|844|4|0|0|||0.0
+PerkAction|844|4|0|0|||0.0
+PerkDef|845|f|Unarmored|• Grants +2 initiative&brk;• Allows for Wisdom to be used in addition to Dexterity.&brk;• Grants +2 on Dexterity Saves|1|Monk Armor Spec
+PerkAction|845|4|2|27|||0.0
+PerkAction|845|7|2|325|||0.0
+PerkAction|845|0|0|849|||0.0
+PerkAction|845|1|0|878|||0.0
+PerkDef|867|f|No Armor|• Grants +2 initiative&brk;• Grants +2 on Dexterity Saves&brk;• Allows full Dexterity towards AC|1|Armor Spec
+PerkAction|867|1|0|878|||0.0
+PerkAction|867|4|2|27|||0.0
+PerkAction|867|7|2|325|||0.0
+PerkAction|867|14|0|0|Armor Spec||0.0
+PerkAction|867|1|0|849|||0.0
+PerkDef|846|f|Light Armor|• Allows for Full Dexterity Bonus&brk;• +1 to Initiative&brk;• +2 to AC|1|Armor Spec
+PerkAction|846|1|0|849|||0.0
+PerkAction|846|7|1|325|||0.0
+PerkAction|846|7|2|94|||0.0
+PerkAction|846|14|0|0|Armor Spec||0.0
+PerkAction|846|1|0|878|||0.0
+PerkDef|847|f|Medium Armor|• Allows for 1/2 Dexterity&brk;• +4 to AC|1|Armor Spec
+PerkAction|847|7|4|94|||0.0
+PerkAction|847|14|0|0|Armor Spec||0.0
+PerkAction|847|1|0|849|||0.0
+PerkAction|847|1|0|854|||0.0
+PerkDef|848|f|Heavy Armor|• Dexterity is not included in Armor Class&brk;• +7 to Armor Class&brk;• -1 on Dexterity saves|1|Armor Spec
+PerkAction|848|14|0|0|Armor Spec||0.0
+PerkAction|848|7|7|94|||0.0
+PerkAction|848|4|-1|27|||0.0
+PerkAction|848|1|0|849|||0.0
+PerkAction|848|1|0|854|||0.0
+PerkAction|848|1|0|878|||0.0
+PerkAction|848|4|0|0|||0.0
+PerkDef|974|f|Admin||0|Admin
+PerkAction|974|8|0|585|||0.0
+PerkAction|974|8|0|782|||0.0
+PerkAction|974|8|0|783|||0.0
+PerkAction|974|8|0|801|||0.0
+PerkAction|974|8|0|784|||0.0
+PerkAction|974|8|0|811|||0.0
+PerkAction|974|8|0|586|||0.0
+PerkAction|974|8|0|785|||0.0
+PerkAction|974|8|0|786|||0.0
+PerkAction|974|8|0|787|||0.0
+PerkAction|974|8|0|595|||0.0
+PerkAction|974|8|0|827|||0.0
+PerkAction|974|8|0|828|||0.0
+PerkAction|974|8|0|829|||0.0
+PerkAction|974|8|0|602|||0.0
+PerkAction|974|8|0|824|||0.0
+PerkAction|974|8|0|825|||0.0
+PerkAction|974|8|0|826|||0.0
+PerkAction|974|8|0|609|||0.0
+PerkAction|974|8|0|821|||0.0
+PerkAction|974|8|0|823|||0.0
+PerkAction|974|8|0|822|||0.0
+PerkAction|974|8|0|611|||0.0
+PerkAction|974|8|0|818|||0.0
+PerkAction|974|8|0|819|||0.0
+PerkAction|974|8|0|820|||0.0
+PerkAction|974|8|0|652|||0.0
+PerkAction|974|8|0|815|||0.0
+PerkAction|974|8|0|817|||0.0
+PerkAction|974|8|0|816|||0.0
+PerkAction|974|8|0|612|||0.0
+PerkAction|974|8|0|813|||0.0
+PerkAction|974|8|0|814|||0.0
+PerkAction|974|8|0|833|||0.0
+PerkAction|974|8|0|627|||0.0
+PerkAction|974|8|0|654|||0.0
+PerkAction|974|8|0|655|||0.0
+PerkAction|974|8|0|656|||0.0
+PerkAction|974|8|0|657|||0.0
+PerkAction|974|8|0|674|||0.0
+PerkAction|974|8|0|671|||0.0
+PerkAction|974|8|0|672|||0.0
+PerkAction|974|8|0|673|||0.0
+PerkAction|974|8|0|686|||0.0
+PerkAction|974|8|0|687|||0.0
+PerkAction|974|8|0|689|||0.0
+PerkAction|974|8|0|688|||0.0
+PerkAction|974|8|0|694|||0.0
+PerkAction|974|8|0|748|||0.0
+PerkAction|974|8|0|695|||0.0
+PerkAction|974|8|0|696|||0.0
+PerkAction|974|8|0|697|||0.0
+PerkAction|974|8|0|714|||0.0
+PerkAction|974|8|0|713|||0.0
+PerkAction|974|8|0|978|||0.0
+PerkAction|974|8|0|712|||0.0
+PerkAction|974|8|0|711|||0.0
+PerkAction|974|8|0|718|||0.0
+PerkAction|974|8|0|717|||0.0
+PerkAction|974|8|0|716|||0.0
+PerkAction|974|8|0|715|||0.0
+PerkAction|974|8|0|722|||0.0
+PerkAction|974|8|0|721|||0.0
+PerkAction|974|8|0|720|||0.0
+PerkAction|974|8|0|870|||0.0
+PerkAction|974|8|0|719|||0.0
+PerkAction|974|8|0|720|||0.0
+PerkAction|974|8|0|870|||0.0
+PerkAction|974|8|0|879|||0.0
+PerkAction|974|8|0|839|||0.0
+PerkAction|974|8|0|894|||0.0
+PerkAction|974|8|0|840|||0.0
+PerkAction|974|8|0|841|||0.0
+PerkAction|974|8|0|842|||0.0
+PerkAction|974|8|0|729|||0.0
+PerkAction|974|8|0|728|||0.0
+PerkAction|974|8|0|727|||0.0
+PerkAction|974|8|0|945|||0.0
+PerkAction|974|8|0|726|||0.0
+PerkAction|974|8|0|734|||0.0
+PerkAction|974|8|0|939|||0.0
+PerkAction|974|8|0|940|||0.0
+PerkAction|974|8|0|733|||0.0
+PerkAction|974|8|0|732|||0.0
+PerkAction|974|8|0|731|||0.0
+PerkAction|974|8|0|698|||0.0
+PerkAction|974|8|0|699|||0.0
+PerkAction|974|8|0|700|||0.0
+PerkAction|974|8|0|701|||0.0
+PerkAction|974|8|0|976|||0.0
+PerkAction|974|8|0|901|||0.0
+PerkAction|974|8|0|966|||0.0
+PerkAction|974|8|0|975|||0.0
+PerkAction|974|8|0|964|||0.0
+PerkAction|974|8|0|973|||0.0
+PerkAction|974|8|0|552|||0.0
+PerkAction|974|8|0|585|||0.0
+Rune|962|86481332|0|0|f|Trinket|Five tiny bones, licked clean and worryingly shiny. They clack together like teeth when shaken. They smell faintly of grave dirt and victory.|f|f|f|f
+RuneAction|962|963|0|5|0
+Rune|971|86480298|0|0|f|Trinket|Cass's severed hand. |f|f|f|f
+Rune|977|128120|0|0|f||Only Give this Raddish to Admins and members of the RPR team|f|f|f|f
+RuneAction|977|974|0|1|0
+Rune|989|86481574|0|0|f|||f|f|f|f
+RuneAction|989|901|0|4|0
+Rune|990|86482670|0|0|f||A cookie warm from the belly of a mimic. Sweet, soft, and suspiciously alive.|f|f|f|f
+RuneAction|990|991|0|5|0
+RuneAction|990|992|0|4|0
+Rune|998|1000979|0|0|f|||f|f|f|f
+RuneAction|998|966|0|4|0
+Stat|92|Health|37|3*3.5|0|t|t|t|A measure of your vitality.|1.0|t|f|0
+Stat|751|Last Damage Received|0||0|f|f|f|The last instance of damage you incurred.|1.0|t|t|0
+Stat|752|Damage Taken|0||0|f|f|f|What happened and how badly.|1.0|t|t|0
+Stat|93|Mana|10|4*1.0;5*1.0;6*1.0;34*1.0|0|t|t|t|Not Yet Implemented|3.0|t|f|3
+Stat|277|Stamina|10|3*1.0|0|t|f|t|Not Yet Implemented|3.0|t|f|0
+Stat|685|Raging|0|3*1.0|0|t|f|f|Your inner rage explodes outwards.|1.0|t|f|0
+Stat|325|Initiative|0|2*1.0|-5|f|f|t|The total of your Initiative modifiers. |1.0|f|f|0
+Stat|94|Armor Class|10|849*1.0;854*1.0;878*1.0;985*1.0|10|f|f|t|How good your armour is at protecting you.|1.0|f|f|0
+Stat|245|AB|0|1*1.0;2*1.0|0|f|f|t|Physical Attack Bonus|1.45|f|f|3
+Stat|246|MAB|0|4*1.0;5*1.0;6*1.0;34*1.0|0|f|f|t|Magic Attack Bonus|1.45|f|f|3
+Stat|146|XP|0||0|f|f|f|Your experience|1.0|f|t|0
+Stat|330|Movement|1||0|t|f|t|Whether you have movement or not.|1.0|t|f|0
+Stat|250|Reaction|1||0|t|f|t|Reaction Skill CD|1.0|t|f|0
+Stat|96|Standard Action|1||0|t|f|t|Standard Action CD|1.0|t|f|0
+Stat|249|Bonus Action|1||0|t|t|t|Bonus Action CD|1.0|t|f|0
+Stat|682|=====Skills=====|0||0|f|f|f||1.0|f|f|0
+Stat|145|Class Skill I|2||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|107|Class Skill II|2||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|108|Class Skill III|4||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|184|Class Skill IV|6||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|185|Weapon Skill I|2||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|186|Weapon Skill II|2||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|160|Weapon Skill III|4||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|161|Weapon Skill IV|6||0|t|f|t|When the 1st number = the 2nd number you are no longer on cooldown|1.0|t|f|0
+Stat|683|=====Mods=====|0||0|f|f|f||1.0|f|f|0
+Stat|969|PModifier|0|1*1.0;2*1.0|0|f|f|t||1.0|f|f|3
+Stat|970|MModifier|0|4*1.0;5*1.0;6*1.0;34*1.0|0|f|f|t||1.0|t|t|3
+Stat|314|Stablity Modifier|0|2*0.25;1*0.25;8*0.25;25*0.25|0|f|f|t||1.0|t|t|0
+Stat|331|FreedomMod|0|572*1.0;2*1.0|0|f|f|t||1.0|t|t|0
+Stat|891|Ki Armor|0|849*1.0|0|f|f|t|Channeling you inner ki into a shield|1.0|t|t|0
+Stat|588|====Conditions====|0||0|f|f|f|t=Timed&brk;d=Damage&brk;h=until healed&brk;b=until player succeeds a roll|1.0|f|f|0
+Stat|766|Arcane Shield|5||0|t|f|t|Your magic weaves around you into a arcane shield|1.0|t|f|0
+Stat|933|Bleed|5||0|t|f|t||1.0|t|f|0
+Stat|937|Blinded|5||0|t|f|t||1.0|t|f|0
+Stat|921|Bound|5||0|t|f|t||1.0|t|f|0
+Stat|934|Burning|5||0|t|f|t||1.0|t|f|0
+Stat|597|Dazed|5||0|t|t|t|Wha... what just happened. Loss of time and sense.|1.0|t|f|0
+Stat|624|DeafBlind|5||0|t|f|t|Either loss of eyesight or hearing|1.0|t|f|0
+Stat|747|Demoralized|5||0|t|f|t|Uncertantity clouds you and makes your will waiver.|1.0|t|f|0
+Stat|792|Disarmed|5||0|t|f|t|Hey give that back! Your opponent has removed your weapon or knocked your spell off target.|1.0|t|f|0
+Stat|684|Displaced|5||0|t|f|t|Slipping through the fabrics of reality to reappear again, so mysterious.|1.0|t|f|0
+Stat|642|Divine Favor|5||0|t|f|t|The blessings of the divine shine down upon you|1.0|t|f|0
+Stat|920|Dodging|5||0|t|f|t||1.0|t|f|0
+Stat|929|Dulled|5||0|t|f|t||1.0|t|f|0
+Stat|890|Echo|5||0|t|f|t|Scars from the past and current injuries are as fresh as if done right now, weakening you.|1.0|t|f|0
+Stat|922|Entangled|5||0|t|f|t||1.0|t|f|0
+Stat|923|Exhausted|5||0|t|f|t||1.0|t|f|0
+Stat|944|Flat Footed|5||0|t|f|t||1.0|t|f|0
+Stat|935|Hemorrhage|5||0|t|f|t||1.0|t|f|0
+Stat|926|Immobilized|5||0|t|f|t||1.0|t|f|0
+Stat|704|Inspired|5||0|t|f|t|You know what that just might work...|1.0|t|f|0
+Stat|927|Iron Defense|5||0|t|f|t||1.0|t|f|0
+Stat|931|Ki Aura|10||0|t|f|t||1.0|t|f|0
+Stat|834|Mist Form|5||0|t|f|t|Bubble form would have been better but no... your mist all wispy and clammy. Your welcome.|1.0|t|f|0
+Stat|793|Off Guard|5||0|t|f|t|How did you get there? They've snuck under your guard, you know what comes next.|1.0|t|f|0
+Stat|936|Poisoned|5||0|t|f|t||1.0|t|f|0
+Stat|928|Prone|5||0|t|f|t||1.0|t|f|0
+Stat|924|Razors Edge|5||0|t|f|t||1.0|t|f|0
+Stat|669|Regenerating|5||0|t|f|t|Burns blister, wounds close and bleeds slow. Aren't you a lucky one.|1.0|t|f|0
+Stat|930|Reinforced|5||0|t|f|t||1.0|t|f|0
+Stat|587|Rent|5||-1|t|t|t||1.0|t|f|0
+Stat|740|Runic Fusion|5||0|t|f|t|This rune goes with this rune to combine into Ultrarune...|1.0|t|f|0
+Stat|608|Shield of Faith|5||0|t|t|t|You feel stronger and ecouraged to continue.|1.0|t|f|0
+Stat|604|Stunned|5||0|t|t|t|Huh did anyone just see that bus that hit me? Your going to need a minute to walk that one off.|1.0|t|f|0
+Stat|750|Thin Skinned|5||0|t|f|t|I bruise easily and bleed, ouch better dodge that.|1.0|t|f|0
+Stat|932|Trickster|5||0|t|f|t||1.0|t|f|0
+Stat|979|Sanctified|5||0|t|f|t||1.0|t|f|0
+SpellDef|901|Restore||20.0|0|10|2|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Admin|f|f|4|1|
+SpellEffect|901|0|1|1000|92|0|2|0||||1
+SpellEffect|901|0|1|1000|93|0|2|0||||1
+SpellEffect|901|0|1|1000|277|0|2|0||||1
+SpellEffect|901|0|1|1000|330|0|2|0||||1
+SpellEffect|901|0|1|1000|250|0|2|0||||1
+SpellEffect|901|0|1|1000|96|0|2|0||||1
+SpellEffect|901|0|1|1000|249|0|2|0||||1
+SpellEffect|901|0|1|1000|163|0|2|0||||1
+SpellEffect|901|0|1|1000|145|0|2|0||||1
+SpellEffect|901|0|1|1000|107|0|2|0||||1
+SpellEffect|901|0|1|1000|108|0|2|0||||1
+SpellEffect|901|0|1|1000|184|0|2|0||||1
+SpellEffect|901|0|1|1000|185|0|2|0||||1
+SpellEffect|901|0|1|1000|186|0|2|0||||1
+SpellEffect|901|0|1|1000|160|0|2|0||||1
+SpellEffect|901|0|1|1000|161|0|2|0||||1
+SpellDef|199|Rest|This resets cooldowns, restores health and mana |0.0|1|0|2|0||4|0|f|f|f|f|10|Icon152|f|f|0.091391,0.170025,0.005873,1.0|General|f|f|2|1|
+SpellReqDef|199|5|1|0|0.0|0.0|Combat
+SpellEffect|199|0|1|+100|92|0|0|0||||1
+SpellEffect|199|0|1|+100|93|0|0|0||||1
+SpellEffect|199|0|1|+100|277|0|0|0||||1
+SpellEffect|199|0|10|1|96|0|0|0||||1
+SpellEffect|199|0|10|1|163|0|0|0||||1
+SpellEffect|199|0|10|1|249|0|0|0||||1
+SpellEffect|199|0|10|1|250|0|0|0||||1
+SpellEffect|199|0|10|2|145|0|0|0||||1
+SpellEffect|199|0|10|2|107|0|0|0||||1
+SpellEffect|199|0|10|4|108|0|0|0||||1
+SpellEffect|199|0|10|6|184|0|0|0||||1
+SpellEffect|199|0|10|1|185|0|0|0||||1
+SpellEffect|199|0|10|1|186|0|0|0||||1
+SpellEffect|199|0|10|4|160|0|0|0||||1
+SpellEffect|199|0|10|6|161|0|0|0||||1
+SpellDef|165|====Combat Flow===||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellDef|171|PVP/PVE Roll Initiative PVP/PVE|This is for using the rpr combat system for pvp and pve. |0.0|1|0|2|0|1d20 + {c.Initiative}|4|0|f|f|f|f|0|Icon240|f|f|0.957134,0.0,0.0,1.0|Peri Combat|f|t|4|1|
+SpellReqDef|171|5|1|0|0.0|0.0|In Combat
+SpellEffect|171|2|0|/init|0|0|0|0||||1
+SpellDef|188|End Combat|This Ends Combat.|0.0|1|0|2|0||4|0|f|f|f|f|0|Icon240|f|f|1.0,1.0,1.0,1.0|Peri Combat|f|f|4|1|
+SpellEffect|188|2|0|/endcombat|0|0|0|0||||1
+SpellDef|174|Start Turn|This begins your turn.|0.0|1|0|2|0|2|2|1|f|f|f|f|0|Icon240|f|f|1.0,0.002673,0.002673,1.0|Combat|f|f|4|1|
+SpellEffect|174|2|0|/startturn |0|0|0|0||||1
+SpellDef|187|End Turn|This ends your turn.|0.0|1|0|2|0|1d1|2|1|f|f|f|f|0|Icon240|f|f|1.0,1.0,1.0,1.0|Combat|f|f|4|1|
+SpellEffect|187|2|0|/endturn |0|0|0|0||||1
+SpellDef|201|=====Reactions=====|You may move 2 tiles in a move action. |0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellDef|202|Attack of Opportunity|An opportunistic strike towards a retreating opponent, or one who has rushed into your space via Dash. |1.0|4|1|1|245||1|94|f|f|f|f|0|Icon139|t|t|0.992188,0.0,0.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|202|0|0|250|1.0|0.0|
+SpellEffect|202|0|0|{comment}|0|0|0|0||||1
+SpellEffect|202|0|0|{Caster} makes a quick opportunistic attack as {Target} enters their space. |0|0|0|0||||1
+SpellEffect|202|2|1|-1|250|0|2|0||||1
+SpellEffect|202|0|1|-(1d6 + {c.AB})|92|2|0|1||||1
+SpellEffect|202|0|1|-(1d6 + {c.AB})*2|92|1|0|1||||1
+SpellEffect|202|0|0|{roll}|0|0|0|1||||1
+SpellEffect|202|0|0|{roll}|0|0|0|2||||1
+SpellTargetCond|202|1|0|0|755|0.0|0.0|
+SpellDef|203|=====Movement=====|You may move 2 tiles in a move action. |0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellDef|172|Stride|You may move 2 tiles in a move action. Moving out of a person's space, or passing through or adjacent, will trigger an attack of opportunity. &brk;• Movement Action|0.0|1|0|2|0||4|0|f|f|f|f|0|Icon343|t|f|1.0,0.0,0.0,1.0|Movement|f|f|4|1|
+SpellReqDef|172|0|3|330|1.0|0.0|
+SpellEffect|172|2|1|-1|330|0|0|0||||1
+SpellEffect|172|0|0|{comment}|0|0|0|0||||1
+SpellEffect|172|0|0|{Caster} is taking their movement action. Moving Out of a person's space, or passing through, will trigger an attack of opportunity. |0|0|0|0||||1
+SpellDef|348|Disengage|You move 1 tile away from an opponent without triggering an attack of opportunity. &brk;• 1 Standard Action|0.0|1|0|2|0||4|0|f|f|f|f|0|Icon343|t|f|1.0,0.0,0.0,1.0|Movement|f|f|4|1|
+SpellEffect|348|0|0|{comment}|0|0|0|0||||1
+SpellEffect|348|0|0|{caster} is moving away. This action does not provoke an attack of opportunity. |0|0|0|0||||1
+SpellEffect|348|0|1|-1|96|0|0|0||||1
+SpellDef|208|Recover Prone|You stand up. This ability will trigger an attack of opportunity if you are adjacent to an opponent (within 1 tile). &brk;• Movement Action|0.0|1|0|2|0||4|0|f|f|f|f|0|Icon343|t|f|1.0,0.0,0.0,1.0|Movement|f|f|4|1|
+SpellReqDef|208|0|3|330|1.0|0.0|
+SpellEffect|208|0|0|{comment}|0|0|0|0||||1
+SpellEffect|208|0|0|{Caster} is rising to their feet. This provokes an attack of opportunity from those adjacent. |0|0|0|0||||1
+SpellEffect|208|0|7||0|0|0|0||Prone||1
+SpellEffect|208|0|1|-1|330|0|0|0||||1
+SpellDef|247|Dash|You may move an additional 2 tiles. Moving Out of a person's space, or passing through or adjacent, will trigger an attack of opportunity.&brk;• Standard Action|0.0|0|0|0|0||0|0|f|f|f|f|0|Icon343|t|f|1.0,0.0,0.0,1.0|Movement|f|f|4|1|
+SpellReqDef|247|0|0|96|1.0|0.0|
+SpellEffect|247|0|0|{Comment}|0|0|0|0||||1
+SpellEffect|247|0|0|{Caster} is rushing away. Moving Out of a person's space, or passing through, will trigger an attack of opportunity. |0|0|0|0||||1
+SpellDef|309|=====Grapple=====|Grapple Template|1.0|0|1|2|0|1d20 + f.round[({c.Strength}+({c.Athletics}/3}))]|4|0|t|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Escape Artist}/3}))]
+SpellDef|803|Basic: Grapple|Attempt to Initiate a grapple in combat. &brk;• While Grappled your defense to outside attack are severely hampered. -5 to AC&brk;• Others in combat with you may make attacks of opportunity against you.&brk;• While Grappled you may only move 1/2 the distance you normally would and only if you succeed in an opposed Strength check. &brk;• While Grappling you are unable to cast most combat abilities.|1.0|4|1|2|0|1d20 + f.round[({c.Strength}+({c.Athletics}/3}))]|4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Basic:Standard Action|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Escape Artist}/3}))]
+SpellReqDef|803|0|0|96|1.0|0.0|
+SpellReqDef|803|5|1|0|0.0|0.0|Grapple
+SpellEffect|803|0|0|{comment}|0|0|0|0||||1
+SpellEffect|803|0|0|{Caster} successfully grabs {Target} into a grapple. This act does provoke an attack of opportunity. {roll}|0|0|0|1||||1
+SpellEffect|803|2|11||475|0|0|1|-1|Grappling||1
+SpellEffect|803|0|11||475|0|0|1|-1|Grappling||1
+SpellEffect|803|0|0|{Target} evades {Caster}'s grabby hands. {roll}|0|0|0|2||||1
+SpellDef|804|Grapple: Break Grapple|Attempt to Break the Grapple.&brk;• Bonus action&brk;|1.0|4|1|2|0|1d20 + f.round[({c.Strength}+({c.Athletics}/3}))]|4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Escape Artist}/3}))]
+SpellReqDef|804|0|0|249|1.0|0.0|
+SpellReqDef|804|5|0|0|0.0|0.0|Grappling
+SpellEffect|804|0|0|{comment}|0|0|0|0||||1
+SpellEffect|804|0|0|{caster} breaks free from {target}'s {roll}|0|0|0|1||||1
+SpellEffect|804|0|7||0|0|0|1||Grappling||1
+SpellEffect|804|2|7||0|0|0|1||Grappling||1
+SpellEffect|804|0|0|{caster} fails to break {target}'s {roll}|0|0|0|2||||1
+SpellTargetCond|804|0|20|0|475|0.0|0.0|
+SpellDef|805|Grapple: Strike|Use of the body or close quarter weaponry to strike your opponent. &brk;|1.0|4|1|1|245||0|27|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|805|0|0|96|1.0|0.0|
+SpellReqDef|805|5|0|0|0.0|0.0|Grappling
+SpellEffect|805|0|0|{Caster} strikes {Target} {roll}|0|0|0|1||||1
+SpellEffect|805|0|1|-((1d6) + {c.PModifier})|92|0|0|1||||1
+SpellEffect|805|0|1|-(((1d6) + {c.PModifier})*2)|92|1|0|1||||1
+SpellEffect|805|0|0|{Target} avoids {Caster}'s strikes. |0|0|0|2||||1
+SpellTargetCond|805|0|20|0|475|0.0|0.0|
+SpellDef|806|Grapple: Immobolize|You may attempt to pin or immobilize your opponent. If successful they are unable to act other than attempt to break the immobilization. &brk;|1.0|4|1|2|0|1d20 + f.round[({c.Strength}+({c.Athletics}/3}))]|4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Escape Artist}/3}))]
+SpellReqDef|806|0|0|96|1.0|0.0|
+SpellReqDef|806|5|0|0|0.0|0.0|Grappling
+SpellEffect|806|0|0||0|0|0|1||||1
+SpellEffect|806|0|11||808|0|0|1|-1|Immobilized||1
+SpellEffect|806|0|0||0|0|0|2||||1
+SpellTargetCond|806|0|20|0|475|0.0|0.0|
+SpellDef|807|Grappling: Break Immbolization|You may attempt to break the pin or immobilization. &brk;|1.0|4|1|2|0|1d20 + f.round[({c.Strength}+({c.Escape Artist}/3}))]|4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Athleticst}/3}))]
+SpellReqDef|807|0|0|96|1.0|0.0|
+SpellReqDef|807|5|0|0|0.0|0.0|Grappling
+SpellEffect|807|0|0|{Caster} breaks free of {Target's} control but is still within the grapple. |0|0|0|1||||1
+SpellEffect|807|0|7||0|0|0|1||Imobilized||1
+SpellEffect|807|0|0|{Caster} fails to break {Target}'s control of them. |0|0|0|2||||1
+SpellTargetCond|807|0|0|0|0|0.0|0.0|
+SpellDef|809|Grapple: Bind|You may attempt to bind, with rope, chain, shackles, etc, an immbolized opponent. &brk;This automatically ends combat for the target of the ability if successful. Whatever happens next is between two consensual adults. Communicate and have fun!|1.0|4|1|2|0|1d20 + f.round[({c.Strength}+({c.Athletics}/3}))]|4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|1d20 + f.round[({t.Strength}+({t.Escape Artist}/3}))]
+SpellReqDef|809|0|0|96|1.0|0.0|
+SpellReqDef|809|5|0|0|0.0|0.0|Grappling
+SpellEffect|809|0|0|{comment}|0|0|0|0||||1
+SpellEffect|809|0|0|{Caster} successfully binds {Target}. {roll}|0|0|0|1||||1
+SpellEffect|809|0|11||810|0|0|1|-1|Bound||1
+SpellEffect|809|0|9||188|0|0|1||||1
+SpellEffect|809|0|0|{Target} avoids being bound... For now. {roll}|0|0|0|2||||1
+SpellTargetCond|809|0|20|0|475|0.0|0.0|
+SpellTargetCond|809|0|20|0|808|0.0|0.0|
+SpellDef|204|=====Standard Action=====|You may move 2 tiles in a move action. |0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellDef|205|Dodge|Actively concentrating on avoiding damage grants a +2 Armor Bonus, and a -2 to your Attack Bonus, until the beginning of your next turn. |0.0|1|0|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Basic:Standard Action|f|f|4|1|
+SpellReqDef|205|0|0|96|1.0|0.0|
+SpellEffect|205|0|0|{comment}|0|0|0|0||||1
+SpellEffect|205|0|0|{caster} is entering a dodging stance.&brk;|0|0|0|0||||1
+SpellEffect|205|0|11||773|0|0|0|-1|Dodging||1
+SpellEffect|205|0|0| |0|0|0|0||||1
+SpellEffect|205|0|1|-1|96|0|0|0||||1
+SpellDef|210|Push/Pull|You force your opponent 1 tile in a direction. |1.0|0|1|1|245||0|27|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Basic:Standard Action|f|f|4|1|
+SpellReqDef|210|0|0|96|1.0|0.0|
+SpellEffect|210|0|0|{comment}|0|0|0|0||||1
+SpellEffect|210|0|1|-1|96|0|0|0||||1
+SpellEffect|210|0|0|{caster} forces {target} one tile in a direction of their choosing. {roll}|0|0|0|1||||1
+SpellEffect|210|0|0|{target} is unmoved by {caster}'s attack. {roll}|0|0|0|2||||1
+SpellTargetCond|210|1|0|0|755|0.0|0.0|
+SpellDef|189|Melee Attack|A basic melee attack.&brk;• Standard Action&brk;• 1d6 +AB damage. 2d6+ on critical|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Basic:Standard Action|f|t|4|1|
+SpellReqDef|189|0|0|96|1.0|0.0|
+SpellEffect|189|0|0|{comment}|0|0|0|0||||1
+SpellEffect|189|0|0|{Caster} attacks {Target} {roll}|0|0|0|0||||1
+SpellEffect|189|2|1|-1|96|0|0|0||||1
+SpellEffect|189|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|189|0|1|-(2d6+{c.PModifier})|92|1|0|1||||1
+SpellEffect|189|0|0|{roll}|0|0|0|1||||1
+SpellEffect|189|0|0|{Roll}|0|0|0|2||||1
+SpellTargetCond|189|1|0|0|755|0.0|0.0|
+SpellDef|311|Ranged Attack|A basic ranged attack. &brk;• Standard Action&brk;• 1d6 +AB damage. 2d6+ on critical|5.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Basic:Standard Action|f|t|4|1|
+SpellReqDef|311|0|0|96|1.0|0.0|
+SpellEffect|311|0|0|{Caster} attacks  {Target}|0|0|0|0||||1
+SpellEffect|311|2|1|-1|96|0|0|0||||1
+SpellEffect|311|0|1|-(1d6 + {c.PModifier})|92|2|0|1||||1
+SpellEffect|311|0|1|-(2d6 + {c.PModifier})|92|1|0|1||||1
+SpellEffect|311|0|0|{roll}|0|0|0|1||||1
+SpellEffect|311|0|0|{roll}|0|0|0|2||||1
+SpellTargetCond|311|1|0|0|755|0.0|0.0|
+SpellDef|312|Magical Attack|A basic magic attack. &brk;• Standard Action&brk;• 1d6 +AB damage. 2d6+ on critical|5.0|4|1|1|246||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Basic:Standard Action|f|t|4|1|
+SpellReqDef|312|0|0|96|1.0|0.0|
+SpellEffect|312|0|0|{comment}|0|0|0|0||||1
+SpellEffect|312|0|0|{Caster} attacks {Target}|0|0|0|0||||1
+SpellEffect|312|2|1|-1|96|0|0|0||||1
+SpellEffect|312|0|1|-(1d6 + {c.MModifier})|92|2|0|1||||1
+SpellEffect|312|0|1|-(2d6 + {c.MModifier})|92|1|0|1||||1
+SpellEffect|312|0|0|{roll}|0|0|0|1||||1
+SpellEffect|312|0|0|{roll}|0|0|0|2||||1
+SpellTargetCond|312|1|0|0|755|0.0|0.0|
+SpellDef|601|=====Clear=====|Clearing abilities|0.0|1|0|1|331||2|12|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellEffect|601|2|7||0|0|0|1||Entangled||1
+SpellDef|677|Clear: Arcane Shield||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|677|2|7||0|0|0|1||Arcane Shield||1
+SpellDef|581|Clear: DeafBlind||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|581|0|7||0|0|0|1||DeafBlind||1
+SpellDef|789|Clear: Bleed||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|789|0|7||0|0|0|1||Bleed||1
+SpellDef|889|Clear: Blinded||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|889|0|7||0|0|0|1||Blinded||1
+SpellDef|947|Clear: Blighted||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|947|0|7||0|0|0|1||Blighted||1
+SpellDef|796|Clear: Bound||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|796|0|7||0|0|0|1||Bound||1
+SpellDef|680|Clear: Burning||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|680|0|7||0|0|0|1||Burning||1
+SpellDef|579|Clear: Dazed||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|579|0|7||0|0|0|1||Dazed||1
+SpellDef|838|Clear: Demoralized||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|838|0|7||0|0|0|1||Demoralized||1
+SpellDef|956|Clear: Disarmed||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|956|0|7||0|0|0|1||Disarmed||1
+SpellDef|835|Clear: Displaced||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|835|0|7||0|0|0|1||Displaced||1
+SpellDef|582|Clear: Divine Favor||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|582|0|7||0|0|0|1||Divine Favor||1
+SpellDef|942|Clear: Dodging||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|942|0|7||0|0|0|1||Dodging||1
+SpellDef|950|Clear: Dulled||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|950|0|7||0|0|0|1||Dulled||1
+SpellDef|948|Clear: Echo||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|948|0|7||0|0|0|1||Echo||1
+SpellDef|576|Clear: Entangled||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|576|2|7||0|0|0|1||Entangled||1
+SpellDef|949|Clear: Exhausted||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|949|0|7||0|0|0|1||Exhausted||1
+SpellDef|951|Clear: Flat Footed||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|951|0|7||0|0|0|1||Flat Footed||1
+SpellDef|794|Clear: Grappling||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|794|0|7||0|0|0|1||Grappling||1
+SpellDef|952|Clear: Hemorrhage||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|952|0|7||0|0|0|1||Hemorrhage||1
+SpellDef|795|Clear: Immobilized||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|795|0|7||0|0|0|1||Immobilized||1
+SpellDef|836|Clear: Inspired||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|836|0|7||0|0|0|1||Inspired||1
+SpellDef|953|Clear: Iron Defense||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|953|0|7||0|0|0|1||Iron Defense||1
+SpellDef|954|Clear: Ki Aura||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|954|0|7||0|0|0|1||Ki Aura||1
+SpellDef|832|Clear: Mist Form||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|832|0|7||0|0|0|1||Mist Form||1
+SpellDef|955|Clear: Off Guard||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|955|0|7||0|0|0|1||Off Guard||1
+SpellDef|946|Clear: Poisoned||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|946|0|7||0|0|0|1||Poisoned||1
+SpellDef|681|Clear: Raging||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|681|0|7||0|0|0|1||Raging||1
+SpellDef|960|Clear: Razors Edge||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|960|0|7||0|0|0|1||Razors Edge||1
+SpellDef|583|Clear: Regenerating||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|583|2|7||0|0|0|1||Regenerating||1
+SpellDef|577|Clear: Rent||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|577|2|7||0|0|0|1||Rent||1
+SpellDef|988|Clear: Shredded||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|988|2|7||0|0|0|1||Clear: Shredded||1
+SpellDef|959|Clear: Reinforced||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|959|0|7||0|0|0|1||Reinforced||1
+SpellDef|837|Clear: Runic Fusion||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|837|2|7||0|0|0|1||Runic Fusion||1
+SpellDef|580|Clear: Shield of Faith||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|580|0|7||0|0|0|1||Shield of Faith||1
+SpellDef|584|Clear: Stunned||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|584|0|7||0|0|0|1||Stunned||1
+SpellDef|797|Clear: Thin Skinned||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|797|0|7||0|0|0|1||Thin Skinned||1
+SpellDef|958|Clear: Trickster||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|958|0|7||0|0|0|1||Trickster||1
+SpellDef|957|Clear: Sanctified||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Clear|f|f|4|1|
+SpellEffect|957|0|7||0|0|0|1||Sanctified||1
+SpellDef|865|=====Weapon Spec=====||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellDef|552|Archery - True Shot|A calculated shot that has a higher chance of hitting than otherwise.&brk;• Standard Action&brk;• +5 to hit 1d8 + dex Critical x2&brk;• 2 round cooldown&brk;• Stamina: 4|8.0|4|1|2|0|[(1d20 + 5) + ({c.AB})]|1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|552|0|0|96|1.0|0.0|
+SpellReqDef|552|0|0|185|2.0|0.0|
+SpellReqDef|552|0|3|277|4.0|0.0|
+SpellEffect|552|2|1|-1|96|0|2|0||||1
+SpellEffect|552|2|1|-2|185|0|2|0||||1
+SpellEffect|552|2|1|-4|277|0|0|0||||1
+SpellEffect|552|0|0|{comment}|0|0|0|0||||1
+SpellEffect|552|0|0|{Caster} fires off a true shot and strikes {Target}. {roll}|0|0|0|1||||1
+SpellEffect|552|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|552|0|10|-(1d8)+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|552|0|0|{Caster} fires off a true shot and misses {Target}. {roll}|0|0|0|2||||1
+SpellTargetCond|552|1|0|0|755|0.0|0.0|
+SpellDef|776|Archery - Power Shot|You take a moment to truly aim and let loose with all your capable of.&brk;• Standard Action&brk;• 2d6 +  dex&brk;• Stamina: 4&brk;|8.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|776|0|0|96|1.0|0.0|
+SpellReqDef|776|0|0|186|2.0|0.0|
+SpellReqDef|776|0|3|277|4.0|0.0|
+SpellEffect|776|2|1|-1|96|0|2|0||||1
+SpellEffect|776|2|1|-6|107|0|2|0||||1
+SpellEffect|776|2|1|-4|277|0|0|0||||1
+SpellEffect|776|0|0|{comment}|0|0|0|0||||1
+SpellEffect|776|0|0|{Caster} fires off a pwerful shot and strikes {Target}. {roll}|0|0|0|1||||1
+SpellEffect|776|0|1|-(1d8+1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|776|0|10|-(1d8+1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|776|0|0|{Caster} fires off a powerful shot and misses {Target}. {roll}|0|0|0|2||||1
+SpellTargetCond|776|1|0|0|755|0.0|0.0|
+SpellDef|775|Archery - Poisoned Shot|Apply a poison or venom to your weapon that the target can resist. &brk;• Standard Action&brk;• 1d6 + dex&brk;• 1d4 damage per round for 2 rounds. &brk;• Stamina: 4&brk;|8.0|4|1|1|245||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|775|0|0|96|1.0|0.0|
+SpellReqDef|775|0|0|160|4.0|0.0|
+SpellReqDef|775|0|3|277|4.0|0.0|
+SpellEffect|775|2|1|-1|96|0|2|0||||1
+SpellEffect|775|2|1|-4|160|0|2|0||||1
+SpellEffect|775|2|1|-8|277|0|0|0||||1
+SpellEffect|775|0|0|{comment}|0|0|0|0||||1
+SpellEffect|775|0|0|{Caster} coats their weapon with a foreign substance and fires at {target} {roll}|0|0|0|1||||1
+SpellEffect|775|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|775|0|10|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|775|0|11||778|0|0|1|-1|Poisoned||1
+SpellEffect|775|0|1|2|936|0|1|1||||1
+SpellEffect|775|0|0|{Caster} misses the mark. {roll}|0|0|0|2||||1
+SpellTargetCond|775|1|0|0|755|0.0|0.0|
+SpellDef|777|Archery - Leap|You leap in a direction of your choice, avoiding incoming damage. &brk;• You may move an additional 3 tiles. This movement does not provoke an attack of opportunity. This movement may be used even if you have not been attacked. &brk;• Reaction&brk;• Stamina: 7|5.0|1|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|777|0|0|250|1.0|0.0|
+SpellReqDef|777|0|0|161|6.0|0.0|
+SpellReqDef|777|0|3|277|7.0|0.0|
+SpellEffect|777|2|1|-1|96|0|2|0||||1
+SpellEffect|777|2|1|-6|161|0|2|0||||1
+SpellEffect|777|2|1|-7|277|0|0|0||||1
+SpellEffect|777|0|0|{comment}|0|0|0|0||||1
+SpellEffect|777|0|0|{Caster} throws themselves into a leap. |0|0|0|1||||1
+SpellDef|570|Dual Wielding - Twin Strike|A strike with both blades that has a chance of applying bleed.&brk;• Standard action&brk;• 2d6 + dex&brk;• On crit If target fails saving throw an additional 1d4 bleed damage per round for 2 rounds&brk;• Stamina: 4&brk;|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|570|0|0|96|1.0|0.0|
+SpellReqDef|570|0|0|185|2.0|0.0|
+SpellReqDef|570|0|3|277|4.0|0.0|
+SpellEffect|570|2|1|-1|96|0|0|0||||1
+SpellEffect|570|2|1|-2|185|0|0|0||||1
+SpellEffect|570|2|1|-6|277|0|0|0||||1
+SpellEffect|570|0|0|{comment}|0|0|0|0||||1
+SpellEffect|570|0|7||0|0|2|0||Trickster||1
+SpellEffect|570|0|0|{Caster} strikes out at {Target} with both weapons. {roll}|0|0|0|1||||1
+SpellEffect|570|0|1|-((1d6+(1d6*.75)+({c.PModifier}))|92|2|0|1||||1
+SpellEffect|570|0|1|-((1d6+(1d6*.75)+({c.PModifier))*2|92|1|0|1||||1
+SpellEffect|570|0|9||788|1|0|1||||1
+SpellEffect|570|0|0|{Caster} lashes out at {Target} with both weapons and misses. {roll}|0|0|0|2||||1
+SpellTargetCond|570|1|0|0|755|0.0|0.0|
+SpellDef|788|s.Twin Strike|Bleed|5.0|1|1|0|26||2|10|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellEffect|788|2|0|{Caster} has failed their saving throw and begins to bleed profusely |0|0|0|1||||1
+SpellEffect|788|2|1|0-[(1d4))|92|0|0|1||||1
+SpellEffect|788|2|1|f.clamp[1d5,2,5]|933|0|2|1||||1
+SpellEffect|788|2|0|{Caster} successfully avoids being severely wounded. |0|0|0|2||||1
+SpellDef|779|Dual Wielding - Reckless Strikes|You sacrifice defense in the name of overwhelming offense. This ability provokes an attack of opportunity. &brk;• Standard action&brk;• 1d8+Strength +1d8*.75+Dex&brk;• Stamina: 4&brk;|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|779|0|0|96|1.0|0.0|
+SpellReqDef|779|0|0|186|2.0|0.0|
+SpellReqDef|779|0|3|277|4.0|0.0|
+SpellEffect|779|2|1|-1|96|0|0|0||||1
+SpellEffect|779|2|1|-2|186|0|0|0||||1
+SpellEffect|779|2|1|-4|277|0|0|0||||1
+SpellEffect|779|0|0|{comment}|0|0|0|0||||1
+SpellEffect|779|2|7||0|0|2|0||Trickster||1
+SpellEffect|779|0|0|{Caster} strikes out at {Target} with both weapons.  {roll}|0|0|0|1||||1
+SpellEffect|779|0|1|-(1d8+(1d8*.75)+({c.Strength}+{c.Dexterity}))|92|2|0|1||||1
+SpellEffect|779|0|1|-(1d8+(1d8*.75)+({c.Strength}+{c.Dexterity}))*2|92|1|0|1||||1
+SpellEffect|779|0|0|{Caster} strikes out at {Target} with both weapons and misses.{roll}|0|0|0|2||||1
+SpellTargetCond|779|1|0|0|755|0.0|0.0|
+SpellDef|781|Dual Wielding - Feint|Some clever feinting gives you a +2 to hit on your next Dual Wield attack this round. &brk;• Bonus Action&brk;• Stamina: 4|1.0|4|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|781|0|0|249|1.0|0.0|
+SpellReqDef|781|0|0|160|4.0|0.0|
+SpellReqDef|781|0|3|277|4.0|0.0|
+SpellEffect|781|2|1|-1|249|0|0|0||||1
+SpellEffect|781|2|1|-4|160|0|0|0||||1
+SpellEffect|781|2|1|-4|277|0|0|0||||1
+SpellEffect|781|0|0|{comment} |0|0|0|0||||1
+SpellEffect|781|0|0|{Caster} uses feinting to boost their chances of landing a hit on{Target} |0|0|0|1||||1
+SpellEffect|781|2|1|1|932|1|0|1||||1
+SpellEffect|781|2|11||898|0|0|1|-1|Trickster||1
+SpellDef|780|Dual Wielding - Parry & Riposte|When attacked with a physical weapon you are able to parry the attack away, taking no damage and immedietly retaliate. (i.e you can parry a thrown dagger, or a shot arrow, but not a fireball). On failure you take damage. &brk;• 1d6 + dex (crit x2)&brk;• Reaction&brk;• Stamina:4|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|780|0|0|250|1.0|0.0|
+SpellReqDef|780|0|0|161|6.0|0.0|
+SpellReqDef|780|0|3|277|4.0|0.0|
+SpellEffect|780|2|1|-1|250|0|0|0||||1
+SpellEffect|780|2|1|-6|161|0|0|0||||1
+SpellEffect|780|2|1|-4|277|0|0|0||||1
+SpellEffect|780|2|7||0|0|2|0||Trickster||1
+SpellEffect|780|0|0|{comment}|0|0|0|0||||1
+SpellEffect|780|0|0|{Caster} sweeps aside {Target}'s attack and immediately counterattacks. |0|0|0|1||||1
+SpellEffect|780|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|780|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|780|0|0|{Caster} sweeps aside {target's} blade and fails.  |0|0|0|2||||1
+SpellTargetCond|780|1|0|0|755|0.0|0.0|
+SpellDef|585|Flexible Weapons - Coiling Lash|A precise snap of your weapon that trips your opponent and deals some damage.&brk;• Standard action&brk;• 1d6 + Dex + knocked prone&brk;• Stamina: 6&brk;|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|585|0|0|96|1.0|0.0|
+SpellReqDef|585|0|0|185|2.0|0.0|
+SpellReqDef|585|0|3|277|6.0|0.0|
+SpellEffect|585|2|1|-1|96|0|0|0||||1
+SpellEffect|585|2|1|-2|185|0|0|0||||1
+SpellEffect|585|2|1|-6|277|0|0|0||||1
+SpellEffect|585|0|0|{comment}|0|0|0|0||||1
+SpellEffect|585|0|0|{Caster} strikes out at {Target} with their weapon and causes them to fall.  {roll}|0|0|0|1||||1
+SpellEffect|585|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|585|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|585|0|11||590|0|0|1|-1|Prone||1
+SpellEffect|585|0|0|{Caster} strikes out at {Target} and fails to hit.  {roll}|0|0|0|2||||1
+SpellTargetCond|585|1|0|0|755|0.0|0.0|
+SpellDef|782|Flexible Weapons - Disarm|Whether it's disabling someone's wrist or trapping a blade in your weapon, or simply flicking it just right to distract a spell caster, you render your opponent a little less capable their next turn. &brk;• 1d6 + Dex Disarmed&brk;• Disarmed causes a loss of 1 standard action on the targets next turn. &brk;• Stamina: 7&brk;|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|782|0|0|96|1.0|0.0|
+SpellReqDef|782|0|0|186|2.0|0.0|
+SpellReqDef|782|0|3|277|7.0|0.0|
+SpellEffect|782|2|1|-1|96|0|0|0||||1
+SpellEffect|782|2|1|-2|186|0|0|0||||1
+SpellEffect|782|2|1|-7|277|0|0|0||||1
+SpellEffect|782|0|0|{comment} |0|0|0|0||||1
+SpellEffect|782|0|0|{Caster} strikes out at {Target} with their weapon and disarms them.  {roll}|0|0|0|1||||1
+SpellEffect|782|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|782|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|782|0|11||790|0|0|1|-1|Disarmed||1
+SpellEffect|782|0|0|{Caster} strikes out at {Target} and fails to hit.  {roll}|0|0|0|2||||1
+SpellTargetCond|782|1|0|0|755|0.0|0.0|
+SpellDef|783|Flexible Weapons - Grappling Strike|You use your weapon to attempt to take control of your opponent. &brk;• Standard Action&brk;• 2d6 + Dex + Grappled on failure&brk;• Stamina: 6&brk;|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|t|4|1|
+SpellReqDef|783|0|0|96|1.0|0.0|
+SpellReqDef|783|0|0|160|4.0|0.0|
+SpellReqDef|783|0|3|277|6.0|0.0|
+SpellEffect|783|2|1|-1|249|0|0|0||||1
+SpellEffect|783|2|1|-4|160|0|0|0||||1
+SpellEffect|783|2|1|-6|277|0|0|0||||1
+SpellEffect|783|0|0|{comment} |0|0|0|0||||1
+SpellEffect|783|0|0|{Caster} strikes out at {Target} and attempts to use their weapon to grab them. {roll}|0|0|0|1||||1
+SpellEffect|783|0|1|-(2d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|783|0|1|-(2d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|783|0|9||801|0|0|1|-1|Grappling||1
+SpellEffect|783|0|0|{Caster} strikes out at {Target} and fails to hit.  {roll}|0|0|0|2||||1
+SpellTargetCond|783|1|0|0|755|0.0|0.0|
+SpellDef|801|s.Grappling Strike||1.0|0|1|2|0|{t.Strength}+({t.Athletics}/3)|4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|{c.Strength}+({c.escapeartist}/3})
+SpellEffect|801|2|1|-1|249|0|0|0||||1
+SpellEffect|801|2|1|-4|160|0|0|0||||1
+SpellEffect|801|0|0|{Target} grabs onto {Caster} with their weapon and will attempt to use it to control them. |0|0|0|1||||1
+SpellEffect|801|0|11||475|0|0|1|-1|Grappling||1
+SpellEffect|801|0|0|{Target} fails their grapple. {Caster} can immedietly retaliate with an attack of opportunity if they are within their weapons striking distance.  |0|0|0|2||||1
+SpellDef|784|Flexible Weapons - Viper Strike|Upon being struck by an attack that targets your AC you may immediately retaliate with a quick but brutal strike. &brk;• Reaction&brk;• 1d6+ (Crit x2) &brk;• Has a chance to inflict Off Guard onto the target&brk;• Stamina: 5&brk;|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|784|0|0|250|1.0|0.0|
+SpellReqDef|784|0|0|161|6.0|0.0|
+SpellReqDef|784|0|3|277|5.0|0.0|
+SpellEffect|784|2|1|-1|250|0|0|0||||1
+SpellEffect|784|2|1|-6|161|0|0|0||||1
+SpellEffect|784|2|1|-5|277|0|0|0||||1
+SpellEffect|784|0|0|{comment} |0|0|0|0||||1
+SpellEffect|784|0|0|{Caster} strikes out at {Target}, their weapon snapping unpredictably around them. {roll}|0|0|0|1||||1
+SpellEffect|784|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|784|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|784|0|9||811|0|0|1|-1|Off Guard||1
+SpellEffect|784|0|0|{Caster} strikes out at {Target} and fails to hit. {roll}|0|0|0|2||||1
+SpellTargetCond|784|1|0|0|755|0.0|0.0|
+SpellDef|811|s.Viper Strike||2.0|1|1|0|86||2|11|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellEffect|811|2|1|1|793|0|0|2||||1
+SpellEffect|811|2|11||996|0|0|2|-1|Off Guard||1
+SpellDef|586|Great Weapons  - Rend|A heavy blow that damages armor.&brk;• Standard action&brk;• 1d10 + 40% chance target's AC reduced by 1. Condition may  stack 5 times. &brk;• Applies Rent (-2 AC) first time condition triggers. Applies Shredded (-3 AC) the 4th.&brk;• Stamina: 7&brk;|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|586|0|0|96|1.0|0.0|
+SpellReqDef|586|0|0|185|2.0|0.0|
+SpellReqDef|586|0|3|277|7.0|0.0|
+SpellEffect|586|0|0|/rprrend {caster} {target} {roll}|0|0|0|0||||1
+SpellEffect|586|2|0|{comment}|0|0|0|0||||1
+SpellTargetCond|586|1|0|0|755|0.0|0.0|
+SpellDef|785|Great Weapons  - Cleave |Swing in a wide arc, striking up to 3 adjacent enemies.&brk;• 2-12 damage + Strength damage to each. (x2 on crit)&brk;• Standard action&brk;• Stamina: 6|2.0|4|3|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|785|0|0|186|2.0|0.0|
+SpellReqDef|785|0|0|96|1.0|0.0|
+SpellReqDef|785|0|3|277|6.0|0.0|
+SpellEffect|785|2|1|-1|96|0|0|0||||1
+SpellEffect|785|2|1|-2|186|0|0|0||||1
+SpellEffect|785|2|1|-6|277|0|0|0||||1
+SpellEffect|785|0|0||0|0|0|0||||1
+SpellEffect|785|0|0|{Caster} strikes out at {Target} with a heavy blow. |0|0|0|1||||1
+SpellEffect|785|0|1|-(2d5+{c.Strength})|92|0|0|1||||1
+SpellEffect|785|0|1|-(2d5+{c.Strength})*2|92|1|0|1||||1
+SpellEffect|785|0|0|{Caster} strikes out at {Target} and fails to hit. |0|0|0|2||||1
+SpellTargetCond|785|1|0|0|755|0.0|0.0|
+SpellDef|786|Great Weapons  - Mighty Swing |You heft your weapon high and bring it down with crushing force.&brk;• 2d6 + Strength damage (x2 on crit)&brk;• Knocks Prone on crit. &brk;• Stamina Cost: 6|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|786|0|0|160|4.0|0.0|
+SpellReqDef|786|0|0|96|1.0|0.0|
+SpellReqDef|786|0|3|277|6.0|0.0|
+SpellEffect|786|2|1|-1|96|0|0|0||||1
+SpellEffect|786|2|1|-4|160|0|0|0||||1
+SpellEffect|786|2|1|-6|277|0|0|0||||1
+SpellEffect|786|0|0|{comment}|0|0|0|0||||1
+SpellEffect|786|0|0|{Caster} strikes out at {Target} with a heavy blow. |0|0|0|1||||1
+SpellEffect|786|0|1|-(2d6+{c.Strength})|92|0|0|1||||1
+SpellEffect|786|0|1|-(2d6+{c.Strength})*2|92|1|0|1||||1
+SpellEffect|786|0|11||590|0|0|1|-1|Prone||1
+SpellEffect|786|0|0|{Caster} strikes out at {Target} and fails to hit. |0|0|0|2||||1
+SpellTargetCond|786|1|0|0|755|0.0|0.0|
+SpellDef|787|Great Weapons  -  Brutal Counter|You turn their attack into an opening for carnage.&brk;• When hit by a melee attack, immediately make a counterattack for 2d4 + Strength&brk;• On Crit: Attacker is dazed, suffering disadvantage on their next attack.&brk;• Reaction&brk;• Stamina: 6|2.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|787|0|0|161|6.0|0.0|
+SpellReqDef|787|0|0|96|1.0|0.0|
+SpellReqDef|787|0|3|277|6.0|0.0|
+SpellEffect|787|2|1|-1|96|0|0|0||||1
+SpellEffect|787|2|1|-2|185|0|0|0||||1
+SpellEffect|787|2|1|-6|277|0|0|0||||1
+SpellEffect|787|0|0|{comment}|0|0|0|0||||1
+SpellEffect|787|0|0|{Caster} strikes out at {Target} with a heavy blow. |0|0|0|1||||1
+SpellEffect|787|0|1|-(2d4+{c.Strength})|92|0|0|1||||1
+SpellEffect|787|0|1|-(2d4+{c.Strength})*2|92|1|0|1||||1
+SpellEffect|787|0|1|1|597|0|0|1||||1
+SpellEffect|787|0|11||596|0|0|1|-1|Dazed||1
+SpellEffect|787|0|0|{Caster} strikes out at {Target} and fails to hit. |0|0|0|2||||1
+SpellTargetCond|787|1|0|0|755|0.0|0.0|
+SpellDef|595|Improv Weaponry - Wild Swing|Grab whatever is nearest and swing away!&brk;• Standard action&brk;• 1d8 + Strength damage. On Crit target is dazed for 1 round. &brk;• Stamina: 5|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|595|0|0|96|1.0|0.0|
+SpellReqDef|595|0|0|185|2.0|0.0|
+SpellReqDef|595|0|3|277|5.0|0.0|
+SpellEffect|595|2|1|-1|96|0|0|0||||1
+SpellEffect|595|2|1|-2|185|0|0|0||||1
+SpellEffect|595|2|1|-5|277|0|0|0||||1
+SpellEffect|595|0|0|{comment} |0|0|0|0||||1
+SpellEffect|595|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}. {roll}|0|0|0|1||||1
+SpellEffect|595|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|595|0|10|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|595|0|11||596|1|0|1|-1|Dazed||1
+SpellEffect|595|0|1|1|597|1|2|1||||1
+SpellEffect|595|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}, and.. misses. |0|0|0|2||||1
+SpellTargetCond|595|1|0|0|755|0.0|0.0|
+SpellDef|827|Improv Weaponry - Shatterstrike|Swing with a brittle object (bottle, pot).&brk;• Damage: 1d8 + STR.&brk;• Crit: Target Bleeds (1d4/round, 2 rounds).&brk;• Stamina: 3|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|827|0|0|186|2.0|0.0|
+SpellReqDef|827|0|0|96|1.0|0.0|
+SpellReqDef|827|0|3|277|3.0|0.0|
+SpellEffect|827|2|1|-1|96|0|0|0||||1
+SpellEffect|827|2|1|-2|186|0|0|0||||1
+SpellEffect|827|2|1|-3|277|0|0|0||||1
+SpellEffect|827|2|0|{comment}|0|0|0|0||||1
+SpellEffect|827|0|0|{Caster} produces a broken knickknack and attacks {Target}. {roll}|0|0|0|1||||1
+SpellEffect|827|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|827|0|10|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|827|0|11||693|1|0|1|-1|Bleed||1
+SpellEffect|827|0|1|2|933|1|2|1||||1
+SpellEffect|827|0|0|{Caster} produces a broken knickknack and attacks {Target}... and misses{roll}|0|0|0|2||||1
+SpellTargetCond|827|1|0|0|755|0.0|0.0|
+SpellDef|828|Improv Weaponry -  Fire it up|Sometimes your smack talk is on par with that of a bard. You rile yourself up&brk;• Gives yourself the Inspired buff for 2-5 rounds. &brk;• Stamina: 5|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action |f|f|4|1|
+SpellReqDef|828|0|0|160|4.0|0.0|
+SpellReqDef|828|0|0|249|1.0|0.0|
+SpellReqDef|828|0|3|277|5.0|0.0|
+SpellEffect|828|2|1|-1|249|0|0|0||||1
+SpellEffect|828|2|1|-4|160|0|0|0||||1
+SpellEffect|828|2|1|-5|277|0|0|0||||1
+SpellEffect|828|0|0|{comment}|0|0|0|0||||1
+SpellEffect|828|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}. {roll}|0|0|0|1||||1
+SpellEffect|828|0|1|-(2d6+{c.PModifier})|92|0|0|1||||1
+SpellEffect|828|0|10|-(2d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|828|0|11||703|1|0|1|-1|Inspired||1
+SpellEffect|828|0|1|f.clamp[1d5,2,5]|704|0|2|1||||1
+SpellEffect|828|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}, and.. misses. |0|0|0|2||||1
+SpellDef|829|Improv Weaponry - Pocket Sand|A quick and dirty trick in response to an attack. Negates Damage&brk;• Target rolls vs Dexterity, on fail: Blinded 2-5 round.&brk;• Stamina:6|1.0|4|1|1|245||0|27|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|829|0|0|161|6.0|0.0|
+SpellReqDef|829|0|0|250|1.0|0.0|
+SpellReqDef|829|0|3|277|6.0|0.0|
+SpellEffect|829|2|1|-1|96|0|0|0||||1
+SpellEffect|829|2|1|-6|161|0|0|0||||1
+SpellEffect|829|2|1|-6|277|0|0|0||||1
+SpellEffect|829|0|0|{comment}|0|0|0|0||||1
+SpellEffect|829|0|0|{Caster} pulls sand from an unknown place and throws it in {Target}'s face. {roll}|0|0|0|1||||1
+SpellEffect|829|0|11||938|1|0|1|-1|Blinded||1
+SpellEffect|829|0|1|f.clamp[1d5,2,5]|937|0|2|1||||1
+SpellEffect|829|0|0|{Caster} misses {Target} with their pocket lin... sand. They will take full damage{roll}|0|0|0|2||||1
+SpellTargetCond|829|1|0|0|755|0.0|0.0|
+SpellDef|602|Sword & Board - Shield Strike|A targeted strike meant to disorient and stun&brk;• 1d8 + damage modifier. (x2 on crit)&brk;• On CriticalTarget is stunned for 1 round. &brk;• Standard action&brk;• Stamina: 7|1.0|4|1|1|245||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|602|0|0|96|1.0|0.0|
+SpellReqDef|602|0|0|185|2.0|0.0|
+SpellReqDef|602|0|3|277|7.0|0.0|
+SpellEffect|602|2|1|-1|96|0|0|0||||1
+SpellEffect|602|2|1|-2|186|0|0|0||||1
+SpellEffect|602|2|1|-7|277|0|0|0||||1
+SpellEffect|602|2|7||0|0|0|0||Reinforced||1
+SpellEffect|602|0|0|{comment} |0|0|0|0||||1
+SpellEffect|602|0|0|{Caster} swings with their shield and strikes {Target}. {roll}|0|0|0|1||||1
+SpellEffect|602|0|11||603|1|0|1|-1|Stunned||1
+SpellEffect|602|0|1|+1|604|1|2|1||||1
+SpellEffect|602|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|602|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|602|0|0|{Caster} swings with their shield and misses {Target}. {roll}|0|0|0|2||||1
+SpellTargetCond|602|1|0|0|755|0.0|0.0|
+SpellDef|824|Sword & Board - Guard Break|A targetted strike meant to disorient and stun&brk;• 1d8 + damage modifier.&brk;• Target is knocked Off Guard for until the end of their next turn. &brk;• Standard action&brk;• 6 stamina|1.0|4|1|1|245||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|824|0|0|186|2.0|0.0|
+SpellReqDef|824|0|0|96|1.0|0.0|
+SpellReqDef|824|0|3|277|6.0|0.0|
+SpellEffect|824|2|1|-1|96|0|0|0||||1
+SpellEffect|824|2|1|-2|186|0|0|0||||1
+SpellEffect|824|2|1|-6|277|0|0|0||||1
+SpellEffect|824|2|7||0|0|0|0||Reinforced||1
+SpellEffect|824|0|0|{comment}|0|0|0|0||||1
+SpellEffect|824|0|0|{Caster} swings out in an attempt to break {Target}'s defenses. {roll}|0|0|0|1||||1
+SpellEffect|824|0|11||812|1|0|1|-1|Off Guard||1
+SpellEffect|824|0|1|+1|793|1|2|1||||1
+SpellEffect|824|0|1|-(1d8+{c.PModifier})|92|0|0|1||||1
+SpellEffect|824|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|824|0|0|{Caster} swings out in an attempt to break {Target}'s defenses. {roll}|0|0|0|2||||1
+SpellTargetCond|824|1|0|0|755|0.0|0.0|
+SpellDef|825|Sword & Board - Shield Wall|Brace your shield and absorb incoming blows. Must be used after your other attacks for the round. Taking any action, other than a move action, while this is active cancels it. &brk;• Triggers Reinforced Status (+2 AC)&brk;• Stamina: 6|1.0|4|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|825|0|0|249|1.0|0.0|
+SpellReqDef|825|0|0|160|4.0|0.0|
+SpellReqDef|825|0|3|277|6.0|0.0|
+SpellEffect|825|2|1|-1|249|0|0|0||||1
+SpellEffect|825|2|1|-4|160|0|0|0||||1
+SpellEffect|825|2|1|-6|277|0|0|0||||1
+SpellEffect|825|0|0|{comment}|0|0|0|0||||1
+SpellEffect|825|0|0|{Caster} drops into a pure guard.|0|0|0|1||||1
+SpellEffect|825|2|11||903|0|0|1|-1|Reinforced||1
+SpellEffect|825|2|1|5|930|0|2|1||||1
+SpellEffect|825|0|1|-(1d8+{c.PModifier})|92|0|0|1||||1
+SpellEffect|825|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellDef|826|Sword & Board - Ram & Slam |When attacked you can immediately retaliate, soaking 1/2 of the damage. &brk;• 1d8 + damage modifier (x2 on crit)&brk;• Target is knocked prone on crit. &brk;• Reaction&brk;• 6 Stamina|1.0|4|1|1|245||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|826|0|0|161|6.0|0.0|
+SpellReqDef|826|0|0|250|1.0|0.0|
+SpellReqDef|826|0|3|277|6.0|0.0|
+SpellEffect|826|2|1|-1|96|0|0|0||||1
+SpellEffect|826|2|1|-6|161|0|0|0||||1
+SpellEffect|826|2|7||0|0|0|0||Reinforced||1
+SpellEffect|826|2|1|-6|277|0|0|0||||1
+SpellEffect|826|0|0|{comment}|0|0|0|0||||1
+SpellEffect|826|0|0|{Caster} drives themselves into {Target} shield first. {roll}|0|0|0|1||||1
+SpellEffect|826|0|11||590|1|0|1|-1|Prone||1
+SpellEffect|826|0|1|-(1d8+{c.PModifier})|92|0|0|1||||1
+SpellEffect|826|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|826|0|0|{Caster} drives themselves into {Target} shield first. {roll}|0|0|0|2||||1
+SpellTargetCond|826|1|0|0|755|0.0|0.0|
+SpellDef|1001|Staves - Charged Blast|A magical assault that is charged and held for greater effect. The staff holds up to three charges. Each round that the staff holds charges, beyond it's initial charge, there is a % chance the staff discharges at a random target, caster included. See Handbook for full details. &brk;• 2d6/2d8/2d10 x3 on crit&brk;• Mana Cost: 10|5.0|4|1|1|245||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|1001|0|0|96|1.0|0.0|
+SpellReqDef|1001|0|0|185|2.0|0.0|
+SpellReqDef|1001|0|3|277|7.0|0.0|
+SpellEffect|1001|2|1|-1|96|0|0|0||||1
+SpellEffect|1001|2|1|-2|186|0|0|0||||1
+SpellEffect|1001|2|1|-7|277|0|0|0||||1
+SpellEffect|1001|2|7||0|0|0|0||Reinforced||1
+SpellEffect|1001|0|0|{comment} |0|0|0|0||||1
+SpellEffect|1001|0|0|{Caster} swings with their shield and strikes {Target}. {roll}|0|0|0|1||||1
+SpellEffect|1001|0|11||603|1|0|1|-1|Stunned||1
+SpellEffect|1001|0|1|+1|604|1|2|1||||1
+SpellEffect|1001|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|1001|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|1001|0|0|{Caster} swings with their shield and misses {Target}. {roll}|0|0|0|2||||1
+SpellTargetCond|1001|1|0|0|755|0.0|0.0|
+SpellDef|1002|Staves - Elemental Wave||5.0|4|3|1|245||1|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|1002|0|0|186|2.0|0.0|
+SpellReqDef|1002|0|0|96|1.0|0.0|
+SpellReqDef|1002|0|3|277|6.0|0.0|
+SpellEffect|1002|2|1|-1|96|0|0|0||||1
+SpellEffect|1002|2|1|-2|186|0|0|0||||1
+SpellEffect|1002|2|1|-6|277|0|0|0||||1
+SpellEffect|1002|2|7||0|0|0|0||Reinforced||1
+SpellEffect|1002|0|0|{comment}|0|0|0|0||||1
+SpellEffect|1002|0|0|{Caster} swings out in an attempt to break {Target}'s defenses. {roll}|0|0|0|1||||1
+SpellEffect|1002|0|11||812|1|0|1|-1|Off Guard||1
+SpellEffect|1002|0|1|+1|793|1|2|1||||1
+SpellEffect|1002|0|1|-(1d8+{c.PModifier})|92|0|0|1||||1
+SpellEffect|1002|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|1002|0|0|{Caster} swings out in an attempt to break {Target}'s defenses. {roll}|0|0|0|2||||1
+SpellTargetCond|1002|1|0|0|755|0.0|0.0|
+SpellDef|1003|Staves - ||1.0|4|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|1003|0|0|249|1.0|0.0|
+SpellReqDef|1003|0|0|160|4.0|0.0|
+SpellReqDef|1003|0|3|277|6.0|0.0|
+SpellEffect|1003|2|1|-1|249|0|0|0||||1
+SpellEffect|1003|0|1|-4|160|0|0|0||||1
+SpellEffect|1003|0|1|-6|277|0|0|0||||1
+SpellEffect|1003|0|0|{comment}|0|0|0|0||||1
+SpellEffect|1003|0|0|{Caster} drops into a pure gaurd. {roll}|0|0|0|1||||1
+SpellEffect|1003|0|11||903|1|0|1|-1|Reinforced||1
+SpellEffect|1003|0|1|5|930|1|2|1||||1
+SpellEffect|1003|0|1|-(1d8)+{c.PModifier})|92|0|0|1||||1
+SpellEffect|1003|0|1|-(1d8)+{c.PModifier})*2|92|1|0|1||||1
+SpellDef|1004|Staves - Rebuke|Upon being attacked the caster is able to summon a shield which repels 1/2 of the damage back to the aggressor. If the aggressor succeeds a reflex save they take no damage from this ability. |5.0|4|1|0|4||0|29|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|1004|0|0|161|6.0|0.0|
+SpellReqDef|1004|0|0|96|1.0|0.0|
+SpellReqDef|1004|0|3|277|6.0|0.0|
+SpellEffect|1004|2|1|-1|96|0|0|0||||1
+SpellEffect|1004|2|1|-6|161|0|0|0||||1
+SpellEffect|1004|2|7||0|0|0|0||Reinforced||1
+SpellEffect|1004|2|1|-6|277|0|0|0||||1
+SpellEffect|1004|0|0|{comment}|0|0|0|0||||1
+SpellEffect|1004|0|0|{Caster} drives themselves into {Target} shield first. {roll}|0|0|0|1||||1
+SpellEffect|1004|0|11||590|1|0|1|-1|Prone||1
+SpellEffect|1004|0|1|-(1d8+{c.PModifier})|92|0|0|1||||1
+SpellEffect|1004|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|1004|0|0|{Caster} drives themselves into {Target} shield first. {roll}|0|0|0|2||||1
+SpellTargetCond|1004|1|0|0|755|0.0|0.0|
+SpellDef|609|Unarmed Strike - Bracing Strike|A strike meant to put you in a defensive position. &brk;• Standard action&brk;• 1d6 + damage modifier. &brk;• On crit the caster gains a +2 to their AC for 2-5 rounds. &brk;• Stamina:5&brk;|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|609|0|0|96|1.0|0.0|
+SpellReqDef|609|0|0|185|2.0|0.0|
+SpellReqDef|609|0|3|277|5.0|0.0|
+SpellEffect|609|2|1|-2|185|0|0|0||||1
+SpellEffect|609|2|1|-1|96|0|0|0||||1
+SpellEffect|609|2|1|-5|277|0|0|0||||1
+SpellEffect|609|0|0|{comment} |0|0|0|0||||1
+SpellEffect|609|0|0|{Caster} strikes out at {Target} and connects with a solid blow. {roll&pipe;}|0|0|0|1||||1
+SpellEffect|609|0|1|-(1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|609|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|609|2|11||903|1|0|1|-1|Reinforced||1
+SpellEffect|609|2|1|f.clamp[(1d5),2,5]|930|1|0|1||||1
+SpellEffect|609|0|0|{Caster} strikes out at {Target} and misses. {roll}|0|0|0|2||||1
+SpellTargetCond|609|1|0|0|755|0.0|0.0|
+SpellDef|821|Unarmed Strike - Flurry of Blows|Rapid strikes overwhelm your foe in a blur of motion.&brk;• Make two unarmed attacks, each 1d6 + combat modifiers. &brk;• On Crit: A third strike is added at 1d6, double damage applies to all. &brk;• Standard Action&brk;• Stamina Cost: 4|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|821|0|0|186|2.0|0.0|
+SpellReqDef|821|0|0|96|1.0|0.0|
+SpellReqDef|821|0|3|277|4.0|0.0|
+SpellEffect|821|2|1|-1|96|0|0|0||||1
+SpellEffect|821|2|1|-2|186|0|0|0||||1
+SpellEffect|821|2|1|-4|277|0|0|0||||1
+SpellEffect|821|0|0|{comment}|0|0|0|0||||1
+SpellEffect|821|0|0|{Caster} strikes out at {Target} in a flurry of fists, feet, and potential weaponry. |0|0|0|1||||1
+SpellEffect|821|0|1|-(1d6+1d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|821|0|1|-(1d6+1d6+1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|821|0|0|{Caster} strikes out at {Target} and misses. |0|0|0|2||||1
+SpellTargetCond|821|1|0|0|755|0.0|0.0|
+SpellDef|823|Unarmed Strike - Wind Walk |Focus your energy to move with supernatural speed.&brk;• Dash or Disengage up to 4 tiles without provoking opportunity attacks.&brk;• Bonus Action&brk;• Stamina Cost: 5|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|823|0|0|160|4.0|0.0|
+SpellReqDef|823|0|0|96|1.0|0.0|
+SpellReqDef|823|0|3|277|5.0|0.0|
+SpellEffect|823|2|1|-1|96|0|0|0||||1
+SpellEffect|823|2|1|-2|160|0|0|0||||1
+SpellEffect|823|2|1|-5|277|0|0|0||||1
+SpellEffect|823|0|0|{comment}|0|0|0|0||||1
+SpellEffect|823|0|0|{Caster} races across the area as if the air itself were their ally.|0|0|0|1||||1
+SpellDef|822|Unarmed Strike - Deflect|You redirect an incoming blow with trained reflexes.&brk;• 1/2 damage from incoming attack. &brk;• On Crit: Negate the attack entirely.&brk;• Reaction&brk;• Stamina Cost: 6|1.0|1|1|2|0|1d20|2|1|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|822|0|0|161|6.0|0.0|
+SpellReqDef|822|0|0|96|1.0|0.0|
+SpellReqDef|822|0|3|277|3.0|0.0|
+SpellEffect|822|2|1|-1|96|0|0|0||||1
+SpellEffect|822|2|1|-6|161|0|0|0||||1
+SpellEffect|822|2|1|-6|277|0|0|0||||1
+SpellEffect|822|0|0|{comment}|0|0|0|0||||1
+SpellEffect|822|0|0|{Caster} deflects the chosen attack.|0|0|0|1||||1
+SpellTargetCond|822|1|0|0|755|0.0|0.0|
+SpellDef|611|Divine Focus - Divine Favor|A blessing from on high.. or low. &brk;• A +1 Bonus to all saving throws for 2-5 rounds&brk;• Standard action&brk;• Mana Cost: 4|4.0|0|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|611|0|0|96|1.0|0.0|
+SpellReqDef|611|0|0|185|2.0|0.0|
+SpellReqDef|611|0|3|93|4.0|0.0|
+SpellEffect|611|2|1|-1|96|0|0|0||||1
+SpellEffect|611|2|1|-2|185|0|0|0||||1
+SpellEffect|611|2|1|-4|93|0|0|0||||1
+SpellEffect|611|0|0|{comment} |0|0|0|0||||1
+SpellEffect|611|0|11||641|0|0|1|-1|Divine Favor||1
+SpellEffect|611|2|1|f.clamp[1d5,2,5]|642|0|0|1||||1
+SpellDef|818|Divine Focus - Radiant Touch|Radiant energy closes wounds the wounds of someone whom you touch. &brk;• Standard action&brk;• Heal target for 12-20 + Wisdom(*2 on crit)&brk;• Mana Cost  6|1.0|0|1|2|0||4|0|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|818|0|0|96|1.0|0.0|
+SpellReqDef|818|0|0|186|2.0|0.0|
+SpellReqDef|818|0|3|93|6.0|0.0|
+SpellEffect|818|2|1|-1|96|0|0|0||||1
+SpellEffect|818|2|1|-2|186|0|0|0||||1
+SpellEffect|818|2|1|-6|277|0|0|0||||1
+SpellEffect|818|0|0|{comment}|0|0|0|0||||1
+SpellEffect|818|0|1|f.clamp[2d10+{c.Wisdom},12,20]|92|2|0|1||||1
+SpellEffect|818|0|1|(f.clamp[2d10+{c.Wisdom},12,20])*2|92|1|0|1||||1
+SpellTargetCond|818|1|0|0|755|0.0|0.0|
+SpellDef|819|Divine Focus - Mass Heal |A quick prayer to any who will listen to give aid to you and your allies. Careful, someone might be listening. &brk;• Heal all allies within 4 tiles for 8-14 + Wisdom. (x2 on crit)&brk;• Bonus Action&brk;• Mana Cost: 8|4.0|0|10|2|0|1d20|2|1|f|f|f|t|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|t|4|1|
+SpellReqDef|819|0|0|96|1.0|0.0|
+SpellReqDef|819|0|0|160|4.0|0.0|
+SpellReqDef|819|0|3|93|8.0|0.0|
+SpellEffect|819|2|1|-1|96|0|0|0||||1
+SpellEffect|819|2|1|-4|160|0|0|0||||1
+SpellEffect|819|2|1|-8|93|0|0|0||||1
+SpellEffect|819|0|0|{comment}|0|0|0|0||||1
+SpellEffect|819|0|1|f.clamp[2d10+{c.Wisdom},8,14]|92|2|0|1||||1
+SpellEffect|819|0|1|(f.clamp[2d10+{c.Wisdom},8,14])*2|92|1|0|1||||1
+SpellTargetCond|819|1|0|0|755|0.0|0.0|
+SpellDef|820|Divine Focus - Sentinel's Sanctuary|Interpose divine protection for another.&brk;• Negate damage from an attack targeting yourself, or an ally,  within 3 tiles.&brk;• Reaction&brk;• Mana Cost: 5|3.0|0|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|820|0|0|161|2.0|0.0|
+SpellReqDef|820|0|0|250|1.0|0.0|
+SpellReqDef|820|0|3|93|5.0|0.0|
+SpellEffect|820|2|1|-1|250|0|0|0||||1
+SpellEffect|820|2|1|-2|161|0|0|0||||1
+SpellEffect|820|2|1|5|93|0|0|0||||1
+SpellEffect|820|0|0|{comment}|0|0|0|0||||1
+SpellEffect|820|0|0|{caster} casts Sentinel's Sanctuary on {Target} negating the last damage that would have affected them. ({Target}, remember to adjust your hitpoints. This is not yet automated.)|0|0|0|0||||1
+SpellDef|652|Psionic Focus - Psionic Assault|• A psionic assault against the mind. &brk;• Blinded and Deafened for 2-5 rounds. 1d8 damage on criticals.&brk;• Standard action&brk;• Mana: 6|5.0|4|1|1|246||0|35|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|652|0|0|96|1.0|0.0|
+SpellReqDef|652|0|0|185|2.0|0.0|
+SpellReqDef|652|0|3|93|6.0|0.0|
+SpellEffect|652|2|1|-1|96|0|0|0||||1
+SpellEffect|652|2|1|-2|185|0|0|0||||1
+SpellEffect|652|2|1|-6|93|0|0|0||||1
+SpellEffect|652|2|7||0|0|0|0||Runic Fusion||1
+SpellEffect|652|0|0|{comment} |0|0|0|0||||1
+SpellEffect|652|0|0|{caster} lashes out with psionic energy, snapping at {target}'s senses.. {Roll}|0|0|0|1||||1
+SpellEffect|652|0|11||623|2|0|1|-1|DeafBlind||1
+SpellEffect|652|2|1|f.clamp[1d5,2,5]|624|1|0|1||||1
+SpellEffect|652|0|1|-(1d8+{c.m.modifier})|92|1|0|1||||1
+SpellEffect|652|0|0|{caster} lashes out with psionic energy, {target} seems unaffected. {Roll}|0|0|0|2||||1
+SpellTargetCond|652|1|0|0|755|0.0|0.0|
+SpellDef|815|Psionic Focus - Mind Break|Target makes a Will save. On fail, they are Stunned for 1d5 rounds.&brk;• On Crit: Target also suffers 1d8 psychic damage.&brk;• Standard Action&brk;• Mana Cost: 7|5.0|4|1|1|246||0|35|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|815|0|0|185|2.0|0.0|
+SpellReqDef|815|0|0|96|1.0|0.0|
+SpellReqDef|815|0|3|93|7.0|0.0|
+SpellEffect|815|2|1|-1|96|0|0|0||||1
+SpellEffect|815|2|1|-2|185|0|0|0||||1
+SpellEffect|815|2|1|-7|93|0|0|0||||1
+SpellEffect|815|2|7||0|0|0|0||Runic Fusion||1
+SpellEffect|815|0|0|{comment}|0|0|0|0||||1
+SpellEffect|815|0|0|{caster} reaches out, attempting to scramble {target}'s senses.. {Roll}|0|0|0|1||||1
+SpellEffect|815|0|11||603|0|0|1|-1|Stunned||1
+SpellEffect|815|2|1|+1|604|0|0|1||||1
+SpellEffect|815|0|1|-(1d8+{c.m.modifier})|92|1|0|1||||1
+SpellEffect|815|0|0|{caster} was unable to find purchase in {target}'s head. {Roll}|0|0|0|2||||1
+SpellDef|817|Psionic Focus - Mental Jolt|A sharp pulse of thought disrupts your foe’s ability to think. &brk;• Target makes a Will save. On fail, they become dulled, losing their bonus action for 2 rounds. &brk;• On Crit: Target also suffers 1d6 psychic damage.&brk;• Bonus Action&brk;• Mana: 5|3.5|0|1|1|246||0|35|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|817|0|0|160|4.0|0.0|
+SpellReqDef|817|0|0|249|1.0|0.0|
+SpellReqDef|817|0|3|93|5.0|0.0|
+SpellEffect|817|2|1|-1|96|0|0|0||||1
+SpellEffect|817|2|1|-2|160|0|0|0||||1
+SpellEffect|817|2|1|-5|93|0|0|0||||1
+SpellEffect|817|2|7||0|0|0|0||Runic Fusion||1
+SpellEffect|817|0|0|{comment]|0|0|0|0||||1
+SpellEffect|817|0|0|{caster} assaults {target}'s senses.  {Roll}|0|0|0|1||||1
+SpellEffect|817|0|11||905|0|0|1|-1|Dulled||1
+SpellEffect|817|2|1|+1|906|0|0|1||||1
+SpellEffect|817|0|1|-(1d6+{c.m.modifier})|92|1|0|1||||1
+SpellEffect|817|0|0|{caster} assaults {target}'s senses. {Target} is oblivious.  {Roll}|0|0|0|2||||1
+SpellTargetCond|817|1|0|0|755|0.0|0.0|
+SpellDef|816|Psionic Focus - Psychic Mirror|You twist an assailant’s senses, making their own strength rebound upon them.&brk;• Upon being hit by any damage you lash out, reflecting the same damage and wounds onto the attacker. This does not negate the damage you have taken. &brk;• Reaction&brk;• Mana Cost: 5|7.0|0|1|1|246||0|35|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|816|0|0|161|6.0|0.0|
+SpellReqDef|816|0|0|96|1.0|0.0|
+SpellReqDef|816|0|3|93|5.0|0.0|
+SpellEffect|816|2|1|-1|96|0|0|0||||1
+SpellEffect|816|2|1|-6|161|0|0|0||||1
+SpellEffect|816|2|1|-5|93|0|0|0||||1
+SpellEffect|816|2|7||0|0|0|0||Runic Fusion||1
+SpellEffect|816|0|0|{comment}|0|0|0|0||||1
+SpellEffect|816|0|0|{caster} forces their will upon reality and reflects the damage they just took back onto their aggressor. (This does not negate the damage. {Target}, do not forget to adjust your health. this is not automated yet.)|0|0|0|1||||1
+SpellEffect|816|0|0|{caster} lashes out with psionic energy, {target} seems unaffected. {Roll}|0|0|0|2||||1
+SpellTargetCond|816|1|0|0|755|0.0|0.0|
+SpellDef|612|Arcane Focus - Elemental Barrage|A beam of energy that breaks apart and smashes into a single opponent. &brk;• 3d4 + modifiers (x2 crit)&brk;• Dexterity save for 1/2&brk;• Mana: 6&brk;|3.0|4|1|1|246||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|[1d20+{t.Dexterity}+({t.Acrobatics}/3)]
+SpellReqDef|612|0|0|96|1.0|0.0|
+SpellReqDef|612|0|0|186|2.0|0.0|
+SpellReqDef|612|0|3|93|6.0|0.0|
+SpellEffect|612|2|1|-1|96|0|0|0||||1
+SpellEffect|612|2|1|-2|185|0|0|0||||1
+SpellEffect|612|2|1|-6|93|0|0|0||||1
+SpellEffect|612|2|7||0|0|2|0||Runic Fusion||1
+SpellEffect|612|0|0|{comment}|0|0|0|0||||1
+SpellEffect|612|0|0|{Caster} strikes out, with arcane energy, at {Target} {Roll}|0|0|0|1||||1
+SpellEffect|612|0|1|-(f.clamp[3d4,5,12)]+{c.MModifier})|92|2|0|1||||1
+SpellEffect|612|0|1|-((f.clamp[3d4,5,12)]+{c.m.modifier}))*2|92|1|0|1||||1
+SpellEffect|612|0|0|{Caster} strikes out at {Target} and they narrowly avoid the full effect of the spell {Roll}|0|0|0|2||||1
+SpellTargetCond|612|1|0|0|755|0.0|0.0|
+SpellDef|813|Arcane Focus - Veil of Darkness|An unpiercable darkness falls over the targets eyes, rendering them blind for 2-5 rounds on a failed save. &brk;• Standard Action&brk;• Mana: 6|6.5|4|1|1|246||0|29|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|813|0|0|96|1.0|0.0|
+SpellReqDef|813|0|0|186|2.0|0.0|
+SpellReqDef|813|0|3|93|6.0|0.0|
+SpellEffect|813|2|1|-1|96|0|0|0||||1
+SpellEffect|813|2|1|-2|186|0|0|0||||1
+SpellEffect|813|2|1|-6|93|0|0|0||||1
+SpellEffect|813|0|0|{comment} |0|0|0|0||||1
+SpellEffect|813|2|7||0|0|0|1||Runic Fusion||1
+SpellEffect|813|0|11||938|0|0|1|-1|Blinded||1
+SpellEffect|813|0|1|f.clamp[1d5,2,5]|937|0|0|1||||1
+SpellEffect|813|0|0|{Caster} strikes out at {Target} and misses. {Roll}|0|0|0|2||||1
+SpellDef|814|Arcane Focus - Echo|Old wounds and injuries come back to life upon the target's body, causing both pain and damage. &brk;• 2d6 this round and 1d6 more for the next 2-5 rounds. &brk;• Mana: 6|5.0|4|1|1|246||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|814|0|0|96|1.0|0.0|
+SpellReqDef|814|0|0|160|4.0|0.0|
+SpellReqDef|814|0|3|93|6.0|0.0|
+SpellEffect|814|2|1|-1|96|0|0|0||||1
+SpellEffect|814|2|1|-4|160|0|0|0||||1
+SpellEffect|814|2|1|-6|93|0|0|0||||1
+SpellEffect|814|0|0|{comment} |0|0|0|0||||1
+SpellEffect|814|2|7||0|0|0|0||Runic Fusion||1
+SpellEffect|814|0|0|{Caster} strikes out, with arcane energy, at {Target} {Roll}|0|0|0|1||||1
+SpellEffect|814|0|1|-(2d6+{c.MModifier})|92|2|0|1||||1
+SpellEffect|814|0|1|-(2d6+{c.MModifier})*2|92|1|0|1||||1
+SpellEffect|814|0|11||830|0|0|1|-1|Echo||1
+SpellEffect|814|0|1|f.clamp[1d5,2,3]|890|0|0|1||||1
+SpellEffect|814|0|0|{Caster} strikes out at {Target} and misses. {Roll}|0|0|0|2||||1
+SpellDef|833|Arcane Focus - Mist Form|Upon being struck you evaporate into mist. You may remain in this form for up to five rounds but may take no action, other than movement actions. While in this form you move twice your normal tiles, provoking no attacks of opportunity. This may be used to withdraw and retreat from a fight, or to reposition yourself. You may not be physically targeted but existing effects remain. &brk;• Mana: 6|4.0|1|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|833|0|0|96|1.0|0.0|
+SpellReqDef|833|0|0|161|6.0|0.0|
+SpellReqDef|833|0|3|93|5.0|0.0|
+SpellEffect|833|2|1|-1|96|0|0|0||||1
+SpellEffect|833|2|1|-6|160|0|0|0||||1
+SpellEffect|833|2|1|-5|93|0|0|0||||1
+SpellEffect|833|0|0|{comment}|0|0|0|0||||1
+SpellEffect|833|0|0||0|0|0|0||||1
+SpellEffect|833|0|0|{Caster} becomes incorporeal, avoiding the attack. |0|0|0|1||||1
+SpellEffect|833|2|11||831|0|0|1|-1|Mist Form||1
+SpellEffect|833|2|1|6|834|0|0|1||||1
+SpellEffect|833|0|0|{Caster} strikes out at {Target} and misses. {Roll}|0|0|0|2||||1
+SpellDef|627|=====Class Abilities=====|Template|0.0|0|0|1|0||1|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Category|f|f|4|1|
+SpellReqDef|627|0|0|145|2.0|0.0|
+SpellReqDef|627|0|0|96|1.0|0.0|
+SpellEffect|627|2|1|-2|145|0|2|0||||1
+SpellEffect|627|2|1|-1|96|1|2|0||||1
+SpellEffect|627|0|0||0|0|0|0||||1
+SpellEffect|627|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|627|0|1||0|0|0|1||||1
+SpellEffect|627|0|1||0|0|0|1||||1
+SpellEffect|627|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellDef|654|Alchemist - Acid Flask|A glass flask filled with a quickly evaporating but potent acid. &brk;• 1d6+Int +1d4 (crit x2) &brk;• Additional 1d4 damage for 2 rounds. &brk;• 1 standard action&brk;• 5 Mana|5.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|654|0|0|145|2.0|0.0|
+SpellReqDef|654|0|0|96|1.0|0.0|
+SpellReqDef|654|0|3|93|5.0|0.0|
+SpellEffect|654|2|1|-2|145|0|2|0||||1
+SpellEffect|654|2|1|-1|96|0|2|0||||1
+SpellEffect|654|2|1|-5|93|0|0|0||||1
+SpellEffect|654|0|0|{comment} |0|0|0|0||||1
+SpellEffect|654|0|0|{Caster} throws a flask and strikes {Target}, it's contents splashing over them in a thin fluid that quickly evaporates, leaving behind burns. {roll}|0|0|0|1||||1
+SpellEffect|654|0|1|-((1d6+{c.PModifier})+({c.MModifier}/2)+1d4)|92|2|0|1||||1
+SpellEffect|654|0|1|-((1d6+{c.PModifier})+(({c.MModifier}/2)+1d4))*2)|92|1|0|1||||1
+SpellEffect|654|0|11||663|0|0|1|-1|Burning||1
+SpellEffect|654|0|1|2|934|0|0|1||||1
+SpellEffect|654|0|0|{caster} throws a flask and misses.{target} |0|0|0|2||||1
+SpellTargetCond|654|1|0|0|755|0.0|0.0|
+SpellDef|655|Alchemist - Tonic of Renewal|Upon consumption, heals the target.&brk;• 2d6 + Intelligence. Grants Regeneration (+1d6 health) for 3 rounds on critical. &brk;• 1 Standard action&brk;• Mana: 5|1.0|0|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|655|0|0|107|2.0|0.0|
+SpellReqDef|655|0|0|96|1.0|0.0|
+SpellReqDef|655|0|3|93|5.0|0.0|
+SpellEffect|655|2|1|-2|107|0|2|0||||1
+SpellEffect|655|2|1|-1|96|0|2|0||||1
+SpellEffect|655|2|1|-5|93|0|0|0||||1
+SpellEffect|655|0|0|{comment} |0|0|0|0||||1
+SpellEffect|655|0|1|(2d6+{c.MModifier})|92|0|0|1||||1
+SpellEffect|655|0|11||668|1|0|1|-1|Regenerating||1
+SpellEffect|655|0|10|3|669|1|0|1||||1
+SpellTargetCond|655|1|0|0|755|0.0|0.0|
+SpellDef|656|Alchemist - Double Dose|You happened to have a second dose of your tonic! Resets the Cooldown of Tonic of Renewal.&brk;• 1 Bonus action&brk;• Mana: 7&brk;|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|t|4|1|
+SpellReqDef|656|0|0|108|4.0|0.0|
+SpellReqDef|656|0|0|249|1.0|0.0|
+SpellReqDef|656|0|3|93|7.0|0.0|
+SpellEffect|656|2|1|-6|184|0|2|0||||1
+SpellEffect|656|2|1|-1|96|0|2|0||||1
+SpellEffect|656|2|1|-7|93|0|0|0||||1
+SpellEffect|656|0|0|{comment} |0|0|0|0||||1
+SpellEffect|656|2|10|2|107|0|0|1||||1
+SpellEffect|656|2|0|{Caster} has reset Tonic of Renewal. |0|0|0|1||||1
+SpellTargetCond|656|1|0|0|755|0.0|0.0|
+SpellDef|657|Alchemist - Artificial Reflexes|You've taken enough of your concoctions over the years that every once and a while you find yourself responding faster than is normal. &brk;Negate Incoming Damage from 1 attack. &brk;• 1 Reaction. &brk;• Mana: 6|5.0|1|1|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|657|0|0|184|6.0|0.0|
+SpellReqDef|657|0|0|250|1.0|0.0|
+SpellReqDef|657|0|3|93|6.0|0.0|
+SpellEffect|657|0|1|-6|161|0|2|0||||1
+SpellEffect|657|0|1|-1|250|0|2|0||||1
+SpellEffect|657|2|1|-6|93|0|0|0||||1
+SpellEffect|657|0|0|{comment} |0|0|0|0||||1
+SpellEffect|657|2|0|{Caster} avoids damage from the previous attack. (remember to adjust your health, this is not done automatically.)|0|0|0|0||||1
+SpellDef|674|Arcanist - Arcane Shield|A field of energy that surrounds the caster. &brk;• +5 AC for 5 rounds. Cannot be stacked. &brk;• 1 standard action&brk;• Mana Cost: 7&brk;|0.0|1|0|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|674|0|0|145|2.0|0.0|
+SpellReqDef|674|0|0|96|1.0|0.0|
+SpellReqDef|674|0|3|93|7.0|0.0|
+SpellEffect|674|2|1|-2|145|0|2|0||||1
+SpellEffect|674|2|1|-1|96|0|2|0||||1
+SpellEffect|674|2|11||675|0|0|0|-1|Arcane Shield||1
+SpellEffect|674|2|1|+5|766|0|0|0|-1|||1
+SpellEffect|674|2|1|-7|93|0|0|0||||1
+SpellEffect|674|0|0|{comment}|0|0|0|0||||1
+SpellEffect|674|0|0|{caster} summons a field of energy around themselves. |0|0|0|1||||1
+SpellDef|671|Arcanist - Entropic Ray|Two Rays of entropic energy fire off at a target within 5 tiles.&brk;• 2d8, rolled seperately, +Intelligence&brk;• 1 standard action&brk;• Mana Cost: 9|5.0|4|1|1|246||1|94|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|671|0|0|107|2.0|0.0|
+SpellReqDef|671|0|0|96|1.0|0.0|
+SpellReqDef|671|0|3|93|9.0|0.0|
+SpellEffect|671|2|1|-2|107|0|2|0||||1
+SpellEffect|671|2|1|-1|96|0|2|0||||1
+SpellEffect|671|2|1|-9|93|0|0|0||||1
+SpellEffect|671|0|0|{comment} |0|0|0|0||||1
+SpellEffect|671|0|7||0|0|0|0||Runic Fusion||1
+SpellEffect|671|0|0|{caster} fires a multi pronged ray at {target} and strikes them.  {roll} |0|0|0|1||||1
+SpellEffect|671|0|1|-(1d8+1d8+{c.MModifier})|92|2|0|1||||1
+SpellEffect|671|0|1|-(1d8+1d8+{c.MModifier})*2|92|1|0|1||||1
+SpellEffect|671|0|0|{caster} fires a multi pronged ray at {target} and misses {roll} |0|0|0|2||||1
+SpellTargetCond|671|1|0|0|755|0.0|0.0|
+SpellDef|672|Arcanist - Runic Fusion|The caster channels arcane energy to provide a boost to their next spell cast. This effect will end when it is used or after 5 rounds. &brk;• +5 to hit on the next spell cast that targets another player's health. &brk;• Mana Cost: 4|0.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|t|4|1|
+SpellReqDef|672|0|0|108|4.0|0.0|
+SpellReqDef|672|0|0|249|1.0|0.0|
+SpellReqDef|672|0|3|93|4.0|0.0|
+SpellEffect|672|2|1|-4|108|0|2|0||||1
+SpellEffect|672|2|1|-1|249|0|2|0||||1
+SpellEffect|672|2|1|-4|93|0|0|0||||1
+SpellEffect|672|0|0|{comment} |0|0|0|0||||1
+SpellEffect|672|0|0|{caster} focuses their magic and inherits a boost towards their magic.|0|0|0|1||||1
+SpellEffect|672|2|11||678|0|0|1|-1|Runic Fusion||1
+SpellEffect|672|0|1|5|740|0|0|1||||1
+SpellTargetCond|672|1|0|0|755|0.0|0.0|
+SpellDef|673|Arcanist -Displacement |You channel arcane energy and step out of sync with the world for a moment, avoiding an incoming attack. You return to synchronization at the end of the round. &brk;• Negates previous attack. &brk;• 1 Reaction&brk;• Mana Cost: 6|0.0|1|0|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|673|0|0|184|6.0|0.0|
+SpellReqDef|673|0|0|250|1.0|0.0|
+SpellReqDef|673|0|3|93|6.0|0.0|
+SpellEffect|673|0|0|{comment} |0|0|0|0||||1
+SpellEffect|673|0|0|{Caster} steps out of sync with the world and avoids the attack. (Remember to adjust your health. This is not done automatically.)|0|0|0|0||||1
+SpellEffect|673|2|1|-6|184|0|2|0||||1
+SpellEffect|673|2|1|-1|96|0|2|0||||1
+SpellEffect|673|2|1|-6|93|0|0|0||||1
+SpellTargetCond|673|1|0|0|755|0.0|0.0|
+SpellDef|686|Barbarian - Savage Cleave|A decisive and brutal strike. &brk;• 1d8 damage. x2 damage on critical. &brk;• Applies Bleed on critical.&brk;• 1 standard action. &brk;• Stamina Cost: 8|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|686|0|0|145|2.0|0.0|
+SpellReqDef|686|0|0|96|1.0|0.0|
+SpellReqDef|686|0|3|277|8.0|0.0|
+SpellEffect|686|2|1|-2|145|0|2|0||||1
+SpellEffect|686|2|1|-1|96|0|2|0||||1
+SpellEffect|686|2|1|-8|277|0|0|0||||1
+SpellEffect|686|0|0|{comment} |0|0|0|0||||1
+SpellEffect|686|0|0|{caster} swings powerfully at {target} and connects. {roll} |0|0|0|1||||1
+SpellEffect|686|0|1|-(2d6+{c.PModifier})|92|2|0|1||||1
+SpellEffect|686|0|1|-(2d6+{c.PModifier})*3|92|1|0|1||||1
+SpellEffect|686|0|11||693|1|0|1|-1|Bleed||1
+SpellEffect|686|0|0|{caster} swings powerfully at {target} and misses. {roll}|0|0|0|2||||1
+SpellTargetCond|686|1|0|0|755|0.0|0.0|
+SpellDef|687|Barbarian - Primal Roar|The caster lets out a bellow of primal fury, demoralizing up to 3 opponents.&brk;• Willpower Save negates&brk;• Targets suffers -2 Attack power for 1d5 rounds on fail. &brk;• 1 standard action&brk;• Stamina Cost: 7|5.0|4|3|2|0|f.floor[(1d20)+({c.Intimidation}/8)+{c.AB}]|0|35|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|687|0|0|107|2.0|0.0|
+SpellReqDef|687|0|0|96|1.0|0.0|
+SpellReqDef|687|0|3|277|7.0|0.0|
+SpellEffect|687|2|1|-2|107|0|2|0||||1
+SpellEffect|687|2|1|-1|96|0|2|0||||1
+SpellEffect|687|2|1|-7|277|0|0|0||||1
+SpellEffect|687|0|0|{comment} |0|0|0|0||||1
+SpellEffect|687|0|0|{caster} roars loudly in challenge at those around them. {target} are dazed. {roll} |0|0|0|1||||1
+SpellEffect|687|0|1|1d5|597|0|0|1||||1
+SpellEffect|687|0|0|{target} are unimpressed by {caster}'s bluthering. {roll|0|0|0|2||||1
+SpellTargetCond|687|1|0|0|755|0.0|0.0|
+SpellDef|689|Barbarian - Rage|Enter a frenzied state, sacrificing defense for added movement and attack power.&brk;• Rage will last for a number of rounds = to your constitution modifier or until you are rendered unconscious. &brk;• When finished you will be Exhausted until you use the rest option. &brk;• You may choose to end a rage early. &brk;• +5 temporary HP&brk;• +1 attack power&brk;• -2 AC&brk;• 1 Bonus Action&brk;• Stamina Cost: 10 |0.0|1|0|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|t|4|1|
+SpellReqDef|689|0|0|108|4.0|0.0|
+SpellReqDef|689|0|0|249|1.0|0.0|
+SpellReqDef|689|0|3|277|10.0|0.0|
+SpellEffect|689|2|1|-4|108|0|2|0||||1
+SpellEffect|689|2|1|-1|249|0|2|0||||1
+SpellEffect|689|2|11||692|0|0|0|-1|Raging||1
+SpellEffect|689|2|1|100|685|0|0|0||||1
+SpellEffect|689|2|1|-10|277|0|0|0||||1
+SpellEffect|689|0|0|{comment} |0|0|0|0||||1
+SpellEffect|689|0|1|+5|92|0|0|0||||1
+SpellEffect|689|0|0|{Caster} enters a rage, increasing their physical presence. |0|0|0|1||||1
+SpellTargetCond|689|1|0|0|755|0.0|0.0|
+SpellDef|688|Barbarian - Vengeful Reprisal|Upon being struck you immediately retaliate against your opponent with a powerful blow, shrugging off some of the damage.&brk;• 1d8+Strength - x2 on critical.&brk;• 1 Reaction&brk;• Stamina Cost: 9|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|688|0|0|184|6.0|0.0|
+SpellReqDef|688|0|0|250|1.0|0.0|
+SpellReqDef|688|0|3|277|9.0|0.0|
+SpellEffect|688|2|1|-6|184|0|2|0||||1
+SpellEffect|688|2|1|-1|250|0|2|0||||1
+SpellEffect|688|2|1|-9|277|0|0|0||||1
+SpellEffect|688|0|0|{comment} |0|0|0|0||||1
+SpellEffect|688|0|0|{caster} retaliates against {target} and lands a hit. {roll}|0|0|0|1||||1
+SpellEffect|688|0|1|-(1d8+{c.Strength})|92|2|0|1||||1
+SpellEffect|688|0|1|-(1d8+{c.Strength})*3|92|1|0|1||||1
+SpellEffect|688|2|1|5|92|0|0|1||||1
+SpellEffect|688|0|0|{caster} fails to connect with {target}. |0|0|0|2||||1
+SpellTargetCond|688|1|0|0|755|0.0|0.0|
+SpellDef|694|Bard - Discordant Notes|Bardic magic that disrupts the target(s) and causes them internal damage. &brk;• 2d4 + Cha (x2 on critical.) &brk;• Applies Bleed for 2-5 rounds if target fails a constitution save.&brk;• 1 standard action&brk;• Mana Cost: 7|5.0|4|2|1|246||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|694|0|0|96|1.0|0.0|
+SpellReqDef|694|0|0|145|2.0|0.0|
+SpellReqDef|694|0|3|93|7.0|0.0|
+SpellEffect|694|2|1|-2|145|0|2|0||||1
+SpellEffect|694|2|1|-1|96|0|2|0||||1
+SpellEffect|694|2|1|-7|93|0|0|0||||1
+SpellEffect|694|0|0|{comment} |0|0|0|0||||1
+SpellEffect|694|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|694|0|1|-(2d4+{c.MModifier})|92|2|0|1||||1
+SpellEffect|694|0|1|-(2d4+{c.MModifier})*2|92|1|0|1||||1
+SpellEffect|694|0|9||748|0|0|1||||1
+SpellEffect|694|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellTargetCond|694|1|0|0|755|0.0|0.0|
+SpellDef|748|s.Discordant Notes||5.0|1|2|0|26||2|12|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellEffect|748|0|0|{Caster} shrugs off the wound. |0|0|0|1||||1
+SpellEffect|748|2|0|{caster} fails their saving throw and will bleed until they overcome the damage or are healed. |0|0|0|2||||1
+SpellEffect|748|2|1|f.clamp[1d5,2,5]|933|0|0|2||||1
+SpellEffect|748|0|11||693|0|0|2|-1|Bleed||1
+SpellDef|695|Bard -Medicinal Melody|Your song heals 2d4 damage intially and then 1d6 for the next 1d5 rounds. &brk;• Standard Action&brk;• Mana Cost: 8|6.0|0|3|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|695|0|0|107|2.0|0.0|
+SpellReqDef|695|0|0|96|1.0|0.0|
+SpellReqDef|695|0|3|93|8.0|0.0|
+SpellEffect|695|2|1|-2|107|0|2|0||||1
+SpellEffect|695|2|1|-1|96|0|2|0||||1
+SpellEffect|695|2|1|-8|93|0|0|0||||1
+SpellEffect|695|0|0|{comment} |0|0|0|0||||1
+SpellEffect|695|0|0|{caster} imbues his skills with bardic magics that begin healing the wounds of {success_target}|0|0|0|1||||1
+SpellEffect|695|0|1|(2d4+{c.MModifier})*2|92|1|0|1||||1
+SpellEffect|695|0|1|(2d4+{c.MModifier})|92|2|0|1||||1
+SpellEffect|695|0|1|1d5|669|0|2|1||||1
+SpellTargetCond|695|0|0|0|755|0.0|0.0|
+SpellDef|696|Bard - Snark|You distract your opponents with wit and snark.  They suffer the following effects for 2-5 rounds. &brk;• -2 AC&brk;• -2 attack power&brk;• Mana Cost: 4 &brk;|3.5|4|1|1|246||0|35|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|696|0|0|108|4.0|0.0|
+SpellReqDef|696|0|0|249|1.0|0.0|
+SpellReqDef|696|0|3|93|4.0|0.0|
+SpellEffect|696|2|1|-4|108|0|2|0||||1
+SpellEffect|696|2|1|-1|249|0|2|0||||1
+SpellEffect|696|2|1|-4|93|0|0|0||||1
+SpellEffect|696|0|0|{comment} |0|0|0|0||||1
+SpellEffect|696|0|0|{caster} taunts {target} and manages to get under their skin.  {roll} |0|0|0|1||||1
+SpellEffect|696|0|11||753|0|0|1|-1|Thin Skinned||1
+SpellEffect|696|0|1|f.clamp[1d5,2-5]|750|0|0|1||||1
+SpellEffect|696|0|0|{Caster} taunts {target}, who is too busy to pay heed. |0|0|0|2||||1
+SpellDef|697|Bard - Mirror Mirror|A twist of bardic magic causes all damage  received to reflect back onto the original caster. &brk;If the target passes their saving roll the damage they take is reduced by 1/2, rounded up. &brk;-i.e Fred Attacks Wilma and does 23 points of damage >> Wilma casts Mirror Mirror >> Fred Passes his saving roll >> Wilma takes no damage >> Fred takes 11.5, rounded to 12. &brk;• 1 reaction. &brk;• Mana Cost: 6|14.0|4|1|1|246||2|12|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|697|0|0|184|6.0|0.0|
+SpellReqDef|697|0|0|250|1.0|0.0|
+SpellReqDef|697|0|3|93|6.0|0.0|
+SpellEffect|697|2|1|-6|184|0|2|0||||1
+SpellEffect|697|2|1|-1|250|0|2|0||||1
+SpellEffect|697|2|1|-6|93|0|0|0||||1
+SpellEffect|697|0|0|{comment} |0|0|0|0||||1
+SpellEffect|697|0|0|{Caster} twists the energy of Reverie, causing the damage meant for them to be returned to {target} {Roll}&brk;-remember, {Caster} And {Target}. Adjust your health accordingly, this is not yet automated. |0|0|0|1||||1
+SpellDef|714|Cleric - Summoned Spirit|A summoned force from your benefactor meant to strike down your enemies. &brk;• 2d6 + Wisdom (crit x2 + knocked prone)&brk;• 1 standard action&brk;• Mana: 5|1.0|4|1|1|246||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|714|0|0|145|2.0|0.0|
+SpellReqDef|714|0|0|96|1.0|0.0|
+SpellReqDef|714|0|3|93|5.0|0.0|
+SpellEffect|714|2|1|-2|145|0|2|0||||1
+SpellEffect|714|2|1|-1|96|0|2|0||||1
+SpellEffect|714|2|1|-5|93|0|0|0||||1
+SpellEffect|714|0|11||590|1|0|0|-1|Prone||1
+SpellEffect|714|0|0|{comment} |0|0|0|0||||1
+SpellEffect|714|0|0|{caster} draws upon their divine connection and delivers their judgement onto {target} {roll} |0|0|0|1||||1
+SpellEffect|714|0|1|-(2d6+{c.MModifier})|92|0|0|1||||1
+SpellEffect|714|0|1|-(2d6+{MModifier})*2|92|1|0|1||||1
+SpellEffect|714|0|11||590|1|0|1|-1|Prone||1
+SpellEffect|714|0|0|{caster}draws upon their divine connection and nothing happens. {roll} |0|0|0|2||||1
+SpellTargetCond|714|1|0|0|755|0.0|0.0|
+SpellDef|713|Cleric - Healing Light|An expression of the Cleric's will manifests in a ray that envelops the target. &brk;• 40% chance to clear Bleed and Hemorrhage&brk;• 12-18 + Wisdom  points of healing to target&brk;• Regeneration for 2-5 rounds on crit&brk;• Mana: 8|6.0|0|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|713|0|0|107|2.0|0.0|
+SpellReqDef|713|0|0|96|1.0|0.0|
+SpellReqDef|713|0|3|93|8.0|0.0|
+SpellEffect|713|2|1|-2|107|0|2|0||||1
+SpellEffect|713|2|1|-1|96|0|2|0||||1
+SpellEffect|713|2|1|-8|93|0|0|0||||1
+SpellEffect|713|0|0|{comment} |0|0|0|0||||1
+SpellEffect|713|0|0|{caster} channels their magic into {target} healing them. |0|0|0|0||||1
+SpellEffect|713|0|9||978|0|0|0||||1
+SpellEffect|713|0|1|f.clamp[2d10,12,18]+{c.Wisdom}|92|0|0|0||||1
+SpellEffect|713|0|11||668|1|0|0|-1|Regenerating||1
+SpellEffect|713|0|1|f.clamp[1d5,2,5]|669|1|0|0||||1
+SpellTargetCond|713|1|0|0|755|0.0|0.0|
+SpellDef|978|s.Healing Light|An expression of the Cleric's will manifests in a ray that envelops the target. &brk;• 60% chance to clear Bleed and Hemorrhage&brk;• 12-18 points of healing to target&brk;• Regeneration for 2-5 rounds on crit&brk;• Mana: 8|6.0|1|1|2|0|1d100|2|60|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellEffect|978|2|10|0|933|0|0|1||||1
+SpellEffect|978|2|10|0|935|0|0|1||||1
+SpellEffect|978|2|7||0|0|0|1||Bleed||1
+SpellEffect|978|2|7||0|0|0|1||Hemorrhage||1
+SpellDef|712|Cleric - Shield of Faith|The Cleric wraps the target in a shield of divine force, granting them extra protection. &brk;• +3 to AC for 3 rounds&brk;• Standard Action w/4 round cooldown&brk;• Mana: 4|5.0|0|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|712|0|0|108|4.0|0.0|
+SpellReqDef|712|0|0|96|1.0|0.0|
+SpellReqDef|712|0|3|93|4.0|0.0|
+SpellEffect|712|2|1|-4|108|0|2|0||||1
+SpellEffect|712|2|1|-1|96|0|2|0||||1
+SpellEffect|712|2|1|-4|93|0|0|0||||1
+SpellEffect|712|0|11||607|0|0|0|-1|Shield of Faith||1
+SpellEffect|712|0|1|3|608|0|2|0||||1
+SpellEffect|712|0|0|{comment} |0|0|0|0||||1
+SpellDef|711|Cleric - Sanctum (WIP)|Any time the Cleric or one of their allies takes damage they may summon a dome of energy around themselves and up to 1 other ally within 3 tiles. Those within the Sanctum may take no combat actions and receive no damage until the effect ends, or until they choose to leave the protective embrace of the sanctum. &brk;• Health, Mana, and Stamina Restore at 1d6 per round. &brk;• 5 round max&brk;• Mana: 6|3.0|0|2|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|711|0|0|184|6.0|0.0|
+SpellReqDef|711|0|0|250|1.0|0.0|
+SpellReqDef|711|0|3|93|6.0|0.0|
+SpellEffect|711|2|1|-6|184|0|2|0||||1
+SpellEffect|711|2|1|-1|250|0|2|0||||1
+SpellEffect|711|2|1|-6|93|0|0|0||||1
+SpellEffect|711|2|1|-1|96|0|0|0||||1
+SpellEffect|711|0|1|+5|979|0|0|0||||1
+SpellEffect|711|0|11||980|0|0|0|-1|Sanctified||1
+SpellEffect|711|0|0|{comment} |0|0|0|0||||1
+SpellEffect|711|0|0|{caster} draws a dome of peace around themselves, giving them respite for the duration.|0|0|0|0||||1
+SpellTargetCond|711|1|0|0|755|0.0|0.0|
+SpellDef|718|Druid - Overgrowth (WIP)|You summon a patch of living bramble and thorn around yourself that grips the feet, ankle, and legs of any who approach you within 3 tiles. Their effective movement is halves. If 2, then they may move 1 tile, etc. This overgrowth moves with you and lasts for 2-5 rounds. &brk;• &brk;|1.0|1|1|1|0||1|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|718|0|0|145|2.0|0.0|
+SpellReqDef|718|0|0|96|1.0|0.0|
+SpellEffect|718|2|1|-2|145|0|2|0||||1
+SpellEffect|718|2|1|-1|96|0|2|0||||1
+SpellEffect|718|0|0|{comment} |0|0|0|0||||1
+SpellEffect|718|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|718|0|1||0|0|0|1||||1
+SpellEffect|718|0|1||0|0|0|1||||1
+SpellEffect|718|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellDef|717|Druid - 2(Lore)||1.0|0|1|1|0||1|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|717|0|0|107|2.0|0.0|
+SpellReqDef|717|0|0|96|1.0|0.0|
+SpellEffect|717|2|1|-2|145|0|2|0||||1
+SpellEffect|717|2|1|-1|96|0|2|0||||1
+SpellEffect|717|0|0|{comment} |0|0|0|0||||1
+SpellEffect|717|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|717|0|1||0|1|0|1||||1
+SpellEffect|717|0|1||0|0|0|1||||1
+SpellEffect|717|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellDef|716|Druid - 3(Lore)||5.0|0|1|1|0||1|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|716|0|0|108|4.0|0.0|
+SpellReqDef|716|0|0|249|1.0|0.0|
+SpellEffect|716|2|1|-4|108|0|2|0||||1
+SpellEffect|716|2|1|-1|249|0|2|0||||1
+SpellEffect|716|0|11||0|0|0|0||||1
+SpellEffect|716|0|0|{comment} |0|0|0|0||||1
+SpellEffect|716|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|716|0|11||0|0|0|1||||1
+SpellDef|715|Druid - 4(Lore)||5.0|0|1|1|0||1|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|715|0|0|184|6.0|0.0|
+SpellReqDef|715|0|0|250|1.0|0.0|
+SpellEffect|715|2|1|-6|145|0|2|0||||1
+SpellEffect|715|2|1|-1|250|0|2|0||||1
+SpellEffect|715|0|0|{comment} |0|0|0|0||||1
+SpellEffect|715|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|715|0|1||0|0|0|1||||1
+SpellEffect|715|0|1||0|0|0|1||||1
+SpellEffect|715|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellDef|722|Fighter - Lunge|This attack quickly closes distance with the target, allowing you to strike someone who would otherwise be out of reach. &brk;• 1d8 + strength (x2 on crit)&brk;• Move 2 additional tiles without provoking an  attack of opportunity. &brk;• Standard Action&brk;• Stamina Cost: 6|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|722|0|0|145|2.0|0.0|
+SpellReqDef|722|0|0|96|1.0|0.0|
+SpellReqDef|722|0|3|277|6.0|0.0|
+SpellEffect|722|2|1|-2|145|0|2|0||||1
+SpellEffect|722|2|1|-1|96|0|2|0||||1
+SpellEffect|722|2|1|-6|277|0|0|0||||1
+SpellEffect|722|0|0|{comment} |0|0|0|0||||1
+SpellEffect|722|0|0|{caster} lunges at {target}  and hits. {roll} |0|0|0|1||||1
+SpellEffect|722|0|1|-(1d8+{c.PModifier})|92|2|0|1||||1
+SpellEffect|722|0|1|-(1d8+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|722|0|0|{caster} lunges at {target} and misses {roll} |0|0|0|2||||1
+SpellTargetCond|722|1|0|0|755|0.0|0.0|
+SpellDef|721|Fighter - Power Strike|A timed, powerful blow that ignores armor for maximum effect. &brk;• 2d6 + Strength&brk;• Ignores target's armor. &brk;• Standard Action&brk;• Stamina Cost: 8|1.0|4|1|1|245||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|10+({t.Dexterity}+{t.KiArmor})
+SpellReqDef|721|0|0|107|2.0|0.0|
+SpellReqDef|721|0|0|96|1.0|0.0|
+SpellReqDef|721|0|3|277|8.0|0.0|
+SpellEffect|721|2|1|-2|107|0|2|0||||1
+SpellEffect|721|2|1|-1|96|0|2|0||||1
+SpellEffect|721|2|1|-8|277|0|0|0||||1
+SpellEffect|721|0|0|{comment} |0|0|0|0||||1
+SpellEffect|721|0|0|{caster}lands a timed strike at {target}. {roll} |0|0|0|1||||1
+SpellEffect|721|0|1|-(2d6+{c.PModifier})|92|1|0|1||||1
+SpellEffect|721|0|1|-(2d6+{c.PModifier})*2|92|2|0|1||||1
+SpellEffect|721|0|0|{caster} misses their timing and {target} avoids the blow.  {roll} |0|0|0|2||||1
+SpellTargetCond|721|1|0|0|755|0.0|0.0|
+SpellDef|720|Fighter - Stance: Iron Defense|The Fighter drops into a defensive stance. This effect remains until dismissed. It may be switched out by the fighter as a bonus action on their turn only. &brk;• +2 AC&brk;• -2 AB&brk;• Stamina Cost: 4|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|720|0|0|108|4.0|0.0|
+SpellReqDef|720|0|0|249|1.0|0.0|
+SpellReqDef|720|0|3|277|4.0|0.0|
+SpellEffect|720|2|1|-4|108|0|2|0||||1
+SpellEffect|720|2|1|-1|249|0|2|0||||1
+SpellEffect|720|2|1|-4|277|0|0|0||||1
+SpellEffect|720|2|11||910|0|0|0|-1|Iron Defense||1
+SpellEffect|720|2|7||0|0|0|0||Razors Edge||1
+SpellEffect|720|0|0|{comment} |0|0|0|0||||1
+SpellEffect|720|0|0|{caster} adopts a defensive stance.|0|0|0|1||||1
+SpellEffect|720|0|11||0|0|0|1||||1
+SpellDef|870|Fighter - Stance: Razor's Edge|The fighter drops into an offensive stance. This effect remains until dismissed. It may be switched out by the fighter as a bonus action on their turn only. &brk;• +2 AB&brk;• -2 AC&brk;• Stamina Cost: 4|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|870|0|0|108|4.0|0.0|
+SpellReqDef|870|0|0|249|1.0|0.0|
+SpellReqDef|870|0|3|277|4.0|0.0|
+SpellEffect|870|2|1|-4|108|0|2|0||||1
+SpellEffect|870|2|1|-1|249|0|2|0||||1
+SpellEffect|870|2|1|-4|277|0|0|0||||1
+SpellEffect|870|2|11||911|0|0|0|-1|Razors Edge||1
+SpellEffect|870|2|7||0|0|0|0||Iron Defense||1
+SpellEffect|870|0|0|{comment} |0|0|0|0||||1
+SpellEffect|870|0|0|{caster} adopts an offensive stance. |0|0|0|1||||1
+SpellDef|719|Fighter - Uncanny Focus|Years of training have taught you that sometime a bit of pain has a big payoff. When struck by a physical attack you are able to shrug off 1/2 of the damage and return with an immediate and vicious counterattack. &brk;• 1d6 (*2) + Strength&brk;• Applies Hemmorage on the target if a saving throw is failed. 2d4 for 1d5 rounds&brk;• Reaction&brk;• Stamina Cost: 7&brk;|1.0|4|1|1|245||1|94|f|f|f|f|0|None|f|t|1.0,1.0,1.0,1.0|Reaction|f|t|4|1|
+SpellReqDef|719|0|0|184|6.0|0.0|
+SpellReqDef|719|0|0|250|1.0|0.0|
+SpellReqDef|719|0|3|277|7.0|0.0|
+SpellEffect|719|2|1|-6|145|0|2|0||||1
+SpellEffect|719|2|1|-1|250|0|2|0||||1
+SpellEffect|719|2|1|-7|277|0|0|0||||1
+SpellEffect|719|0|0|{comment} |0|0|0|0||||1
+SpellEffect|719|0|0|{caster} partially dodges {target}'s attack and immedietly counters, striking true. {roll} |0|0|0|1||||1
+SpellEffect|719|0|1|-(1d6+{c.PModifier})|92|0|0|1||||1
+SpellEffect|719|0|1|-(1d6+{c.PModifier})*2|92|1|0|1||||1
+SpellEffect|719|0|9||879|0|0|1||||1
+SpellEffect|719|0|0|{caster} partially dodges {target}'s attack and immedietly counters. {roll} |0|0|0|2||||1
+SpellTargetCond|719|1|0|0|755|0.0|0.0|
+SpellDef|879|s.Uncanny Focus||5.0|1|2|0|26||2|12|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellEffect|879|0|0||0|0|0|1||||1
+SpellEffect|879|2|0|{caster} fails their saving throw and will bleed until they overcome the damage or are healed. |0|0|0|2||||1
+SpellEffect|879|2|1|f.clamp[1d5,2,5]|935|0|0|2||||1
+SpellEffect|879|0|11||880|0|0|2|-1|Hemorrhage||1
+SpellDef|839|Monk - Tidal  Strike|A ki-infused strike that can rupture on crit.&brk;• 1d8 + WIS damage. On crit → Hemorrhaging.&brk;• Stamina Cost: 6&brk;• Cooldown: 2 rounds&brk;• Standard Action&brk;• Stamina Cost: 6|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|839|0|0|145|2.0|0.0|
+SpellReqDef|839|0|0|96|1.0|0.0|
+SpellReqDef|839|0|3|277|6.0|0.0|
+SpellEffect|839|2|1|-2|145|0|2|0||||1
+SpellEffect|839|2|1|-1|96|0|2|0||||1
+SpellEffect|839|2|1|-6|277|0|0|0||||1
+SpellEffect|839|0|0|{comment} |0|0|0|0||||1
+SpellEffect|839|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|839|0|1|-(1d8+{c.Wisdom})|92|2|0|1||||1
+SpellEffect|839|0|1|-(1d8+{c.Wisdom})*2|92|1|0|1||||1
+SpellEffect|839|0|9||894|1|0|1||||1
+SpellEffect|839|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellTargetCond|839|1|0|0|755|0.0|0.0|
+SpellDef|894|s.Tidal Strike|2d4|1.0|1|1|0|26||2|12|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellEffect|894|2|0|{caster} withstood the attack. {roll}|0|0|0|1||||1
+SpellEffect|894|2|0|{caster} has failed their save and is bleeding internally. {roll}|0|0|0|2||||1
+SpellEffect|894|2|11||880|0|0|2|-1|Hemorrhage||1
+SpellEffect|894|2|1|f.clamp[(1d5),2,5]|935|0|0|2||||1
+SpellDef|840|Monk - Flowing palm|A disciplined strike that disrupts the enemy’s stance.&brk;• Deal 1d6 + WIS damage.&brk;• 1 Standard Action&brk;• 2 round cooldown&brk;• Stamina &brk;• Stamina Cost: 7|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|840|0|0|107|2.0|0.0|
+SpellReqDef|840|0|0|250|1.0|0.0|
+SpellReqDef|840|0|3|277|7.0|0.0|
+SpellEffect|840|2|1|-2|107|0|2|0||||1
+SpellEffect|840|2|1|-1|250|0|2|0||||1
+SpellEffect|840|2|1|-7|277|0|0|0||||1
+SpellEffect|840|0|0|{comment} |0|0|0|0||||1
+SpellEffect|840|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|840|0|1|1d6+{c.Wisdom}|92|0|0|1||||1
+SpellEffect|840|0|1|(1d6+{c.Wisdom})*2|92|0|0|1||||1
+SpellEffect|840|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellTargetCond|840|1|0|0|755|0.0|0.0|
+SpellDef|841|Monk - Ki Aura|Masters of internal energy, you harness it and wrap it around you like armor. It provides the following benefits. &brk;• +1 to attack bonuses&brk;• +1 Dexterity Save&brk;• +1 Willpower Save&brk;• Rounds = to Wisdom Modifier. &brk;• 4 round cooldown&brk;• Bonus Action&brk;• Stamina Cost: 8|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|841|0|0|108|4.0|0.0|
+SpellReqDef|841|0|0|249|1.0|0.0|
+SpellReqDef|841|0|3|277|8.0|0.0|
+SpellEffect|841|0|0|{comment} |0|0|0|0||||1
+SpellEffect|841|2|1|-4|108|0|2|0||||1
+SpellEffect|841|2|1|-1|249|0|2|0||||1
+SpellEffect|841|2|1|-8|277|0|0|0||||1
+SpellEffect|841|2|11||892|0|0|0|-1|Ki Aura||1
+SpellEffect|841|2|1|{c.Wisdom}|931|0|0|0||||1
+SpellEffect|841|2|0|{Caster} Summons their ki.   |0|0|0|0||||1
+SpellDef|842|Monk - Crashing Blow|When you are attacked by someone within your striking distance you can immediately retaliate, knocking them prone and negating the damage. &brk;• 2d6&brk;• Target receives prone &brk;• Reaction&brk;• Mana: 6|1.0|4|1|1|245||0|27|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|842|0|0|184|6.0|0.0|
+SpellReqDef|842|0|0|250|1.0|0.0|
+SpellReqDef|842|0|3|277|6.0|0.0|
+SpellEffect|842|2|1|-6|145|0|2|0||||1
+SpellEffect|842|2|1|-1|250|0|2|0||||1
+SpellEffect|842|2|1|-6|277|0|0|0||||1
+SpellEffect|842|0|0|{comment} |0|0|0|0||||1
+SpellEffect|842|0|0|{caster} moves and snaps a blow at {target}, tripping them. {roll} ({Caster} Please remember to adjust your Health. this is not automated yet.}|0|0|0|1||||1
+SpellEffect|842|0|1|*(2d6+{c.Dexterity}+({c.Wisdom}/2))|92|2|0|1||||1
+SpellEffect|842|0|1|-(2d6+{c.Dexterity}+({c.Wisdom}/2))*2|92|1|0|1||||1
+SpellEffect|842|0|11||590|0|0|1|-1|Prone||1
+SpellEffect|842|0|0|{caster} fail's to get out of the way of {target}'s attack. {roll} |0|0|0|2||||1
+SpellTargetCond|842|1|0|0|755|0.0|0.0|
+SpellDef|729|Rogue - Poisoned Strike|The rogue coats their weapon in an unknown poison before driving it into the target’s flesh.&brk;•    Damage: 2d4+ (p.modifier) (×2 on Crit)&brk;•    Applies Poisoned for 1d5 rounds (1d4)&brk;•    1 Standard Action&brk;•    Stamina: 6|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|729|0|0|145|2.0|0.0|
+SpellReqDef|729|0|0|96|1.0|0.0|
+SpellReqDef|729|0|3|277|6.0|0.0|
+SpellEffect|729|2|1|-2|145|0|2|0||||1
+SpellEffect|729|2|1|-1|96|0|2|0||||1
+SpellEffect|729|2|1|-6|277|0|0|0||||1
+SpellEffect|729|0|0|{comment} |0|0|0|0||||1
+SpellEffect|729|0|0|{caster}  strikes out at {target} and connects with their tainted weapon.   {roll} |0|0|0|1||||1
+SpellEffect|729|0|1|-(2d4+{c.Dexterity})|92|2|0|1||||1
+SpellEffect|729|0|1|-(2d4+{c.Dexterity})*2|92|1|0|1||||1
+SpellEffect|729|0|11||778|0|0|1|-1|Poisoned||1
+SpellEffect|729|0|1|f.clamp[(1d5),2,5]|936|0|0|1||||1
+SpellEffect|729|0|0|{caster} fails to land a hit on {target}. {roll} |0|0|0|2||||1
+SpellTargetCond|729|1|0|0|755|0.0|0.0|
+SpellDef|728|Rogue - Assassin’s Strike|A precise finishing blow delivered to a distracted or unsuspecting foe.&brk;•    Damage: 2d6+Dexterity (×2 on Crit)&brk;•    Applies Hemorrhage for 1d5 rounds &brk;•    Restrictions: May only be used if Target has Off Guard, Immobilized, Flat Footed, Entangled, Bound, or Stunned as a status.  &brk;•    Standard Attack&brk;•    Stamina: 10|1.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|728|0|0|107|2.0|0.0|
+SpellReqDef|728|0|0|96|1.0|0.0|
+SpellReqDef|728|0|3|277|10.0|0.0|
+SpellEffect|728|2|1|-2|107|0|2|0||||1
+SpellEffect|728|2|1|-1|96|0|2|0||||1
+SpellEffect|728|2|1|-10|277|0|0|0||||1
+SpellEffect|728|0|0|{comment} |0|0|0|0||||1
+SpellEffect|728|0|0|{caster} delivers an opportunistic attack to.{target} {roll} |0|0|0|1||||1
+SpellEffect|728|0|1|-(2d6+{c.PModifier})|92|1|0|1||||1
+SpellEffect|728|0|1|-(2d6+{c.PModifier})*2|92|2|0|1||||1
+SpellEffect|728|0|11||880|0|0|1|-1|Hemorrhage||1
+SpellEffect|728|0|1|f.clamp[(1d5),2,5]|935|0|0|1||||1
+SpellEffect|728|0|0|{caster} attempts to take an opportunistic attack on {target} and fails.  {roll} |0|0|0|2||||1
+SpellTargetCond|728|0|20|0|943|0.0|0.0|
+SpellTargetCond|728|0|20|0|808|0.0|0.0|
+SpellTargetCond|728|0|20|0|603|0.0|0.0|
+SpellTargetCond|728|0|20|0|591|0.0|0.0|
+SpellTargetCond|728|0|20|0|810|0.0|0.0|
+SpellTargetCond|728|1|0|0|755|0.0|0.0|
+SpellDef|727|Rogue - Shadowstep|The rogue disappears into shadow and reappears adjacent to a target within 5 tiles . &brk;•    Afflicts Flat Footed on the target for 1 round; if the target fails their saving throw this is extended to 3 rounds. &brk;•    Bonus Attack&brk;•    Mana: 4 Stamina: 6|5.0|4|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|727|0|0|108|4.0|0.0|
+SpellReqDef|727|0|0|249|1.0|0.0|
+SpellReqDef|727|0|3|277|6.0|0.0|
+SpellReqDef|727|0|3|93|4.0|0.0|
+SpellEffect|727|2|1|-4|108|0|2|0||||1
+SpellEffect|727|2|1|-1|249|0|2|0||||1
+SpellEffect|727|2|1|-6|277|0|0|0||||1
+SpellEffect|727|2|1|-4|93|0|0|0||||1
+SpellEffect|727|0|1|1|944|0|0|0||||1
+SpellEffect|727|0|11||943|0|0|0|-1|Flat Footed||1
+SpellEffect|727|0|0|{comment} |0|0|0|0||||1
+SpellEffect|727|0|0|{Caster} slips from view and reappears where least expected.|0|0|0|0||||1
+SpellTargetCond|727|1|0|0|755|0.0|0.0|
+SpellDef|945|s.Shadowstep|The rogue disappears into shadow and reappears adjacent to a target within 5 tiles . &brk;•    Afflicts Flat Footed on the target for 1 round; if the target fails their saving throw this is extended to 3 rounds. &brk;•    Bonus Attack&brk;•    Mana: 4 Stamina: 6|20.0|1|1|0|5||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|13
+SpellEffect|945|0|0|{Caster} recovers their senses upon being struck by {target}. |0|0|0|1||||1
+SpellEffect|945|0|0|{Caster} is flabbergasted by the Rogue and is considered flat footed for a total of 3 rounds. |0|0|0|2||||1
+SpellEffect|945|2|1|+2|944|0|0|2||||1
+SpellDef|726|Rogue - Evasive Roll|When threatened, the rogue rolls aside in a blur of motion, avoiding the attack entirely. This ability can evade magical attacks. &brk;• Trigger: When targeted by any attack.&brk;• Effect: Negate all damage from that attack and move 1 tile adjacent if desired. .&brk;• Reaction&brk;• Stamina: 6 &pipe; Mana: 4|5.0|1|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|726|0|0|184|6.0|0.0|
+SpellReqDef|726|0|0|250|1.0|0.0|
+SpellReqDef|726|0|3|277|6.0|0.0|
+SpellReqDef|726|0|3|93|4.0|0.0|
+SpellEffect|726|2|1|-6|184|0|2|0||||1
+SpellEffect|726|2|1|-1|250|0|2|0||||1
+SpellEffect|726|2|1|-6|277|0|0|0||||1
+SpellEffect|726|2|1|-4|93|0|0|0||||1
+SpellEffect|726|0|0|{comment} |0|0|0|0||||1
+SpellEffect|726|0|0|{Caster} does some very rogue like manuevering and rolls out of the way. ({Caster}, do not forget to adjust your health. This is not automated yet.)|0|0|0|0||||1
+SpellDef|734|Ranger - Snare Shot|A precise arrow or thrown snare that binds enemies in place.&brk;•    Damage: 1d8 + Dexterity. &brk;•    Mana:4 &pipe; Stamina: 4&brk;•    Dex Save vs 10+ the rangers modifier. If Failed the target is entangled and cannot move for 3 rounds. Each round the target may use their standard action to try and break free of the entanglement|4.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|734|0|0|145|2.0|0.0|
+SpellReqDef|734|0|0|96|1.0|0.0|
+SpellReqDef|734|0|3|93|4.0|0.0|
+SpellReqDef|734|0|3|277|4.0|0.0|
+SpellEffect|734|2|1|-2|145|0|2|0||||1
+SpellEffect|734|2|1|-1|96|0|2|0||||1
+SpellEffect|734|2|1|-4|93|0|0|0||||1
+SpellEffect|734|2|1|-4|277|0|0|0||||1
+SpellEffect|734|0|0|{comment} |0|0|0|0||||1
+SpellEffect|734|0|0|{Target} has failed to evade {caster}'s attack.  {roll} |0|0|0|1||||1
+SpellEffect|734|0|1|-(1d8+{c.Dexterity})|92|2|0|1||||1
+SpellEffect|734|0|1|-(1d8+{c.Dexterity})*2|92|1|0|1||||1
+SpellEffect|734|0|9||939|0|0|1||||1
+SpellEffect|734|0|0|{target} is able to avoid the trapped arrow.{roll} |0|0|0|2||||1
+SpellTargetCond|734|1|0|0|755|0.0|0.0|
+SpellDef|939|s.Snare Shot|Snare Shot (Standard Action – 2 Round CD) &brk;A precise arrow or thrown snare that binds enemies in place.&brk;4 tiles range &pipe; 1 Target&brk;•    Damage: 1d8 + Dexterity. &brk;•    Cost: 4 Stamina &pipe; 4 Mana&brk;Effect: Dex Save vs 10+ the rangers modifier. If Failed the target is entangled and cannot move for 3 rounds. Each round the target may use their standard action to try and break free of the entanglement. &brk;|6.5|0|1|0|2||4|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|10+{t.Wisdom}
+SpellEffect|939|0|0|{Target} has wiggled free of the trap {target} tried to snare them with.  {roll} |0|0|0|1||||1
+SpellEffect|939|0|0|{caster} is entangled in {target}'s trap. and cannot move until free {roll} |0|0|0|2||||1
+SpellEffect|939|2|11||591|0|0|2|-1|Entangled||1
+SpellEffect|939|2|1|3|922|0|0|2||||1
+SpellDef|940|Break: Snare|Snare Shot (Standard Action – 2 Round CD) &brk;A precise arrow or thrown snare that binds enemies in place.&brk;4 tiles range &pipe; 1 Target&brk;•    Damage: 1d8 + Dexterity. &brk;•    Cost: 4 Stamina &pipe; 4 Mana&brk;Effect: Dex Save vs 10+ the rangers modifier. If Failed the target is entangled and cannot move for 3 rounds. Each round the target may use their standard action to try and break free of the entanglement. &brk;|1.0|1|1|0|1||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|12
+SpellReqDef|940|0|0|96|1.0|0.0|
+SpellEffect|940|2|1|-1|96|0|0|0||||1
+SpellEffect|940|0|0|{caster} has broken free of their entanglement|0|0|0|1||||1
+SpellEffect|940|0|10|0|922|0|0|1||||1
+SpellEffect|940|0|7||0|0|0|1||Entangled||1
+SpellEffect|940|0|0|{caster} has failed to break free. |0|0|0|2||||1
+SpellDef|733|Ranger - Barbed Glyph|A mystic glyph carved onto an arrow, or thrown object, that just before impact with an intended target causes the vehicle to explode, shredding the target with shrapnel. &brk;•    Damage: 1d10 + (1/2 Wisdom + 1/2 Dexterity) (x2 on Crit)&brk;•    Applies Bleed for 2 rounds. If critical *2 and causes hemorhage instead of bleed for 2 rounds&brk;•    Mana:6 &pipe; Stamina:5|3.0|4|1|1|245||1|94|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|733|0|0|107|2.0|0.0|
+SpellReqDef|733|0|0|96|1.0|0.0|
+SpellReqDef|733|0|3|93|6.0|0.0|
+SpellReqDef|733|0|3|277|5.0|0.0|
+SpellEffect|733|2|1|-2|107|0|2|0||||1
+SpellEffect|733|2|1|-1|96|0|2|0||||1
+SpellEffect|733|2|1|-6|93|0|0|0||||1
+SpellEffect|733|2|1|-5|277|0|0|0||||1
+SpellEffect|733|0|0|{comment} |0|0|0|0||||1
+SpellEffect|733|0|0|{caster} {target} {roll} |0|0|0|1||||1
+SpellEffect|733|0|1|-(1d10+({c.Wisdom}/2) +({c.Dexterity}/2)|92|2|0|1||||1
+SpellEffect|733|0|1|-(1d10+({c.Wisdom}/2) +({c.Dexterity}/2))*2|92|1|0|1||||1
+SpellEffect|733|0|11||693|2|0|1|-1|Bleed||1
+SpellEffect|733|0|11||880|1|0|1|-1|Hemorrhage||1
+SpellEffect|733|0|0|{caster} {target} {roll} |0|0|0|2||||1
+SpellTargetCond|733|1|0|0|755|0.0|0.0|
+SpellDef|732|Ranger - Rapid Step|Rapid Step (Bonus Action – 4 Round CD)&brk;&brk;The ranger bursts into motion, darting away from harm or closing distance with a chosen foe.&brk;•    Grants Dodging until the start of the ranger’s next turn&brk;•    Caster may make an immediete 3 tile movement that doesn't provoke an attack of opportunity. &brk;•    Cost: 7 Stamina&brk;|1.0|1|1|2|0||4|0|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|732|0|0|108|4.0|0.0|
+SpellReqDef|732|0|0|249|1.0|0.0|
+SpellReqDef|732|0|3|277|7.0|0.0|
+SpellEffect|732|2|1|-4|108|0|2|0||||1
+SpellEffect|732|2|1|-1|249|0|2|0||||1
+SpellEffect|732|2|11||773|0|0|0|-1|Dodging||1
+SpellEffect|732|2|0|{comment} |0|0|0|0||||1
+SpellEffect|732|2|1|-7|277|0|0|0||||1
+SpellDef|731|Ranger - Evasive Instinct |When targeted by an attack that targets their AC,  The ranger’s instincts sharpen. They pivot and retaliate in a single motion.&brk;•    Avoids 50% of incoming damage&brk;•    Immediate counterattack 1d6 + dexterity&brk;•    Move 1 tile without provoking AoO&brk;•    Cost: Mana:2 &pipe; Stamina:8|10.0|4|1|1|245||1|94|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Reaction|f|f|4|1|
+SpellReqDef|731|0|0|184|6.0|0.0|
+SpellReqDef|731|0|0|250|1.0|0.0|
+SpellReqDef|731|0|3|277|8.0|0.0|
+SpellReqDef|731|0|3|93|2.0|0.0|
+SpellEffect|731|2|1|-6|184|0|2|0||||1
+SpellEffect|731|2|1|-1|250|0|2|0||||1
+SpellEffect|731|2|1|-8|277|0|0|0||||1
+SpellEffect|731|2|1|-2|93|0|0|0||||1
+SpellEffect|731|0|0|{comment} |0|0|0|0||||1
+SpellEffect|731|0|0|{caster} narrowly avoids taking the full force of {target}'s attack and immedietly retaliates,|0|0|0|0||||1
+SpellEffect|731|0|0|striking {target}. {roll}  (Don't forget to reapply 50% of the damage to  your health. This is not automated.)|0|0|0|1||||1
+SpellEffect|731|0|1|-(1d6+{c.Dexterity})|92|2|0|1||||1
+SpellEffect|731|0|1|-(1d6+{c.Dexterity})*2|92|1|0|1||||1
+SpellEffect|731|0|0|missing {target}. {roll} (Don't forget to reapply 50% of the damage to your health. This is not automated.)|0|0|0|2||||1
+SpellDef|698|Paladin - Smite|You smite your opponent. &brk;• 2d6+Charisma (x2 on crit)&brk;• Knocks prone on crit&brk;• 1 standard action&brk;• Stamina: 6&brk;• Mana: 4|8.5|4|2|1|246||0|26|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Standard Action|f|t|4|1|
+SpellReqDef|698|0|0|145|2.0|0.0|
+SpellReqDef|698|0|0|96|1.0|0.0|
+SpellReqDef|698|0|3|93|4.0|0.0|
+SpellReqDef|698|0|3|277|6.0|0.0|
+SpellEffect|698|2|1|-2|145|0|2|0||||1
+SpellEffect|698|2|1|-1|96|0|2|0||||1
+SpellEffect|698|2|1|-4|93|0|0|0||||1
+SpellEffect|698|2|1|-6|277|0|0|0||||1
+SpellEffect|698|0|0|{comment}|0|0|0|0||||1
+SpellEffect|698|0|0|{caster} draws upon their patron's power and smites {target} {roll} |0|0|0|1||||1
+SpellEffect|698|0|1|-(2d6 + {c.Charisma})|92|0|0|1||||1
+SpellEffect|698|0|1|-(2d6 + {c.Charisma})*2|92|1|0|1||||1
+SpellEffect|698|0|11||590|1|0|1|-1|Prone||1
+SpellEffect|698|0|0|{caster} draws upon their patron's power and {target} withstands the energies.  {roll} |0|0|0|2||||1
+SpellTargetCond|698|1|0|0|755|0.0|0.0|
+SpellDef|699|Paladin - Lay on Hands|You lay hands on the target and infuse them with healing energies by taking on some of their wounds. 1/2 the damage healed is returned onto you. Can only be used on others. &brk;• 2d6 + Charisma&brk;• 1/2 damage healed returns back as damage. &brk;• 1 standard action&brk;• Mana: 8&brk;• Stamina: 3&brk;|1.0|4|1|2|0|1d20|2|0|f|f|f|f|0|None|t|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|699|0|3|107|2.0|0.0|
+SpellReqDef|699|0|3|96|1.0|0.0|
+SpellReqDef|699|0|3|93|8.0|0.0|
+SpellReqDef|699|0|3|277|3.0|0.0|
+SpellEffect|699|2|0|/rprloh {caster} {target}|0|0|0|0||||1
+SpellEffect|699|0|0|{comment}|0|0|0|0||||1
+SpellDef|700|Paladin - Bless|A blessing that imbues Divine Favor on the target and restores health equal to your Charisma modifier. &brk;• 5 rounds&brk;• +1 to all saves&brk;• Mana: 5|1.0|0|1|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Bonus Action|f|f|4|1|
+SpellReqDef|700|0|0|108|4.0|0.0|
+SpellReqDef|700|0|0|249|1.0|0.0|
+SpellReqDef|700|0|3|93|5.0|0.0|
+SpellEffect|700|2|1|-4|108|0|2|0||||1
+SpellEffect|700|2|1|-1|249|0|2|0||||1
+SpellEffect|700|0|11||641|0|0|0|-1|Divine Favor||1
+SpellEffect|700|0|1|5|642|0|0|0||||1
+SpellEffect|700|0|1|{c.Charisma}|92|0|0|0||||1
+SpellEffect|700|2|1|-5|93|0|0|0||||1
+SpellEffect|700|0|0|{comment} |0|0|0|0||||1
+SpellTargetCond|700|1|0|0|755|0.0|0.0|
+SpellDef|701|Paladin - Bodyguard|You may intercept an attack meant for one person who is within 5 tiles from you. This ability is mystic in Nature. This provokes no attack of opportunity from those around you and forces the target out of the tile they occupied and into an adjacent space. If there is no adjacent space available this ability cannot be used. (Honor system folks)&brk;• Stamina: 7 &brk;• Mana: 3|5.0|4|1|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Standard Action|f|f|4|1|
+SpellReqDef|701|0|0|184|6.0|0.0|
+SpellReqDef|701|0|0|250|1.0|0.0|
+SpellReqDef|701|0|3|93|3.0|0.0|
+SpellReqDef|701|0|3|277|7.0|0.0|
+SpellEffect|701|2|1|-6|184|0|2|0||||1
+SpellEffect|701|2|1|-1|250|0|2|0||||1
+SpellEffect|701|2|1|-3|93|0|0|0||||1
+SpellEffect|701|2|1|-7|277|0|0|0||||1
+SpellEffect|701|0|0|{comment} |0|0|0|0||||1
+SpellEffect|701|0|0|{Caster} throws themselves in the path of oncoming attacks against {target}, forcing them out of their tile into an adjacent space. (This is not automated. Please remember to adjust your health accordingly.)|0|0|0|0||||1
+SpellDef|976|=====Admin=====||6.0|0|1|2|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Admin|f|f|4|1|
+SpellEffect|976|0|0|/button {caster} {target}|0|0|0|0||||1
+SpellDef|966|Button||20.0|0|1|2|0|1d10|2|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Admin|f|f|4|1|
+SpellEffect|966|2|0|/rprew {caster} {target}|0|0|0|0||||1
+SpellDef|975|=====Rune Abilities=====|Grab whatever is nearest and swing away!&brk;• Standard action&brk;• 1d8 + Strength damage. On Crit target is dazed for 1 round. &brk;• Stamina: 5|1.0|4|1|1|245||2|1|f|f|f|f|0|None|t|t|1.0,1.0,1.0,1.0|Admin|f|f|4|1|
+SpellEffect|975|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}. {roll}|0|0|0|1||||1
+SpellEffect|975|0|1|-{c.PModifier}|92|2|0|1||||1
+SpellEffect|975|0|1|-{c.PModifier}|0|1|0|1||||1
+SpellEffect|975|0|1|1|597|1|2|1||||1
+SpellEffect|975|0|0|{Caster} takes hold of whatever is at hand and swings at {Target}, and.. misses. |0|0|0|2||||1
+SpellDef|964|Rotmaw's Feast|Rotmaw cares about your hunger! Eat. Feast. Don't forget to drink water!|0.0|1|0|2|0||4|0|f|f|f|f|1300|None|f|f|1.0,1.0,1.0,1.0|Quest Rewards|f|f|4|1|
+SpellEffect|964|0|2|10|15002|0|1|0||||1
+SpellDef|973|Cass's Boon|A skeletal hand. if you listen closely, you can hear it snapping to the beat of “This is Halloween.”|0.0|0|0|0|0||0|0|f|f|f|f|1300|None|f|f|1.0,1.0,1.0,1.0|Quest Rewards|f|f|4|1|
+SpellEffect|973|0|2|1|2491200|0|0|0||||1
+SpellDef|992|Fortune Cookie|A cookie warm from the belly of a mimic. Sweet, soft, and suspiciously alive. No matter how many times you eat it, or throw it away, it reappears near you. |0.0|1|0|2|0||4|0|f|f|f|f|1300|None|f|f|1.0,1.0,1.0,1.0|Quest Rewards|f|f|4|1|
+SpellEffect|992|2|0|/xxCookiexx|0|0|0|0||||1
+MutatorDef|427|General Abilities|t|t
+MutatorCondition|427|0|1|1|0|0.0|0.0|Combat
+MutatorAction|427|3|171|0
+MutatorAction|427|3|199|0
+MutatorDef|599|Dazed|f|f
+MutatorCondition|599|0|1|0|0|0.0|0.0|Dazed
+MutatorAction|599|0|1|-1
+MutatorAction|599|0|2|-1
+MutatorAction|599|0|3|-1
+MutatorAction|599|0|4|-1
+MutatorAction|599|0|5|-1
+MutatorAction|599|0|6|-1
+MutatorAction|599|0|34|-1
+MutatorDef|605|Stunned|f|f
+MutatorCondition|605|0|1|0|0|0.0|0.0|Stunned
+MutatorAction|605|1|250|-1
+MutatorAction|605|1|96|-1
+MutatorAction|605|1|249|-1
+MutatorAction|605|1|163|-1
+MutatorAction|605|1|330|-1
+MutatorDef|643|Archery Combat|t|f
+MutatorCondition|643|0|0|0|560|0.0|0.0|
+MutatorCondition|643|0|20|0|150|0.0|0.0|
+MutatorAction|643|3|552|0
+MutatorAction|643|3|775|0
+MutatorAction|643|3|776|0
+MutatorAction|643|3|777|0
+MutatorDef|644|Dual Wielding|t|f
+MutatorCondition|644|0|0|0|561|0.0|0.0|
+MutatorCondition|644|0|20|0|150|0.0|0.0|
+MutatorAction|644|3|570|0
+MutatorAction|644|3|779|0
+MutatorAction|644|3|780|0
+MutatorAction|644|3|781|0
+MutatorDef|636|Flexible Weapon|t|f
+MutatorCondition|636|0|0|0|569|0.0|0.0|
+MutatorCondition|636|0|20|0|150|0.0|0.0|
+MutatorAction|636|3|585|0
+MutatorAction|636|3|782|0
+MutatorAction|636|3|782|0
+MutatorAction|636|3|782|0
+MutatorDef|645|Great Weapons|t|f
+MutatorCondition|645|0|0|0|562|0.0|0.0|
+MutatorCondition|645|0|20|0|150|0.0|0.0|
+MutatorAction|645|3|586|0
+MutatorAction|645|3|785|0
+MutatorAction|645|3|786|0
+MutatorAction|645|3|787|0
+MutatorDef|646|Improvised Weaponry|t|f
+MutatorCondition|646|0|0|0|564|0.0|0.0|
+MutatorCondition|646|0|20|0|150|0.0|0.0|
+MutatorAction|646|3|595|0
+MutatorAction|646|3|827|0
+MutatorAction|646|3|828|0
+MutatorAction|646|3|829|0
+MutatorDef|647|Sword & Board|t|f
+MutatorCondition|647|0|0|0|563|0.0|0.0|
+MutatorCondition|647|0|20|0|150|0.0|0.0|
+MutatorAction|647|3|602|0
+MutatorAction|647|3|824|0
+MutatorAction|647|3|825|0
+MutatorAction|647|3|826|0
+MutatorDef|648|Unarmed Combat|t|f
+MutatorCondition|648|0|0|0|565|0.0|0.0|
+MutatorCondition|648|0|20|0|150|0.0|0.0|
+MutatorAction|648|3|609|0
+MutatorAction|648|3|821|0
+MutatorAction|648|3|823|0
+MutatorAction|648|3|822|0
+MutatorDef|649|Arcane Focus|t|f
+MutatorCondition|649|0|0|0|566|0.0|0.0|
+MutatorCondition|649|0|20|0|150|0.0|0.0|
+MutatorAction|649|3|612|0
+MutatorAction|649|3|813|0
+MutatorAction|649|3|833|0
+MutatorAction|649|3|814|0
+MutatorDef|651|Psionic Combat|t|f
+MutatorCondition|651|0|0|0|568|0.0|0.0|
+MutatorCondition|651|0|20|0|150|0.0|0.0|
+MutatorAction|651|3|652|0
+MutatorAction|651|3|815|0
+MutatorAction|651|3|816|0
+MutatorAction|651|3|816|0
+MutatorDef|650|Divine Combat|t|f
+MutatorCondition|650|0|0|0|567|0.0|0.0|
+MutatorCondition|650|0|20|0|150|0.0|0.0|
+MutatorAction|650|3|611|0
+MutatorAction|650|3|818|0
+MutatorAction|650|3|819|0
+MutatorAction|650|3|820|0
+MutatorDef|665|=====Class Abilities=====|t|f
+MutatorCondition|665|0|0|0|567|0.0|0.0|
+MutatorCondition|665|0|20|0|150|0.0|0.0|
+MutatorAction|665|3|611|0
+MutatorAction|665|0|0|0
+MutatorAction|665|0|0|0
+MutatorAction|665|0|0|0
+MutatorDef|666|Alchemist|t|f
+MutatorCondition|666|0|0|0|620|0.0|0.0|
+MutatorCondition|666|0|20|0|150|0.0|0.0|
+MutatorAction|666|3|654|0
+MutatorAction|666|3|655|0
+MutatorAction|666|3|656|0
+MutatorAction|666|3|657|0
+MutatorDef|690|Arcanist|t|f
+MutatorCondition|690|0|0|0|614|0.0|0.0|
+MutatorCondition|690|0|20|0|150|0.0|0.0|
+MutatorAction|690|3|674|0
+MutatorAction|690|3|671|0
+MutatorAction|690|3|672|0
+MutatorAction|690|3|673|0
+MutatorDef|691|Barbarian|t|f
+MutatorCondition|691|0|0|0|615|0.0|0.0|
+MutatorCondition|691|0|20|0|150|0.0|0.0|
+MutatorAction|691|3|686|0
+MutatorAction|691|3|687|0
+MutatorAction|691|3|689|0
+MutatorAction|691|3|688|0
+MutatorDef|710|Bard|t|f
+MutatorCondition|710|0|0|0|616|0.0|0.0|
+MutatorCondition|710|0|20|0|150|0.0|0.0|
+MutatorAction|710|3|694|0
+MutatorAction|710|3|695|0
+MutatorAction|710|3|696|0
+MutatorAction|710|3|697|0
+MutatorDef|702|Cleric|t|f
+MutatorCondition|702|0|0|0|617|0.0|0.0|
+MutatorCondition|702|0|20|0|150|0.0|0.0|
+MutatorAction|702|3|714|0
+MutatorAction|702|3|713|0
+MutatorAction|702|3|712|0
+MutatorAction|702|3|711|0
+MutatorDef|723|Druid|t|f
+MutatorCondition|723|0|0|0|622|0.0|0.0|
+MutatorCondition|723|0|20|0|150|0.0|0.0|
+MutatorAction|723|3|718|0
+MutatorAction|723|3|717|0
+MutatorAction|723|3|716|0
+MutatorAction|723|3|715|0
+MutatorDef|724|Fighter|t|f
+MutatorCondition|724|0|0|0|373|0.0|0.0|
+MutatorCondition|724|0|20|0|150|0.0|0.0|
+MutatorAction|724|3|722|0
+MutatorAction|724|3|721|0
+MutatorAction|724|3|720|0
+MutatorAction|724|3|870|0
+MutatorAction|724|3|719|0
+MutatorDef|864|Monk|t|f
+MutatorCondition|864|0|0|0|373|0.0|0.0|
+MutatorCondition|864|0|20|0|150|0.0|0.0|
+MutatorAction|864|3|0|0
+MutatorAction|864|3|0|0
+MutatorAction|864|3|0|0
+MutatorAction|864|3|0|0
+MutatorDef|725|Rogue|t|f
+MutatorCondition|725|0|0|0|618|0.0|0.0|
+MutatorCondition|725|0|20|0|150|0.0|0.0|
+MutatorAction|725|3|729|0
+MutatorAction|725|3|728|0
+MutatorAction|725|3|727|0
+MutatorAction|725|3|726|0
+MutatorDef|730|Ranger|t|f
+MutatorCondition|730|0|0|0|619|0.0|0.0|
+MutatorCondition|730|0|20|0|150|0.0|0.0|
+MutatorAction|730|3|734|0
+MutatorAction|730|3|733|0
+MutatorAction|730|3|732|0
+MutatorAction|730|3|731|0
+MutatorDef|735|Psion|t|f
+MutatorCondition|735|0|0|0|621|0.0|0.0|
+MutatorCondition|735|0|20|0|150|0.0|0.0|
+MutatorAction|735|3|739|0
+MutatorAction|735|3|738|0
+MutatorAction|735|3|737|0
+MutatorAction|735|3|736|0
+MutatorDef|768|Arcane Shield|t|f
+MutatorCondition|768|0|1|0|0|0.0|0.0|Arcane Shield
+MutatorAction|768|0|772|5
+MutatorDef|913|Paladin|t|f
+MutatorCondition|913|0|0|0|907|0.0|0.0|
+MutatorCondition|913|0|1|0|0|0.0|0.0|In Combat
+MutatorAction|913|3|698|0
+MutatorAction|913|3|699|0
+MutatorAction|913|3|700|0
+MutatorAction|913|3|701|0
+MutatorDef|884|Mutator 884|f|f
+MutatorCondition|884|0|0|0|0|0.0|0.0|
+MutatorDef|993|Mutator 993|f|f
+MutatorCondition|993|0|1|0|0|0.0|0.0|Bleed
+StatusDef|675|Arcane Shield|0.0,0.556863,1.0,1.0|f
+StatusAction|675|94|5|1
+StatusAction|675|677|0|3
+StatusDef|693|Bleed|1.0,0.0,0.0,1.0|f
+StatusAction|693|789|0|3
+StatusDef|941|Blighted|0.336734,0.85331,0.021315,1.0|f
+StatusAction|941|947|0|3
+StatusDef|938|Blinded|1.0,1.0,1.0,1.0|f
+StatusAction|938|889|0|3
+StatusAction|938|245|-2|1
+StatusAction|938|246|-2|1
+StatusDef|810|Bound|0.959498,0.0,0.0,1.0|f
+StatusAction|810|796|0|3
+StatusDef|663|Burning|1.0,0.0,0.0,1.0|f
+StatusAction|663|680|0|3
+StatusDef|596|Dazed|1.0,0.0,0.0,1.0|f
+StatusAction|596|579|0|3
+StatusAction|596|245|-2|1
+StatusAction|596|246|-2|1
+StatusDef|623|DeafBlind|1.0,0.0,0.0,1.0|f
+StatusAction|623|581|0|3
+StatusAction|623|94|-2|1
+StatusAction|623|245|-2|1
+StatusAction|623|246|-2|1
+StatusDef|742|Demoralized|0.918072,0.008305,0.008305,1.0|f
+StatusAction|742|245|-2|1
+StatusAction|742|838|0|3
+StatusDef|641|Divine Favor|0.0,0.556863,1.0,1.0|f
+StatusAction|641|30|1|0
+StatusAction|641|27|1|0
+StatusAction|641|26|1|0
+StatusAction|641|28|1|0
+StatusAction|641|29|1|0
+StatusAction|641|31|1|0
+StatusAction|641|35|1|0
+StatusAction|641|582|0|3
+StatusDef|679|Displaced|0.012338,0.616489,0.800164,1.0|f
+StatusAction|679|755|0|2
+StatusAction|679|835|0|3
+StatusDef|790|Disarmed|1.0,0.0,0.0,1.0|f
+StatusAction|790|956|0|3
+StatusDef|773|Dodging|0.0,0.46011,0.685444,1.0|f
+StatusAction|773|942|0|3
+StatusDef|905|Dulled|1.0,1.0,1.0,1.0|f
+StatusAction|905|249|-1|1
+StatusAction|905|950|0|3
+StatusDef|830|Echo|1.0,0.0,0.0,1.0|f
+StatusAction|830|948|0|3
+StatusDef|591|Entangled|0.968627,0.0,0.0,1.0|f
+StatusAction|591|940|0|3
+StatusAction|591|576|0|3
+StatusAction|591|2|-2|0
+StatusAction|591|330|-1|1
+StatusDef|743|Exhausted|0.981805,0.0,0.0,1.0|f
+StatusAction|743|245|-2|1
+StatusAction|743|246|-2|1
+StatusAction|743|161|-6|1
+StatusAction|743|160|-4|1
+StatusAction|743|250|-1|1
+StatusAction|743|184|0|1
+StatusAction|743|108|-4|1
+StatusAction|743|949|0|3
+StatusDef|943|Flat Footed|1.0,1.0,1.0,1.0|f
+StatusAction|943|951|0|3
+StatusDef|880|Hemorrhage|1.0,0.0,0.0,1.0|f
+StatusAction|880|952|0|3
+StatusDef|808|Immobilized|0.943565,0.0,0.0,1.0|f
+StatusAction|808|807|0|3
+StatusAction|808|809|0|3
+StatusAction|808|795|0|3
+StatusDef|703|Inspired|0.0,0.501036,0.768298,1.0|f
+StatusAction|703|280|1|1
+StatusAction|703|279|1|1
+StatusAction|703|836|0|3
+StatusDef|910|Iron Defense|1.0,1.0,1.0,1.0|f
+StatusAction|910|94|2|1
+StatusAction|910|245|-2|1
+StatusAction|910|953|0|3
+StatusDef|892|Ki Aura|0.605777,0.487586,0.0,1.0|f
+StatusAction|892|245|1|1
+StatusAction|892|246|1|1
+StatusAction|892|92|5|1
+StatusAction|892|27|2|0
+StatusAction|892|35|2|0
+StatusAction|892|954|0|3
+StatusDef|831|Mist Form|0.0,0.58624,0.898952,1.0|f
+StatusAction|831|250|-1|1
+StatusAction|831|96|-1|1
+StatusAction|831|249|-1|1
+StatusAction|831|163|-1|1
+StatusAction|831|832|0|3
+StatusDef|778|Poisoned|0.918072,0.0,0.0,1.0|f
+StatusAction|778|946|0|3
+StatusDef|590|Prone|0.984992,0.0,0.0,1.0|f
+StatusAction|590|208|0|3
+StatusAction|590|94|-2|1
+StatusAction|590|245|-2|1
+StatusAction|590|246|-2|1
+StatusDef|692|Raging|0.50699,0.408073,0.0,1.0|f
+StatusAction|692|745|2|2
+StatusAction|692|681|0|3
+StatusDef|911|Razors Edge|1.0,1.0,1.0,1.0|f
+StatusAction|911|94|-2|1
+StatusAction|911|245|2|1
+StatusAction|911|960|0|3
+StatusDef|668|Regenerating|0.0,0.556863,1.0,1.0|f
+StatusAction|668|583|0|3
+StatusDef|903|Reinforced|0.0,0.77225,0.822471,1.0|f
+StatusAction|903|94|2|1
+StatusAction|903|959|0|3
+StatusDef|678|Runic Fusion|0.006229,0.490392,0.688631,1.0|f
+StatusAction|678|246|5|1
+StatusAction|678|837|0|3
+StatusDef|592|Rent|0.968627,0.0,0.0,1.0|f
+StatusAction|592|577|0|3
+StatusAction|592|94|-2|1
+StatusDef|607|Shield of Faith|0.0,0.556538,1.0,1.0|f
+StatusAction|607|580|0|3
+StatusAction|607|94|3|1
+StatusDef|603|Stunned|1.0,0.0,0.0,1.0|f
+StatusAction|603|330|-1|1
+StatusAction|603|250|-1|1
+StatusAction|603|96|-1|1
+StatusAction|603|249|-1|1
+StatusAction|603|163|-1|1
+StatusAction|603|584|0|3
+StatusDef|753|Thin Skinned|1.0,1.0,1.0,1.0|f
+StatusAction|753|94|-2|1
+StatusAction|753|245|-2|1
+StatusAction|753|797|0|3
+StatusAction|753|245|-2|1
+StatusDef|898|Trickster|1.0,1.0,1.0,1.0|f
+StatusAction|898|245|2|1
+StatusAction|898|958|0|3
+StatusDef|147|=====Combat Conditions=====|1.0,0.0,0.0,1.0|f
+StatusAction|147|0|0|0
+StatusDef|150|In Combat|1.0,0.0,0.0,1.0|f
+StatusAction|150|188|0|3
+StatusAction|150|174|0|3
+StatusAction|150|187|0|3
+StatusAction|150|202|0|3
+StatusAction|150|172|0|3
+StatusAction|150|247|0|3
+StatusAction|150|348|0|3
+StatusAction|150|205|0|3
+StatusAction|150|210|0|3
+StatusAction|150|189|0|3
+StatusAction|150|311|0|3
+StatusAction|150|312|0|3
+StatusAction|150|803|0|3
+StatusAction|150|0|0|3
+StatusAction|150|0|0|3
+StatusAction|150|0|0|3
+StatusDef|475|Grappling|1.0,0.0,0.0,1.0|f
+StatusAction|475|804|0|3
+StatusAction|475|805|0|3
+StatusAction|475|806|0|3
+StatusAction|475|794|0|3
+StatusDef|980|Sanctified|0.308388,0.216835,0.0,1.0|f
+StatusAction|980|330|-1|1
+StatusAction|980|250|-1|1
+StatusAction|980|96|-1|1
+StatusAction|980|249|-1|1
+StatusAction|980|163|-1|1
+StatusAction|980|755|0|2
+StatusAction|980|957|0|3
+StatusDef|981|Slowed|0.878803,0.0,0.0,1.0|f
+StatusDef|987|Shredded|1.0,1.0,1.0,1.0|f
+StatusAction|987|0|0|3
+StatusAction|987|94|-3|1
+StatusDef|991|Chew Toy|0.01838,0.652549,0.068968,1.0|f
+StatusDef|963|Snack Supplier|0.553762,0.008539,0.425863,1.0|f
+StatusAction|963|964|0|3
+StatusDef|972|Helping Hand|0.368935,0.254521,0.006864,1.0|f
+StatusDef|996|Off Guard|0.70991,0.031307,0.031307,1.0|f
+StatusAction|996|955|0|3
+StatusAction|996|94|-2|1
+Mechanic|1|f|0|0|0|0|0|0|None
+Mechanic|2|f|0|0|0|0|0|0|None
+Mechanic|3|f|0|0|0|0|0|0|None
+Mechanic|4|f|0|0|0|0|0|0|None
+Mechanic|5|f|0|0|0|0|0|0|None
+Mechanic|6|f|0|0|0|0|0|0|None
+Mechanic|7|f|0|0|0|0|0|0|None
+Mechanic|8|f|0|0|0|0|0|0|None
+Mechanic|9|f|0|0|0|0|0|0|None
+Mechanic|10|f|0|0|0|0|0|0|None
+Megascope|11|f|f

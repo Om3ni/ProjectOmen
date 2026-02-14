@@ -53,10 +53,9 @@ export default function DebugOverlay({ error, onClose }: { error: DebugError | n
   };
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4" onMouseDown={onClose}>
+    <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4">
       <div
         className="w-full max-w-3xl rounded-lg border border-red-700/50 bg-slate-950 p-4"
-        onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3">
           <div>

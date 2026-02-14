@@ -1,0 +1,22 @@
+# Skills Tab Help
+
+Skills are SkillDef rows with TypeFlag="f". They nest under attributes.
+
+Key fields:
+- TypeFlag: Must be "f" for skills
+- Bonus Source: Links to parent attribute(s). Format: "NodeID*Multiplier;NodeID*Multiplier"
+  Example: "1*1.0;2*0.5" means 100% of attribute 1 + 50% of attribute 2
+- Trained: "t" if skill requires training to use
+- Max Allocation: Maximum skill points (-1 = unlimited)
+- Natural Bonus: Base bonus added before allocation
+- Bonus Function: How multiple bonus sources combine (0=Sum, 1=Average)
+
+Design patterns:
+- Skills typically reference 1-2 attributes via Bonus Source
+- Multipliers control how much the parent attribute contributes
+- Trained skills can be gated behind perks (PerkAction function 0 = Allow Skill)
+
+Gotchas:
+- If Bonus Source references a Node ID that doesn't exist, the skill silently gets 0 bonus
+- Skills without Bonus Source won't appear nested under any attribute in the UI
+- The Bonus Source Node IDs reference SkillDef Node IDs (attributes), NOT Stat IDs

@@ -1,4 +1,5 @@
 import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 import FieldEditor from '@/components/FieldEditor';
 import DescriptionField from '@/components/DescriptionField';
 
@@ -9,14 +10,6 @@ type Props = {
   onChange: (next: Record<string, unknown>) => void;
   allowIdEdit?: boolean;
 };
-
-function col(schema: TableSchema, name: string) {
-  return schema.columns.find((c) => c.name === name);
-}
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
 
 /**
  * Layout for Statuses (StatusDef).
@@ -49,7 +42,26 @@ export default function StatusesLayout({ tableSchema, record, onChange, allowIdE
           <FieldEditor column={idCol} value={record.ID} onChange={(v) => set('ID', v)} label="ID" />
         )}
         {nameCol && (
-          <FieldEditor column={nameCol} value={record.Name} onChange={(v) => set('Name', v)} label="Name" />
+          <FieldEditor
+            column={nameCol}
+            value={record.Name}
+            label="Name"
+            onFocus={() => {
+              const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+              const alreadyCleared = record.__autoNameCleared === true;
+              const current = String(record.Name ?? '');
+              if (!alreadyCleared && autoName && current === autoName) {
+                onChange({ ...record, Name: '', __autoNameCleared: true });
+              }
+            }}
+            onChange={(v) => {
+              const nextRecord: Record<string, unknown> = { ...record, Name: v, __autoNameCleared: true };
+              const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+              const nextName = String(v ?? '');
+              if (autoName && nextName !== autoName) delete nextRecord.__autoName;
+              onChange(nextRecord);
+            }}
+          />
         )}
       </div>
 

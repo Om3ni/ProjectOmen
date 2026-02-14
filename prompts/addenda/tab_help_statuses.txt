@@ -1,0 +1,31 @@
+# Statuses Tab Help
+
+Statuses (StatusDef) are persistent conditions applied to characters.
+
+## StatusDef fields:
+- Color: RGBA floats, e.g., "1.0,0.0,0.0,1.0" (red, fully opaque)
+- Public: "t" if visible to other players
+
+## StatusAction — what the status does:
+Columns: StatusAction, StatusID, TargetID, Value, Function
+
+**GOTCHA: Function is in column 4 (the last column), NOT column 2.**
+
+| Fn | Name | TargetID → |
+|----|------|-----------|
+| 0 | Modify Skill | SkillDef |
+| 1 | Modify Stat | Stat |
+| 2 | Grant Perk | PerkDef |
+| 3 | Grant Ability | SpellDef |
+| 4 | Grant Status | StatusDef |
+
+Design patterns:
+- Poison: StatusAction function 1 (Modify Stat) on Health, negative Value
+- Buff: StatusAction function 0 (Modify Skill) with positive Value
+- Transformation: StatusAction function 2 (Grant Perk) to change available abilities
+- Status chains: StatusAction function 4 (Grant Status) for cascading effects
+
+Gotchas:
+- StatusAction column order is different from A_AllTables documentation
+- Actual order: StatusAction|StatusID|TargetID|Value|Function
+- Statuses are toggled on/off, they don't have duration (use SpellEffect buffs for timed effects)

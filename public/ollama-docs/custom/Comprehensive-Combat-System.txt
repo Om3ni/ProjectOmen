@@ -1,0 +1,399 @@
+=== Comprehensive Combat & Profession System ===
+
+Source: RpR Developer
+Purpose: Production-quality example showing extensive game systems
+Key Features:
+- Action/Reaction combat mechanics
+- Social skills (Awareness, Stealth, Speechcraft, etc.)
+- Crafting professions (Fishing, Mining, Cooking, Blacksmithing, Alchemy, Enchanting)
+- Status effects and conditions (Grappled, Stunned, Bleeding, Poisoned, etc.)
+- Combat abilities by style (Melee, Range, Magic, Healing)
+- Casino/gambling mechanics
+- Teaching/learning system (Scholar profession)
+- Sparring system with grappling
+- 177+ abilities across multiple combat styles
+
+=== SYSTEM DESIGN HIGHLIGHTS ===
+
+Combat System:
+- Uses Action/Reaction mechanics
+- Multiple damage types (Physical, Fire, Cold, Lightning, etc.)
+- Status effects that modify combat effectiveness
+- Healing and support abilities
+- Crowd control (stuns, roots, grapples)
+
+Social & Utility:
+- Awareness (perception checks)
+- Stealth mechanics
+- Speechcraft (persuasion/deception)
+- Lockpicking system
+- Pickpocketing mechanics
+
+Crafting & Professions:
+- Fishing (with experience tracking)
+- Mining (ore gathering)
+- Cooking (food preparation)
+- Blacksmithing (weapon/armor crafting)
+- Alchemy (potion making)
+- Enchanting (magical enhancements)
+
+Special Systems:
+- Casino mechanics for gambling
+- Teaching system where Scholars can train others
+- Sparring system with grappling mechanics
+- Multiple resource types (Health Pool, Mana Pool, Energy Pool, Action Points, Reaction Points)
+
+=== COMPLETE RPR TEXT ===
+
+A_RPR
+Name = Comprehensive System Example
+Description = A comprehensive example RPR system showcasing combat, social skills, crafting professions, status effects, and special mechanics like casino games, teaching, and sparring. Created by an RpR developer.
+DefaultCombatStyle = 0
+
+A_DiceConfig
+CombatRounds = 1
+RoundsPer = 1
+DiceType = 1d100
+
+A_Attributes
+Expansion Table
+
+A_SpellDef
+Expansion Table
+
+A_Status
+Expansion Table
+
+A_Mutations
+
+
+A_Resource
+Expansion Table
+
+A_PerkDef
+
+
+A_Runes
+
+
+--- BEGIN EXPORT ---
+
+Resource|0|Health Pool|start = 100;max = 100
+Resource|1|Mana Pool|start = 100;max = 100
+Resource|2|Energy Pool|start = 100;max = 100
+Resource|3|Action Points|start = 2;max = 2
+Resource|4|Reaction Points|start = 1;max = 1
+
+Attribute|0|Strength|max = 100
+Attribute|1|Dexterity|max = 100
+Attribute|2|Constitution|max = 100
+Attribute|3|Intelligence|max = 100
+Attribute|4|Wisdom|max = 100
+Attribute|5|Charisma|max = 100
+Attribute|6|Physical Armor|max = 100
+Attribute|7|Magic Resistance|max = 100
+Attribute|8|Fire Resistance|max = 100
+Attribute|9|Cold Resistance|max = 100
+Attribute|10|Lightning Resistance|max = 100
+Attribute|11|Awareness|max = 100;parent = 4
+Attribute|12|Stealth|max = 100;parent = 1
+Attribute|13|Speechcraft|max = 100;parent = 5
+Attribute|14|Lockpicking|max = 100;parent = 1
+Attribute|15|Pickpocket|max = 100;parent = 1
+Attribute|16|Fishing Experience|max = 1000
+Attribute|17|Mining Experience|max = 1000
+Attribute|18|Cooking Experience|max = 1000
+Attribute|19|Blacksmithing Experience|max = 1000
+Attribute|20|Alchemy Experience|max = 1000
+Attribute|21|Enchanting Experience|max = 1000
+
+Status|0|Grappled|Description = Cannot move or take actions requiring movement
+Status|1|Stunned|Description = Cannot take actions or reactions
+Status|2|Bleeding|Description = Takes damage over time
+Status|3|Poisoned|Description = Takes poison damage and reduced effectiveness
+Status|4|Burning|Description = Takes fire damage over time
+Status|5|Frozen|Description = Movement speed reduced, may be immobilized
+Status|6|Shocked|Description = Periodic stun chance
+Status|7|Blessed|Description = Increased effectiveness of all actions
+Status|8|Cursed|Description = Decreased effectiveness of all actions
+Status|9|Invisible|Description = Cannot be targeted by most abilities
+Status|10|Defending|Description = Increased armor and resistances
+Status|11|Concentrating|Description = Maintaining a spell effect
+Status|12|Drunk|Description = Reduced accuracy and coordination
+Status|13|Teaching|Description = Currently teaching another character
+Status|14|Learning|Description = Currently learning from another character
+
+SpellDef|0|Melee Attack|Name = Basic Strike;Description = A basic melee attack;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d20+{Strength};DamageType = Physical;ResourceCost = 3,1
+SpellDef|1|Power Strike|Name = Power Strike;Description = A powerful melee attack that deals extra damage;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 2d20+{Strength}*2;DamageType = Physical;ResourceCost = 3,2;Cooldown = 2
+SpellDef|2|Sweeping Attack|Name = Sweeping Attack;Description = Attack all enemies in melee range;ActionCost = 1;TargetType = AOE;Range = Melee;DamageFormula = 1d20+{Strength};DamageType = Physical;ResourceCost = 3,2
+SpellDef|3|Shield Bash|Name = Shield Bash;Description = Bash with shield, chance to stun;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d10+{Strength}/2;DamageType = Physical;ResourceCost = 3,1;StatusInflict = 1;StatusChance = 30
+SpellDef|4|Disarm|Name = Disarm;Description = Attempt to disarm opponent;ActionCost = 1;TargetType = Single;Range = Melee;ResourceCost = 3,1;RequiredRoll = {Strength}+1d20 vs {Strength}+1d20
+SpellDef|5|Grapple|Name = Grapple;Description = Attempt to grapple opponent;ActionCost = 1;TargetType = Single;Range = Melee;ResourceCost = 3,1;StatusInflict = 0;RequiredRoll = {Strength}+1d20 vs {Strength}+1d20
+SpellDef|6|Execute|Name = Execute;Description = Powerful attack dealing bonus damage to low health targets;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 3d20+{Strength}*2;DamageType = Physical;ResourceCost = 3,3;Cooldown = 5
+SpellDef|7|Whirlwind|Name = Whirlwind;Description = Spin attack hitting all nearby enemies;ActionCost = 2;TargetType = AOE;Range = Melee;DamageFormula = 1d20+{Strength};DamageType = Physical;ResourceCost = 3,3
+SpellDef|8|Berserker Rage|Name = Berserker Rage;Description = Enter rage state, increased damage but reduced defense;ActionCost = 1;TargetType = Self;Duration = 3;StatusInflict = 8;ResourceCost = 3,2
+SpellDef|9|Intimidate|Name = Intimidate;Description = Frighten enemies, reducing their effectiveness;ActionCost = 1;TargetType = AOE;Range = 10;StatusInflict = 8;StatusChance = 50;RequiredRoll = {Charisma}+1d20 vs {Wisdom}+1d20;ResourceCost = 3,1
+
+SpellDef|10|Bow Shot|Name = Bow Shot;Description = Basic ranged attack with bow;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 1d20+{Dexterity};DamageType = Physical;ResourceCost = 3,1
+SpellDef|11|Aimed Shot|Name = Aimed Shot;Description = Carefully aimed shot with bonus accuracy;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 2d20+{Dexterity}*2;DamageType = Physical;ResourceCost = 3,2;Cooldown = 2
+SpellDef|12|Multi-Shot|Name = Multi-Shot;Description = Fire multiple arrows at different targets;ActionCost = 1;TargetType = Multiple;Range = 25;DamageFormula = 1d20+{Dexterity};DamageType = Physical;ResourceCost = 3,2;MaxTargets = 3
+SpellDef|13|Piercing Arrow|Name = Piercing Arrow;Description = Arrow that pierces through targets;ActionCost = 1;TargetType = Line;Range = 30;DamageFormula = 1d20+{Dexterity};DamageType = Physical;ResourceCost = 3,2
+SpellDef|14|Explosive Arrow|Name = Explosive Arrow;Description = Arrow that explodes on impact;ActionCost = 1;TargetType = AOE;Range = 30;DamageFormula = 2d20+{Dexterity};DamageType = Fire;ResourceCost = 3,2;Cooldown = 3
+SpellDef|15|Poison Arrow|Name = Poison Arrow;Description = Arrow coated with poison;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 1d20+{Dexterity};DamageType = Physical;ResourceCost = 3,1;StatusInflict = 3
+SpellDef|16|Rapid Fire|Name = Rapid Fire;Description = Fire arrows rapidly;ActionCost = 2;TargetType = Single;Range = 25;DamageFormula = 1d10+{Dexterity};DamageType = Physical;ResourceCost = 3,3;AttackCount = 5
+SpellDef|17|Snipe|Name = Snipe;Description = Long-range precision shot;ActionCost = 1;TargetType = Single;Range = 60;DamageFormula = 3d20+{Dexterity}*2;DamageType = Physical;ResourceCost = 3,3;Cooldown = 4
+SpellDef|18|Rain of Arrows|Name = Rain of Arrows;Description = Arrows rain down on area;ActionCost = 2;TargetType = AOE;Range = 40;DamageFormula = 2d20+{Dexterity};DamageType = Physical;ResourceCost = 3,4
+SpellDef|19|Camouflage|Name = Camouflage;Description = Blend into surroundings;ActionCost = 1;TargetType = Self;Duration = 5;StatusInflict = 9;ResourceCost = 3,2
+
+SpellDef|20|Fireball|Name = Fireball;Description = Launch a ball of fire;ActionCost = 1;TargetType = AOE;Range = 40;DamageFormula = 3d20+{Intelligence};DamageType = Fire;ResourceCost = 1,3;Cooldown = 2
+SpellDef|21|Frostbolt|Name = Frostbolt;Description = Launch bolt of frost;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 2d20+{Intelligence};DamageType = Cold;ResourceCost = 1,2;StatusInflict = 5;StatusChance = 40
+SpellDef|22|Lightning Bolt|Name = Lightning Bolt;Description = Strike with lightning;ActionCost = 1;TargetType = Line;Range = 50;DamageFormula = 2d20+{Intelligence}*1.5;DamageType = Lightning;ResourceCost = 1,3
+SpellDef|23|Meteor|Name = Meteor;Description = Call down meteor from sky;ActionCost = 2;TargetType = AOE;Range = 50;DamageFormula = 5d20+{Intelligence}*2;DamageType = Fire;ResourceCost = 1,6;Cooldown = 6
+SpellDef|24|Ice Storm|Name = Ice Storm;Description = Summon storm of ice;ActionCost = 2;TargetType = AOE;Range = 40;DamageFormula = 3d20+{Intelligence};DamageType = Cold;ResourceCost = 1,5;StatusInflict = 5
+SpellDef|25|Chain Lightning|Name = Chain Lightning;Description = Lightning jumps between targets;ActionCost = 1;TargetType = Chain;Range = 30;DamageFormula = 2d20+{Intelligence};DamageType = Lightning;ResourceCost = 1,4;MaxBounces = 4
+SpellDef|26|Arcane Missiles|Name = Arcane Missiles;Description = Fire multiple arcane missiles;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 1d20+{Intelligence};DamageType = Magic;ResourceCost = 1,2;AttackCount = 3
+SpellDef|27|Polymorph|Name = Polymorph;Description = Transform target into harmless creature;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;StatusInflict = 1;ResourceCost = 1,4;RequiredRoll = {Intelligence}+1d20 vs {Wisdom}+1d20
+SpellDef|28|Teleport|Name = Teleport;Description = Instantly teleport to location;ActionCost = 1;TargetType = Self;Range = 50;ResourceCost = 1,3
+SpellDef|29|Time Stop|Name = Time Stop;Description = Stop time for everyone except caster;ActionCost = 2;TargetType = Self;Duration = 1;ResourceCost = 1,8;Cooldown = 10
+
+SpellDef|30|Heal|Name = Heal;Description = Restore health to target;ActionCost = 1;TargetType = Single;Range = 30;HealFormula = 2d20+{Wisdom}*2;ResourceCost = 1,2
+SpellDef|31|Mass Heal|Name = Mass Heal;Description = Heal multiple allies;ActionCost = 2;TargetType = AOE;Range = 20;HealFormula = 1d20+{Wisdom};ResourceCost = 1,5
+SpellDef|32|Resurrection|Name = Resurrection;Description = Bring dead ally back to life;ActionCost = 2;TargetType = Single;Range = 5;HealFormula = {Wisdom}*5;ResourceCost = 1,10;Cooldown = 20
+SpellDef|33|Cure Poison|Name = Cure Poison;Description = Remove poison effect;ActionCost = 1;TargetType = Single;Range = 30;StatusRemove = 3;ResourceCost = 1,2
+SpellDef|34|Cure Disease|Name = Cure Disease;Description = Remove disease effects;ActionCost = 1;TargetType = Single;Range = 30;ResourceCost = 1,3
+SpellDef|35|Dispel Magic|Name = Dispel Magic;Description = Remove magical effects;ActionCost = 1;TargetType = Single;Range = 40;StatusRemove = 7,8,11;ResourceCost = 1,3
+SpellDef|36|Holy Light|Name = Holy Light;Description = Emit healing light;ActionCost = 1;TargetType = AOE;Range = 15;HealFormula = 1d20+{Wisdom};ResourceCost = 1,3
+SpellDef|37|Shield of Faith|Name = Shield of Faith;Description = Protect with divine shield;ActionCost = 1;TargetType = Single;Range = 30;Duration = 3;StatusInflict = 10;ResourceCost = 1,2
+SpellDef|38|Blessing|Name = Blessing;Description = Bless target with divine favor;ActionCost = 1;TargetType = Single;Range = 30;Duration = 5;StatusInflict = 7;ResourceCost = 1,2
+SpellDef|39|Smite Evil|Name = Smite Evil;Description = Strike evil with holy power;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 3d20+{Wisdom}*2;DamageType = Holy;ResourceCost = 1,3
+
+SpellDef|40|Awareness Check|Name = Perception;Description = Notice things in environment;ActionCost = 1;TargetType = Self;RequiredRoll = {Awareness}+1d20 vs DC;ResourceCost = 3,1
+SpellDef|41|Stealth Check|Name = Stealth;Description = Move silently and unseen;ActionCost = 1;TargetType = Self;RequiredRoll = {Stealth}+1d20 vs {Awareness}+1d20;ResourceCost = 3,1
+SpellDef|42|Persuasion|Name = Persuasion;Description = Convince someone;ActionCost = 1;TargetType = Single;Range = 5;RequiredRoll = {Speechcraft}+1d20 vs {Wisdom}+1d20;ResourceCost = 3,1
+SpellDef|43|Deception|Name = Deception;Description = Deceive someone;ActionCost = 1;TargetType = Single;Range = 5;RequiredRoll = {Speechcraft}+1d20 vs {Awareness}+1d20;ResourceCost = 3,1
+SpellDef|44|Intimidation|Name = Intimidation;Description = Intimidate someone;ActionCost = 1;TargetType = Single;Range = 5;RequiredRoll = {Charisma}+1d20 vs {Wisdom}+1d20;ResourceCost = 3,1
+SpellDef|45|Pick Lock|Name = Lockpicking;Description = Pick a lock;ActionCost = 2;TargetType = Object;Range = Touch;RequiredRoll = {Lockpicking}+1d20 vs DC;ResourceCost = 3,2
+SpellDef|46|Pickpocket|Name = Pickpocket;Description = Steal from someone;ActionCost = 1;TargetType = Single;Range = Touch;RequiredRoll = {Pickpocket}+1d20 vs {Awareness}+1d20;ResourceCost = 3,1
+
+SpellDef|47|Fish|Name = Fishing;Description = Attempt to catch fish;ActionCost = 2;TargetType = Self;RequiredRoll = 1d20 vs DC;ExpGain = 16,10;ResourceCost = 3,1
+SpellDef|48|Mine Ore|Name = Mining;Description = Mine ore from deposit;ActionCost = 2;TargetType = Object;Range = Touch;RequiredRoll = 1d20 vs DC;ExpGain = 17,10;ResourceCost = 3,1
+SpellDef|49|Cook Food|Name = Cooking;Description = Prepare food;ActionCost = 2;TargetType = Object;RequiredRoll = 1d20 vs DC;ExpGain = 18,5;ResourceCost = 3,1
+SpellDef|50|Smith Weapon|Name = Blacksmithing;Description = Forge weapon or armor;ActionCost = 5;TargetType = Object;RequiredRoll = {Blacksmithing}+1d20 vs DC;ExpGain = 19,20;ResourceCost = 3,2
+SpellDef|51|Brew Potion|Name = Alchemy;Description = Create potion;ActionCost = 3;TargetType = Object;RequiredRoll = {Alchemy}+1d20 vs DC;ExpGain = 20,15;ResourceCost = 3,2
+SpellDef|52|Enchant Item|Name = Enchanting;Description = Place enchantment on item;ActionCost = 4;TargetType = Object;Range = Touch;RequiredRoll = {Enchanting}+1d20 vs DC;ExpGain = 21,25;ResourceCost = 1,5
+
+SpellDef|53|Blackjack|Name = Play Blackjack;Description = Play a hand of blackjack;ActionCost = 1;TargetType = Self;RequiredRoll = 1d20 vs Dealer;ResourceCost = 3,0
+SpellDef|54|Poker|Name = Play Poker;Description = Play poker;ActionCost = 2;TargetType = Self;RequiredRoll = {Charisma}+1d20 vs Opponents;ResourceCost = 3,0
+SpellDef|55|Dice Game|Name = Dice Game;Description = Roll dice and gamble;ActionCost = 1;TargetType = Self;RequiredRoll = 1d20 vs Opponents;ResourceCost = 3,0
+SpellDef|56|Slots|Name = Slot Machine;Description = Play slot machine;ActionCost = 1;TargetType = Self;RequiredRoll = 1d100 vs DC;ResourceCost = 3,0
+
+SpellDef|57|Teach Combat|Name = Combat Training;Description = Teach combat skills;ActionCost = 3;TargetType = Single;Range = 5;StatusInflict = 13;Duration = 5;ResourceCost = 3,2;RequiredRoll = {Strength}+1d20 vs DC
+SpellDef|58|Teach Magic|Name = Magic Training;Description = Teach magical skills;ActionCost = 3;TargetType = Single;Range = 5;StatusInflict = 14;Duration = 5;ResourceCost = 1,2;RequiredRoll = {Intelligence}+1d20 vs DC
+SpellDef|59|Teach Skills|Name = Skill Training;Description = Teach utility skills;ActionCost = 3;TargetType = Single;Range = 5;StatusInflict = 14;Duration = 5;ResourceCost = 3,2;RequiredRoll = {Wisdom}+1d20 vs DC
+
+SpellDef|60|Spar Request|Name = Request Spar;Description = Challenge to friendly combat;ActionCost = 1;TargetType = Single;Range = 10;RequiredRoll = {Charisma}+1d20 vs {Wisdom}+1d20;ResourceCost = 3,0
+SpellDef|61|Spar Attack|Name = Spar Attack;Description = Non-lethal melee attack;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d20+{Strength}/2;DamageType = Nonlethal;ResourceCost = 3,1
+SpellDef|62|Spar Grapple|Name = Spar Grapple;Description = Grapple in sparring;ActionCost = 1;TargetType = Single;Range = Melee;StatusInflict = 0;RequiredRoll = {Strength}+1d20 vs {Strength}+1d20;ResourceCost = 3,1
+SpellDef|63|Yield|Name = Yield;Description = Surrender in spar;ActionCost = 1;TargetType = Self;ResourceCost = 3,0
+
+SpellDef|64|Parry|Name = Parry;Description = Block incoming melee attack;ActionCost = 0;TargetType = Self;IsReaction = 1;ResourceCost = 4,1
+SpellDef|65|Dodge|Name = Dodge;Description = Evade incoming attack;ActionCost = 0;TargetType = Self;IsReaction = 1;ResourceCost = 4,1;RequiredRoll = {Dexterity}+1d20 vs AttackRoll
+SpellDef|66|Counterspell|Name = Counterspell;Description = Counter enemy spell;ActionCost = 0;TargetType = Single;Range = 60;IsReaction = 1;ResourceCost = 1,3;RequiredRoll = {Intelligence}+1d20 vs DC
+SpellDef|67|Shield Block|Name = Shield Block;Description = Block with shield;ActionCost = 0;TargetType = Self;IsReaction = 1;ResourceCost = 4,1
+SpellDef|68|Riposte|Name = Riposte;Description = Counter after successful parry;ActionCost = 0;TargetType = Single;Range = Melee;IsReaction = 1;DamageFormula = 1d20+{Dexterity};DamageType = Physical;ResourceCost = 4,1
+
+SpellDef|69|Defensive Stance|Name = Defensive Stance;Description = Increase defense at cost of offense;ActionCost = 1;TargetType = Self;Duration = 3;StatusInflict = 10;ResourceCost = 3,1
+SpellDef|70|Offensive Stance|Name = Offensive Stance;Description = Increase offense at cost of defense;ActionCost = 1;TargetType = Self;Duration = 3;ResourceCost = 3,1
+SpellDef|71|Sprint|Name = Sprint;Description = Move faster;ActionCost = 1;TargetType = Self;Duration = 2;ResourceCost = 3,1
+SpellDef|72|Charge|Name = Charge;Description = Rush at enemy;ActionCost = 1;TargetType = Single;Range = 20;DamageFormula = 1d20+{Strength};DamageType = Physical;ResourceCost = 3,2
+SpellDef|73|Second Wind|Name = Second Wind;Description = Recover some energy;ActionCost = 1;TargetType = Self;HealFormula = 1d20+{Constitution};ResourceCost = 3,0;Cooldown = 5
+SpellDef|74|Rally|Name = Rally;Description = Inspire allies;ActionCost = 1;TargetType = AOE;Range = 20;StatusInflict = 7;Duration = 3;ResourceCost = 3,2
+SpellDef|75|Feint|Name = Feint;Description = Fake attack to create opening;ActionCost = 1;TargetType = Single;Range = Melee;RequiredRoll = {Dexterity}+1d20 vs {Awareness}+1d20;ResourceCost = 3,1
+SpellDef|76|Cleave|Name = Cleave;Description = Follow-up attack after kill;ActionCost = 0;TargetType = Single;Range = Melee;DamageFormula = 1d20+{Strength};DamageType = Physical;ResourceCost = 3,0;TriggerOnKill = 1
+SpellDef|77|Backstab|Name = Backstab;Description = Attack from behind for bonus damage;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 3d20+{Dexterity}*2;DamageType = Physical;ResourceCost = 3,2;RequiresFlank = 1
+
+SpellDef|78|Meditate|Name = Meditate;Description = Recover mana;ActionCost = 2;TargetType = Self;ResourceRestore = 1,50;ResourceCost = 3,0
+SpellDef|79|Rest|Name = Rest;Description = Recover health and energy;ActionCost = 3;TargetType = Self;HealFormula = {Constitution}*5;ResourceRestore = 2,50;ResourceCost = 3,0
+SpellDef|80|Focus|Name = Focus;Description = Increase next spell effectiveness;ActionCost = 1;TargetType = Self;Duration = 1;ResourceCost = 3,1
+
+SpellDef|81|Knockback|Name = Knockback;Description = Push target away;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d10+{Strength}/2;DamageType = Physical;PushDistance = 5;ResourceCost = 3,1
+SpellDef|82|Pull|Name = Pull;Description = Pull target closer;ActionCost = 1;TargetType = Single;Range = 15;PullDistance = 10;ResourceCost = 3,1
+SpellDef|83|Root|Name = Root;Description = Trap target in place;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;StatusInflict = 5;ResourceCost = 1,2
+SpellDef|84|Silence|Name = Silence;Description = Prevent spellcasting;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;ResourceCost = 1,3
+SpellDef|85|Blind|Name = Blind;Description = Reduce target accuracy;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;ResourceCost = 1,2
+
+SpellDef|86|Life Drain|Name = Life Drain;Description = Steal health from target;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 2d20+{Intelligence};DamageType = Shadow;LifeSteal = 100;ResourceCost = 1,3
+SpellDef|87|Mana Burn|Name = Mana Burn;Description = Destroy target mana;ActionCost = 1;TargetType = Single;Range = 30;ManaDrain = 30;ResourceCost = 1,3
+SpellDef|88|Shadow Bolt|Name = Shadow Bolt;Description = Bolt of shadow energy;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 2d20+{Intelligence};DamageType = Shadow;ResourceCost = 1,2
+SpellDef|89|Corruption|Name = Corruption;Description = Damage over time;ActionCost = 1;TargetType = Single;Range = 40;StatusInflict = 8;Duration = 5;DOTDamage = 1d20;ResourceCost = 1,2
+SpellDef|90|Fear|Name = Fear;Description = Cause target to flee;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;RequiredRoll = {Intelligence}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,3
+
+SpellDef|91|Berserk|Name = Berserk;Description = Lose control, attack wildly;ActionCost = 0;TargetType = Self;Duration = 3;TriggerOnLowHealth = 1;ResourceCost = 3,0
+SpellDef|92|Last Stand|Name = Last Stand;Description = Refuse to die;ActionCost = 0;TargetType = Self;Duration = 1;TriggerOnLethalDamage = 1;ResourceCost = 3,0;Cooldown = 20
+SpellDef|93|Sacrifice|Name = Sacrifice;Description = Transfer damage to self;ActionCost = 0;TargetType = Single;Range = 30;IsReaction = 1;ResourceCost = 4,1
+SpellDef|94|Redirect|Name = Redirect;Description = Redirect attack to different target;ActionCost = 0;TargetType = Single;Range = 30;IsReaction = 1;ResourceCost = 4,1;RequiredRoll = {Intelligence}+1d20 vs DC
+
+SpellDef|95|Summon Minion|Name = Summon Creature;Description = Summon creature to fight;ActionCost = 2;TargetType = Self;Duration = 10;ResourceCost = 1,5;Cooldown = 10
+SpellDef|96|Animate Dead|Name = Animate Dead;Description = Raise undead servant;ActionCost = 3;TargetType = Corpse;Range = 10;Duration = 20;ResourceCost = 1,6;Cooldown = 15
+SpellDef|97|Command Minion|Name = Command;Description = Give orders to minion;ActionCost = 1;TargetType = Ally;Range = 50;ResourceCost = 3,1
+SpellDef|98|Dismiss Minion|Name = Dismiss;Description = Send minion away;ActionCost = 1;TargetType = Ally;Range = 50;ResourceCost = 3,0
+
+SpellDef|99|Detect Magic|Name = Detect Magic;Description = Sense magical auras;ActionCost = 1;TargetType = AOE;Range = 30;Duration = 10;ResourceCost = 1,1
+SpellDef|100|Identify|Name = Identify;Description = Learn properties of item;ActionCost = 2;TargetType = Object;Range = Touch;ResourceCost = 1,2
+SpellDef|101|Scry|Name = Scrying;Description = View distant location;ActionCost = 3;TargetType = Location;Range = 1000;Duration = 5;ResourceCost = 1,5;RequiredRoll = {Intelligence}+1d20 vs DC
+SpellDef|102|Divination|Name = Divination;Description = Glimpse the future;ActionCost = 5;TargetType = Self;ResourceCost = 1,8;Cooldown = 100
+
+SpellDef|103|Ward|Name = Protective Ward;Description = Create protective barrier;ActionCost = 2;TargetType = AOE;Range = 10;Duration = 10;ResourceCost = 1,4
+SpellDef|104|Alarm|Name = Alarm;Description = Set magical alarm;ActionCost = 2;TargetType = AOE;Range = 20;Duration = 100;ResourceCost = 1,2
+SpellDef|105|Glyph|Name = Glyph of Warding;Description = Trap area with glyph;ActionCost = 3;TargetType = Location;Range = Touch;Duration = 100;ResourceCost = 1,5
+
+SpellDef|106|Haste|Name = Haste;Description = Speed up ally;ActionCost = 1;TargetType = Single;Range = 30;Duration = 3;StatusInflict = 7;ResourceCost = 1,3
+SpellDef|107|Slow|Name = Slow;Description = Slow down enemy;ActionCost = 1;TargetType = Single;Range = 30;Duration = 3;StatusInflict = 8;ResourceCost = 1,3
+SpellDef|108|Levitate|Name = Levitate;Description = Float in air;ActionCost = 1;TargetType = Single;Range = 30;Duration = 5;ResourceCost = 1,2
+SpellDef|109|Fly|Name = Fly;Description = Grant flight;ActionCost = 1;TargetType = Self;Duration = 10;ResourceCost = 1,4
+
+SpellDef|110|Firewalk|Name = Firewalk;Description = Immune to fire, leave flames;ActionCost = 1;TargetType = Self;Duration = 5;ResourceCost = 1,3
+SpellDef|111|Water Breathing|Name = Water Breathing;Description = Breathe underwater;ActionCost = 1;TargetType = Single;Range = Touch;Duration = 60;ResourceCost = 1,2
+SpellDef|112|Gaseous Form|Name = Gaseous Form;Description = Transform into gas;ActionCost = 1;TargetType = Self;Duration = 5;ResourceCost = 1,4
+SpellDef|113|Stone Skin|Name = Stone Skin;Description = Harden skin like stone;ActionCost = 1;TargetType = Single;Range = Touch;Duration = 10;StatusInflict = 10;ResourceCost = 1,4
+
+SpellDef|114|Charm Person|Name = Charm Person;Description = Make target friendly;ActionCost = 1;TargetType = Single;Range = 30;Duration = 10;RequiredRoll = {Charisma}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,2
+SpellDef|115|Dominate|Name = Dominate Mind;Description = Control target actions;ActionCost = 2;TargetType = Single;Range = 30;Duration = 5;RequiredRoll = {Intelligence}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,5;Cooldown = 10
+SpellDef|116|Suggestion|Name = Suggestion;Description = Plant idea in mind;ActionCost = 1;TargetType = Single;Range = 30;RequiredRoll = {Charisma}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,2
+SpellDef|117|Confusion|Name = Confusion;Description = Confuse target;ActionCost = 1;TargetType = AOE;Range = 30;Duration = 3;RequiredRoll = {Intelligence}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,4
+
+SpellDef|118|Invisibility|Name = Invisibility;Description = Turn invisible;ActionCost = 1;TargetType = Single;Range = Touch;Duration = 10;StatusInflict = 9;ResourceCost = 1,3
+SpellDef|119|Mirror Image|Name = Mirror Image;Description = Create illusory duplicates;ActionCost = 1;TargetType = Self;Duration = 5;ResourceCost = 1,2
+SpellDef|120|Disguise|Name = Disguise Self;Description = Change appearance;ActionCost = 1;TargetType = Self;Duration = 60;ResourceCost = 1,2
+SpellDef|121|Illusion|Name = Major Illusion;Description = Create complex illusion;ActionCost = 2;TargetType = Location;Range = 60;Duration = 10;ResourceCost = 1,4;StatusInflict = 11
+
+SpellDef|122|Earthquake|Name = Earthquake;Description = Shake the ground;ActionCost = 3;TargetType = AOE;Range = 50;DamageFormula = 3d20+{Intelligence};DamageType = Physical;ResourceCost = 1,7;Cooldown = 10
+SpellDef|123|Tsunami|Name = Tsunami;Description = Massive wave of water;ActionCost = 3;TargetType = AOE;Range = 60;DamageFormula = 4d20+{Intelligence};DamageType = Cold;ResourceCost = 1,8;Cooldown = 12
+SpellDef|124|Tornado|Name = Tornado;Description = Summon tornado;ActionCost = 3;TargetType = AOE;Range = 50;DamageFormula = 3d20+{Intelligence};DamageType = Physical;ResourceCost = 1,7;Cooldown = 10
+SpellDef|125|Volcano|Name = Volcanic Eruption;Description = Cause volcanic eruption;ActionCost = 4;TargetType = AOE;Range = 40;DamageFormula = 5d20+{Intelligence}*2;DamageType = Fire;ResourceCost = 1,10;Cooldown = 20
+
+SpellDef|126|Sunbeam|Name = Sunbeam;Description = Ray of sunlight;ActionCost = 1;TargetType = Line;Range = 60;DamageFormula = 3d20+{Wisdom};DamageType = Holy;ResourceCost = 1,4
+SpellDef|127|Moonbeam|Name = Moonbeam;Description = Column of moonlight;ActionCost = 1;TargetType = AOE;Range = 60;DamageFormula = 2d20+{Wisdom};DamageType = Holy;Duration = 3;ResourceCost = 1,3
+SpellDef|128|Starfall|Name = Starfall;Description = Stars fall from sky;ActionCost = 3;TargetType = AOE;Range = 50;DamageFormula = 4d20+{Wisdom}*1.5;DamageType = Holy;ResourceCost = 1,7;Cooldown = 8
+
+SpellDef|129|Entangle|Name = Entangle;Description = Plants grab targets;ActionCost = 1;TargetType = AOE;Range = 30;Duration = 3;StatusInflict = 0;ResourceCost = 1,2
+SpellDef|130|Barkskin|Name = Barkskin;Description = Harden skin like bark;ActionCost = 1;TargetType = Single;Range = Touch;Duration = 10;StatusInflict = 10;ResourceCost = 1,2
+SpellDef|131|Thorn Whip|Name = Thorn Whip;Description = Whip of thorns;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 1d20+{Wisdom};DamageType = Physical;PullDistance = 10;ResourceCost = 1,1
+SpellDef|132|Goodberry|Name = Goodberry;Description = Create healing berries;ActionCost = 2;TargetType = Self;ResourceCost = 1,2;CreateItem = 1
+SpellDef|133|Speak with Animals|Name = Speak with Animals;Description = Communicate with beasts;ActionCost = 1;TargetType = Self;Duration = 60;ResourceCost = 1,1
+
+SpellDef|134|Spirit Guardians|Name = Spirit Guardians;Description = Summon protective spirits;ActionCost = 2;TargetType = Self;Duration = 10;DOTDamage = 1d20+{Wisdom};ResourceCost = 1,4;StatusInflict = 11
+SpellDef|135|Sacred Flame|Name = Sacred Flame;Description = Holy fire from above;ActionCost = 1;TargetType = Single;Range = 60;DamageFormula = 2d20+{Wisdom};DamageType = Holy;ResourceCost = 1,2;IgnoresArmor = 1
+SpellDef|136|Guiding Bolt|Name = Guiding Bolt;Description = Bolt of holy light;ActionCost = 1;TargetType = Single;Range = 120;DamageFormula = 3d20+{Wisdom};DamageType = Holy;ResourceCost = 1,2
+SpellDef|137|Holy Word|Name = Holy Word;Description = Speak word of power;ActionCost = 2;TargetType = AOE;Range = 30;DamageFormula = 4d20+{Wisdom};DamageType = Holy;StatusInflict = 1;ResourceCost = 1,6;Cooldown = 6
+
+SpellDef|138|Death Coil|Name = Death Coil;Description = Bolt of death energy;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 2d20+{Intelligence};DamageType = Shadow;LifeSteal = 50;ResourceCost = 1,3
+SpellDef|139|Plague|Name = Plague;Description = Spread disease;ActionCost = 2;TargetType = AOE;Range = 30;StatusInflict = 3;Duration = 10;DOTDamage = 1d20;ResourceCost = 1,4;Contagious = 1
+SpellDef|140|Bone Prison|Name = Bone Prison;Description = Trap in bones;ActionCost = 1;TargetType = Single;Range = 30;Duration = 3;StatusInflict = 0;ResourceCost = 1,3
+SpellDef|141|Soul Harvest|Name = Soul Harvest;Description = Damage and heal from kills;ActionCost = 1;TargetType = AOE;Range = 20;DamageFormula = 2d20+{Intelligence};DamageType = Shadow;LifeSteal = 100;ResourceCost = 1,4
+
+SpellDef|142|Blood Boil|Name = Blood Boil;Description = Boil enemy blood;ActionCost = 1;TargetType = AOE;Range = 10;DamageFormula = 2d20+{Strength};DamageType = Shadow;StatusInflict = 2;ResourceCost = 0,5;Cooldown = 3
+SpellDef|143|Death Grip|Name = Death Grip;Description = Pull enemy to you;ActionCost = 1;TargetType = Single;Range = 30;PullDistance = 30;DamageFormula = 1d20+{Strength};DamageType = Shadow;ResourceCost = 3,1;Cooldown = 4
+SpellDef|144|Icy Touch|Name = Icy Touch;Description = Freeze with touch;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d20+{Strength};DamageType = Cold;StatusInflict = 5;ResourceCost = 3,1
+SpellDef|145|Obliterate|Name = Obliterate;Description = Massive melee strike;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 4d20+{Strength}*2;DamageType = Physical;ResourceCost = 3,3;Cooldown = 5
+
+SpellDef|146|Arcane Explosion|Name = Arcane Explosion;Description = Explode with arcane energy;ActionCost = 1;TargetType = AOE;Range = 10;DamageFormula = 2d20+{Intelligence};DamageType = Magic;ResourceCost = 1,3
+SpellDef|147|Mana Shield|Name = Mana Shield;Description = Use mana as shield;ActionCost = 0;TargetType = Self;Duration = 1;IsReaction = 1;ResourceCost = 1,0;DamageToMana = 1
+SpellDef|148|Arcane Barrage|Name = Arcane Barrage;Description = Rapid arcane blasts;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 1d20+{Intelligence};DamageType = Magic;AttackCount = 4;ResourceCost = 1,4
+SpellDef|149|Time Warp|Name = Time Warp;Description = Speed up all allies;ActionCost = 2;TargetType = AOE;Range = 40;Duration = 2;StatusInflict = 7;ResourceCost = 1,6;Cooldown = 10
+
+SpellDef|150|Holy Nova|Name = Holy Nova;Description = Heal allies, damage enemies;ActionCost = 1;TargetType = AOE;Range = 15;HealFormula = 1d20+{Wisdom};DamageFormula = 1d20+{Wisdom};DamageType = Holy;ResourceCost = 1,3
+SpellDef|151|Prayer of Healing|Name = Prayer of Healing;Description = Heal all allies;ActionCost = 3;TargetType = AOE;Range = 40;HealFormula = 2d20+{Wisdom}*1.5;ResourceCost = 1,6
+SpellDef|152|Power Word Shield|Name = Power Word Shield;Description = Shield from damage;ActionCost = 1;TargetType = Single;Range = 40;Duration = 3;AbsorbAmount = 2d20+{Wisdom}*2;ResourceCost = 1,2;Cooldown = 3
+SpellDef|153|Mind Blast|Name = Mind Blast;Description = Blast with psychic energy;ActionCost = 1;TargetType = Single;Range = 40;DamageFormula = 2d20+{Intelligence};DamageType = Psychic;ResourceCost = 1,2
+
+SpellDef|154|Eviscerate|Name = Eviscerate;Description = Brutal finishing move;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 2d20+{Dexterity}*3;DamageType = Physical;ResourceCost = 3,3;RequiresBehind = 1
+SpellDef|155|Kidney Shot|Name = Kidney Shot;Description = Strike kidney to stun;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 1d20+{Dexterity};DamageType = Physical;StatusInflict = 1;Duration = 2;ResourceCost = 3,2
+SpellDef|156|Shadowstep|Name = Shadowstep;Description = Teleport behind enemy;ActionCost = 1;TargetType = Single;Range = 25;TeleportBehind = 1;ResourceCost = 3,2;Cooldown = 4
+SpellDef|157|Vanish|Name = Vanish;Description = Disappear and escape;ActionCost = 1;TargetType = Self;StatusInflict = 9;Duration = 3;ResourceCost = 3,3;Cooldown = 5
+
+SpellDef|158|Feral Charge|Name = Feral Charge;Description = Charge as beast;ActionCost = 1;TargetType = Single;Range = 25;DamageFormula = 2d20+{Strength};DamageType = Physical;StatusInflict = 1;ResourceCost = 3,2
+SpellDef|159|Maul|Name = Maul;Description = Vicious animal attack;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 3d20+{Strength}*1.5;DamageType = Physical;ResourceCost = 3,3
+SpellDef|160|Savage Roar|Name = Savage Roar;Description = Roar to boost damage;ActionCost = 1;TargetType = Self;Duration = 5;ResourceCost = 3,2
+SpellDef|161|Regrowth|Name = Regrowth;Description = Heal over time;ActionCost = 1;TargetType = Single;Range = 40;HealFormula = 1d20+{Wisdom};Duration = 5;HOTAmount = 1d10+{Wisdom};ResourceCost = 1,2
+
+SpellDef|162|Lava Burst|Name = Lava Burst;Description = Molten lava projectile;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 3d20+{Intelligence}*1.5;DamageType = Fire;StatusInflict = 4;ResourceCost = 1,3;Cooldown = 2
+SpellDef|163|Chain Heal|Name = Chain Heal;Description = Healing jumps between allies;ActionCost = 1;TargetType = Chain;Range = 40;HealFormula = 2d20+{Wisdom};MaxBounces = 3;ResourceCost = 1,4
+SpellDef|164|Hex|Name = Hex;Description = Transform into critter;ActionCost = 1;TargetType = Single;Range = 30;Duration = 2;StatusInflict = 1;RequiredRoll = {Wisdom}+1d20 vs {Wisdom}+1d20;ResourceCost = 1,2
+SpellDef|165|Earth Shock|Name = Earth Shock;Description = Shock with earth energy;ActionCost = 1;TargetType = Single;Range = 25;DamageFormula = 2d20+{Intelligence};DamageType = Lightning;StatusInflict = 84;ResourceCost = 1,2
+
+SpellDef|166|Hammer of Wrath|Name = Hammer of Wrath;Description = Throw holy hammer;ActionCost = 1;TargetType = Single;Range = 30;DamageFormula = 3d20+{Strength}*1.5;DamageType = Holy;ResourceCost = 1,3;LowHealthOnly = 1
+SpellDef|167|Divine Shield|Name = Divine Shield;Description = Immune to all damage;ActionCost = 1;TargetType = Self;Duration = 2;Invulnerable = 1;ResourceCost = 1,0;Cooldown = 30
+SpellDef|168|Lay on Hands|Name = Lay on Hands;Description = Fully heal target;ActionCost = 1;TargetType = Single;Range = Touch;HealFormula = 999;ResourceCost = 1,0;Cooldown = 60
+SpellDef|169|Hand of Protection|Name = Hand of Protection;Description = Protect from physical damage;ActionCost = 1;TargetType = Single;Range = 30;Duration = 3;PhysicalImmune = 1;ResourceCost = 1,2;Cooldown = 10
+
+SpellDef|170|Mortal Strike|Name = Mortal Strike;Description = Strike reducing healing;ActionCost = 1;TargetType = Single;Range = Melee;DamageFormula = 3d20+{Strength}*1.5;DamageType = Physical;HealingReduction = 50;Duration = 3;ResourceCost = 3,3;Cooldown = 3
+SpellDef|171|Bladestorm|Name = Bladestorm;Description = Whirlwind of blades;ActionCost = 2;TargetType = AOE;Range = Melee;DamageFormula = 2d20+{Strength};DamageType = Physical;Duration = 2;ResourceCost = 3,4;Cooldown = 6
+SpellDef|172|Die by the Sword|Name = Die by the Sword;Description = Parry all attacks;ActionCost = 1;TargetType = Self;Duration = 2;ParryAll = 1;ResourceCost = 3,0;Cooldown = 10
+SpellDef|173|Heroic Leap|Name = Heroic Leap;Description = Leap to location;ActionCost = 1;TargetType = Location;Range = 40;DamageFormula = 1d20+{Strength};DamageType = Physical;AOE = 1;ResourceCost = 3,2;Cooldown = 4
+
+SpellDef|174|Pyroblast|Name = Pyroblast;Description = Massive fireball;ActionCost = 3;TargetType = Single;Range = 40;DamageFormula = 6d20+{Intelligence}*3;DamageType = Fire;ResourceCost = 1,5;CastTime = 2
+SpellDef|175|Combustion|Name = Combustion;Description = Increase fire spell power;ActionCost = 1;TargetType = Self;Duration = 5;ResourceCost = 1,0;Cooldown = 10
+SpellDef|176|Ice Block|Name = Ice Block;Description = Freeze self, immune;ActionCost = 1;TargetType = Self;Duration = 2;Invulnerable = 1;Stunned = 1;ResourceCost = 1,0;Cooldown = 20
+SpellDef|177|Blink|Name = Blink;Description = Short teleport;ActionCost = 1;TargetType = Location;Range = 20;ResourceCost = 1,1;Cooldown = 3
+
+--- END EXPORT ---
+
+=== IMPLEMENTATION NOTES ===
+
+Action/Reaction System:
+- Standard actions cost Action Points (Resource 3)
+- Reactions cost Reaction Points (Resource 4)
+- Reactions trigger in response to specific events (attacks, spells, etc.)
+- Typical setup: 2 actions, 1 reaction per turn
+
+Resource Management:
+- Health Pool (0): Primary hit points
+- Mana Pool (1): Magic spells cost mana
+- Energy Pool (2): Physical abilities cost energy
+- Action Points (3): Actions per turn
+- Reaction Points (4): Reactions per turn
+
+Profession Experience System:
+- Each profession tracks experience separately (Attributes 16-21)
+- Abilities grant experience via ExpGain field
+- Pattern: ExpGain = attributeId,amount
+- Example: ExpGain = 16,10 gives 10 fishing experience
+
+Status Effect Categories:
+- Crowd Control: Grappled (0), Stunned (1), Root, Silence, Blind
+- Damage Over Time: Bleeding (2), Poisoned (3), Burning (4)
+- Buffs: Blessed (7), Defending (10), Invisible (9)
+- Debuffs: Cursed (8), Frozen (5), Shocked (6)
+- Special: Concentrating (11), Teaching (13), Learning (14), Drunk (12)
+
+Combat Role Distribution:
+- Tank: Defensive Stance, Shield Block, Taunt abilities
+- DPS: High damage abilities across Melee/Range/Magic
+- Healer: Heal, Mass Heal, Resurrection, status cleansing
+- Support: Buffs, debuffs, crowd control, utility
+
+Special Mechanics:
+- Teaching: Scholar casts "Teach Combat/Magic/Skills" on target
+- Learning: Target gains Learning status, receives knowledge transfer
+- Sparring: Non-lethal combat with Yield option
+- Casino: Gambling mechanics using dice rolls vs DC
+- Grappling: Status effect preventing movement/actions
+
+Damage Types Represented:
+- Physical (standard melee/ranged)
+- Fire, Cold, Lightning (elemental)
+- Holy (divine/radiant)
+- Shadow (necrotic/dark)
+- Psychic (mental/mind)
+- Magic (arcane/force)
+- Nonlethal (sparring)
+
+Advanced Ability Patterns:
+- TriggerOnKill: Cleave activates after killing blow
+- TriggerOnLowHealth: Berserk activates when health is low
+- RequiresFlank: Backstab needs flanking position
+- LowHealthOnly: Execute mechanics for finishing
+- Contagious: Plague spreads to nearby targets
+
+=== END OF DOCUMENT ===

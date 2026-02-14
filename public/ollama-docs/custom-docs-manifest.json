@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "name": "DefaultRpR.txt",
+      "path": "/ollama-docs/custom/DefaultRpR.txt",
+      "type": "rpr-system",
+      "description": "Default RPR system example",
+      "sizeKB": 27
+    },
+    {
+      "name": "SHRpR.txt",
+      "path": "/ollama-docs/custom/SHRpR.txt",
+      "type": "rpr-system",
+      "description": "SH RPR system example",
+      "sizeKB": 156
+    },
+    {
+      "name": "WHRpR.txt",
+      "path": "/ollama-docs/custom/WHRpR.txt",
+      "type": "rpr-system",
+      "description": "WH RPR system example",
+      "sizeKB": 512
+    },
+    {
+      "name": "CXRpR.txt",
+      "path": "/ollama-docs/custom/CXRpR.txt",
+      "type": "rpr-system",
+      "description": "CX RPR system example - comprehensive D&D-style system with 7098 nodes",
+      "sizeKB": 906
+    }
+  ]
+}

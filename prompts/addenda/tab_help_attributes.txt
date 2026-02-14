@@ -1,0 +1,20 @@
+# Attributes Tab Help
+
+Attributes are SkillDef rows with TypeFlag="t". They act as separators/headers that regular skills (TypeFlag="f") nest under.
+
+Key fields:
+- TypeFlag: Must be "t" for attributes
+- Node ID: Unique, sequential. Referenced by skills via Bonus Source
+- Max Allocation: How many points can be spent (-1 = unlimited)
+- Bonus Source: For attributes, usually empty or self-referential
+- Bonus Function: 0=Sum (most common), 1=Average, 2=Min, 3=Max
+
+Design patterns:
+- Typical setup: 4-8 attributes (Strength, Dexterity, Intelligence, etc.)
+- Skills reference attributes via Bonus Source: "NodeID*Multiplier"
+- Attributes with Max Allocation=-1 have no spending cap
+
+Gotchas:
+- Separator skills MUST have correct Bonus Source or skills won't collapse under them in the UI
+- Node IDs must be sequential and match TotalNodes in DiceConfig
+- Changing an attribute's Node ID breaks all Bonus Source references in skills and Stat formulas

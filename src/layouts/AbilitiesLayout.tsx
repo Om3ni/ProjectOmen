@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import FormulaCalculator from '@/components/FormulaCalculator';
 import type { SchemaData, TableSchema } from '@/models/schema';
+import { str, col } from '@/utils/rprHelpers';
 import FieldEditor from '@/components/FieldEditor';
 import DescriptionField from '@/components/DescriptionField';
 
@@ -12,14 +13,6 @@ type Props = {
 };
 
 type Opt = { value: string; label: string };
-
-function col(schema: TableSchema, name: string) {
-  return schema.columns.find((c) => c.name === name);
-}
-
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
 
 function boolVal(v: unknown): boolean {
   return String(v).toLowerCase() === 't';
@@ -303,7 +296,26 @@ export default function AbilitiesLayout({ tableSchema, record, allData, onChange
     <div className="space-y-4">
       {/* Row 1: Name */}
       {nameCol && (
-        <FieldEditor column={nameCol} value={record.Name} onChange={(v) => set('Name', v)} label="Name" />
+        <FieldEditor
+          column={nameCol}
+          value={record.Name}
+          label="Name"
+          onFocus={() => {
+            const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+            const alreadyCleared = record.__autoNameCleared === true;
+            const current = String(record.Name ?? '');
+            if (!alreadyCleared && autoName && current === autoName) {
+              onChange({ ...record, Name: '', __autoNameCleared: true });
+            }
+          }}
+          onChange={(v) => {
+            const nextRecord: Record<string, unknown> = { ...record, Name: v, __autoNameCleared: true };
+            const autoName = typeof record.__autoName === 'string' ? record.__autoName : '';
+            const nextName = String(v ?? '');
+            if (autoName && nextName !== autoName) delete nextRecord.__autoName;
+            onChange(nextRecord);
+          }}
+        />
       )}
 
       {/* Row 2: Category + Select Icon */}

@@ -1,0 +1,2515 @@
+DiceConfig|1146|12|30|5|5|0|t|6|8|0|0|-10|4|-10|30|-10|200|f|f|2
+DiceRules|0|1|20|1|20|f|f
+Gear|f|t|t|t|t|t|0
+SkillDef|t|1144|Attack|Attack Damage|f|-1||0|t|0
+SkillDef|t|1143|Defense|Resistance to damage|f|-1||0|t|0
+SkillDef|t|63|Accuracy|the ability to hit your opponent|f|-1||0|t|0
+SkillDef|t|65|Dodge|The ability to dodge your opponent's attacks.|f|-1||0|t|0
+SkillDef|t|1146|||f|-1||0|t|0
+SkillDef|t|330|Melee|The ability to deal damage with melee attacks.|f|-1||0|t|0
+SkillDef|t|331|Range|The ability to deal damage with ranged attacks.|f|-1||0|t|0
+SkillDef|t|332|Magic|The ability to deal damage with magical attacks.|f|-1||0|t|0
+SkillDef|t|92|Healing|The ability to successfully heal, and the amount of damage healed.|f|-1||0|t|0
+SkillDef|t|428|--------------------------------------||f|-1||0|f|0
+SkillDef|t|588|Test System||f|-1||0|f|0
+SkillDef|f|306|Health||f|0||30|f|0
+SkillDef|f|984|Energy||f|0||10|f|0
+SkillDef|f|987|Constitution||f|0||30|f|0
+SkillDef|f|985|-----------------------------------||f|-1||0|f|0
+SkillDef|f|61|Acrobatics|Used when performing feats that require physical dexterity of body, such as jumping, balancing on unstable surfaces, foot-races, dodging, and similar feats of acrobatic skill.&brk;&brk;Not for use with things that require raw strength; see Feats of Strength instead.|f|-1||0|t|0
+SkillDef|f|476|Feats of Strength|Used when performing feats that require strength, such as body building prowess, swimming, grappling, and other strength-based tasks.&brk;&brk;Not for use with things that require quickness of action, speed, agility, etc; see Acrobatics instead.|f|-1||0|t|0
+SkillDef|f|89|Fortitude|Your body's ability to resist or minimize the effects of harm, including poison, disease, and certain types of magic. Can also be used to determine how drunk a player becomes when drinking or participating in other such similar activities.&brk;&brk;Successfully resisting with Fortitude still results in some minimal effect; this represents the ability to power through it, not negate the effect entirely.|f|-1||0|t|0
+SkillDef|f|53|Awareness|The ability to perceive your physical surroundings such as a character's appearance, a change in surroundings, or someone attempting to hide within a reasonable viewing distance of you.&brk;&brk;Generally counters Stealth or Sleight of Hand.|f|-1||0|t|0
+SkillDef|f|69|Sleight of Hand|Used when attempting to perform a conjuring trick, deception or movement that requires manual dexterity.  Also used to escape bindings, restraints and such.&brk;&brk;Generally countered by Awareness.|f|-1||0|t|0
+SkillDef|f|56|Stealth|Used when sneaking, hiding or in other acts where you are attempting not to be seen. If a player is facing your direction and can physically see you on screen, you are not hidden. If you are behind a player but still physically on their screen due to camera angles that are not realistic to a line of sight, you are hidden.&brk;&brk;Generally countered by Awareness.|f|-1||0|t|0
+SkillDef|f|90|Insight|Your ability to perceive whether or not you are being manipulated in some way, to help determine if you should trust a person or a situation and determine the true intentions of others.&brk;&brk;Generally used as a counter to Speechcraft, or to generally assess a person's demeanor.|f|-1||0|t|0
+SkillDef|f|54|Speechcraft|Used when attempting to deceive, persuade, convince, or otherwise sway your target/audience by way of personality, language, or cultural background.&brk;&brk;Generally countered by Insight; Willpower may also be appropriate.|f|-1||0|t|0
+SkillDef|f|58|Intimidation|Your ability to sway another players thoughts or actions by way of threat, physical, or mental prowess. Upon success the targets response may vary. Intimidation often stirs the fight or flight response. Some may back down or cower, while others may be compelled to stand up for themselves or others.&brk;&brk;Generally countered by Willpower.|f|-1||0|t|0
+SkillDef|f|50|Spellcraft|Your ability to perform magic outside of combat. When magic is used directly on or against a player, the player generally rolls Willpower to determine if and how affected they are by the spellwork, but other skills may be appropriate in some situations.&brk;&brk;Spellcraft generally can't counter physical actions (such as Feats of Strength); casting a spell while under physical duress is rarely possible.|f|-1||0|t|0
+SkillDef|f|55|Willpower|Used when resisting temptation or emotional manipulation such as the urge to fight someone when angered in addition to resisting the effects of magic.|f|-1||0|t|0
+SkillDef|f|57|Medicine|Used to heal wounds or injuries in both self healing and the healing of others. &brk;&brk;Usually a self check with the effect of the healing dependent on the outcome of the dice; cannot be used for combat healing.|f|-1||0|t|0
+SkillDef|f|51|Artistry|A performance check for artisan and domestic crafts, such as blacksmithing, painting, cooking, alchemy, leatherworking, ect. Usually used as a self check with the outcome of the dice determining success. A higher roll is a more successful, where as a lower roll is representative of a more poorly made object.|f|-1||0|t|0
+SkillDef|f|59|Performance|Used for performing arts such as singing, dancing, and occasionally, fucking. Typically used as a self check with a higher outcome in dice resulting in a better performance, and lower dice rolls resulting in poor performance.|f|-1||0|t|0
+SkillDef|f|67|Handle Animals|Used when handling, taming or interacting with both wild and domesticated animals, or beings with similar levels of intelligence.&brk;&brk;When used against a beastkin race, generally countered by Willpower.|f|-1||0|t|0
+SkillDef|f|426|-----------------------------||f|-1||0|f|0
+SkillDef|f|339|Surgeon||f|-1||0|f|0
+SkillDef|f|467|Cleave||f|-1||0|f|0
+SkillDef|f|468|Keen||f|-1||0|f|0
+SkillDef|f|469|Uncanny||f|-1||0|f|0
+SkillDef|f|470|Compression||f|-1||0|f|0
+SkillDef|f|471|Aether||f|-1||0|f|0
+SkillDef|f|472|Puncture||f|-1||0|f|0
+SkillDef|f|473|Empathy||f|-1||0|f|0
+SkillDef|f|474|Devotion||f|-1||0|f|0
+SkillDef|f|587|―――Professions―――||t|-1||0|t|0
+SkillDef|f|557|Fishing||f|0||0|t|0
+SkillDef|f|566|Cooking||f|0||0|t|0
+SkillDef|f|594|Mining||f|0||0|t|0
+SkillDef|f|605|Lumberjack||f|0||0|t|0
+SkillDef|f|611|Gatherer||f|0||0|t|0
+SkillDef|f|754|Skinning||f|0||0|t|0
+SkillDef|f|627|BlackSmith||f|0||0|t|0
+SkillDef|f|716|Tinkerer||f|0||0|f|0
+SkillDef|f|734|Academic||f|0||0|f|0
+SkillDef|f|940|WeaponSmith||f|0||0|t|0
+SkillDef|f|957|Tailor||f|0||0|t|0
+SkillDef|f|1086|Alchemy||f|-1||0|f|0
+SkillDef|f|679|---Secret Ability Grants---||f|-1||0|f|0
+SkillDef|f|683|Grant Smoke Screen||f|-1||0|f|0
+SkillDef|f|777|--Casino--||f|-1||0|f|0
+SkillDef|f|778|Card||f|30||0|f|0
+SkillDef|f|1046|--NPC Attacking Events --||f|-1||0|f|0
+SkillDef|f|1047|NPC Attack||f|20||0|f|0
+SkillDef|f|1055|NPC Defend||f|20||0|f|0
+PerkDef|477|t|I confirm my age is 18+.|This perk is required for all players; it is considered confirmation that you, as player, as well as your character, are 18 years of age or older, and serves to confirm you have filled out your Roleplay Redux character sheet before you enter Aloria.|0|VERIFIED
+PerkAction|477|12|0|0|VERIFIED||0.0
+PerkAction|477|14|0|0|VERIFIED||0.0
+PerkDef|498|t|Explanation|―Civilian is currently a work in progress, for now, the Combat system is created with major growth incoming. Your classes ony affect social rolls.&brk;―Star signs abilities have a boost that affect certain abilities and social rolls&brk;―Read abilities Carefully, as some require certain amount of points allocated.&brk;―The style only corresponds to the matching attribute.|0|
+PerkDef|307|t|―Civilian―|Civilians do not have the opportunity to learn most combat abilities.&brk;&brk;Civilians will, in the future, have the opportunity to learn non-combat professions.|0|Civilian
+PerkAction|307|14|0|0|Occupation||0.0
+PerkAction|307|13|0|0|Civilian Class||0.0
+PerkDef|705|f|Tinkerer|Civilians do not have the opportunity to learn most combat abilities.&brk;&brk;Civilians will, in the future, have the opportunity to learn non-combat professions.|0|Civilian Class
+PerkAction|705|14|0|0|Civilian Class||0.0
+PerkAction|705|8|0|714|||0.0
+PerkAction|705|8|0|717|||0.0
+PerkAction|705|8|0|722|||0.0
+PerkAction|705|6|0|715|||0.0
+PerkAction|705|0|0|716|||0.0
+PerkDef|726|f|Scholar|Civilians do not have the opportunity to learn most combat abilities.&brk;&brk;Civilians will, in the future, have the opportunity to learn non-combat professions.|0|Civilian Class
+PerkAction|726|14|0|0|Civilian Class||0.0
+PerkAction|726|6|0|733|||0.0
+PerkAction|726|0|0|734|||0.0
+PerkAction|726|8|0|735|||0.0
+PerkAction|726|8|0|732|||0.0
+PerkAction|726|8|0|744|||0.0
+PerkAction|726|8|0|748|||0.0
+PerkDef|460|t|―Combatant―|Combatants are able to learn combat-related skills, but do not have the opportunity to learn most civilian skills.|0|Combat Tree
+PerkAction|460|13|0|0|Combat Occupation||0.0
+PerkAction|460|14|0|0|Combat Tree||0.0
+PerkDef|308|f|Hybrid Specialization|Those with hybrid specialization may choose two different weapon styles, trading sheer strength for variety in their options.|0|Combat Occupation
+PerkAction|308|14|0|0|Occupation||0.0
+PerkAction|308|13|0|0|Melee/Range||0.0
+PerkAction|308|13|0|0|Melee/Healing||0.0
+PerkAction|308|13|0|0|Range/Magic||0.0
+PerkAction|308|13|0|0|Range/Healing||0.0
+PerkAction|308|13|0|0|Magic/Healing||0.0
+PerkAction|308|13|0|0|Magic/Melee||0.0
+PerkAction|308|14|0|0|Combat Occupation||0.0
+PerkAction|308|13|0|0|Civilian||0.0
+PerkDef|338|f|Focused Specialization|Those with a focused specialization follow the motto: 'Do one thing. Do it well.'  They receive a bonus to their specialty, and can spend their attribute points in a more focused manner, but do not have the variety available to a hybrid.|0|Combat Occupation
+PerkAction|338|14|0|0|Occupation||0.0
+PerkAction|338|13|0|0|Melee||0.0
+PerkAction|338|13|0|0|Range||0.0
+PerkAction|338|13|0|0|Magic||0.0
+PerkAction|338|13|0|0|Healing||0.0
+PerkAction|338|13|0|0|Specalized Combat||0.0
+PerkAction|338|14|0|0|Combat Occupation||0.0
+PerkAction|338|13|0|0|Civilian||0.0
+PerkDef|369|f|---------------------------------------||0|
+PerkDef|333|f|Melee||0|Specalized Combat
+PerkAction|333|13|0|0|Melee Style||0.0
+PerkAction|333|14|0|0|Range Style||0.0
+PerkAction|333|14|0|0|Magic Style||0.0
+PerkAction|333|14|0|0|Healing Style||0.0
+PerkAction|333|14|0|0|Melee/Healing||0.0
+PerkAction|333|14|0|0|Range/Magic||0.0
+PerkAction|333|14|0|0|Range/Healing||0.0
+PerkAction|333|14|0|0|Magic/Healing||0.0
+PerkAction|333|14|0|0|Magic/Melee||0.0
+PerkAction|333|14|0|0|Specalized Combat||0.0
+PerkAction|333|4|2|330|||0.0
+PerkDef|334|f|Range||0|Specalized Combat
+PerkAction|334|13|0|0|Range Style||0.0
+PerkAction|334|14|0|0|Melee Style||0.0
+PerkAction|334|14|0|0|Magic Style||0.0
+PerkAction|334|14|0|0|Healing Style||0.0
+PerkAction|334|14|0|0|Melee/Healing||0.0
+PerkAction|334|14|0|0|Range/Magic||0.0
+PerkAction|334|14|0|0|Range/Healing||0.0
+PerkAction|334|14|0|0|Magic/Healing||0.0
+PerkAction|334|14|0|0|Magic/Melee||0.0
+PerkAction|334|14|0|0|Specalized Combat||0.0
+PerkAction|334|4|2|331|||0.0
+PerkDef|336|f|Magic||0|Specalized Combat
+PerkAction|336|13|0|0|Magic Style||0.0
+PerkAction|336|14|0|0|Range Style||0.0
+PerkAction|336|14|0|0|Melee Style||0.0
+PerkAction|336|14|0|0|Healing Style||0.0
+PerkAction|336|14|0|0|Melee/Healing||0.0
+PerkAction|336|14|0|0|Range/Magic||0.0
+PerkAction|336|14|0|0|Range/Healing||0.0
+PerkAction|336|14|0|0|Magic/Healing||0.0
+PerkAction|336|14|0|0|Magic/Melee||0.0
+PerkAction|336|14|0|0|Specalized Combat||0.0
+PerkAction|336|4|2|332|||0.0
+PerkDef|337|f|Healing||0|Specalized Combat
+PerkAction|337|13|0|0|Healing Style||0.0
+PerkAction|337|14|0|0|Range Style||0.0
+PerkAction|337|14|0|0|Melee Style||0.0
+PerkAction|337|14|0|0|RangeStyle||0.0
+PerkAction|337|14|0|0|Melee/Healing||0.0
+PerkAction|337|14|0|0|Range/Magic||0.0
+PerkAction|337|14|0|0|Range/Healing||0.0
+PerkAction|337|14|0|0|Magic/Healing||0.0
+PerkAction|337|14|0|0|Magic/Melee||0.0
+PerkAction|337|14|0|0|Specalized Combat||0.0
+PerkAction|337|4|2|92|||0.0
+PerkAction|337|8|0|983|||0.0
+PerkDef|322|f|Melee/Range||0|Melee/Range
+PerkAction|322|13|0|0|Melee Style||0.0
+PerkAction|322|13|0|0|Range Style||0.0
+PerkAction|322|14|0|0|Magic Style||0.0
+PerkAction|322|14|0|0|Healing Style||0.0
+PerkAction|322|14|0|0|Melee/Healing||0.0
+PerkAction|322|14|0|0|Range/Magic||0.0
+PerkAction|322|14|0|0|Range/Healing||0.0
+PerkAction|322|14|0|0|Magic/Healing||0.0
+PerkAction|322|14|0|0|Magic/Melee||0.0
+PerkDef|323|f|Melee/Healing||0|Melee/Healing
+PerkAction|323|13|0|0|Melee Style||0.0
+PerkAction|323|13|0|0|Healing Style||0.0
+PerkAction|323|14|0|0|Magic Style||0.0
+PerkAction|323|14|0|0|Range Style||0.0
+PerkAction|323|14|0|0|Melee/Range||0.0
+PerkAction|323|14|0|0|Range/Healing||0.0
+PerkAction|323|13|0|0|Magic/Healing||0.0
+PerkAction|323|14|0|0|Range/Magic||0.0
+PerkAction|323|14|0|0|Magic/Melee||0.0
+PerkAction|323|14|0|0|Magic/Healing||0.0
+PerkAction|323|8|0|983|||0.0
+PerkDef|324|f|Range/Magic||0|Range/Magic
+PerkAction|324|13|0|0|Range Style||0.0
+PerkAction|324|13|0|0|Magic Style||0.0
+PerkAction|324|14|0|0|Melee Style||0.0
+PerkAction|324|14|0|0|Healing Style||0.0
+PerkAction|324|14|0|0|Melee/Range||0.0
+PerkAction|324|14|0|0|Melee/Healing||0.0
+PerkAction|324|14|0|0|Range/Healing||0.0
+PerkAction|324|14|0|0|Magic/Healing||0.0
+PerkAction|324|14|0|0|Magic/Melee||0.0
+PerkDef|325|f|Range/Healing||0|Range/Healing
+PerkAction|325|13|0|0|Range Style||0.0
+PerkAction|325|13|0|0|Healing Style||0.0
+PerkAction|325|14|0|0|Melee Style||0.0
+PerkAction|325|14|0|0|Magic Style||0.0
+PerkAction|325|14|0|0|Melee/Range||0.0
+PerkAction|325|14|0|0|Melee/Healing||0.0
+PerkAction|325|14|0|0|Range/Magic||0.0
+PerkAction|325|14|0|0|Magic/Healing||0.0
+PerkAction|325|14|0|0|Magic/Melee||0.0
+PerkAction|325|8|0|983|||0.0
+PerkDef|326|f|Magic/Healing||0|Magic/Healing
+PerkAction|326|13|0|0|Magic Style||0.0
+PerkAction|326|13|0|0|Healing Style||0.0
+PerkAction|326|14|0|0|Melee Style||0.0
+PerkAction|326|14|0|0|Range Style||0.0
+PerkAction|326|14|0|0|Melee/Range||0.0
+PerkAction|326|14|0|0|Melee/Healing||0.0
+PerkAction|326|14|0|0|Range/Magic||0.0
+PerkAction|326|14|0|0|Range/Healing||0.0
+PerkAction|326|14|0|0|Magic/Melee||0.0
+PerkAction|326|8|0|983|||0.0
+PerkDef|327|f|Magic/Melee||0|Magic/Melee
+PerkAction|327|13|0|0|Magic Style||0.0
+PerkAction|327|13|0|0|Melee Style||0.0
+PerkAction|327|14|0|0|Range Style||0.0
+PerkAction|327|14|0|0|Healing Style||0.0
+PerkAction|327|14|0|0|Melee/Range||0.0
+PerkAction|327|14|0|0|Melee/Healing||0.0
+PerkAction|327|14|0|0|Range/Magic||0.0
+PerkAction|327|14|0|0|Range/Healing||0.0
+PerkAction|327|14|0|0|Magic/Healing||0.0
+PerkDef|368|f|----------------------------------------||0|
+PerkDef|309|f|―Melee Style―||0|Melee Style
+PerkAction|309|13|0|0|Melee Ability||0.0
+PerkDef|314|f|Melee: Swing|Basic Attack: Swing your weapon, no cooldown.|1|Melee Ability
+PerkAction|314|8|0|328|||0.0
+PerkDef|315|f|Melee: Stab|A stabbing thrust that causes bleeding. &brk;&brk;Bleeding deals damage at the end of each round and reduces Reaction by 1 until it is successfully stopped.&brk;&brk;This ability requires 4 points invested into melee to use (buffs do not count).|1|Melee Ability
+PerkAction|315|8|0|347|||0.0
+PerkDef|366|f|Melee: Lunge|Lunge at the target, moving up to 4 tiles in an unobstructed straight line to strike them.&brk;&brk;This ability uses up your movement action when used.|1|Melee Ability
+PerkAction|366|8|0|355|||0.0
+PerkDef|353|f|Melee: Cleave|A cleaving attack that can strike at two opponents in close proximity.|1|Melee Ability
+PerkAction|353|8|0|354|||0.0
+PerkDef|359|f|Melee: Rage|Rage as a Free Action, gaining a +2 to Action for up to three targets (including yourself) within range.&brk;&brk;This buff expires at the end of the target's turn.|1|Melee Ability
+PerkAction|359|8|0|357|||0.0
+PerkDef|365|f|Melee: Round House|Kick your opponent, stunning them for one turn.&brk;&brk;A character may not use any free actions or items while stunned.|1|Melee Ability
+PerkAction|365|8|0|363|||0.0
+PerkDef|362|f|Melee: Wall of Integrity|Forms a wall of defense to their allies, increasing the chance to stop enemy attacks with a +2 to Reaction as a Free Action.&brk;&brk;This ability requires 4 points invested into melee to use (buffs do not count).|1|Melee Ability
+PerkAction|362|8|0|360|||0.0
+PerkDef|367|f|----------------------------------------||0|
+PerkDef|311|f|―Range Style―||0|Range Style
+PerkAction|311|13|0|0|Range Ability||0.0
+PerkDef|316|f|Range: Shoot|Basic Attack: Fire an arrow, no cooldown.|1|Range Ability
+PerkAction|316|8|0|372|||0.0
+PerkDef|317|f|Range: Throwing Knife|As a Free Action, hurl a knife at your opponent.&brk;&brk;This ability requires 2 points invested into range to use (buffs do not count).|1|Range Ability
+PerkAction|317|8|0|373|||0.0
+PerkDef|380|f|Range: Multishot|Target up to two enemies with a ranged attack.&brk;&brk;This ability requires 4 points invested into range to use (buffs do not count).|1|Range Ability
+PerkAction|380|8|0|374|||0.0
+PerkDef|381|f|Range: Rope Shot|Snag your opponent with a rope, pulling them to you.|1|Range Ability
+PerkAction|381|8|0|375|||0.0
+PerkDef|382|f|Range: Volley of Arrows|Shoot a volley of arrows up and around you, striking at all targets in your surrounding area.&brk;&brk;Allies may be hit by this attack if they are within range.|1|Range Ability
+PerkAction|382|8|0|376|||0.0
+PerkDef|383|f|Range: Sniper Shot|A long range, high damage attack with a sniper shot.&brk;&brk;This ability requires 4 points invested into range to use (buffs do not count).|1|Range Ability
+PerkAction|383|8|0|377|||0.0
+PerkDef|384|f|----------------------------------------||0|
+PerkDef|312|f|―Magic Style―||0|Magic Style
+PerkAction|312|13|0|0|Magic Ability||0.0
+PerkDef|318|f|Magic: Arcane Bolt|Basic Attack: Fire a bolt of magical energy, no cooldown.|1|Magic Ability
+PerkAction|318|8|0|379|||0.0
+PerkDef|319|f|Magic: Mana Missiles|Launch arcane missiles at up to 3 opponents.|1|Magic Ability
+PerkAction|319|8|0|385|||0.0
+PerkDef|394|f|Magic: Root|Root your opponent in place, stopping them from moving for one turn.|1|Magic Ability
+PerkAction|394|8|0|386|||0.0
+PerkDef|395|f|Magic: Mana Explosion|Explode in a blast of mana, potentially damaging all targets within range (including yourself).&brk;&brk;This ability requires 4 points invested into magic to use (buffs do not count).|1|Magic Ability
+PerkAction|395|8|0|389|||0.0
+PerkDef|396|f|Magic: Sickness|An enchantment that produces sickness in the target.&brk;&brk;Sickness deals damage at the end of each turn and reduces Action and Reaction by 1 until it is successfully healed.&brk;&brk;This ability requires 4 points invested into magic to use (buffs do not count).|1|Magic Ability
+PerkAction|396|8|0|390|||0.0
+PerkDef|397|f|Magic: Invocation|As a Free Action, magic infuses up to two targets (including yourself) within range, increasing Healing and Magic by 4.|1|Magic Ability
+PerkAction|397|8|0|398|||0.0
+PerkDef|393|f|----------------------------------------||0|
+PerkDef|313|f|―Healing Style―||0|Healing Style
+PerkAction|313|13|0|0|Healing Ability||0.0
+PerkDef|411|f|Healing: Smite|Basic Attack: Smite your opponent with divine energy, no cooldown.|1|Healing Ability
+PerkAction|411|8|0|407|||0.0
+PerkDef|320|f|Healing: Rejuvenative Touch|Touch yourself or an ally, healing the target.|1|Healing Ability
+PerkAction|320|8|0|401|||0.0
+PerkDef|321|f|Healing: Pulse of Healing|Emit a pulse of healing power, healing all valid targets within range.&brk;&brk;This spell does not discriminate between friend and foe; if foes are in range, they will also be healed.|1|Healing Ability
+PerkAction|321|8|0|402|||0.0
+PerkDef|409|f|Healing: Mana Shield|Pulses a wave of energy, generating a mana shield over every valid target within range. &brk;&brk;Grants +4 Reaction until the end of target's turn.&brk;&brk;This spell does not discriminate between friend and foe; if foes are in range, they will also be shielded.|1|Healing Ability
+PerkAction|409|8|0|403|||0.0
+PerkDef|410|f|Healing: Cleanse|Cleanse yourself or another target in range of all harmful status ailments.&brk;&brk;This ability requires 4 points invested into healing to use (buffs do not count).|1|Healing Ability
+PerkAction|410|8|0|406|||0.0
+PerkDef|412|f|Healing: Mana Jump|Send magical energy through the ground, empowering all within range to immediately jump 2 tiles on your turn as a Free Action.&brk;&brk;This spell does not discriminate between friend and foe; if foes are in range, they will also be able to jump.&brk;&brk;This ability requires 2 points invested into healing to use (buffs do not count).|1|Healing Ability
+PerkAction|412|8|0|408|||0.0
+PerkDef|440|f|-----------------------------------------||0|
+PerkDef|441|t|―Classes―||0|Class
+PerkAction|441|13|0|0|Class||0.0
+PerkDef|442|f|Barbarian||0|Class
+PerkAction|442|14|0|0|Class||0.0
+PerkAction|442|4|2|58|||0.0
+PerkAction|442|4|2|89|||0.0
+PerkAction|442|4|1|61|||0.0
+PerkDef|445|f|Bard||0|Class
+PerkAction|445|14|0|0|Class||0.0
+PerkAction|445|4|2|59|||0.0
+PerkAction|445|4|2|54|||0.0
+PerkAction|445|4|1|90|||0.0
+PerkDef|446|f|Bloodborn||0|Class
+PerkAction|446|14|0|0|Class||0.0
+PerkAction|446|4|2|55|||0.0
+PerkAction|446|4|2|50|||0.0
+PerkAction|446|4|1|57|||0.0
+PerkDef|447|f|Crusader||0|Class
+PerkAction|447|14|0|0|Class||0.0
+PerkAction|447|4|2|90|||0.0
+PerkAction|447|4|2|57|||0.0
+PerkAction|447|4|1|55|||0.0
+PerkDef|448|f|Druid||0|Class
+PerkAction|448|14|0|0|Class||0.0
+PerkAction|448|4|2|67|||0.0
+PerkAction|448|4|2|57|||0.0
+PerkAction|448|4|1|50|||0.0
+PerkDef|449|f|Guardian||0|Class
+PerkAction|449|14|0|0|Class||0.0
+PerkAction|449|4|2|89|||0.0
+PerkAction|449|4|2|55|||0.0
+PerkAction|449|4|1|53|||0.0
+PerkDef|450|f|Monk||0|Class
+PerkAction|450|14|0|0|Class||0.0
+PerkAction|450|4|2|476|||0.0
+PerkAction|450|4|2|61|||0.0
+PerkAction|450|4|1|90|||0.0
+PerkDef|451|f|Necromancer||0|Class
+PerkAction|451|14|0|0|Class||0.0
+PerkAction|451|4|2|50|||0.0
+PerkAction|451|4|2|55|||0.0
+PerkAction|451|4|1|58|||0.0
+PerkDef|452|f|Psion||0|Class
+PerkAction|452|14|0|0|Class||0.0
+PerkAction|452|4|2|55|||0.0
+PerkAction|452|4|2|90|||0.0
+PerkAction|452|4|1|50|||0.0
+PerkDef|453|f|Ranger||0|Class
+PerkAction|453|14|0|0|Class||0.0
+PerkAction|453|4|2|53|||0.0
+PerkAction|453|4|2|56|||0.0
+PerkAction|453|4|1|61|||0.0
+PerkDef|454|f|Rogue||0|Class
+PerkAction|454|14|0|0|Class||0.0
+PerkAction|454|4|2|56|||0.0
+PerkAction|454|4|2|69|||0.0
+PerkAction|454|4|1|90|||0.0
+PerkDef|455|f|Shaman||0|Class
+PerkAction|455|14|0|0|Class||0.0
+PerkAction|455|4|2|57|||0.0
+PerkAction|455|4|2|50|||0.0
+PerkAction|455|4|1|53|||0.0
+PerkDef|456|f|Spellweaver||0|Class
+PerkAction|456|14|0|0|Class||0.0
+PerkAction|456|4|2|50|||0.0
+PerkAction|456|4|2|55|||0.0
+PerkAction|456|4|1|90|||0.0
+PerkDef|457|f|Swashbuckler||0|Class
+PerkAction|457|14|0|0|Class||0.0
+PerkAction|457|4|2|54|||0.0
+PerkAction|457|4|2|61|||0.0
+PerkAction|457|4|1|90|||0.0
+PerkDef|458|f|Voidweaver||0|Class
+PerkAction|458|14|0|0|Class||0.0
+PerkAction|458|4|2|58|||0.0
+PerkAction|458|4|2|50|||0.0
+PerkAction|458|4|1|56|||0.0
+PerkDef|459|f|Warrior||0|Class
+PerkAction|459|14|0|0|Class||0.0
+PerkAction|459|4|2|61|||0.0
+PerkAction|459|4|2|53|||0.0
+PerkAction|459|4|1|476|||0.0
+PerkDef|483|f|-----------------------------------------||0|
+PerkDef|484|t|―Star Signs―||0|
+PerkAction|484|13|0|0|Star Sign||0.0
+PerkDef|486|f|The Ritual||0|Star Sign
+PerkAction|486|14|0|0|Star Sign||0.0
+PerkAction|486|4|1|474|||0.0
+PerkAction|486|4|1|57|||0.0
+PerkDef|487|f|The Lover||0|Star Sign
+PerkAction|487|14|0|0|Star Sign||0.0
+PerkAction|487|4|1|471|||0.0
+PerkAction|487|4|1|53|||0.0
+PerkDef|488|f|The Lord||0|Star Sign
+PerkAction|488|14|0|0|Star Sign||0.0
+PerkAction|488|4|1|470|||0.0
+PerkAction|488|4|1|53|||0.0
+PerkDef|489|f|The Mage||0|Star Sign
+PerkAction|489|14|0|0|Star Sign||0.0
+PerkAction|489|4|1|471|||0.0
+PerkAction|489|4|1|90|||0.0
+PerkDef|490|f|The Shadow||0|Star Sign
+PerkAction|490|14|0|0|Star Sign||0.0
+PerkAction|490|4|1|472|||0.0
+PerkAction|490|4|1|56|||0.0
+PerkDef|491|f|The Steed||0|Star Sign
+PerkAction|491|14|0|0|Star Sign||0.0
+PerkAction|491|4|1|467|||0.0
+PerkAction|491|4|1|61|||0.0
+PerkDef|492|f|The Apprentice||0|Star Sign
+PerkAction|492|14|0|0|Star Sign||0.0
+PerkAction|492|4|1|471|||0.0
+PerkAction|492|4|1|90|||0.0
+PerkDef|493|f|The Warrior||0|Star Sign
+PerkAction|493|14|0|0|Star Sign||0.0
+PerkAction|493|4|1|467|||0.0
+PerkAction|493|4|1|54|||0.0
+PerkDef|494|f|The Lady||0|Star Sign
+PerkAction|494|14|0|0|Star Sign||0.0
+PerkAction|494|4|1|474|||0.0
+PerkAction|494|4|1|51|||0.0
+PerkDef|495|f|The Tower||0|Star Sign
+PerkAction|495|14|0|0|Star Sign||0.0
+PerkAction|495|4|1|473|||0.0
+PerkAction|495|4|1|55|||0.0
+PerkDef|496|f|The Atronach||0|Star Sign
+PerkAction|496|14|0|0|Star Sign||0.0
+PerkAction|496|4|1|468|||0.0
+PerkAction|496|4|1|89|||0.0
+PerkDef|497|f|The Thief||0|Star Sign
+PerkAction|497|14|0|0|Star Sign||0.0
+PerkAction|497|4|1|469|||0.0
+PerkAction|497|4|1|69|||0.0
+PerkDef|526|f|---------------------------------------||0|
+PerkDef|535|t|―Afflictions―||0|Afflictions
+PerkAction|535|13|0|0|Afflictions||0.0
+PerkDef|536|f|Vampire||0|Afflictions
+PerkAction|536|7|8|46|||0.0
+PerkAction|536|4|1|59|||0.0
+PerkAction|536|4|1|56|||0.0
+PerkAction|536|4|-1|67|||0.0
+PerkAction|536|4|-1|57|||0.0
+PerkAction|536|8|0|528|||0.0
+PerkAction|536|14|0|0|Afflictions||0.0
+PerkDef|539|f|Werewolf||0|Afflictions
+PerkAction|539|7|8|46|||0.0
+PerkAction|539|4|1|53|||0.0
+PerkAction|539|4|1|56|||0.0
+PerkAction|539|4|-1|55|||0.0
+PerkAction|539|4|-1|50|||0.0
+PerkAction|539|8|0|530|||0.0
+PerkAction|539|14|0|0|Afflictions||0.0
+PerkDef|540|f|Accursed||0|Afflictions
+PerkAction|540|7|8|46|||0.0
+PerkAction|540|4|1|58|||0.0
+PerkAction|540|4|1|55|||0.0
+PerkAction|540|4|-1|59|||0.0
+PerkAction|540|4|-1|56|||0.0
+PerkAction|540|8|0|533|||0.0
+PerkAction|540|14|0|0|Afflictions||0.0
+PerkDef|534|f|---------------------------------------||0|
+PerkDef|527|t|―Races―||0|
+PerkAction|527|13|0|0|Races||0.0
+PerkDef|524|f|Flying Race|Wings or magic enable this character to fly.&brk;&brk;Take this perk if you have wings, or magic enabling you to fly (such as a djinn) to gain the flying race role, allowing access to the '/cheat fly' command.|0|Races
+PerkAction|524|12|0|0|Flight||0.0
+PerkAction|524|14|0|0|Flight||0.0
+PerkDef|525|f|Aquatic Race|Native water-dwellers are able to breathe underwater.&brk;&brk;Take this perk if you are a water-dwelling race such as the navali, to gain access to the '/cheat fish' command.|0|Races
+PerkAction|525|12|0|0|Waterbreathing||0.0
+PerkAction|525|14|0|0|Waterbreathing||0.0
+PerkDef|669|f|---------------------------------------||0|
+PerkDef|670|f|Smoke Screen||0|Scholar Learned
+PerkAction|670|8|0|659|||0.0
+PerkDef|671|f|Meditate||0|Scholar Learned
+PerkAction|671|8|0|660|||0.0
+PerkDef|672|f|Stone Wall||0|Scholar Learned
+PerkAction|672|8|0|661|||0.0
+PerkDef|673|f|Kame Power Up||0|Scholar Learned
+PerkAction|673|8|0|662|||0.0
+PerkDef|674|f|Poison Cloud||0|Scholar Learned
+PerkAction|674|8|0|667|||0.0
+PerkDef|737|f|Magic Push||0|Scholar Learned
+PerkAction|737|8|0|736|||0.0
+PerkDef|1074|f|Event Perk||0|Event
+PerkAction|1074|12|0|0|Event Rank 4/15||0.0
+Rune|599|2709617|0|0|f|Harvest|+1 to Mining|f|f|f|f
+RuneAction|599|594|1|0|0
+Rune|609|2709618|0|0|f|Harvest|+1 to Lumberjack|f|f|f|f
+RuneAction|609|605|1|0|0
+Rune|610|2709619|0|0|f|Harvest|+1 to Fishing|f|f|f|f
+RuneAction|610|557|1|0|0
+Rune|612|7810040|0|0|f|Belt|+2 to Gathering|f|f|f|f
+RuneAction|612|611|2|0|0
+Rune|613|872450001|0|0|f|Top|Mining +1|f|f|f|f
+RuneAction|613|594|2|0|0
+Rune|614|872451001|0|0|f|Bottom|Mining +1|f|f|f|f
+RuneAction|614|594|2|0|0
+Rune|615|872440001|0|0|f|Top|Cooking +1|f|f|f|f
+RuneAction|615|566|2|0|0
+Rune|616|872441001|0|0|f|Bottom|Cooking +1|f|f|f|f
+RuneAction|616|566|2|0|0
+Rune|617|872460001|0|0|f|Top|BlackSmith +2|f|f|f|f
+RuneAction|617|627|2|0|0
+Rune|618|872461001|0|0|f|Bottom|BlackSmith +2|f|f|f|f
+RuneAction|618|627|2|0|0
+Rune|619|872112001|0|0|t|Weapon|Range +1|f|f|f|f
+RuneAction|619|331|1|0|0
+Rune|621|872101001|0|0|t|Weapon|Melee +1|f|f|f|f
+RuneAction|621|330|1|0|0
+Rune|622|872216002|0|0|t|Weapon|Magic +1|f|f|f|f
+RuneAction|622|332|1|0|0
+Rune|623|872318001|0|0|t|Weapon|Healing +1|f|f|f|f
+RuneAction|623|92|1|0|0
+Rune|686|873300025|0|0|f|Smoke||f|f|f|f
+RuneAction|686|659|0|4|0
+Rune|692|873300044|0|0|f|Meditate||f|f|f|f
+RuneAction|692|660|0|4|0
+Rune|694|872482022|0|0|f|Stone Wall||f|f|f|f
+RuneAction|694|661|0|4|0
+Rune|698|5500024|0|0|f|Kame Power Up||f|f|f|f
+RuneAction|698|662|0|4|0
+Rune|699|7700027|0|0|f|||f|f|f|f
+RuneAction|699|667|0|4|0
+Rune|706|873300009|0|0|t|Off hand|Item that grants the ability to throw a fan of knives|f|f|f|f
+RuneAction|706|707|0|4|0
+Rune|721|873300013|0|0|t|Off hand||f|f|f|f
+RuneAction|721|717|0|4|0
+Rune|723|7700032|0|0|f|||f|f|f|f
+RuneAction|723|724|0|4|0
+Rune|711|None|0|0|f|Ammo Below||f|f|f|f
+Rune|710|872111001|0|0|f|Dont Equip||f|f|f|f
+Rune|624|5500035|0|0|f|Ammo||f|f|f|f
+Rune|625|7700033|0|0|f|Ammo||f|f|f|f
+Rune|725|None|0|0|f|||f|f|f|f
+Rune|743|873200003|0|0|t|Spell Slot A||f|f|f|f
+RuneAction|743|736|0|4|0
+Rune|750|5500064|0|0|t|Spell Slot A||f|f|f|f
+RuneAction|750|745|0|4|0
+RuneCondition|750|0|2|0|0|0.0|0.0|
+Rune|751|873300026|0|0|t|Spell Slot A||f|f|f|f
+RuneAction|751|749|0|4|0
+Rune|859|2709928|0|0|f|Admin||f|f|f|f
+RuneAction|859|856|0|4|0
+RuneAction|859|857|0|4|0
+RuneAction|859|858|0|4|0
+RuneAction|859|848|0|4|0
+RuneAction|859|850|0|4|0
+RuneAction|859|851|0|4|0
+RuneAction|859|852|0|4|0
+RuneAction|859|853|0|4|0
+RuneAction|859|854|0|4|0
+RuneAction|859|855|0|4|0
+RuneAction|859|860|0|4|0
+RuneAction|859|1071|0|4|0
+RuneAction|859|1071|0|4|0
+RuneAction|859|862|0|4|0
+RuneAction|859|863|0|4|0
+RuneAction|859|864|0|4|0
+RuneAction|859|865|0|4|0
+Rune|866|872460002|0|0|t|Top||f|f|f|f
+RuneAction|866|306|4|0|0
+Rune|867|872461002|0|0|t|Bottom||f|f|f|f
+RuneAction|867|984|1|0|0
+Rune|868|872101002|0|0|t|Weapon||f|f|f|f
+RuneAction|868|330|2|0|0
+Rune|869|872216004|0|0|t|Weapon||f|f|f|f
+RuneAction|869|332|2|0|0
+Rune|870|872112002|0|0|t|Weapon||f|f|f|f
+RuneAction|870|331|2|0|0
+Rune|871|872318002|0|0|t|Weapon||f|f|f|f
+RuneAction|871|92|2|0|0
+Rune|872|2709820|0|0|t|Trinket||f|f|f|f
+RuneAction|872|54|1|0|0
+Rune|873|2709818|0|0|t|Trinket||f|f|f|f
+RuneAction|873|57|1|0|0
+Rune|874|2709823|0|0|t|Trinket||f|f|f|f
+RuneAction|874|69|1|0|0
+Rune|875|7810001|0|0|t|Top|Stealth +1|f|f|f|f
+RuneAction|875|56|1|0|0
+Rune|876|7810002|0|0|t|Bottom|Sleight of Hand +1|f|f|f|f
+RuneAction|876|69|1|0|0
+Rune|877|7810007|0|0|t|Top|Inight +1|f|f|f|f
+RuneAction|877|90|1|0|0
+Rune|878|7810008|0|0|f|Bottom|Acrobatics +1|f|f|f|f
+RuneAction|878|61|1|0|0
+Rune|879|7810013|0|0|t|Top|Fortitude +1|f|f|f|f
+RuneAction|879|89|1|0|0
+Rune|894|7810014|0|0|t|Bottom|Intimidation +1|f|f|f|f
+RuneAction|894|58|1|0|0
+Rune|895|7810019|0|0|t|Top|Spellcraft +1|f|f|f|f
+RuneAction|895|50|1|0|0
+Rune|896|7810020|0|0|t|Bottom|Willpower +1|f|f|f|f
+RuneAction|896|55|1|0|0
+Rune|897|7810025|0|0|t|Top|Medicine +1|f|f|f|f
+RuneAction|897|57|1|0|0
+Rune|898|7810026|0|0|t|Bottom|Artistry +1|f|f|f|f
+RuneAction|898|51|1|0|0
+Rune|899|7800001|0|0|t|Weapon|For Healers +2|f|f|f|f
+RuneAction|899|92|2|0|0
+RuneAction|899|919|0|4|0
+Rune|900|7800004|0|0|t|Weapon|For Healers +2|f|f|f|f
+RuneAction|900|92|2|0|0
+RuneAction|900|920|0|4|0
+Rune|901|7800007|0|0|t|Weapon|For Healers +2|f|f|f|f
+RuneAction|901|92|2|0|0
+RuneAction|901|921|0|4|0
+Rune|902|7800010|0|0|t|Weapon|For Magic +2|f|f|f|f
+RuneAction|902|332|2|0|0
+RuneAction|902|933|0|4|0
+Rune|903|7800013|0|0|t|Weapon|For Melee +2|f|f|f|f
+RuneAction|903|330|2|0|0
+RuneAction|903|922|0|4|0
+Rune|904|7800016|0|0|t|Weapon|For Range +2|f|f|f|f
+RuneAction|904|331|2|0|0
+RuneAction|904|923|0|4|0
+Rune|905|7800019|0|0|t|Weapon|For Magic +2|f|f|f|f
+RuneAction|905|332|2|0|0
+RuneAction|905|924|0|4|0
+Rune|906|7800022|0|0|t|Weapon|For Magic +2|f|f|f|f
+RuneAction|906|332|2|0|0
+RuneAction|906|925|0|4|0
+Rune|907|7800025|0|0|t|Weapon|For Healers +2|f|f|f|f
+RuneAction|907|92|2|0|0
+RuneAction|907|926|0|4|0
+Rune|910|7800034|0|0|t|Weapon|For Range +2|f|f|f|f
+RuneAction|910|331|2|0|0
+RuneAction|910|927|0|4|0
+Rune|911|7800037|0|0|t|Weapon|For Melee +2|f|f|f|f
+RuneAction|911|330|2|0|0
+RuneAction|911|928|0|4|0
+Rune|913|7800043|0|0|t|Weapon|For Range +2|f|f|f|f
+RuneAction|913|331|2|0|0
+RuneAction|913|931|0|4|0
+Rune|914|833102|0|0|f|||f|f|f|f
+Rune|915|833103|0|0|f|||f|f|f|f
+Rune|916|833104|0|0|f|||f|f|f|f
+Rune|1023|833105|0|0|f|||f|f|f|f
+Rune|1024|833106|0|0|f|||f|f|f|f
+Rune|1025|833107|0|0|f|||f|f|f|f
+Rune|1026|833108|0|0|f|||f|f|f|f
+Rune|1027|833109|0|0|f|||f|f|f|f
+Rune|1028|833110|0|0|f|||f|f|f|f
+Rune|1115|None|0|0|f|||f|f|f|f
+Rune|1116|7810015|0|0|t|Top|+2 to Reaction&brk;-1 to action|f|f|f|f
+RuneAction|1116|65|2|0|0
+RuneAction|1116|63|-1|0|0
+Rune|1117|7810016|0|0|t|Bottom|+2 to Reaction&brk;-1 to action|f|f|f|f
+RuneAction|1117|65|2|0|0
+RuneAction|1117|63|-1|0|0
+Rune|1120|7810009|0|0|f|Top|+2 Action&brk;-1 Reaction|f|f|f|f
+RuneAction|1120|63|2|0|0
+RuneAction|1120|65|-1|0|0
+Rune|1121|7810010|0|0|f|Bottom|+2 Action&brk;-1 Reaction|f|f|f|f
+RuneAction|1121|63|2|0|0
+RuneAction|1121|65|-1|0|0
+Rune|1126|7810035|0|0|f|Offhand|+1 to reaction&brk;-1 to action|f|f|f|f
+RuneAction|1126|63|-1|0|0
+RuneAction|1126|65|1|0|0
+Rune|1127|7810032|0|0|f|Offhand|+1 Magic&brk;+1 Healing&brk;-1 Melee&brk;-1 Range |f|f|f|f
+RuneAction|1127|332|1|0|0
+RuneAction|1127|92|1|0|0
+RuneAction|1127|330|-1|0|0
+RuneAction|1127|331|-1|0|0
+Rune|1118|7810003|0|0|f|Top|+4 HP&brk;-2 Reaction&brk;+1 Action|f|f|f|f
+RuneAction|1118|46|4|3|0
+RuneAction|1118|65|-2|0|0
+RuneAction|1118|63|1|0|0
+Rune|1119|7810004|0|0|f|Bottom|+4 HP&brk;-2 Reaction&brk;+1 Action|f|f|f|f
+RuneAction|1119|46|4|3|0
+RuneAction|1119|65|-2|0|0
+RuneAction|1119|63|1|0|0
+Rune|1122|7810021|0|0|f|Top|+4 HP&brk;+2 Magic&brk;-2 Healing|f|f|f|f
+RuneAction|1122|46|4|3|0
+RuneAction|1122|332|2|0|0
+RuneAction|1122|92|-1|0|0
+RuneAction|1122|330|-2|0|0
+RuneAction|1122|331|-2|0|0
+Rune|1123|7810022|0|0|f|Bottom|+4 HP&brk;+2 Magic&brk;-1 Healing&brk;-2 Range&brk;-2 Melee|f|f|f|f
+RuneAction|1123|46|4|3|0
+RuneAction|1123|332|2|0|0
+RuneAction|1123|92|-1|0|0
+RuneAction|1123|331|-2|0|0
+RuneAction|1123|330|-2|0|0
+Rune|1124|7810027|0|0|f||+4 HP&brk;+2 Healing&brk;-1 Magic&brk;-2 Melee&brk;-2 Range|f|f|f|f
+RuneAction|1124|46|4|3|0
+RuneAction|1124|92|2|0|0
+RuneAction|1124|332|-1|0|0
+RuneAction|1124|330|-2|0|0
+RuneAction|1124|331|-2|0|0
+Rune|1125|7810028|0|0|f|Bottom|+4 HP&brk;+2 Healing&brk;-1 Magic&brk;-2 Melee&brk;-2 Range|f|f|f|f
+RuneAction|1125|46|4|3|0
+RuneAction|1125|92|2|0|0
+RuneAction|1125|332|-1|0|0
+RuneAction|1125|330|-2|0|0
+RuneAction|1125|331|-2|0|0
+Rune|1128|7800002|0|0|f|||f|f|f|f
+Rune|1129|7800005|0|0|f|||f|f|f|f
+Rune|1130|7800008|0|0|f|||f|f|f|f
+Rune|1131|7800011|0|0|f|||f|f|f|f
+Rune|1132|7800014|0|0|f|||f|f|f|f
+Rune|1133|7800017|0|0|f|||f|f|f|f
+Rune|1134|7800020|0|0|f|||f|f|f|f
+Rune|1135|7800023|0|0|f|||f|f|f|f
+Rune|1136|7800026|0|0|f|||f|f|f|f
+Rune|1137|7800029|0|0|f|||f|f|f|f
+Rune|1138|7800035|0|0|f|||f|f|f|f
+Rune|1139|7800038|0|0|f|||f|f|f|f
+Rune|1140|7800044|0|0|f|||f|f|f|f
+Rune|1141|None|0|0|f|||f|f|f|f
+Rune|1142|None|0|0|f|||f|f|f|f
+Stat|46|Hit Points|0|306*1.0|-30|t|t|t|Hit points have a base value of 12 for all non-afflicted characters.|1.0|t|f|0
+Stat|978|Energy|0|984*1.0|-10|t|f|t||1.0|t|f|0
+Stat|986|Constitution|0|987*1.0|-30|t|f|t||1.0|t|f|0
+Stat|480|Initiative|30||0|f|f|t||1.0|t|f|0
+Stat|420|Sobriety|20||-20|t|t|t||1.0|t|f|0
+Stat|584|----------------------------------|0||0|f|f|f||1.0|f|t|0
+Stat|585|Fishing EXP|0||0|f|f|t||1.0|f|f|0
+Stat|586|Cooking EXP|0||0|f|f|t||1.0|f|f|0
+Stat|595|Mining EXP|0||0|f|f|t||1.0|f|f|0
+Stat|600|Lumberjack EXP|0||0|f|f|t||1.0|f|f|0
+Stat|632|Gatherer EXP|0||0|f|f|t||1.0|f|f|0
+Stat|631|BlackSmith EXP|0||0|f|f|t||1.0|f|f|0
+Stat|755|Skinning EXP|0||0|f|f|t||1.0|f|f|0
+Stat|939|WeaponSmith EXP|0||0|f|f|t||1.0|f|f|0
+Stat|956|Tailoring EXP|0||0|f|f|t||1.0|f|f|0
+Stat|1085|Alchemist EXP|0||0|f|f|f||1.0|f|f|0
+Stat|727|--------------------------------------------|0||0|f|f|f||1.0|f|t|0
+Stat|728|--Granted Stats--|0||0|f|f|f||1.0|f|t|0
+Stat|715|Tinkerer EXP|0||0|f|f|f||1.0|f|f|0
+Stat|733|Scholar EXP|0||0|f|f|f||1.0|f|f|0
+Stat|680|----------------------------------|0||0|f|f|f||1.0|f|t|0
+Stat|681|--Secret Ability Grants--|0||0|f|f|f||1.0|f|t|0
+Stat|675|Scholar|0||0|f|f|t|Will increae by on everytime you use Learn Ability, adding to the roll. Will reset to one everytime you successfully learn an ability|1.0|f|f|0
+Stat|693|Scholar Level|0||0|t|f|t||1.0|f|t|0
+Stat|687|Learned Smoke Screen|0||0|f|f|t||1.0|f|t|0
+Stat|688|Learned Meditate|0||0|f|f|t||1.0|f|t|0
+Stat|689|Learned Stone Wall|0||0|f|f|t||1.0|f|t|0
+Stat|690|Learned Kame Power Up|0||0|f|f|t||1.0|f|t|0
+Stat|691|Learned Poison Cloud|0||0|f|f|t||1.0|f|t|0
+Stat|738|----------------------------------|0||0|f|f|f||1.0|f|f|0
+Stat|739|--Secret Scholar Teach--|0||0|f|f|f||1.0|f|f|0
+Stat|740|Learned Magic Push|0||0|f|f|t||1.0|f|t|0
+Stat|741|Learned Blizzard|0||0|f|f|t||1.0|f|t|0
+Stat|742|Learned Ignite|0||0|f|f|t||1.0|f|t|0
+Stat|773|----------------------------------|0||0|f|f|f||1.0|f|f|0
+Stat|774|Card Drawn|0||0|f|f|t|Card Drawn|1.0|f|t|0
+SpellDef|1067|--Event Attacking System--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|1042|Attack Mob|Attack agasint mobs using the social rolls&brk;The status above your head is howmuch damage you dealt to the enemy|2.0|1|1|2|0|f.floor[((.8*{c.Sleight of Hand})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|2|14|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1042|5|1|0|0.0|0.0|Attacked
+SpellEffect|1042|0|0|{caster} Attacks the NPC &brk;{roll}|0|0|1|1||||1
+SpellEffect|1042|2|4|f.floor[(((.5*{c.Action}))+((.5*{c.Feats of Strength}))+((.5*{c.Acrobatics})))]+(1d10)|1047|0|2|1|5|Attacked||1
+SpellEffect|1042|0|9||1062|0|2|1||||1
+SpellEffect|1042|0|9||1063|0|2|1||||1
+SpellEffect|1042|0|9||1064|0|2|1||||1
+SpellEffect|1042|0|9||1065|0|2|1||||1
+SpellEffect|1042|0|9||1066|0|2|1||||1
+SpellEffect|1042|0|0|{caster} missed their attack|0|0|1|2||||1
+SpellEffect|1042|0|11||1053|0|1|2|5|MISSED||1
+SpellDef|1062|Attack Checker 1-7||2.0|1|1|2|0||4|0|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1062|1|6|1047|1.0|9.0|
+SpellEffect|1062|0|11||1048|0|1|0|5|Dealt 1 DMG||1
+SpellDef|1063|Attack Checker 8-11||2.0|1|1|2|0||4|0|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1063|1|6|1047|10.0|13.0|
+SpellEffect|1063|0|11||1049|0|1|0|5|Dealt 2 DMG||1
+SpellDef|1064|Attack Checker 12-15||2.0|1|1|2|0||4|0|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1064|1|6|1047|14.0|17.0|
+SpellEffect|1064|0|11||1050|0|1|0|5|Dealt 3 DMG||1
+SpellDef|1065|Attack Checker 16-18||2.0|1|1|2|0||4|0|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1065|1|6|1047|18.0|21.0|
+SpellEffect|1065|0|11||1051|0|1|0|5|Dealt 4 DMG||1
+SpellDef|1066|Attack Checker 19+||2.0|1|1|2|0||4|0|f|f|f|f|0|Icon174|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellReqDef|1066|1|3|1047|22.0|18.0|
+SpellEffect|1066|0|11||1052|0|1|0|5|Dealt 5 DMG||1
+SpellDef|1054|Defend|Defend agasint enemy mobs using your social rolls to resist attacks|2.0|1|1|2|0|f.floor[((.8*{c.Fortitude})+(.8*{c.Acrobatics}))]+(1d20)|2|14|f|f|f|f|0|Icon198|f|f|0.412212,0.412212,0.412212,1.0|Event|f|f|4|1|
+SpellEffect|1054|0|11||1044|0|1|0|5|Defended||1
+SpellEffect|1054|0|0|{caster} Repels the attack&brk;{roll}|0|0|1|1||||1
+SpellEffect|1054|0|0|{caster} was hit|0|0|0|2||||1
+SpellEffect|1054|0|1|-(2d5)|46|0|0|2|10|MISSED||1
+SpellDef|1068|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|503|Open Social Abilities|Use this Ability then click Refresh at the top right|0.0|1|0|2|0||4|0|f|f|t|f|0|Icon250|f|f|0.020928,0.287643,0.960321,1.0|Social|f|f|1|1|
+SpellEffect|503|0|11||506|0|2|0|1|Social Ability||1
+SpellDef|418|Drink|Take a Drink|0.0|1|0|0|89||2|25|f|t|f|f|0|80647|t|t|1.0,1.0,1.0,1.0|Social|f|f|4|1|
+SpellEffect|418|0|9||432|0|2|0||||1
+SpellEffect|418|0|9||433|0|2|0||||1
+SpellEffect|418|0|9||434|0|2|0||||1
+SpellEffect|418|0|0|{comment}|0|0|0|0||||1
+SpellEffect|418|0|0|{caster} takes a drink, but their condition appears unchanged.&brk;{roll}|0|0|0|1||||1
+SpellEffect|418|0|0|{caster} takes a drink, feeling more intoxicated.&brk;{roll}|0|0|0|2||||1
+SpellEffect|418|0|1|(-2d4) + (f.ceil[(.7*{c.Fortitude})])|420|2|0|2|1|Drunk||1
+SpellEffect|418|0|1|(-3d4) + (f.ceil[(.7*{c.Fortitude})])|420|1|0|2||||1
+SpellDef|502|Physical Attack|You attempt to make a swing, kick, headbutt, etc|2.0|0|1|2|0|(1d20) + {c.Acrobatics})|4|0|f|t|f|f|0|Icon292|t|t|0.915707,0.022874,0.022874,1.0|Social|f|f|4|1|(1d20 + {t.Acrobatics})
+SpellEffect|502|0|0|{comment}&brk;|0|0|0|0||||1
+SpellEffect|502|0|0|{caster} rolled a {roll} successfully landing a blow on {target}&brk;|0|0|0|1||||1
+SpellEffect|502|0|0|{caster} rolled a {roll} failed to land a hit on {target} |0|0|0|2||||1
+SpellDef|508|Hold|You attempt to make a swing, kick, headbutt, etc|2.0|0|1|2|0|(1d20) + {c.Feats of Strength})|4|0|f|t|f|f|0|Icon264|t|t|0.230572,0.04565,0.0,1.0|Social|f|f|4|1|(1d20 + {t.Acrobatics})
+SpellEffect|508|0|0|{comment}&brk;|0|0|0|0||||1
+SpellEffect|508|0|0|{caster} rolled a {roll} Grappling {target} in place&brk;|0|0|0|1||||1
+SpellEffect|508|0|0|{caster} rolled a {roll} unable to grapple {target} |0|0|0|2||||1
+SpellDef|510|Escape |For when you are in a grapple or in Restraints|5.0|0|1|2|0|(1d20) + {c.Feats of Strength})|4|0|f|t|f|f|0|Icon339|t|t|0.78824,0.15606,0.0,1.0|Social|f|f|4|1|(1d20 + {t.Feats of Strength)
+SpellEffect|510|0|0|{comment}&brk;{caster} Attempts to Escape|0|0|0|0||||1
+SpellEffect|510|0|0|able to get free from {target}&brk;{roll)&brk;|0|0|0|1||||1
+SpellEffect|510|0|0|unable to get free from {target}&brk;{roll)&brk;|0|0|0|2||||1
+SpellDef|509|Cast Physical Magic Ability|This is used if your ability affects the physical state of one person|10.0|0|4|2|0|(1d20) + {c.Spellcraft}|4|0|f|t|f|f|0|Icon325|t|t|0.0,0.703549,0.998561,1.0|Social|f|f|4|1|(1d20 + {t.Fortitude})
+SpellEffect|509|0|0|{comment}&brk;{caster} casted a physical ability|0|0|0|0||||1
+SpellEffect|509|0|0|Successfully affecting {target}&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|509|0|0|failing to affect {target}&brk;{roll}|0|0|0|2||||1
+SpellDef|511|Cast Mind Magic Ability|This is used if your ability affects the Mind state of one person|10.0|0|4|2|0|(1d20) + {c.Spellcraft}|4|0|f|t|f|f|0|Icon326|t|t|0.336789,0.803049,0.998561,1.0|Social|f|f|4|1|(1d20 + {t.Willpower})
+SpellEffect|511|0|0|{comment}&brk;{caster} casted a mind ability|0|0|0|0||||1
+SpellEffect|511|0|0|Successfully affecting {target}&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|511|0|0|failing to affect {target}&brk;{roll}|0|0|0|2||||1
+SpellDef|512|Parkour||10.0|1|4|2|0|(1d20) + {c.Acrobatics})|2|11|f|t|f|f|0|Icon374|t|t|0.82648,0.625054,0.012744,1.0|Social|f|f|4|1|
+SpellEffect|512|0|0|{comment}&brk;{caster} performs a feat of Agility|0|0|0|0||||1
+SpellEffect|512|0|0|succeeding in their attempts&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|512|0|0|failing in their attempts&brk;{roll}|0|0|0|2||||1
+SpellDef|513|Pick Pocket||1.5|0|1|2|0|(1d20) + {c.Sleight of Hand})|4|0|f|t|f|f|0|Icon285|t|t|0.194643,0.201995,0.205078,1.0|Social|f|f|4|1|(1d20 + {t.Awareness})
+SpellEffect|513|0|0|{comment}&brk;{caster} attempts to pick the pockets of|0|0|0|0||||1
+SpellEffect|513|0|0|{target} succeeding in their attempts&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|513|0|0|{target} failing in their attempts&brk;{roll}&brk;|0|0|0|2||||1
+SpellDef|514|Stealth||10.0|0|5|2|0|(1d20) + {c.Stealth})|4|0|f|t|f|f|0|Icon207|t|t|0.660773,0.660773,0.660773,1.0|Social|f|f|4|1|(1d20 + {t.Awareness})
+SpellEffect|514|0|0|{comment}&brk;{caster} attempts to conceal themselves|0|0|0|0||||1
+SpellEffect|514|0|0|succeeding in hiding from {target}&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|514|0|0|unable to hide themselves from {target}&brk;{roll}&brk;|0|0|0|2||||1
+SpellDef|1069|Stealth vs NPC Guard||10.0|1|5|2|0|(1d20) + {c.Stealth})|2|13|f|f|f|f|0|Icon207|f|t|0.208265,0.208265,0.208265,1.0|Social|f|f|4|1|
+SpellEffect|1069|0|0|succeeded in concealing themselves&brk;{roll}&brk;|0|0|0|1||||1
+SpellEffect|1069|0|0|was unable to conceal themselves&brk;{roll}&brk;|0|0|0|2||||1
+SpellDef|515|Performs|Your performance is V.S. Willpower|10.0|0|5|2|0|(1d20) + {c.Performance}|4|0|f|t|f|f|0|Icon348|t|t|0.660773,0.660773,0.660773,1.0|Social|f|f|4|1|(1d20 + {t.Willpower})
+SpellEffect|515|0|0|{comment}&brk;{caster} performs|0|0|0|0||||1
+SpellEffect|515|0|0|succeeding in their acts|0|0|0|1||||1
+SpellEffect|515|0|0|failing in their acts|0|0|0|2||||1
+SpellDef|501|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|521|Accept PVP||20.0|1|10|2|0||4|0|f|f|f|f|0|Icon371|f|f|0.240132,0.0,0.0,1.0|Mechanics|f|f|4|1|
+SpellEffect|521|0|0|Accepted PVP Intent|0|0|0|0||||1
+SpellEffect|521|2|11||518|0|0|0|1000|In Combat||1
+SpellEffect|521|2|7||0|0|0|0||PVP Intent||1
+SpellDef|519|Declare PVP||20.0|0|10|2|0||4|0|f|f|t|f|0|Icon371|f|f|0.995374,0.0,0.0,1.0|Mechanics|f|f|4|1|
+SpellEffect|519|0|0|Declares PVP Start|0|0|0|0||||1
+SpellEffect|519|2|11||518|0|0|0|1000|In Combat||1
+SpellEffect|519|0|11||520|0|0|0|1000|PVP Intent||1
+SpellDef|522|End Combat||20.0|1|10|2|0||4|0|f|f|f|f|0|Icon198|f|f|0.0,0.918894,0.153779,1.0|Mechanics|f|f|4|1|
+SpellEffect|522|2|7||0|0|1|0|1000|In Combat||1
+SpellEffect|522|2|7||0|0|1|0|1000|PVP Intent||1
+SpellDef|499|Distance Tracker|This is to check how many tiles someone is from you, just click select and you will see the names on the panel below.&brk;Remember to use the distance movement tracker before moving on your turn.|20.0|2|0|0|0||0|0|f|f|f|f|0|Icon52|f|f|0.520559,0.520559,0.520559,1.0|Mechanics|f|f|4|1|
+SpellDef|350|Initiative|Roll initiative to determine turn order, in order from highest to lowest result; result is automatically set as your Initiative stat until the next roll.&brk;&brk;In case of ties, the character with higher Reaction goes first; if there is still a tie, actions occur simultaneously. Both characters act, even if their actions would be contradictory (for example, simultaneously drop each other to 0 HP)|10.0|1|10|2|0||4|0|f|f|f|f|0|Icon240|f|f|1.0,1.0,1.0,1.0|Mechanics|f|f|4|1|
+SpellEffect|350|0|10|1d20 + {c.Reaction}|480|0|0|0||||1
+SpellDef|413|End Turn|End your turn, allowing the next character in the initiative order to act.|0.0|1|0|0|65||2|0|f|f|f|f|0|Icon383|f|f|1.0,1.0,1.0,1.0|Mechanics|f|f|4|1|
+SpellEffect|413|0|0|{Caster} ends their turn. The next character in the initiative order may now act.|0|0|0|0||||1
+SpellEffect|413|0|9||351|0|0|0||||1
+SpellEffect|413|0|9||387|0|0|0||Buff||1
+SpellEffect|413|0|9||392|0|0|0||||1
+SpellEffect|413|0|9||666|0|0|0||||1
+SpellEffect|413|0|9||747|0|0|0||||1
+SpellEffect|413|0|7||0|0|2|0||End Turn||1
+SpellDef|523|Flee Combat|In order to flee must select all hostile combatants currently engaged with in PVP.&brk;If successful can flee combat only if there is a clear path of escape.&brk;Cannot use a social roll to stop someone from flee'ing.&brk;If flee is successful, must leave the scene and not come back, or pvp can reengage&brk;If Flee fails for one or more combatants, must stay engaged.|10.0|4|10|2|0|(1d20 + {c.Reaction})|4|0|f|f|f|f|0|Icon203|f|f|0.0,0.77868,0.115425,1.0|Mechanics|f|f|4|1|(1d20 + {t.Action})
+SpellEffect|523|0|0|{caster} Attempts to Flee|0|0|0|0||||1
+SpellEffect|523|0|7||0|0|2|1||In Combat||1
+SpellEffect|523|0|0|Successfully getting away&brk;{roll}|0|0|0|1||||1
+SpellEffect|523|0|0|Unable to get away&brk;{roll}|0|0|0|2||||1
+SpellDef|979|Rest||0.0|1|0|2|0||4|0|f|f|t|f|0|Icon191|f|f|0.0,0.651213,0.221043,1.0|Mechanics|f|f|4|1|
+SpellEffect|979|0|10|10|978|0|2|0||||1
+SpellEffect|979|0|1|+38|46|0|2|0||||1
+SpellEffect|979|0|10|30|986|0|0|0||||1
+SpellEffect|979|0|0|Rest replenishing their Health and Energy.|0|0|0|0||||1
+SpellDef|370|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|416|Punch|Basic Attack: Punch your opponent.|1.0|0|1|0|63||0|65|f|f|t|t|0|Icon334|t|t|0.86472,0.054668,0.054668,1.0|Melee|f|f|4|1|
+SpellReqDef|416|5|1|0|0.0|0.0|End Turn
+SpellEffect|416|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|416|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d3)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|416|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d3)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|416|0|0|{comment}&brk;&brk;{caster} punches a critical {target}, landing a forceful blow.&brk;{roll}|0|1|0|1||||1
+SpellEffect|416|0|0|{comment}&brk;&brk;{caster} punches {target}, landing a forceful blow.&brk;{roll}|0|2|0|1||||1
+SpellEffect|416|0|0|{comment}&brk;&brk;{caster} punches {target}, but fails to connect solidly.&brk;{roll}|0|0|0|2||||1
+SpellDef|328|Melee: Swing|Basic Attack: Swing your weapon, no cooldown.|1.0|0|1|0|63||0|65|f|f|f|t|0|Icon174|t|t|0.596078,0.631373,0.086275,1.0|Melee|f|f|4|1|
+SpellReqDef|328|3|0|309|0.0|0.0|
+SpellReqDef|328|5|1|0|0.0|0.0|End Turn
+SpellEffect|328|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|328|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d8)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|328|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d8)  + (.4*{t.Defense}) - 1|46|1|0|1||||1
+SpellEffect|328|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|328|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|347|Melee: Stab|A stabbing thrust that causes bleeding. &brk;&brk;Bleeding deals damage at the end of each round and reduces Reaction by 1 until it is successfully stopped.&brk;&brk;This ability requires 4 points invested into melee to use (buffs do not count).|1.0|0|1|0|63||0|65|f|f|f|t|0|Icon159|t|t|0.6,0.631373,0.086275,1.0|Melee|f|f|4|1|
+SpellReqDef|347|3|0|309|0.0|0.0|
+SpellReqDef|347|2|3|330|4.0|0.0|
+SpellReqDef|347|0|3|978|2.0|0.0|
+SpellReqDef|347|5|1|0|0.0|0.0|End Turn
+SpellEffect|347|2|1|-2|978|0|0|0||||1
+SpellEffect|347|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|347|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Puncture}) + (.4*{t.Defense})|46|2|0|1||||1
+SpellEffect|347|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Puncture}) + (.4*{t.Defense}) -1|46|1|0|1||||1
+SpellEffect|347|0|11||348|0|0|1|30|Bleed||1
+SpellEffect|347|0|0|{comment}&brk;&brk;{caster} thrusts a weapon at {Target}, stabbing deep and causing bleeding..&brk;{roll}|0|0|0|1||||1
+SpellEffect|347|0|0|{comment}&brk;&brk;{caster} thrusts a weapon at {Target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|354|Melee: Cleave|A cleaving attack that can strike at two opponents in close proximity.|1.5|0|2|0|63||0|65|f|f|f|t|0|Icon149|t|t|0.6,0.631373,0.086275,1.0|Melee|f|f|4|1|
+SpellReqDef|354|3|0|309|0.0|0.0|
+SpellReqDef|354|0|3|978|2.0|0.0|
+SpellReqDef|354|5|1|0|0.0|0.0|End Turn
+SpellEffect|354|2|1|-2|978|0|0|0||||1
+SpellEffect|354|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|354|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Cleave}) + (.4*{t.Defense})|46|2|0|1||||1
+SpellEffect|354|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Cleave}) + (.4*{t.Defense}) -1|46|1|0|1||||1
+SpellEffect|354|0|0|{comment}&brk;&brk;{caster} swings their weapon in an arc, cleaving {Target} with a solid hit.&brk;{roll}|0|0|0|1||||1
+SpellEffect|354|0|0|{comment}&brk;&brk;{caster} swings their weapon in an arc, but fails to connect with {Target}.&brk;{roll}|0|0|0|2||||1
+SpellDef|355|Melee: Lunge|Lunge at the target, moving up to 4 tiles in an unobstructed straight line to strike them.&brk;&brk;This ability uses up your movement action when used.|4.0|0|1|0|63||0|65|f|f|f|t|0|Icon371|t|t|0.6,0.631373,0.086275,1.0|Melee|f|f|4|1|
+SpellReqDef|355|3|0|309|0.0|0.0|
+SpellReqDef|355|0|3|978|1.0|0.0|
+SpellReqDef|355|5|1|0|0.0|0.0|End Turn
+SpellEffect|355|2|1|-1|978|0|0|0||||1
+SpellEffect|355|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|355|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d3) - (.5*{c.Puncture}) + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|355|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Puncture}) + (.4*{t.Reaction}) -1|46|1|0|1||||1
+SpellEffect|355|0|0|{comment}&brk;&brk;{caster} lunges at {Target}, closing the distance quickly and striking.&brk;{roll}|0|0|0|1||||1
+SpellEffect|355|0|0|{comment}&brk;&brk;{caster} lunges at {Target}, closing the distance quickly, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|363|Melee: Round House|Kick your opponent, stunning them for one turn.&brk;&brk;A character may not use any free actions or items while stunned.|1.0|0|1|0|63||0|65|f|f|f|t|30|Icon291|t|t|0.6,0.631373,0.086275,1.0|Melee|f|f|4|1|
+SpellReqDef|363|3|0|309|0.0|0.0|
+SpellReqDef|363|0|3|978|1.0|0.0|
+SpellReqDef|363|5|1|0|0.0|0.0|End Turn
+SpellEffect|363|2|1|-1|978|0|0|0||||1
+SpellEffect|363|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|363|0|11||364|2|0|1|15|Stunned||1
+SpellEffect|363|0|0|{comment}&brk;&brk;{caster} kicks {target}, stunning them.&brk;{target} may not use any actions while stunned for one turn.&brk;{roll}|0|0|0|1||||1
+SpellEffect|363|0|0|{comment}&brk;&brk;{caster} kicks at {target}, but fails to connect solidly.&brk;{roll}|0|0|0|2||||1
+SpellDef|357|Melee: Rage|Rage as a Free Action, gaining a +2 to Action for up to three targets (including yourself) within range.&brk;&brk;This buff expires at the end of the target's turn.|5.0|0|3|0|63||0|65|f|f|f|t|20|Icon198|t|t|0.956863,0.882353,0.454902,1.0|Free Action|f|f|4|1|
+SpellReqDef|357|3|0|309|0.0|0.0|
+SpellReqDef|357|0|3|978|1.0|0.0|
+SpellEffect|357|2|1|-1|978|0|0|0||||1
+SpellEffect|357|0|11||358|2|0|1|15|Buff||1
+SpellEffect|357|0|0|{comment}&brk;&brk;{caster}'s display of rage inspires {target}, increasing their chance of successfully taking action.&brk;{roll}|0|0|0|1||||1
+SpellEffect|357|2|0|{comment}&brk;&brk;{caster}'s display of rage fails to inspire anyone.&brk;{roll}|0|0|0|2||||1
+SpellDef|360|Melee: Wall of Integrity|Take a defensive stance, protecting up to three targets (including yourself) within range by granting a +2 to Reaction as a Free Action.&brk;&brk;This ability requires 4 points invested into melee to use (buffs do not count).|2.0|0|3|0|63||4|0|f|f|f|t|20|Icon59|t|t|0.956863,0.882353,0.454902,1.0|Free Action|f|f|4|1|
+SpellReqDef|360|3|0|309|0.0|0.0|
+SpellReqDef|360|2|3|330|4.0|0.0|
+SpellReqDef|360|0|3|978|1.0|0.0|
+SpellEffect|360|2|1|-1|978|0|0|0||||1
+SpellEffect|360|0|11||361|2|0|1|15|Buff||1
+SpellEffect|360|0|0|{comment}&brk;&brk;{caster} takes on a defensive stance, preparing to intercept attacks against {target}, making it easier for them to react.&brk;{roll}|0|0|0|1||||1
+SpellDef|371|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|372|Range: Shoot|Basic Attack: Fire an arrow, no cooldown.|6.0|0|1|0|63||0|65|f|f|f|t|0|Icon137|t|t|0.019608,0.05098,0.45098,1.0|Range|f|f|4|1|
+SpellReqDef|372|3|0|311|0.0|0.0|
+SpellReqDef|372|5|1|0|0.0|0.0|End Turn
+SpellEffect|372|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|372|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(1d7)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|372|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(1d8)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|372|0|0|{comment}&brk;&brk;{caster} shoots {Target}, striking solidly.&brk;{roll}|0|0|0|1||||1
+SpellEffect|372|0|0|{comment}&brk;&brk;{caster} shoots at {Target}, but fails to land the shot.&brk;{roll}|0|0|0|2||||1
+SpellDef|373|Range: Throwing Knife|As a Free Action, hurl a knife at your opponent.&brk;&brk;This ability requires 2 points invested into range to use (buffs do not count).|4.0|0|1|0|63||2|12|f|f|f|t|240|Icon380|t|t|0.137168,0.192629,0.899774,1.0|Free Action|f|f|4|1|
+SpellReqDef|373|3|0|311|0.0|0.0|
+SpellReqDef|373|2|3|331|2.0|0.0|
+SpellReqDef|373|0|3|978|1.0|0.0|
+SpellEffect|373|2|1|-1|978|0|0|0||||1
+SpellEffect|373|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(1d2) - (.5*{c.Keen})  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|373|0|0|{comment}&brk;&brk;{caster} flicks a weapon out, striking {Target} with a rapid throw.&brk;{roll}|0|0|0|1||||1
+SpellEffect|373|0|0|{comment}&brk;&brk;{caster} flicks a weapon out in a rapid throw, but fails to connect with {Target}.&brk;{roll}|0|0|0|2||||1
+SpellDef|374|Range: Multishot|Target up to two enemies with a ranged attack.&brk;&brk;This ability requires 4 points invested into range to use (buffs do not count).|6.0|0|2|0|63||0|65|f|f|f|t|0|Icon134|t|t|0.019608,0.05098,0.45098,1.0|Range|f|f|4|1|
+SpellReqDef|374|3|0|311|0.0|0.0|
+SpellReqDef|374|2|3|331|4.0|0.0|
+SpellReqDef|374|0|3|978|2.0|0.0|
+SpellReqDef|374|5|1|0|0.0|0.0|End Turn
+SpellEffect|374|2|1|-2|978|0|0|0||||1
+SpellEffect|374|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|374|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d4)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|374|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d4)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|374|0|0|{comment}&brk;&brk;{caster} fires multiple shots in rapid succession, striking {target} with one of them.&brk;{roll}|0|0|0|1||||1
+SpellEffect|374|0|0|{comment}&brk;&brk;{caster} fires multiple shots in rapid succession, but doesn't connect a solid blow on {target}.&brk;{roll}|0|0|0|2||||1
+SpellDef|375|Range: Rope Shot|Snag your opponent with a rope, pulling them to within 1 tile of you.|6.0|0|1|0|63||0|65|f|f|f|t|0|Icon224|t|t|0.022897,0.0546,0.453639,1.0|Range|f|f|4|1|
+SpellReqDef|375|3|0|311|0.0|0.0|
+SpellReqDef|375|0|3|978|1.0|0.0|
+SpellReqDef|375|5|1|0|0.0|0.0|End Turn
+SpellEffect|375|2|1|-1|978|0|0|0||||1
+SpellEffect|375|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|375|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d3)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|375|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|375|0|0|{comment}&brk;&brk;{caster} snags {target} with a rope shot, pulling them close.&brk;{target} must move to within 1 tile of {caster}.&brk;{roll}|0|0|0|1||||1
+SpellEffect|375|0|0|{comment}&brk;&brk;{caster} tries to snag {target} with a rope shot, but the rope fails to pull them in.&brk;{roll}|0|0|0|2||||1
+SpellDef|376|Range: Volley of Arrows|Shoot a volley of arrows up and around you, striking at all targets in your surrounding area.&brk;&brk;Allies may be hit by this attack if they are within range.|4.0|3|1|0|63||0|65|f|f|f|t|0|Icon135|t|t|0.022897,0.0546,0.453639,1.0|Range|f|f|4|1|
+SpellReqDef|376|3|0|311|0.0|0.0|
+SpellReqDef|376|0|3|978|2.0|0.0|
+SpellReqDef|376|5|1|0|0.0|0.0|End Turn
+SpellEffect|376|2|1|-2|978|0|0|0||||1
+SpellEffect|376|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|376|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d3)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|376|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|376|0|0|{comment}&brk;&brk;{caster} fires a volley of arrows around themselves, striking {target} with one of the hits.&brk;{roll}|0|0|0|1||||1
+SpellEffect|376|0|0|{comment}&brk;&brk;{caster} fires a volley of arrows around themselves, but {target} doesn't take any solid hits.&brk;{roll}|0|0|0|2||||1
+SpellDef|377|Range: Sniper Shot|A long range, high damage attack with a sniper shot.&brk;&brk;This ability requires 4 points invested into range to use (buffs do not count).|10.0|0|1|0|63||0|65|f|f|f|t|0|Icon135|t|t|0.022897,0.0546,0.453639,1.0|Range|f|f|4|1|
+SpellReqDef|377|3|0|311|0.0|0.0|
+SpellReqDef|377|2|3|331|4.0|0.0|
+SpellReqDef|377|0|3|978|1.0|0.0|
+SpellReqDef|377|5|1|0|0.0|0.0|End Turn
+SpellEffect|377|2|1|-1|978|0|0|0||||1
+SpellEffect|377|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|377|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(1d10) - (.5*{c.Uncanny}) + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|377|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(1d10) - (.5*{c.Uncanny})  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|377|0|0|{comment}&brk;&brk;{caster} takes careful aim and fires at the distant {target}, landing a powerful sniper shot.&brk;{roll}|0|0|0|1||||1
+SpellEffect|377|0|0|{comment}&brk;&brk;{caster} takes careful aim and fires at the distant {target}, but their shot fails to connect solidly.&brk;{roll}|0|0|0|2||||1
+SpellDef|378|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|379|Magic: Arcane Bolt|Basic Attack: Fire a bolt of magical energy, no cooldown.|4.0|0|1|0|63||0|65|f|f|f|t|0|Icon330|t|t|0.330234,0.00419,0.463199,1.0|Magic|f|f|4|1|
+SpellReqDef|379|3|0|312|0.0|0.0|
+SpellReqDef|379|5|1|0|0.0|0.0|End Turn
+SpellEffect|379|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|379|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d8)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|379|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d8)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|379|0|0|{comment}&brk;&brk;{caster} strikes {Target} with a bolt of magical energy.&brk;{roll}|0|0|0|1||||1
+SpellEffect|379|0|0|{comment}&brk;&brk;{caster} targets {Target} with a bolt of magical energy, but fails to damage them.&brk;{roll}|0|0|0|2||||1
+SpellDef|385|Magic: Mana Missles|Launch arcane missiles at up to 3 opponents.|3.0|0|3|0|63||0|65|f|f|f|t|0|Icon364|t|t|0.330234,0.00419,0.463199,1.0|Magic|f|f|4|1|
+SpellReqDef|385|3|0|312|0.0|0.0|
+SpellReqDef|385|0|3|978|2.0|0.0|
+SpellReqDef|385|5|1|0|0.0|0.0|End Turn
+SpellEffect|385|2|1|-2|978|0|0|0||||1
+SpellEffect|385|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|385|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d6) - (.5*{c.Aether})  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|385|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d6) - (.5*{c.Aether})  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|385|0|0|{comment}&brk;&brk;{caster} fires out a volley of magical projectiles, striking {Target} with some of them.&brk;{roll}|0|0|0|1||||1
+SpellEffect|385|0|0|{comment}&brk;&brk;{caster} fires out a volley of magical projectiles, but those aimed at {Target} fail to strike effectively.&brk;{roll}|0|0|0|2||||1
+SpellDef|386|Magic: Root|Root your opponent in place, stopping them from moving for one turn.|5.0|0|1|0|63||0|65|f|f|f|t|30|Icon310|t|t|0.330234,0.00419,0.463199,1.0|Magic|f|f|4|1|
+SpellReqDef|386|3|0|312|0.0|0.0|
+SpellReqDef|386|0|3|978|1.0|0.0|
+SpellReqDef|386|5|1|0|0.0|0.0|End Turn
+SpellEffect|386|2|1|-1|978|0|0|0||||1
+SpellEffect|386|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|386|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d4)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|386|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic))]-(1d4)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|386|0|0|{comment}&brk;&brk;{caster} roots {Target} in place.&brk;{target} may not move while rooted.&brk;{roll}|0|0|0|1||||1
+SpellEffect|386|0|11||364|0|0|1||Rooted||1
+SpellEffect|386|0|0|{comment}&brk;&brk;{caster} attempts to root {Target} in place, but they are not caught by the spell.&brk;{roll}|0|0|0|2||||1
+SpellDef|389|Magic: Mana Explosion|Explode in a blast of mana, potentially damaging all targets within range (including yourself).&brk;&brk;This ability requires 4 points invested into magic to use (buffs do not count).|3.0|3|1|0|63||0|65|f|f|f|t|30|Icon54|t|t|0.330234,0.00419,0.463199,1.0|Magic|f|f|4|1|
+SpellReqDef|389|3|0|312|0.0|0.0|
+SpellReqDef|389|2|3|332|4.0|0.0|
+SpellReqDef|389|0|3|978|3.0|0.0|
+SpellReqDef|389|5|1|0|0.0|0.0|End Turn
+SpellEffect|389|2|1|-3|978|0|0|0||||1
+SpellEffect|389|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|389|0|0|{comment}&brk;&brk;{caster} explodes in a blast of mana, damaging {Target}.&brk;|0|0|0|1||||1
+SpellEffect|389|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d12) - (.5*{c.Compression})  + (.4*{t.Reaction})|46|2|1|1||||1
+SpellEffect|389|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d12) - (.5*{c.Compression})  + (.4*{t.Reaction}) - 1|46|1|1|1||||1
+SpellEffect|389|0|0|{comment}&brk;&brk;{caster} explodes in a blast of mana, and {Target} manages to escape unscathed.&brk;{roll}|0|0|1|2||||1
+SpellDef|390|Magic: Sickness|An enchantment that produces sickness in the target.&brk;&brk;Sickness deals damage at the end of each turn and reduces Action and Reaction by 1 until it is successfully healed.&brk;&brk;This ability requires 4 points invested into magic to use (buffs do not count).|4.0|0|1|0|63||0|65|f|f|f|t|0|Icon160|t|t|0.330234,0.00419,0.463199,1.0|Magic|f|f|4|1|
+SpellReqDef|390|3|0|312|0.0|0.0|
+SpellReqDef|390|2|3|332|4.0|0.0|
+SpellReqDef|390|0|3|978|1.0|0.0|
+SpellReqDef|390|5|1|0|0.0|0.0|End Turn
+SpellEffect|390|2|1|-1|978|0|0|0||||1
+SpellEffect|390|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|390|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic}))]-(1d4)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|390|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Magic))]-(1d4)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|390|0|0|{comment}&brk;&brk;{caster} inflicts a magical sickness on {Target}, weakening them.&brk;{roll}|0|0|0|1||||1
+SpellEffect|390|0|11||391|0|0|1|30|Sickened||1
+SpellEffect|390|0|0|{comment}&brk;&brk;{Target} successfully fights off the magical sickness sent at them by {caster}.&brk;{roll}|0|0|0|2||||1
+SpellDef|398|Magic: Invocation|As a Free Action, magic infuses up to two targets (including yourself) within range, increasing Healing and Magic by 4.|4.0|0|2|0|63||4|0|f|f|f|t|20|Icon124|t|t|0.031541,0.83604,0.535346,1.0|Free Action|f|f|4|1|
+SpellReqDef|398|3|0|312|0.0|0.0|
+SpellReqDef|398|0|3|978|1.0|0.0|
+SpellEffect|398|2|1|-1|978|0|0|0||||1
+SpellEffect|398|0|0|{comment}&brk;&brk;{caster} infuses {Target} with magic, empowering their ability to use magic and heal.&brk;{roll}|0|0|0|1||||1
+SpellEffect|398|0|11||399|0|0|1|15|Buff||1
+SpellDef|400|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|407|Healing: Smite|Basic Attack: Smite your opponent with divine energy, no cooldown.|4.0|0|1|0|63||0|65|f|f|f|t|0|Icon181|t|t|0.078431,0.709804,0.05098,1.0|Healing|f|f|4|1|
+SpellReqDef|407|3|0|313|0.0|0.0|
+SpellReqDef|407|5|1|0|0.0|0.0|End Turn
+SpellEffect|407|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|407|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Healing}))]-(1d8) -(.5*{c.Devotion}) + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|407|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Healing}))]-(1d8)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|407|0|0|{comment}&brk;&brk;{caster} smites {Target} with divine wrath.&brk;{roll}|0|0|0|1||||1
+SpellEffect|407|0|0|{comment}&brk;&brk;{caster} is unsuccessful in directing divine wrath against {Target}.&brk;{roll}|0|0|0|2||||1
+SpellDef|401|Healing: Rejuvenative Touch|Touch yourself or an ally, healing the target.|1.0|0|1|2|0|(.5*{c.Action}) + {c.Healing} + 2d6|2|12|f|f|f|t|0|Icon297|t|t|0.08233,0.71176,0.05407,1.0|Healing|f|f|4|1|
+SpellReqDef|401|3|0|313|0.0|0.0|
+SpellReqDef|401|0|3|978|2.0|0.0|
+SpellReqDef|401|5|1|0|0.0|0.0|End Turn
+SpellEffect|401|2|1|-2|978|0|0|0||||1
+SpellEffect|401|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|401|0|1|f.floor[((+.6*{c.Attack})+(+.6*{c.Healing}))]+(4d3)|46|0|0|1||||1
+SpellEffect|401|0|0|{comment}&brk;&brk;{caster} touches {Target}, sending healing energy into them and alleviating their wounds.&brk;{roll}|0|0|0|1||||1
+SpellEffect|401|0|0|{comment}&brk;&brk;{caster} touches {Target}, attempting to heal them, but the healing energy does not succeed.&brk;{roll}|0|0|0|2||||1
+SpellDef|402|Healing: Pulse of Healing|Cast a healing bubble around you, if opponents are in range, they will be healed aswell.|3.0|0|3|2|0|((.5*{c.Action}) + {c.Healing}) + 2d6|2|10|f|f|f|t|0|Icon287|t|t|0.08233,0.71176,0.05407,1.0|Healing|f|f|4|1|
+SpellReqDef|402|3|0|313|0.0|0.0|
+SpellReqDef|402|0|3|978|2.0|0.0|
+SpellReqDef|402|5|1|0|0.0|0.0|End Turn
+SpellEffect|402|2|1|-2|978|0|0|0||||1
+SpellEffect|402|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|402|0|1|f.floor[((+.6*{c.Attack})+(+.6*{c.Healing})) + (.5*{c.Empathy})] +(2d7)|46|0|2|1||||1
+SpellEffect|402|2|0|{comment}&brk;&brk;{caster} sends out a pulse of healing, restoring health to {Target}.&brk;{roll}|0|0|0|1||||1
+SpellEffect|402|2|0|{comment}&brk;&brk;{caster} attempts to emanate a pulse of healing, but the effect fails to materialize.&brk;{roll}|0|0|2|2||||1
+SpellDef|403|Healing: Mana Shield|Protects 2 targets with a +4 to Reaction|5.0|0|2|2|0|(.5*{c.Action}) + {c.Healing} + 2d6|2|10|f|f|f|t|10|Icon342|t|t|0.078431,0.709804,0.05098,1.0|Healing|f|f|4|1|
+SpellReqDef|403|3|0|313|0.0|0.0|
+SpellReqDef|403|0|3|978|1.0|0.0|
+SpellReqDef|403|5|1|0|0.0|0.0|End Turn
+SpellEffect|403|2|1|-1|978|0|0|0||||1
+SpellEffect|403|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|403|0|11||404|0|1|1|30|Buff||1
+SpellEffect|403|2|0|{comment}&brk;&brk;{caster} sends out a wave of protective energy, and {Target} is shielded by mana.&brk;{roll}|0|0|0|1||||1
+SpellEffect|403|0|0|{comment}&brk;&brk;{caster} attempts to send out a wave of protective energy, but the magic fails to take effect.|0|0|1|2||||1
+SpellDef|406|Healing: Cleanse|Clense you or your allies of any status aliments|5.0|0|1|2|0|(.5*{c.Action}) + {c.Healing} + 2d6|2|10|f|f|f|t|0|Icon145|t|t|0.08233,0.71176,0.05407,1.0|Healing|f|f|4|1|
+SpellReqDef|406|3|0|313|0.0|0.0|
+SpellReqDef|406|1|3|92|4.0|0.0|
+SpellReqDef|406|0|3|978|1.0|0.0|
+SpellReqDef|406|5|1|0|0.0|0.0|End Turn
+SpellEffect|406|2|1|-1|978|0|0|0||||1
+SpellEffect|406|2|11||1019|0|0|0|10|End Turn||1
+SpellEffect|406|0|0|{comment}&brk;&brk;{caster} sends a wave of energy which cleanses {Target}'s ailments.&brk;{roll}|0|0|0|1||||1
+SpellEffect|406|0|7||0|0|0|1|30|Sickened||1
+SpellEffect|406|0|7||0|0|0|1||Stunned||1
+SpellEffect|406|0|7||0|0|0|1||Bleed||1
+SpellEffect|406|0|0|{comment}&brk;&brk;{caster} attempts to cleanse {Target}'s ailments, but the magic fizzles.&brk;{roll}|0|0|0|2||||1
+SpellDef|408|Healing: Blink|Send magical energy through the ground, empowering all within range to immediately jump 2 tiles on your turn as a Free Action.&brk;&brk;This spell does not discriminate between friend and foe; if foes are in range, they will also be able to jump.&brk;&brk;This ability requires 2 points invested into healing to use (buffs do not count).|3.0|1|1|2|0|(.5*{c.Action}) + {c.Healing} + 2d6|2|6|f|f|f|t|20|Icon403|t|t|0.307805,1.0,0.276727,1.0|Free Action|f|f|4|1|
+SpellReqDef|408|3|0|313|0.0|0.0|
+SpellReqDef|408|1|3|92|2.0|0.0|
+SpellReqDef|408|0|3|978|1.0|0.0|
+SpellEffect|408|2|1|-1|978|0|0|0||||1
+SpellEffect|408|0|0|{comment}&brk;&brk;{caster} sends magic through the ground, empowering {target} to immediately jump.&brk;{target} may immediately move up to 2 tiles.&brk;{roll}|0|0|0|1||||1
+SpellEffect|408|2|0|{comment}&brk;&brk;{caster} attempts to send magic through the ground, but it fizzles and sputters out.&brk;{roll}|0|0|0|2||||1
+SpellDef|414|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|658|--Extra Abilities--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|659|Smoke Screen|Pop our a puff of smoke around you, concealing you for a moment, allowing you to move an extra tile away from your enemy.&brk;Stealth vs Target Awareness|3.0|0|1|0|56||0|53|f|f|f|t|0|Icon274|f|f|0.415399,0.415399,0.415399,1.0|Learned|f|f|4|1|
+SpellReqDef|659|0|0|687|1.0|0.0|
+SpellReqDef|659|0|3|978|1.0|0.0|
+SpellEffect|659|2|1|-1|978|0|0|0||||1
+SpellEffect|659|0|0|{comment}&brk;&brk;{caster} conceals themselves allowing them to move an extra tile away from their enemy.&brk;{roll}|0|0|0|1||||1
+SpellEffect|659|0|4|+1|56|0|0|1|10|Buff||1
+SpellEffect|659|0|0|{comment}&brk;&brk;{caster} failed to conceal themselves.&brk;{roll}|0|0|0|2||||1
+SpellDef|660|Meditate|Meditate healing you partially &brk;|3.0|1|1|2|0|(.5*{c.Action}) + {c.Healing} + 4d5|2|12|f|f|f|t|0|Icon287|f|f|0.152159,0.421772,0.122092,1.0|Learned|f|f|4|1|
+SpellReqDef|660|0|0|688|1.0|0.0|
+SpellReqDef|660|0|3|978|1.0|0.0|
+SpellEffect|660|2|1|-1|978|0|0|0||||1
+SpellEffect|660|0|0|{comment}&brk;&brk;{caster} focuses their mind, revigorating their life points&brk;{roll}|0|0|0|1||||1
+SpellEffect|660|0|1|1d5|46|0|0|1||||1
+SpellEffect|660|0|0|{comment}&brk;&brk;{caster} failed to focus, nothing happens.&brk;{roll}|0|0|0|2||||1
+SpellDef|661|Stone Wall|Conjure a stone wall in front ofyourself, blocking one round of an attack&brk;Spell Craft vs DC&brk;|3.0|1|1|0|50||2|12|f|f|f|t|0|Icon368|f|f|0.338919,0.338919,0.338919,1.0|Learned|f|f|4|1|
+SpellReqDef|661|0|0|689|1.0|0.0|
+SpellReqDef|661|0|3|978|1.0|0.0|
+SpellEffect|661|2|1|-1|978|0|0|0||||1
+SpellEffect|661|0|0|{comment}&brk;&brk;{caster} forms a stone wall protecting them, player cannot be attacked for one turn by each enemy.&brk;{roll}|0|0|0|1||||1
+SpellEffect|661|0|0|{comment}&brk;&brk;{caster} failed to cast Stone Wall.&brk;{roll}|0|0|0|2||||1
+SpellDef|662|Kame Power Up|Power up for one turn, next turn able to cast a massive mana blast at your enemy.&brk;Spellcraft vs DC|3.0|1|1|0|50||2|8|f|f|f|t|30|Icon228|f|f|0.007967,0.556087,0.880654,1.0|Learned|f|f|4|1|
+SpellReqDef|662|0|0|690|1.0|0.0|
+SpellReqDef|662|0|3|978|1.0|0.0|
+SpellEffect|662|2|1|-1|978|0|0|0||||1
+SpellEffect|662|0|0|{comment}&brk;&brk;{caster} Powers up for a massive attack&brk;{roll}|0|0|0|1||||1
+SpellEffect|662|0|11||664|0|0|1|20|Power up Mana||1
+SpellEffect|662|0|0|{comment}&brk;&brk;{caster} failed to power up their mana&brk;{roll}|0|0|0|2||||1
+SpellDef|663|Kame Mana Blast|Blast a massive attack at your opponent|4.0|0|1|0|63||0|65|f|f|f|t|0|Icon228|f|f|0.0,0.08077,0.128598,1.0|Learned|f|f|4|1|
+SpellReqDef|663|5|0|0|0.0|0.0|Power up Mana
+SpellEffect|663|0|7||0|0|0|0||Power up Mana||1
+SpellEffect|663|0|0|{comment}&brk;&brk;{caster} Launches a powerful mana blast at {target}&brk;{roll}|0|0|0|1||||1
+SpellEffect|663|0|1|f.floor[((-.8*{c.Attack})+(-.8*{c.Magic}))]-(1d15)  + (.4*{t.Reaction})|46|0|0|1||||1
+SpellEffect|663|0|0|{comment}&brk;&brk;{caster} failed to power up their mana&brk;{roll}|0|0|0|2||||1
+SpellDef|667|Poison Cloud|Launch a poison cloud at your opponent|1.0|0|1|0|63||0|65|f|f|f|t|0|Icon180|t|f|0.086275,0.631373,0.114965,1.0|Learned|f|f|4|1|
+SpellReqDef|667|0|0|691|1.0|0.0|
+SpellReqDef|667|0|3|978|1.0|0.0|
+SpellEffect|667|2|1|-1|978|0|0|0||||1
+SpellEffect|667|0|1|f.floor[((-.6*{c.Action})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Puncture}) + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|667|0|1|f.floor[((-.6*{c.Action})+(-.6*{c.Melee}))]-(2d4) - (.5*{c.Puncture}) + (.4*{t.Reaction}) -1|46|1|0|1||||1
+SpellEffect|667|0|11||665|0|0|1|30|Poisoned||1
+SpellEffect|667|0|0|{comment}&brk;&brk;{caster} launches a poison cloud at {Target}, they are not poisoned.&brk;{roll}|0|0|0|1||||1
+SpellEffect|667|0|0|{comment}&brk;&brk;{caster} failed to cast poison cloud.&brk;{roll}|0|0|0|2||||1
+SpellDef|657|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|528|Vampire: Feed|At the end of the FEEDING scene, you may use an action to attempt to assert your will over an individual. Both the target and yourself make contested Performance vs. Perception roll, and on a success the target is placed under the Charmed condition. This type of charm removes the target’s memory of a feeding scene entirely.&brk;|2.0|0|1|2|0|(1d20 + {c.Performance})|4|0|f|t|f|t|30|Icon155|t|t|0.915707,0.022874,0.022874,1.0|Racial Abilities|f|f|4|1|(1d20 + {t.Awareness})
+SpellEffect|528|0|0|{caster} feeds on {target}&brk;|0|0|0|0||||1
+SpellEffect|528|0|0|successfully charming {target}, they will not remember the occurence &brk;{roll}|0|0|0|1||||1
+SpellEffect|528|0|0|but {target} was unable to be charmed by {caster}&brk;{roll}|0|0|0|2||||1
+SpellDef|530|Werewolf: Sixth Sense|Once per scene a werewolf will use their sixth sense to improve investigations. They will get +4 insight to add to their roll. Must be used before the insight roll. Must succeed a roll agasint a DC of 10 to activate.|2.0|1|1|2|0|(1d20 + {c.Insight})|2|10|f|t|f|t|30|Icon124|t|t|0.275185,0.275185,0.275185,1.0|Racial Abilities|f|f|4|1|
+SpellEffect|530|0|0|{caster} uses their sixth sense&brk;|0|0|0|0||||1
+SpellEffect|530|0|0|succesfully increasing their investigative skills&brk;{roll}|0|0|0|1||||1
+SpellEffect|530|0|4|4|90|0|0|1|10|Buff||1
+SpellEffect|530|0|0|but nothing appears to change&brk;{roll}|0|0|0|2||||1
+SpellDef|533|Accursed: Absorbtion|Accursed absorbs some of the energies from nearby a target, giving them +5 Willpower after a successful Intimidation vs Willpower check. (once per scene)|4.0|0|1|2|0|(1d20 + {c.Intimidation})|4|0|f|t|f|t|30|Icon356|t|t|0.022874,0.498292,0.915707,1.0|Racial Abilities|f|f|4|1|(1d20 + {t.Willpower})
+SpellEffect|533|0|0|{caster} abosrbs {target} energy&brk;|0|0|0|0||||1
+SpellEffect|533|0|0|successfully bolstering their own mind.&brk;{roll}|0|0|0|1||||1
+SpellEffect|533|0|4|5|55|0|0|1|10|Buff||1
+SpellEffect|533|0|0|but was unable successfully effect {target}&brk;{roll}|0|0|0|2||||1
+SpellDef|529|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|351|Stunned||0.0|0|0|2|0|1d20|2|1|t|f|f|f|0|Icon156|f|f|0.88384,0.024895,0.024895,1.0|Stunned|f|f|4|1|
+SpellReqDef|351|5|0|0|0.0|0.0|Stunned
+SpellEffect|351|2|0|{caster} shakes off their momentary stupor.|0|0|0|1||||1
+SpellEffect|351|2|7||0|0|0|1||Stunned||1
+SpellEffect|351|0|0|{caster} is unable to shake off their stupor.&brk;{roll}|0|0|0|2||||1
+SpellDef|388|Dispel Buffs||0.0|0|0|2|0||4|0|t|f|f|f|0|Icon156|f|f|0.88384,0.024895,0.024895,1.0|Buff|f|f|4|1|
+SpellReqDef|388|5|0|0|0.0|0.0|Buff
+SpellEffect|388|2|7||0|0|0|1||Buff||1
+SpellDef|387|Stop Bleeding||0.0|0|0|0|65||2|12|t|f|f|f|0|Icon156|f|f|0.88384,0.024895,0.024895,1.0|Debuffs|f|f|4|1|
+SpellReqDef|387|5|0|0|0.0|0.0|Bleed
+SpellEffect|387|2|0|{caster} was able to stop their bleeding.&brk;{roll}|0|0|0|1||||1
+SpellEffect|387|2|7||0|0|0|1||Bleed||1
+SpellEffect|387|2|0|{caster} was unable to stop their bleeding.&brk;{roll}|0|0|0|2||||1
+SpellEffect|387|2|1|-1|46|0|0|2||||1
+SpellDef|666|Stop Poison||0.0|0|0|0|65||2|12|t|f|f|f|0|Icon182|f|f|0.024895,0.88384,0.086526,1.0|Debuffs|f|f|4|1|
+SpellReqDef|666|5|0|0|0.0|0.0|Poisoned
+SpellEffect|666|2|0|{caster} was able to fight back agasint the Poison&brk;{roll}|0|0|0|1||||1
+SpellEffect|666|2|7||0|0|0|1||Poisoned||1
+SpellEffect|666|2|0|{caster} was hurt by the poison&brk;{roll}|0|0|0|2||||1
+SpellEffect|666|2|1|-1|46|0|0|2||||1
+SpellDef|392|Stop Sickness||0.0|0|0|0|65||2|12|t|f|f|f|0|Icon156|f|f|0.88384,0.024895,0.024895,1.0|Sickend|f|f|4|1|
+SpellReqDef|392|5|0|0|0.0|0.0|Sickened
+SpellEffect|392|2|0|{caster} recovered from their sickness.&brk;{roll}|0|0|0|1||||1
+SpellEffect|392|2|7||0|0|0|1||Sickened||1
+SpellEffect|392|2|0|{caster}'s sickness lingers, despite their attempts to shake it off.&brk;{roll}|0|0|0|2||||1
+SpellEffect|392|2|1|-1|46|0|0|2||||1
+SpellDef|747|Stop Burning||0.0|0|0|0|65||2|12|t|f|f|f|0|Icon194|f|f|0.88384,0.024895,0.024895,1.0|Burning|f|f|4|1|
+SpellReqDef|747|5|0|0|0.0|0.0|Burning
+SpellEffect|747|2|0|{caster} recovered from Burning&brk;{roll}|0|0|0|1||||1
+SpellEffect|747|2|7||0|0|0|1||Burning||1
+SpellEffect|747|2|0|{caster} was burned losing some health|0|0|0|2||||1
+SpellEffect|747|2|1|-2|46|0|0|2||||1
+SpellDef|417|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|432|Tipsy|Take a Drink|0.0|1|0|0|63||2|0|f|t|f|f|0|80647|t|t|1.0,1.0,1.0,1.0|Social|f|f|4|1|
+SpellReqDef|432|0|5|420|15.0|0.0|
+SpellReqDef|432|0|3|420|11.0|0.0|
+SpellEffect|432|0|11||422|0|0|0|30|Tipsy||1
+SpellDef|433|Intoxicated|Take a Drink|0.0|1|0|0|63||2|0|f|t|f|f|0|80647|t|t|1.0,1.0,1.0,1.0|Social|f|f|4|1|
+SpellReqDef|433|0|5|420|10.0|0.0|
+SpellReqDef|433|0|3|420|5.0|0.0|
+SpellEffect|433|0|11||424|0|0|0|30|Intoxicated||1
+SpellEffect|433|0|7||0|0|2|0||Tipsy||1
+SpellDef|434|Drunk|Take a Drink|0.0|1|0|0|63||2|0|f|t|f|f|0|80647|t|t|1.0,1.0,1.0,1.0|Social|f|f|4|1|
+SpellReqDef|434|0|5|420|5.0|0.0|
+SpellReqDef|434|0|3|420|1.0|0.0|
+SpellEffect|434|0|11||425|0|0|0|30|Drunk||1
+SpellEffect|434|0|7||0|0|2|0||Intoxicated||1
+SpellDef|475|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|542|Hobbies||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|564|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|565|Cook Spearfin Fish Stew (T1)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860017|f|f|1.0,1.0,1.0,1.0|Cooking|f|f|4|1|
+SpellReqDef|565|6|0|2711523|0.0|0.0|3
+SpellEffect|565|0|3|3|2711523|0|1|0||||1
+SpellEffect|565|0|0|{caster} Boils Spearfin fish atop of the stove|0|0|1|0||||1
+SpellEffect|565|0|1|+1|586|0|1|0||||1
+SpellEffect|565|0|2|+1|7860017|0|1|1||||1
+SpellEffect|565|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|565|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|565|0|20|0|561|0.0|0.0|
+SpellDef|567|Cook PipeFish Stew (T1)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860017|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|567|6|0|2711520|0.0|0.0|2
+SpellEffect|567|0|3|2|2711520|0|1|0||||1
+SpellEffect|567|0|0|{caster} Boils Nemedian Pipefish fish atop of the stove|0|0|1|0||||1
+SpellEffect|567|0|2|+1|7860017|0|1|1||||1
+SpellEffect|567|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|567|0|1|+1|586|0|1|1||||1
+SpellEffect|567|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|567|0|20|0|561|0.0|0.0|
+SpellDef|568|Cook StarFish Stew (T1)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860017|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|568|6|0|2711524|0.0|0.0|1
+SpellEffect|568|0|3|1|2711524|0|1|0||||1
+SpellEffect|568|0|0|{caster} Boils Stygian Starfish atop of the stove|0|0|1|0||||1
+SpellEffect|568|0|2|+1|7860017|0|1|1||||1
+SpellEffect|568|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|568|0|1|+1|586|0|1|1||||1
+SpellEffect|568|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|568|0|20|0|561|0.0|0.0|
+SpellDef|578|Cook Seaabass Stew (T2)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860018|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|578|6|0|2711525|0.0|0.0|3
+SpellReqDef|578|0|3|586|50.0|0.0|
+SpellEffect|578|0|3|3|2711525|0|1|0||||1
+SpellEffect|578|0|0|{caster} Boils Yamatai Seabass atop of the stove|0|0|1|0||||1
+SpellEffect|578|0|2|+1|7860018|0|1|1||||1
+SpellEffect|578|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|578|0|1|+2|586|0|1|1||||1
+SpellEffect|578|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|578|0|20|0|561|0.0|0.0|
+SpellDef|579|Cook FangFish Stew (T2)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860018|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|579|6|0|2711527|0.0|0.0|2
+SpellReqDef|579|0|3|586|50.0|0.0|
+SpellEffect|579|0|3|2|2711527|0|1|0||||1
+SpellEffect|579|0|0|{caster} Boils Fangfish atop of the stove|0|0|1|0||||1
+SpellEffect|579|0|2|+1|7860018|0|1|1||||1
+SpellEffect|579|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|579|0|1|+2|586|0|1|1||||1
+SpellEffect|579|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|579|0|20|0|561|0.0|0.0|
+SpellDef|580|Cook Fugfish Stew (T2)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860018|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|580|6|0|2711528|0.0|0.0|1
+SpellReqDef|580|0|3|586|50.0|0.0|
+SpellEffect|580|0|3|1|2711528|0|1|0||||1
+SpellEffect|580|0|0|{caster} Boils Fugfish atop of the stove|0|0|1|0||||1
+SpellEffect|580|0|2|+1|7860018|0|1|1||||1
+SpellEffect|580|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|580|0|1|+2|586|0|1|1||||1
+SpellEffect|580|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|580|0|20|0|561|0.0|0.0|
+SpellDef|581|Cook Murdersnoke Stew (T3)||0.0|1|0|0|566||2|10|f|f|f|f|0|7860019|f|f|1.0,1.0,1.0,1.0|Cooking|t|f|4|1|
+SpellReqDef|581|6|0|2711529|0.0|0.0|1
+SpellReqDef|581|0|3|586|150.0|0.0|
+SpellEffect|581|0|3|1|2711528|0|1|0||||1
+SpellEffect|581|0|0|{caster} Boils Murdersnoke atop of the stove|0|0|1|0||||1
+SpellEffect|581|0|2|+1|7860019|0|1|1||||1
+SpellEffect|581|0|0|successfully making a Stew|0|0|1|1||||1
+SpellEffect|581|0|1|+3|586|0|0|1||||1
+SpellEffect|581|0|0|but fails, burning the fish.|0|0|1|2||||1
+SpellTargetCond|581|0|20|0|561|0.0|0.0|
+SpellDef|570|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|571|Open Consume Panel||0.0|1|0|2|0||4|0|f|f|t|f|0|7860016|f|f|1.0,1.0,1.0,1.0|Consume|f|f|4|1|
+SpellEffect|571|0|11||575|0|2|0|1|Open Consume Panel||1
+SpellDef|569|Eat Stew (T1)||0.0|1|0|2|0||4|0|f|f|f|t|0|7860017|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|569|6|0|7860017|0.0|0.0|1
+SpellEffect|569|0|3|1|7860017|0|0|0||||1
+SpellEffect|569|0|0|{caster} Comumes Stew (T1)|0|0|0|0||||1
+SpellEffect|569|0|1|+2|46|0|0|0||||1
+SpellEffect|569|0|1|+3|420|0|0|0||||1
+SpellEffect|569|0|4|+1|89|0|0|0|60|Yummy Stew||1
+SpellDef|576|Eat Stew (T2)||0.0|1|0|2|0||4|0|f|f|f|t|0|7860018|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|576|6|0|7860018|0.0|0.0|1
+SpellEffect|576|0|3|1|7860018|0|0|0||||1
+SpellEffect|576|0|0|{caster} Comumes Stew (T1)|0|0|0|0||||1
+SpellEffect|576|0|1|+4|46|0|0|0||||1
+SpellEffect|576|0|1|+3|420|0|0|0||||1
+SpellEffect|576|0|4|+1|53|0|0|0|60|Yummy Fishy Stew||1
+SpellDef|577|Eat Stew (T3)||0.0|1|0|2|0||4|0|f|f|f|t|0|7860019|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|577|6|0|7860019|0.0|0.0|1
+SpellEffect|577|0|3|1|7860019|0|0|0||||1
+SpellEffect|577|0|0|{caster} Comumes Stew (T1)|0|0|0|0||||1
+SpellEffect|577|0|1|+6|46|0|0|0||||1
+SpellEffect|577|0|1|+3|420|0|0|0||||1
+SpellEffect|577|0|4|+1|55|0|0|0|60|mmh...stew||1
+SpellDef|1090|Drink Weak Health Potion|Healing potion, Heals the player for a 4D4&brk;(In combat counts as an action)|0.0|1|0|2|0||4|0|f|f|f|t|15|872474001|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1090|6|0|872474001|0.0|0.0|1
+SpellEffect|1090|0|3|1|872474001|0|0|0||||1
+SpellEffect|1090|0|0|{caster} Comumes Weak Healing Potion|0|0|0|0||||1
+SpellEffect|1090|0|1|4d4|46|0|0|0||||1
+SpellDef|1102|Use Healing Herb Bandage|A herbed bandaged that can be applied to oneself or to another to heal them.&brk;(In combat counts as an action)|1.0|0|1|2|0||4|0|f|f|f|t|15|873300005|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1102|6|0|873300005|0.0|0.0|1
+SpellEffect|1102|0|3|1|873300005|0|0|0||||1
+SpellEffect|1102|0|0|{caster} uses a Herb Bandage on {target}|0|0|0|0||||1
+SpellEffect|1102|0|1|5d4|46|0|0|0||||1
+SpellDef|1091|Drink Weak Endurance Potion|Endurance potion, Restores the players Energy with a 1D4&brk;(In combat counts as an action)|0.0|1|0|2|0||4|0|f|f|f|t|15|872474002|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1091|6|0|872474002|0.0|0.0|1
+SpellEffect|1091|0|3|1|872474002|0|0|0||||1
+SpellEffect|1091|0|0|{caster} Comumes Weak Endurance Potion|0|0|0|0||||1
+SpellEffect|1091|0|1|1d4|978|0|0|0||||1
+SpellDef|1092|Drink Mana Shield Potion|Mana potion, That puts a magical mana barrier around you, increasing Reaction by 1. &brk;(In combat counts as an action)|0.0|1|0|2|0||4|0|f|f|f|t|15|872474003|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1092|6|0|872474003|0.0|0.0|1
+SpellEffect|1092|0|3|1|872474003|0|0|0||||1
+SpellEffect|1092|0|0|{caster} Comumes Weak Mana Shield Potion, a mana shield forms around them decreasing damage to them|0|0|0|0||||1
+SpellEffect|1092|0|4|1|65|0|0|0|15|Reaction Boost||1
+SpellDef|1093|Drink Faith Potion|Faith Potion, that invigorates confidence into oneself increasing their action by 1&brk;(In combat counts as an action)|0.0|1|0|2|0||4|0|f|f|f|t|15|872474004|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1093|6|0|872474004|0.0|0.0|1
+SpellEffect|1093|0|3|1|872474004|0|0|0||||1
+SpellEffect|1093|0|0|{caster} Comumes Weak Faith Shield Potion, invigorating their confidence and bravado increasing their Actoin|0|0|0|0||||1
+SpellEffect|1093|0|4|1|63|0|0|0|15|Action boost||1
+SpellDef|1098|Drink Skama|A concotion thats typically considered contraband to many, with random and varying effects.|0.0|1|0|2|0||4|0|f|f|f|t|30|2490666|f|f|1.0,1.0,1.0,1.0|Consume|t|f|4|1|
+SpellReqDef|1098|6|0|2490666|0.0|0.0|1
+SpellEffect|1098|0|3|1|2490666|0|0|0||||1
+SpellEffect|1098|0|0|{caster} Comumes a skama, they will experience a random effects from the concoction |0|0|0|0||||1
+SpellEffect|1098|0|4|-(1d6 + (1d6)|53|0|1|0|30|Skama||1
+SpellEffect|1098|0|4|-(1d6 + (1d6)|54|0|1|0|30|Skama||1
+SpellEffect|1098|0|4|1d5|476|0|1|0|30|Skama||1
+SpellEffect|1098|0|4|-(1d6) + (1d5)|55|0|1|0|30|Skama||1
+SpellEffect|1098|0|4|-(1d6) + (1d5)|59|0|1|0|30|Skama||1
+SpellDef|563|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|543|Fish||0.0|1|0|0|557||4|0|f|f|f|t|1|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|1|1|
+SpellEffect|543|0|0|{caster} cast their rod out to fish&brk;|0|0|0|0||||1
+SpellEffect|543|0|9||545|0|0|1||||1
+SpellEffect|543|0|9||546|0|0|1||||1
+SpellEffect|543|0|9||547|0|0|1||||1
+SpellEffect|543|0|9||548|0|0|1||||1
+SpellEffect|543|0|9||549|0|0|1||||1
+SpellEffect|543|0|9||550|0|0|1||||1
+SpellEffect|543|0|9||551|0|0|1||||1
+SpellEffect|543|0|9||552|0|0|1||||1
+SpellEffect|543|0|9||553|0|0|1||||1
+SpellEffect|543|0|9||554|0|0|1||||1
+SpellEffect|543|0|9||555|0|0|1||||1
+SpellDef|545|Fish 1||0.0|1|0|2|0|1d20|2|15|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|545|0|2|1|2711523|0|0|1||||1
+SpellEffect|545|0|1|+1|585|0|0|1||||1
+SpellDef|546|Fish 2||0.0|1|0|2|0|1d22|2|18|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|546|0|2|1|2711520|0|0|1||||1
+SpellEffect|546|0|1|+2|585|0|0|1||||1
+SpellDef|547|Fish 3||0.0|1|0|2|0|1d23|2|18|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|547|0|2|1|2711524|0|0|1||||1
+SpellEffect|547|0|1|+3|585|0|0|1||||1
+SpellDef|548|Fish 4||0.0|1|0|2|0|1d25|2|20|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|548|0|3|585|100.0|0.0|
+SpellEffect|548|0|2|1|2711525|0|0|1||||1
+SpellEffect|548|0|1|+4|585|0|0|1||||1
+SpellDef|549|Fish 5||0.0|1|0|2|0|1d25|2|20|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|549|0|3|585|100.0|0.0|
+SpellEffect|549|0|2|1|2711524|0|0|1||||1
+SpellEffect|549|0|1|+5|585|0|0|1||||1
+SpellDef|550|Fish 6||0.0|1|0|2|0|1d26|2|22|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|550|0|3|585|100.0|0.0|
+SpellEffect|550|0|2|1|2711527|0|0|1||||1
+SpellEffect|550|0|1|+6|585|0|0|1||||1
+SpellDef|551|Fish 7||0.0|1|0|2|0|1d27|2|24|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|551|0|3|585|300.0|0.0|
+SpellEffect|551|0|2|1|2711528|0|0|1||||1
+SpellEffect|551|0|1|+7|585|0|0|1||||1
+SpellDef|552|Fish 8||0.0|1|0|2|0|1d28|2|26|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|552|0|3|585|300.0|0.0|
+SpellEffect|552|0|2|1|2711529|0|0|1||||1
+SpellEffect|552|0|1|+8|585|0|0|1||||1
+SpellDef|553|Fish 9||0.0|1|0|2|0|1d29|2|25|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|553|0|3|585|300.0|0.0|
+SpellEffect|553|0|2|1|2711526|0|0|1||||1
+SpellEffect|553|0|1|+9|585|0|0|1||||1
+SpellDef|554|Fish 10||0.0|1|0|2|0|1d30|2|25|f|f|f|f|0|Icon263|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|554|0|3|585|300.0|0.0|
+SpellEffect|554|0|2|1|2711522|0|0|1||||1
+SpellEffect|554|0|1|+10|585|0|0|1||||1
+SpellDef|541|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|593|Mine Iron||0.0|1|0|2|0|1d20|2|3|f|f|f|t|240|51002|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|593|0|0|{caster} Attemped to mine the iron ore|0|0|0|0||||1
+SpellEffect|593|0|2|8|872481004|2|0|1||||1
+SpellEffect|593|0|1|+1|595|0|0|1||||1
+SpellEffect|593|0|2|12|872481004|1|0|1||||1
+SpellEffect|593|0|0|{roll}|0|0|0|1||||1
+SpellEffect|593|0|1|-1d4|46|0|0|2||||1
+SpellEffect|593|0|0|but failed, accidently swinging the pick axe into their foot.&brk;{roll}|0|0|0|2||||1
+SpellDef|597|Mine Steel||0.0|1|0|2|0||4|0|f|f|f|f|240|51002|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|597|0|3|595|30.0|0.0|
+SpellEffect|597|0|0|{caster} Attemped to mine the steel ore|0|0|0|0||||1
+SpellEffect|597|0|2|8|872481005|2|0|1||||1
+SpellEffect|597|0|1|+1|595|0|0|1||||1
+SpellEffect|597|0|2|12|872481005|1|0|1||||1
+SpellEffect|597|0|0|{roll}|0|0|0|1||||1
+SpellEffect|597|0|1|-1d4|46|0|0|2||||1
+SpellEffect|597|0|0|but failed, accidently swinging the pick axe into their foot.&brk;{roll}|0|0|0|2||||1
+SpellDef|592|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|604|Chop Wood||0.0|1|0|2|0|1d20|2|3|f|f|f|t|240|51012|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|604|0|0|{caster} Attemped to chop wood&brk;|0|0|0|0||||1
+SpellEffect|604|0|2|8|872481007|2|0|1||||1
+SpellEffect|604|0|1|+1|600|0|0|1||||1
+SpellEffect|604|0|2|12|872481007|1|0|1||||1
+SpellEffect|604|0|0|{roll}|0|0|0|1||||1
+SpellEffect|604|0|1|-1d4|46|0|0|2||||1
+SpellEffect|604|0|0|but failed, accidently swinging the axe into their leg.&brk;{roll}|0|0|0|2||||1
+SpellDef|606|Chop Hard Wood||0.0|1|0|2|0||4|0|f|f|f|f|240|51012|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|606|0|3|600|30.0|0.0|
+SpellEffect|606|0|0|{caster} Attemped to chop Hard Wood&brk;|0|0|0|0||||1
+SpellEffect|606|0|2|8|872481009|2|0|1||||1
+SpellEffect|606|0|1|+1|600|0|0|1||||1
+SpellEffect|606|0|2|12|872481009|1|0|1||||1
+SpellEffect|606|0|0|{roll}|0|0|0|1||||1
+SpellEffect|606|0|1|-1d4|46|0|0|2||||1
+SpellEffect|606|0|0|but failed, accidently swinging the axe into their leg.&brk;{roll}|0|0|0|2||||1
+SpellDef|603|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|636|Skin Leather||0.0|1|0|2|0|1d20|2|3|f|f|f|t|240|51309|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|636|0|0|{caster} Attemped to skin leather&brk;|0|0|0|0||||1
+SpellEffect|636|0|2|8|872481001|2|0|1||||1
+SpellEffect|636|0|1|+1|755|0|0|1||||1
+SpellEffect|636|0|2|12|872481001|1|0|1||||1
+SpellEffect|636|0|0|{roll}|0|0|0|1||||1
+SpellEffect|636|0|1|-1d4|46|0|0|2||||1
+SpellEffect|636|0|0|but failed, accidently cutting their hand in the process&brk;{roll}|0|0|0|2||||1
+SpellDef|635|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|752|Gather Herbs||0.0|1|0|2|0||4|0|f|f|f|t|240|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|752|0|0|{caster} Attemped to Gather Herbs&brk;|0|0|0|0||||1
+SpellEffect|752|0|9||1077|0|0|0||||1
+SpellEffect|752|0|9||1078|0|0|0||||1
+SpellEffect|752|0|9||1079|0|0|0||||1
+SpellEffect|752|0|9||1080|0|0|0||||1
+SpellEffect|752|0|9||1082|0|0|0||||1
+SpellEffect|752|0|1|+1|632|0|0|1||||1
+SpellDef|1077|Gather Kostrodamon||0.0|1|0|2|0|1d20|2|12|f|f|f|t|0|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|1077|0|2|12|872481010|1|0|1||||1
+SpellEffect|1077|0|2|8|872481010|2|0|1||||1
+SpellDef|1078|Gather Sour Borage||0.0|1|0|2|0|1d20|2|12|f|f|f|t|0|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|1078|0|2|12|872481011|1|0|1||||1
+SpellEffect|1078|0|2|8|872481011|2|0|1||||1
+SpellDef|1079|Gather Witchs Sorrel||0.0|1|0|2|0|1d20|2|12|f|f|f|t|0|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|1079|0|2|12|872481013|1|0|1||||1
+SpellEffect|1079|0|2|8|872481013|2|0|1||||1
+SpellDef|1080|Gather Sorrow Chervil||0.0|1|0|2|0|1d20|2|12|f|f|f|t|0|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|1080|0|2|12|872481012|1|0|1||||1
+SpellEffect|1080|0|2|8|872481012|2|0|1||||1
+SpellDef|1082|Gather Red Bolarus||0.0|1|0|2|0|1d20|2|12|f|f|f|t|0|51039|f|t|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellEffect|1082|0|2|12|7860051|1|0|1||||1
+SpellEffect|1082|0|2|8|7860051|2|0|1||||1
+SpellDef|1083|--Craft Potions--||0.0|1|0|2|0|1d20|2|12|f|f|f|f|240|51039|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellDef|1084|Craft Weak Healing potion|Healing potion, Heals the player for a 4D4|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Alchemist EXP})]) + {c.Alchemy}|2|12|f|f|f|t|0|872474001|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|1084|6|0|872481010|0.0|0.0|10
+SpellReqDef|1084|6|0|872481011|0.0|0.0|10
+SpellEffect|1084|0|1|+1|1085|0|0|0||||1
+SpellEffect|1084|0|3|10|872481010|0|0|0||||1
+SpellEffect|1084|0|3|10|872481011|0|0|0||||1
+SpellEffect|1084|0|2|1|872474001|0|0|1||||1
+SpellEffect|1084|0|0|{caster} Crafts a Weak Healing Potion&brk;{roll}|0|0|0|1||||1
+SpellEffect|1084|0|0|{caster} failed to craft a Weak Healing Potion&brk;{roll}|0|0|0|2||||1
+SpellEffect|1084|0|2|1d5|872481010|0|0|2||||1
+SpellEffect|1084|0|2|1d5|872481011|0|0|2||||1
+SpellDef|1087|Craft Weak Endurance Potion|Endurance potion, Restores the players Energy with a 1D4|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Alchemist EXP})]) + {c.Alchemy}|2|12|f|f|f|t|0|872474002|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|1087|6|0|872481013|0.0|0.0|10
+SpellReqDef|1087|6|0|872481012|0.0|0.0|10
+SpellEffect|1087|0|1|+1|1085|0|0|0||||1
+SpellEffect|1087|0|3|10|872481013|0|0|0||||1
+SpellEffect|1087|0|3|10|872481012|0|0|0||||1
+SpellEffect|1087|0|2|1|872474002|0|0|1||||1
+SpellEffect|1087|0|0|{caster} Crafts a Weak Endurance Poton&brk;{roll}|0|0|0|1||||1
+SpellEffect|1087|0|0|{caster} failed to craft a Weak Endurance Potion&brk;{roll}|0|0|0|2||||1
+SpellEffect|1087|0|2|1d5|872481013|0|0|2||||1
+SpellEffect|1087|0|2|1d5|872481012|0|0|2||||1
+SpellDef|1088|Craft Mana Shield Potion|Mana potion, That puts a magical mana barrier around you, increasing Reaction by 1. |0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Alchemist EXP})]) + {c.Alchemy}|2|12|f|f|f|t|0|872474003|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|1088|6|0|872481010|0.0|0.0|10
+SpellReqDef|1088|6|0|872481013|0.0|0.0|10
+SpellEffect|1088|0|1|+1|1085|0|0|0||||1
+SpellEffect|1088|0|3|10|872481010|0|0|0||||1
+SpellEffect|1088|0|3|10|872481013|0|0|0||||1
+SpellEffect|1088|0|2|1|872474003|0|0|1||||1
+SpellEffect|1088|0|0|{caster} Crafts a Weak Mana Poton&brk;{roll}|0|0|0|1||||1
+SpellEffect|1088|0|0|{caster} failed to craft a Weak Mana Potion&brk;{roll}|0|0|0|2||||1
+SpellEffect|1088|0|2|1d5|872481010|0|0|2||||1
+SpellEffect|1088|0|2|1d5|872481013|0|0|2||||1
+SpellDef|1089|Craft Faith Potion|Faith Potion, that invigorates confidence into oneself increasing their action by 1|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Alchemist EXP})]) + {c.Alchemy}|2|12|f|f|f|t|0|872474004|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|1089|6|0|872481011|0.0|0.0|10
+SpellReqDef|1089|6|0|872481012|0.0|0.0|10
+SpellEffect|1089|0|1|+1|1085|0|0|0||||1
+SpellEffect|1089|0|3|10|872481011|0|0|0||||1
+SpellEffect|1089|0|3|10|872481012|0|0|0||||1
+SpellEffect|1089|0|2|1|872474004|0|0|1||||1
+SpellEffect|1089|0|0|{caster} Crafts a Weak Faith Poton&brk;{roll}|0|0|0|1||||1
+SpellEffect|1089|0|0|{caster} failed to craft a Weak Faith Potion&brk;{roll}|0|0|0|2||||1
+SpellEffect|1089|0|2|1d5|872481011|0|0|2||||1
+SpellEffect|1089|0|2|1d5|872481012|0|0|2||||1
+SpellDef|1097|Craft Skama|A concotion thats typically considered contraband to many, with random and varying effects.|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Alchemist EXP})]) + {c.Alchemy}|2|12|f|f|f|t|0|2490666|f|f|0.851974,0.800477,0.800477,1.0|Hobbies|f|f|2|1|
+SpellReqDef|1097|6|0|7860051|0.0|0.0|4
+SpellReqDef|1097|6|0|872481013|0.0|0.0|4
+SpellEffect|1097|0|1|+1|1085|0|0|0||||1
+SpellEffect|1097|0|3|4|7860051|0|0|0||||1
+SpellEffect|1097|0|3|4|872481013|0|0|0||||1
+SpellEffect|1097|0|2|1|2490666|0|0|1||||1
+SpellEffect|1097|0|0|{caster} Crafts a Skama&brk;{roll}|0|0|0|1||||1
+SpellEffect|1097|0|0|{caster} failed to craft a Skama&brk;{roll}|0|0|0|2||||1
+SpellDef|1101|Craft: Bandage|Infuse some leather and a heal potion to have a better healing effect|0.0|1|0|2|0||4|0|f|f|f|f|0|873300005|f|f|1.0,1.0,1.0,1.0|Hobbies|f|f|4|1|
+SpellReqDef|1101|6|0|872481001|0.0|0.0|5
+SpellReqDef|1101|6|0|872474001|0.0|0.0|1
+SpellEffect|1101|0|3|5|872481001|0|0|0||||1
+SpellEffect|1101|0|3|1|872474001|0|0|0||||1
+SpellEffect|1101|0|0|{caster} made a bandage|0|0|0|0||||1
+SpellEffect|1101|0|2|1|873300005|0|0|0||||1
+SpellDef|753|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|629|--Crafting Black Smith Lv 1--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|643|Craft Iron Body Armor|Craft Iron Body Armor +1 to Black Smith|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872460001|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|643|6|0|872481001|0.0|0.0|10
+SpellReqDef|643|6|0|872481004|0.0|0.0|40
+SpellEffect|643|0|3|10|872481001|0|0|0||||1
+SpellEffect|643|0|3|30|872481004|0|0|0||||1
+SpellEffect|643|0|2|1|872460001|0|0|1||||1
+SpellEffect|643|0|0|{caster} Crafts a Iron Body Armor&brk;{roll}|0|0|0|1||||1
+SpellEffect|643|0|1|+1|631|0|0|1||||1
+SpellEffect|643|0|0|Failed to craft Iron Body Armor|0|0|0|2||||1
+SpellDef|971|Craft: Plate Chest (T1)|Craft Iron Body Armor +1 to Fortitude|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|7810013|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|971|6|0|872481001|0.0|0.0|10
+SpellReqDef|971|6|0|872481004|0.0|0.0|40
+SpellEffect|971|0|3|10|872481001|0|0|0||||1
+SpellEffect|971|0|3|30|872481004|0|0|0||||1
+SpellEffect|971|0|2|1|7810013|0|0|1||||1
+SpellEffect|971|0|0|{caster} Crafts a Plate Chest Armor&brk;{roll}|0|0|0|1||||1
+SpellEffect|971|0|1|+1|631|0|0|1||||1
+SpellEffect|971|0|0|Failed to craft Plate Chest Armor|0|0|0|2||||1
+SpellDef|972|Craft: Plate Legs (T1)|Craft Iron Body Armor +1 to Intimidation|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|7810014|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|972|6|0|872481001|0.0|0.0|10
+SpellReqDef|972|6|0|872481004|0.0|0.0|40
+SpellEffect|972|0|3|10|872481001|0|0|0||||1
+SpellEffect|972|0|3|30|872481004|0|0|0||||1
+SpellEffect|972|0|2|1|7810014|0|0|1||||1
+SpellEffect|972|0|0|{caster} Crafts a Plate Chest Armor&brk;{roll}|0|0|0|1||||1
+SpellEffect|972|0|1|+1|631|0|0|1||||1
+SpellEffect|972|0|0|Failed to craft Plate Chest Armor|0|0|0|2||||1
+SpellDef|644|Craft Iron Leg Plates|Craft Iron Leg Plates +1 to Black Smith|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872461001|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|644|6|0|872481001|0.0|0.0|10
+SpellReqDef|644|6|0|872481004|0.0|0.0|30
+SpellEffect|644|0|3|10|872481001|0|0|0||||1
+SpellEffect|644|0|3|30|872481004|0|0|0||||1
+SpellEffect|644|0|2|1|872461001|0|0|1||||1
+SpellEffect|644|0|0|{caster} Crafts a Iron Leg Plates&brk;|0|0|0|1||||1
+SpellEffect|644|0|1|+1|631|0|0|1||||1
+SpellEffect|644|0|0|Failed to craft Iron Leg Plates|0|0|0|2||||1
+SpellDef|719|Craft Throwing Knfe|A consumeable item used for a learned ability.|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872111001|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|719|6|0|872481007|0.0|0.0|5
+SpellReqDef|719|6|0|872481004|0.0|0.0|5
+SpellEffect|719|0|3|5|872481007|0|0|0||||1
+SpellEffect|719|0|3|5|872481004|0|0|0||||1
+SpellEffect|719|0|2|1|872111001|0|0|1||||1
+SpellEffect|719|0|0|{caster} Crafts a throwing knife|0|0|0|1||||1
+SpellEffect|719|0|1|+1|631|0|0|1||||1
+SpellEffect|719|0|0|Failed to craft a throwing knife|0|0|0|2||||1
+SpellDef|720|Craft Black Powder Orb|A consumeable item used for a learned ability.|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872211003|f|f|1.0,1.0,1.0,1.0|Black Smith Lv 1|f|f|1|1|
+SpellReqDef|720|6|0|7860051|0.0|0.0|10
+SpellReqDef|720|6|0|872481004|0.0|0.0|10
+SpellEffect|720|0|3|10|7860051|0|0|0||||1
+SpellEffect|720|0|3|10|872481004|0|0|0||||1
+SpellEffect|720|0|2|1|872211003|0|0|1||||1
+SpellEffect|720|0|0|{caster} Crafts a black powder orb|0|0|0|1||||1
+SpellEffect|720|0|1|+1|631|0|0|1||||1
+SpellEffect|720|0|0|Failed to craft a black powder orb|0|0|0|2||||1
+SpellDef|1114|--Crafting Black Smith Lv 2--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|654|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|936|--Crafting Weapon Smith--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|938|Craft: Mace (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800001|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|938|6|0|872481007|0.0|0.0|10
+SpellReqDef|938|6|0|872481004|0.0|0.0|50
+SpellEffect|938|0|3|10|872481007|0|0|0||||1
+SpellEffect|938|0|3|50|872481004|0|0|0||||1
+SpellEffect|938|0|2|1|7800001|0|0|1||||1
+SpellEffect|938|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|938|0|1|+1|939|0|0|1||||1
+SpellEffect|938|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|941|Craft: Holy Mace (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800004|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|941|6|0|872481007|0.0|0.0|10
+SpellReqDef|941|6|0|872481004|0.0|0.0|50
+SpellEffect|941|0|3|10|872481007|0|0|0||||1
+SpellEffect|941|0|3|50|872481004|0|0|0||||1
+SpellEffect|941|0|2|1|7800004|0|0|1||||1
+SpellEffect|941|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|941|0|1|+1|939|0|0|1||||1
+SpellEffect|941|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|942|Craft: Holy Sword (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800007|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|942|6|0|872481007|0.0|0.0|10
+SpellReqDef|942|6|0|872481004|0.0|0.0|50
+SpellEffect|942|0|3|10|872481007|0|0|0||||1
+SpellEffect|942|0|3|50|872481004|0|0|0||||1
+SpellEffect|942|0|2|1|7800007|0|0|1||||1
+SpellEffect|942|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|942|0|1|+1|939|0|0|1||||1
+SpellEffect|942|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|943|Craft: Mage Sword (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800010|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|943|6|0|872481007|0.0|0.0|10
+SpellReqDef|943|6|0|872481004|0.0|0.0|50
+SpellEffect|943|0|3|10|872481007|0|0|0||||1
+SpellEffect|943|0|3|50|872481004|0|0|0||||1
+SpellEffect|943|0|2|1|7800010|0|0|1||||1
+SpellEffect|943|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|943|0|1|+1|939|0|0|1||||1
+SpellEffect|943|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|944|Craft: Fighter Sword (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800013|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|944|6|0|872481007|0.0|0.0|10
+SpellReqDef|944|6|0|872481004|0.0|0.0|50
+SpellEffect|944|0|3|10|872481007|0|0|0||||1
+SpellEffect|944|0|3|50|872481004|0|0|0||||1
+SpellEffect|944|0|2|1|7800013|0|0|1||||1
+SpellEffect|944|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|944|0|1|+1|939|0|0|1||||1
+SpellEffect|944|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|945|Craft: Flintlock (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800016|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|945|6|0|872481007|0.0|0.0|30
+SpellReqDef|945|6|0|872481004|0.0|0.0|20
+SpellEffect|945|0|3|30|872481007|0|0|0||||1
+SpellEffect|945|0|3|20|872481004|0|0|0||||1
+SpellEffect|945|0|2|1|7800016|0|0|1||||1
+SpellEffect|945|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|945|0|1|+1|939|0|0|1||||1
+SpellEffect|945|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|946|Craft: Offensive MageStaff (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800019|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|946|6|0|872481007|0.0|0.0|40
+SpellReqDef|946|6|0|872481001|0.0|0.0|10
+SpellEffect|946|0|3|40|872481007|0|0|0||||1
+SpellEffect|946|0|3|10|872481001|0|0|0||||1
+SpellEffect|946|0|2|1|7800019|0|0|1||||1
+SpellEffect|946|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|946|0|1|+1|939|0|0|1||||1
+SpellEffect|946|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|947|Craft: Defensive MageStaff (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800022|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|947|6|0|872481007|0.0|0.0|40
+SpellReqDef|947|6|0|872481001|0.0|0.0|10
+SpellEffect|947|0|3|40|872481007|0|0|0||||1
+SpellEffect|947|0|3|10|872481001|0|0|0||||1
+SpellEffect|947|0|2|1|7800022|0|0|1||||1
+SpellEffect|947|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|947|0|1|+1|939|0|0|1||||1
+SpellEffect|947|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|948|Craft: Priest Staff (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800025|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|948|6|0|872481007|0.0|0.0|30
+SpellReqDef|948|6|0|872481001|0.0|0.0|20
+SpellEffect|948|0|3|30|872481007|0|0|0||||1
+SpellEffect|948|0|3|20|872481001|0|0|0||||1
+SpellEffect|948|0|2|1|7800025|0|0|1||||1
+SpellEffect|948|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|948|0|1|+1|939|0|0|1||||1
+SpellEffect|948|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|949|Craft: Dagger (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800034|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|949|6|0|872481007|0.0|0.0|10
+SpellReqDef|949|6|0|872481004|0.0|0.0|50
+SpellEffect|949|0|3|10|872481007|0|0|0||||1
+SpellEffect|949|0|3|50|872481004|0|0|0||||1
+SpellEffect|949|0|2|1|7800034|0|0|1||||1
+SpellEffect|949|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|949|0|1|+1|939|0|0|1||||1
+SpellEffect|949|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|950|Craft: Large Axe (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800037|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|950|6|0|872481007|0.0|0.0|10
+SpellReqDef|950|6|0|872481004|0.0|0.0|50
+SpellEffect|950|0|3|10|872481007|0|0|0||||1
+SpellEffect|950|0|3|50|872481004|0|0|0||||1
+SpellEffect|950|0|2|1|7800037|0|0|1||||1
+SpellEffect|950|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|950|0|1|+1|939|0|0|1||||1
+SpellEffect|950|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|951|Craft: Bow (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.WeaponSmith EXP})]) + {c.WeaponSmith}|2|10|f|f|f|f|0|7800043|f|f|1.0,1.0,1.0,1.0|Weapon Smith Lv 1|f|f|1|1|
+SpellReqDef|951|6|0|872481007|0.0|0.0|30
+SpellReqDef|951|6|0|872481001|0.0|0.0|20
+SpellEffect|951|0|3|30|872481007|0|0|0||||1
+SpellEffect|951|0|3|20|872481001|0|0|0||||1
+SpellEffect|951|0|2|1|7800043|0|0|1||||1
+SpellEffect|951|0|0|Successfully crafted the item&brk;{roll}|0|0|0|1||||1
+SpellEffect|951|0|1|+1|939|0|0|1||||1
+SpellEffect|951|0|0|Failed to craft item&brk;{roll}|0|0|0|2||||1
+SpellDef|935|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|955|--Crafting Tailor--||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7800001|f|f|1.0,1.0,1.0,1.0|Tailor Lv 1|f|f|1|1|
+SpellReqDef|955|6|0|872481007|0.0|0.0|10
+SpellReqDef|955|6|0|872481004|0.0|0.0|50
+SpellEffect|955|0|3|10|872481007|0|0|0||||1
+SpellEffect|955|0|3|50|872481004|0|0|0||||1
+SpellEffect|955|0|2|1|7800001|0|0|1||||1
+SpellEffect|955|0|0|{caster} Crafts a Iron Sword|0|0|0|1||||1
+SpellEffect|955|0|1|+1|939|0|0|1||||1
+SpellEffect|955|0|0|Failed to craft Iron Sword|0|0|0|2||||1
+SpellDef|630|Craft Herb Belt|Craft Herb Belt +2 to Gatherer|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|7810040|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|630|6|0|872481001|0.0|0.0|40
+SpellReqDef|630|6|0|872481004|0.0|0.0|10
+SpellEffect|630|0|3|40|872481001|0|0|0||||1
+SpellEffect|630|0|3|10|872481004|0|0|0||||1
+SpellEffect|630|0|2|1|7810040|0|0|1||||1
+SpellEffect|630|0|0|{caster} Crafts a Herb Belt&brk;{roll}|0|0|0|1||||1
+SpellEffect|630|0|1|+1|631|0|0|1||||1
+SpellEffect|630|0|0|Failed to craft Herb Belt|0|0|0|2||||1
+SpellDef|638|Craft Leather Vest|Craft Leather Vest +1 to Mining|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872450001|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|638|6|0|872481001|0.0|0.0|30
+SpellReqDef|638|6|0|872481004|0.0|0.0|10
+SpellEffect|638|0|3|30|872481001|0|0|0||||1
+SpellEffect|638|0|3|10|872481004|0|0|0||||1
+SpellEffect|638|0|2|1|872450001|0|0|1||||1
+SpellEffect|638|0|0|{caster} Crafts a Leather Vest&brk;{roll}|0|0|0|1||||1
+SpellEffect|638|0|1|+1|631|0|0|1||||1
+SpellEffect|638|0|0|Failed to craft Leather Vest|0|0|0|2||||1
+SpellDef|639|Craft Leather Trouser|Craft Leather Vest +1 to Mining|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872451001|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|639|6|0|872481001|0.0|0.0|30
+SpellReqDef|639|6|0|872481004|0.0|0.0|10
+SpellEffect|639|0|3|30|872481001|0|0|0||||1
+SpellEffect|639|0|3|10|872481004|0|0|0||||1
+SpellEffect|639|0|2|1|872451001|0|0|1||||1
+SpellEffect|639|0|0|{caster} Crafts a Leather Trouser&brk;{roll}|0|0|0|1||||1
+SpellEffect|639|0|1|+1|631|0|0|1||||1
+SpellEffect|639|0|0|Failed to craft Leather Trouser|0|0|0|2||||1
+SpellDef|640|Craft Fabric Shirt|Craft Fabric shirt +1 to Cooking|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872440001|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|640|6|0|872481001|0.0|0.0|30
+SpellReqDef|640|6|0|872481004|0.0|0.0|10
+SpellEffect|640|0|3|30|872481001|0|0|0||||1
+SpellEffect|640|0|3|10|872481004|0|0|0||||1
+SpellEffect|640|0|2|1|872440001|0|0|1||||1
+SpellEffect|640|0|0|{caster} Crafts a Fabric shirt&brk;{roll}|0|0|0|1||||1
+SpellEffect|640|0|1|+1|631|0|0|1||||1
+SpellEffect|640|0|0|Failed to craft Fabric shirt|0|0|0|2||||1
+SpellDef|641|Craft Fabric Trousers|Craft Fabric Trousers +1 to Cooking|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.BlackSmith EXP})]) + {c.BlackSmith}|2|10|f|f|f|f|0|872441001|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|641|6|0|872481001|0.0|0.0|30
+SpellReqDef|641|6|0|872481004|0.0|0.0|10
+SpellEffect|641|0|3|30|872481001|0|0|0||||1
+SpellEffect|641|0|3|10|872481004|0|0|0||||1
+SpellEffect|641|0|2|1|872441001|0|0|1||||1
+SpellEffect|641|0|0|{caster} Crafts a Fabric Trousers&brk;{roll}|0|0|0|1||||1
+SpellEffect|641|0|1|+1|631|0|0|1||||1
+SpellEffect|641|0|0|Failed to craft Fabric Trousers|0|0|0|2||||1
+SpellDef|959|Craft: Fabric Chest (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810001|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|959|6|0|872481001|0.0|0.0|50
+SpellEffect|959|0|3|50|872481001|0|0|0||||1
+SpellEffect|959|0|2|1|7810001|0|0|1||||1
+SpellEffect|959|0|1|+1|939|0|0|1||||1
+SpellEffect|959|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|959|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|960|Craft: Fabric Leg (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810002|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|960|6|0|872481001|0.0|0.0|50
+SpellEffect|960|0|3|50|872481001|0|0|0||||1
+SpellEffect|960|0|2|1|7810002|0|0|1||||1
+SpellEffect|960|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|960|0|1|+1|939|0|0|1||||1
+SpellEffect|960|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|961|Craft: Leather Chest (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810007|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|961|6|0|872481001|0.0|0.0|50
+SpellEffect|961|0|3|50|872481001|0|0|0||||1
+SpellEffect|961|0|2|1|7810007|0|0|1||||1
+SpellEffect|961|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|961|0|1|+1|939|0|0|1||||1
+SpellEffect|961|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|962|Craft: Leather Legs (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810008|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|962|6|0|872481001|0.0|0.0|50
+SpellEffect|962|0|3|50|872481001|0|0|0||||1
+SpellEffect|962|0|2|1|7810008|0|0|1||||1
+SpellEffect|962|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|962|0|1|+1|939|0|0|1||||1
+SpellEffect|962|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|965|Craft: Mage Chest (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810019|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|965|6|0|872481001|0.0|0.0|50
+SpellEffect|965|0|3|50|872481001|0|0|0||||1
+SpellEffect|965|0|2|1|7810019|0|0|1||||1
+SpellEffect|965|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|965|0|1|+1|939|0|0|1||||1
+SpellEffect|965|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|966|Craft: Mage Legs (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810020|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|966|6|0|872481001|0.0|0.0|50
+SpellEffect|966|0|3|50|872481001|0|0|0||||1
+SpellEffect|966|0|2|1|7810020|0|0|1||||1
+SpellEffect|966|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|966|0|1|+1|939|0|0|1||||1
+SpellEffect|966|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|967|Craft: Priest Chest (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810025|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|967|6|0|872481001|0.0|0.0|50
+SpellEffect|967|0|3|50|872481001|0|0|0||||1
+SpellEffect|967|0|2|1|7810025|0|0|1||||1
+SpellEffect|967|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|967|0|1|+1|939|0|0|1||||1
+SpellEffect|967|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|968|Craft: Priest Legs (T1)||0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tailoring EXP})]) + {c.Tailor}|2|10|f|f|f|f|0|7810026|f|f|1.0,1.0,1.0,1.0|Tailor Lv.1|f|f|1|1|
+SpellReqDef|968|6|0|872481001|0.0|0.0|50
+SpellEffect|968|0|3|50|872481001|0|0|0||||1
+SpellEffect|968|0|2|1|7810026|0|0|1||||1
+SpellEffect|968|0|0|Successfully crafted the item|0|0|0|1||||1
+SpellEffect|968|0|1|+1|939|0|0|1||||1
+SpellEffect|968|0|0|Failed to craft item|0|0|0|2||||1
+SpellDef|958|-------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|655|--Scholar Abilities--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|656|Learn Ability||0.0|1|0|2|0|1d100 + {c.Scholar}|4|0|f|f|f|t|1440|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|100
+SpellEffect|656|0|1|+1|675|0|0|0||||1
+SpellEffect|656|0|0|{roll}|0|0|0|0||||1
+SpellEffect|656|0|10|0|675|0|0|1||||1
+SpellEffect|656|0|9||696|0|2|1||||1
+SpellEffect|656|0|9||695|0|2|1||||1
+SpellEffect|656|0|9||697|0|2|1||||1
+SpellEffect|656|0|9||685|0|2|1||||1
+SpellEffect|656|0|9||676|0|2|1||||1
+SpellDef|676|Learn Smoke Screen||0.0|1|0|2|0||4|0|f|f|f|f|0|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|
+SpellReqDef|676|0|0|687|0.0|0.0|
+SpellReqDef|676|0|0|693|0.0|0.0|
+SpellEffect|676|0|10|0|675|0|2|0||||1
+SpellEffect|676|0|10|1|687|0|2|0||||1
+SpellEffect|676|0|2|1|873300025|0|0|0|1|Smoke Screen||1
+SpellEffect|676|0|10|1|693|0|0|0||||1
+SpellDef|685|Learn Meditate||0.0|1|0|2|0||4|0|f|f|f|f|0|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|
+SpellReqDef|685|0|0|688|0.0|0.0|
+SpellReqDef|685|0|0|693|1.0|0.0|
+SpellEffect|685|0|10|0|675|0|2|0||||1
+SpellEffect|685|0|10|1|688|0|0|0|1|Smoke Screen||1
+SpellEffect|685|0|2|1|873300044|0|0|0||||1
+SpellEffect|685|0|10|2|693|0|0|0||||1
+SpellDef|697|Learn Stone Wall||0.0|1|0|2|0||4|0|f|f|f|f|0|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|
+SpellReqDef|697|0|0|689|0.0|0.0|
+SpellReqDef|697|0|0|693|2.0|0.0|
+SpellEffect|697|0|10|0|675|0|2|0||||1
+SpellEffect|697|0|10|1|689|0|0|0|1|Smoke Screen||1
+SpellEffect|697|0|2|1|872482022|0|0|0||||1
+SpellEffect|697|0|10|3|693|0|0|0||||1
+SpellDef|695|Learn Kame Power Up||0.0|1|0|2|0||4|0|f|f|f|f|0|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|
+SpellReqDef|695|0|0|690|0.0|0.0|
+SpellReqDef|695|0|0|693|3.0|0.0|
+SpellEffect|695|0|10|0|675|0|2|0||||1
+SpellEffect|695|0|10|1|690|0|0|0|1|Smoke Screen||1
+SpellEffect|695|0|2|1|5500024|0|0|0||||1
+SpellEffect|695|0|10|4|693|0|0|0||||1
+SpellDef|696|Learn Poison Cloud||0.0|1|0|2|0||4|0|f|f|f|f|0|Icon164|f|f|0.13283,0.0,0.141345,1.0|Scholar|f|f|4|1|
+SpellReqDef|696|0|0|691|0.0|0.0|
+SpellReqDef|696|0|0|693|4.0|0.0|
+SpellEffect|696|0|10|0|675|0|2|0||||1
+SpellEffect|696|0|10|1|691|0|0|0|1|Smoke Screen||1
+SpellEffect|696|0|2|1|7700027|0|0|0||||1
+SpellEffect|696|0|10|5|693|0|0|0||||1
+SpellDef|708|----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|731|--Learned--||0.0|0|0|2|0|{c.Scholar Level}|2|15|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|736|Magic Push|Send out a pulse of magic at your target, pushing them back 2 tiles and causing slight Damage.|2.0|3|2|0|63||2|12|f|f|f|t|0|873200003|t|t|0.137168,0.192629,0.899774,1.0|Learned Magic|f|f|4|1|
+SpellReqDef|736|0|0|740|1.0|0.0|
+SpellReqDef|736|0|3|978|1.0|0.0|
+SpellEffect|736|2|1|-1|978|0|0|0||||1
+SpellEffect|736|0|1|f.floor[((-.6*{c.Action})+(-.6*{c.Magic}))]-(2d2)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|736|0|0|{comment}&brk;&brk;{caster} pushes {Target} 2 tiles away from {caster}&brk;{roll}|0|0|0|1||||1
+SpellEffect|736|0|0|{comment}&brk;&brk;{caster} failed to cast Magic Push&brk;{roll}|0|0|0|2||||1
+SpellDef|745|Ignite|Ignite your enemy, causing a burning effect|3.0|0|1|0|63||2|12|f|f|f|t|0|5500064|t|t|0.137168,0.192629,0.899774,1.0|Learned Magic|f|f|4|1|
+SpellReqDef|745|0|0|742|1.0|0.0|
+SpellReqDef|745|0|3|978|1.0|0.0|
+SpellEffect|745|2|1|-1|978|0|0|0||||1
+SpellEffect|745|0|1|f.floor[((-.6*{c.Action})+(-.6*{c.Magic}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|745|0|0|{comment}&brk;&brk;{caster} ignites {target} setting them ablaze&brk;{roll}|0|0|0|1||||1
+SpellEffect|745|0|11||746|0|0|1|30|Burning||1
+SpellEffect|745|0|0|{comment}&brk;&brk;{caster} failed to cast Ignite&brk;{roll}|0|0|0|2||||1
+SpellDef|749|Blizzard|Cas a blizzard around you, affecting everyone around you|4.0|3|1|0|63||2|12|f|f|f|t|0|873300026|t|t|0.137168,0.192629,0.899774,1.0|Learned Magic|f|f|4|1|
+SpellReqDef|749|0|0|741|1.0|0.0|
+SpellReqDef|749|0|3|978|2.0|0.0|
+SpellEffect|749|2|1|-2|978|0|0|0||||1
+SpellEffect|749|0|1|f.floor[((-.6*{c.Action})+(-.6*{c.Magic}))]-(2d4)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|749|0|0|{comment}&brk;&brk;{caster} cast Blizzard, a whirlwind of cold swirls around them&brk;{roll}|0|0|0|1||||1
+SpellEffect|749|0|0|{comment}&brk;&brk;{caster} failed to cast Blizzard&brk;{roll}|0|0|0|2||||1
+SpellDef|771|-----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|772|Draw Card|Everytime you Draw, it wll deduct one Bronze coin|0.0|1|0|2|0||4|0|f|f|f|f|0|2711848|f|f|1.0,1.0,1.0,1.0|Casino|f|f|4|1|
+SpellReqDef|772|6|0|872499004|0.0|0.0|10
+SpellEffect|772|0|4|(1d11)|778|0|2|0|15|Drawn Card||1
+SpellEffect|772|0|9||814|0|0|0||||1
+SpellEffect|772|0|9||815|0|0|0||||1
+SpellEffect|772|0|9||816|0|0|0||||1
+SpellEffect|772|0|9||817|0|0|0||||1
+SpellEffect|772|0|9||818|0|0|0||||1
+SpellEffect|772|0|9||819|0|0|0||||1
+SpellEffect|772|0|9||820|0|0|0||||1
+SpellEffect|772|0|9||821|0|0|0||||1
+SpellEffect|772|0|9||822|0|0|0||||1
+SpellEffect|772|0|9||823|0|0|0||||1
+SpellEffect|772|0|9||824|0|0|0||||1
+SpellEffect|772|0|9||825|0|0|0||||1
+SpellEffect|772|0|9||826|0|0|0||||1
+SpellEffect|772|0|9||827|0|0|0||||1
+SpellEffect|772|0|9||828|0|0|0||||1
+SpellEffect|772|0|9||836|0|0|0||||1
+SpellEffect|772|0|9||837|0|0|0||||1
+SpellEffect|772|0|9||838|0|0|0||||1
+SpellEffect|772|0|9||839|0|0|0||||1
+SpellEffect|772|0|9||840|0|0|0||||1
+SpellEffect|772|0|9||841|0|0|0||||1
+SpellEffect|772|0|9||842|0|0|0||||1
+SpellEffect|772|0|3|10|872499004|0|2|0||||1
+SpellDef|813|New Hand||0.0|1|0|2|0||4|0|f|f|f|f|0|2711848|f|f|1.0,1.0,1.0,1.0|Casino|f|f|4|1|
+SpellEffect|813|0|0|{caster} starts a new hand|0|0|2|0||||1
+SpellEffect|813|0|7||0|0|2|0|15|Drawn Card||1
+SpellDef|843|Bet||0.0|1|0|2|0|{c.Card}|4|0|f|f|f|t|0|11066|f|f|1.0,1.0,1.0,1.0|Casino|f|f|4|1|f.clamp[(5d6) ,15, 21]
+SpellReqDef|843|1|6|778|1.0|22.0|
+SpellEffect|843|0|7||0|0|2|0||Drawn Card||1
+SpellEffect|843|0|0|{roll}|0|0|1|0||||1
+SpellEffect|843|0|0|{caster} Beats the house|0|0|1|1||||1
+SpellEffect|843|0|2|80|872499004|0|2|1||||1
+SpellEffect|843|0|0|House Wins|0|0|1|2||||1
+SpellDef|845|Exchange Coins||0.0|1|0|2|0||4|0|f|f|f|t|0|11020|f|f|1.0,1.0,1.0,1.0|Casino|f|f|4|1|
+SpellReqDef|845|6|0|902910|0.0|0.0|1
+SpellEffect|845|0|2|100|872499004|0|0|0||||1
+SpellEffect|845|0|3|1|902910|0|0|0||||1
+SpellDef|1020|Exchange bronze||0.0|1|0|2|0||4|0|f|f|f|t|0|902910|f|f|1.0,1.0,1.0,1.0|Casino|f|f|4|1|
+SpellReqDef|1020|6|0|872499004|0.0|0.0|100
+SpellEffect|1020|0|2|1|902910|0|0|0||||1
+SpellEffect|1020|0|3|100|872499004|0|0|0||||1
+SpellDef|814|Card Checker 1||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|814|1|0|778|1.0|0.0|
+SpellEffect|814|0|11||760|0|2|0|15|Drawn Card||1
+SpellDef|815|Card Checker 2||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|815|1|0|778|2.0|0.0|
+SpellEffect|815|0|11||761|0|2|0|15|Drawn Card||1
+SpellDef|816|Card Checker 3||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|816|1|0|778|3.0|0.0|
+SpellEffect|816|0|11||762|0|2|0|15|Drawn Card||1
+SpellDef|817|Card Checker 4||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|817|1|0|778|4.0|0.0|
+SpellEffect|817|0|11||763|0|2|0|15|Drawn Card||1
+SpellDef|818|Card Checker 5||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|818|1|0|778|5.0|0.0|
+SpellEffect|818|0|11||764|0|2|0|15|Drawn Card||1
+SpellDef|819|Card Checker 6||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|819|1|0|778|6.0|0.0|
+SpellEffect|819|0|11||765|0|2|0|15|Drawn Card||1
+SpellDef|820|Card Checker 7||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|820|1|0|778|7.0|0.0|
+SpellEffect|820|0|11||766|0|2|0|15|Drawn Card||1
+SpellDef|821|Card Checker 8||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|821|1|0|778|8.0|0.0|
+SpellEffect|821|0|11||767|0|2|0|15|Drawn Card||1
+SpellDef|822|Card Checker 9||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|822|1|0|778|9.0|0.0|
+SpellEffect|822|0|11||768|0|2|0|15|Drawn Card||1
+SpellDef|823|Card Checker 10||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|823|1|0|778|10.0|0.0|
+SpellEffect|823|0|11||769|0|2|0|15|Drawn Card||1
+SpellDef|824|Card Checker 11||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|824|1|0|778|11.0|0.0|
+SpellEffect|824|0|11||770|0|2|0|15|Drawn Card||1
+SpellDef|825|Card Checker 12||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|825|1|0|778|12.0|0.0|
+SpellEffect|825|0|11||779|0|2|0|15|Drawn Card||1
+SpellDef|826|Card Checker 13||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|826|1|0|778|13.0|0.0|
+SpellEffect|826|0|11||780|0|2|0|15|Drawn Card||1
+SpellDef|827|Card Checker 14||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|827|1|0|778|14.0|0.0|
+SpellEffect|827|0|11||781|0|2|0|15|Drawn Card||1
+SpellDef|828|Card Checker 15||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|828|1|0|778|15.0|0.0|
+SpellEffect|828|0|11||782|0|2|0|15|Drawn Card||1
+SpellDef|836|Card Checker 16||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|836|1|0|778|16.0|0.0|
+SpellEffect|836|0|11||783|0|2|0|15|Drawn Card||1
+SpellDef|837|Card Checker 17||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|837|1|0|778|17.0|0.0|
+SpellEffect|837|0|11||784|0|2|0|15|Drawn Card||1
+SpellDef|838|Card Checker 18||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|838|1|0|778|18.0|0.0|
+SpellEffect|838|0|11||785|0|2|0|15|Drawn Card||1
+SpellDef|839|Card Checker 19||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|839|1|0|778|19.0|0.0|
+SpellEffect|839|0|11||786|0|2|0|15|Drawn Card||1
+SpellDef|840|Card Checker 20||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|840|1|0|778|20.0|0.0|
+SpellEffect|840|0|11||787|0|2|0|15|Drawn Card||1
+SpellDef|841|Card Checker 21||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|841|1|0|778|21.0|0.0|
+SpellEffect|841|0|11||788|0|2|0|15|Drawn Card||1
+SpellDef|842|Card Checker Bust||0.0|1|0|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Casino|f|f|1|1|
+SpellReqDef|842|1|3|778|22.0|0.0|
+SpellEffect|842|0|11||789|0|2|0|15|Drawn Card||1
+SpellDef|847|--Staff Event Abilities--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellDef|856|2d4 Damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|856|0|1|-(2d4)|46|0|0|0||||1
+SpellDef|857|2d6 Damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|857|0|1|-(2d6)|46|0|0|0||||1
+SpellDef|858|2d8 Damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|858|0|1|-(2d8)|46|0|0|0||||1
+SpellDef|848|2d10 damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|848|0|1|-(2d10)|46|0|0|0||||1
+SpellDef|850|1 damage||20.0|0|10|0|65||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|850|0|1|-1|46|0|0|0||||1
+SpellDef|851|5 Damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|851|0|1|-5|46|0|0|0||||1
+SpellDef|852|10 damage||20.0|0|10|0|63||0|65|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|852|0|1|-10|46|0|0|0||||1
+SpellDef|853|Heal 1 HP||20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|853|0|1|+1|46|0|0|0||||1
+SpellDef|854|Heal 5 HP||20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|854|0|1|+5|46|0|0|0||||1
+SpellDef|855|Heal 10 HP||20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|855|0|1|+10|46|0|0|0||||1
+SpellDef|1072|Full Heal||20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|1072|0|1|+10000|46|0|2|0||||1
+SpellDef|860|Buff Health Points by 5|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|860|0|5|5|46|0|1|0|500|Admin||1
+SpellDef|1071|Buff Health Points by 20|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|1071|0|5|20|46|0|1|0|500|Admin||1
+SpellDef|862|Buff Reaction by 1|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|862|0|4|1|65|0|1|0|500|Admin||1
+SpellDef|863|Debuff Reaction by 1|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|863|0|4|-1|65|0|1|0|500|Admin||1
+SpellDef|864|Buff Action by 1|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|864|0|4|1|63|0|1|0|500|Admin||1
+SpellDef|865|Debuff Action by 1|stack this if you have to|20.0|0|10|2|0||4|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Staff Event|f|f|4|1|
+SpellEffect|865|0|4|-1|63|0|1|0|500|Admin||1
+SpellDef|881|-----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|882|--Jobs-- WIP||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellReqDef|882|5|0|0|0.0|0.0|Bartending
+SpellEffect|882|0|2|25|872499005|0|0|0||||1
+SpellEffect|882|0|7||0|0|0|0||Bartending||1
+SpellDef|883|Bartend||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Jobs|f|f|4|1|
+SpellEffect|883|2|11||886|0|1|0|3|Get Paid|1|1
+SpellTargetCond|883|0|1|1|0|0.0|0.0|Get Paid
+SpellDef|887|Get Paid||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Jobs|f|f|4|1|
+SpellReqDef|887|5|0|0|0.0|0.0|Get Paid
+SpellEffect|887|0|2|25|872499005|0|0|0||||1
+SpellEffect|887|0|7||0|0|0|0||Get Paid||1
+SpellDef|917|---------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|918|--Ability from Runes--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|919|Mace: Swing|Buff Healing by 2 upon successful hit|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon270|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|919|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Healer}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|919|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Healer}))]-(1d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|919|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|919|2|4|2|92|0|0|1|15|Buff Heal||1
+SpellEffect|919|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|920|Holy Mace: Swing|Self Heal by 5 health points upon hit&brk;|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon270|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|920|0|1|f.floor[((-.6*{c.Attack})+(-.6*{.Healer}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|920|0|1|f.floor[((-.6*{c.Attack})+(-.6*{.Healer}))]-(1d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|920|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|920|2|1|+5|46|0|0|1||||1
+SpellEffect|920|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|921|Holy Sword: Swing|Clense yourself of Poison and Sickness|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon174|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|921|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Healer}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|921|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Healer}))]-(1d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|921|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|921|0|7||0|0|0|1||Poisoned||1
+SpellEffect|921|0|7||0|0|0|1||Sickness||1
+SpellEffect|921|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|933|Mage Sword: Swing|Buff Magic by 2 upon successful hit|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon174|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|933|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|933|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|933|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|933|2|4|2|332|0|0|1|15|Buff Magic||1
+SpellEffect|933|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|1|2||||1
+SpellDef|922|Fighter Sword: Swing|Buff Melee by 2 upon successful hit|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon174|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|922|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Melee}))]-(1d6)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|922|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Melee}))]-(1d6)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|922|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|922|2|4|2|330|0|0|1|15|Buff Melee||1
+SpellEffect|922|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|923|Flintlock: Shoot|Slow down enemy only allowing 1 tile movement upon hit|5.0|0|1|0|63||0|65|f|f|f|t|10|Icon306|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|923|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|923|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|923|0|0|{comment}&brk;&brk;{caster} shoots their weapon at {target}, landing a solid strike, {target} is only allowed to move 1 tile on their turn&brk;{roll}|0|0|0|1||||1
+SpellEffect|923|0|0|{comment}&brk;&brk;{caster} shoots their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|924|Offensive MageStaff: Cast|upon successful hit raise Action by 2|5.0|0|1|0|63||0|65|f|f|f|t|10|Icon174|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|924|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d5)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|924|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d5)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|924|0|0|{comment}&brk;&brk;{caster} cast their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|924|2|4|2|63|0|0|1|15|Buff Action||1
+SpellEffect|924|0|0|{comment}&brk;&brk;{caster} cast their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|925|Defensive MageStaff: Cast|upon successful hit raise Reaction by 2|5.0|0|1|0|63||0|65|f|f|f|t|10|Icon174|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|925|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d5)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|925|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Magic}))]-(1d5)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|925|0|0|{comment}&brk;&brk;{caster} cast their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|925|2|4|2|65|0|0|1|15|Buff Reaction||1
+SpellEffect|925|0|0|{comment}&brk;&brk;{caster} cast their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|926|Priest Staff: Cast|Heal an Ally|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon287|t|t|0.0,0.8456,0.206185,1.0|Weapon|f|f|4|1|
+SpellEffect|926|0|1|f.floor[((+.6*{c.Attack})+(+.6*{c.Healing}))]+(1d4)|46|2|0|1||||1
+SpellEffect|926|0|1|f.floor[((+.6*{c.Attack})+(+.6*{c.Healing}))]+(1d6)|46|1|0|1||||1
+SpellEffect|926|0|0|{comment}&brk;&brk;{caster} heals {target} &brk;{roll}|0|0|0|1||||1
+SpellEffect|926|0|0|{comment}&brk;&brk;{caster} failed to heal {target}&brk;{roll}|0|0|0|2||||1
+SpellDef|927|Dagger: Stab|Hit then fade away allowing an extra 2 tile movement|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon172|t|t|0.517647,0.517647,0.517647,1.0|Weapon|f|f|4|1|
+SpellEffect|927|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|927|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|927|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, landing a solid strike, {caster} is allowed 2 extra tile movements&brk;{roll}|0|0|0|1||||1
+SpellEffect|927|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|928|Large Axe: Swing|Swing your axe, locking you and your enemy in place for one turn&brk;|1.0|0|1|0|63||0|65|f|f|f|t|10|Icon149|t|t|0.581106,0.581106,0.581106,1.0|Weapon|f|f|4|1|
+SpellEffect|928|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d8)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|928|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Melee}))]-(1d9)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|928|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, their axe getting stuck in their target.&brk;{caster} and {target} cannont move for one turn&brk;{roll}|0|0|0|1||||1
+SpellEffect|928|0|0|{comment}&brk;&brk;{caster} swings their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|931|Bow: Shoot|Buff Range by 1 upon successful hit|5.0|0|1|0|63||0|65|f|f|f|t|10|Icon135|t|t|0.584293,0.584293,0.584293,1.0|Weapon|f|f|4|1|
+SpellEffect|931|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|931|0|1|f.floor[((-.6*{c.Attack})+(-.6*{Range}))]-(1d5)  + (.4*{t.Reaction}) - 1|46|1|0|1||||1
+SpellEffect|931|0|0|{comment}&brk;&brk;{caster} shoots their weapon at {target}, landing a solid strike.&brk;{roll}|0|0|0|1||||1
+SpellEffect|931|2|4|1|331|0|0|1|15|Buff Range||1
+SpellEffect|931|0|0|{comment}&brk;&brk;{caster} shoots their weapon at {target}, but fails to connect.&brk;{roll}|0|0|0|2||||1
+SpellDef|981|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|982|--Out of Combat Abilities--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Out of Combat Abilities|f|f|4|1|
+SpellDef|983|Healer: Healing Wave|Heal an Injured person when both are not in combat.|3.0|0|1|2|0|(.5*{c.Action}) + {c.Healing} + 2d6|2|10|f|f|f|t|0|Icon297|f|f|0.02009,0.842414,0.0,1.0|Out of Combat Abilities|t|f|4|1|
+SpellReqDef|983|0|3|978|1.0|0.0|
+SpellEffect|983|2|1|-1|978|0|0|0||||1
+SpellEffect|983|0|0|{comment}&brk;&brk;{caster} heals {Target}, sending healing energy into them and alleviating their wounds.&brk;{roll}|0|0|0|1||||1
+SpellEffect|983|0|1|f.floor[((+.6*{c.Action})+(+.6*{c.Healing}))]+(5d3)|46|0|0|1||||1
+SpellEffect|983|0|0|{comment}&brk;&brk;{caster} heals {Target}, attempting to heal them, but the healing energy does not succeed.&brk;{roll}|0|0|0|2||||1
+SpellTargetCond|983|0|20|1|518|0.0|0.0|
+SpellDef|988|-------------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|989|--Sparring System--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|1006|Start Spar||0.0|1|0|2|0||4|0|f|f|t|f|0|Icon334|f|f|0.969881,0.969881,0.969881,1.0|Sparring|f|f|4|1|
+SpellEffect|1006|0|11||1007|0|0|0|60|Sparring||1
+SpellDef|1008|End Spar||0.0|1|0|2|0||4|0|f|f|t|f|0|Icon334|f|f|1.0,0.0,0.0,1.0|Sparring|f|f|4|1|
+SpellEffect|1008|0|7||0|0|0|0||Sparring||1
+SpellDef|990|Throw Punch|Uses Sleight of Hand and Feats of Strength|2.0|0|1|2|0|f.floor[((.8*{c.Sleight of Hand})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|0|61|f|t|f|t|0|Icon292|t|f|0.412212,0.412212,0.412212,1.0|Sparring|f|f|4|1|
+SpellReqDef|990|5|1|0|0.0|0.0|Grappled
+SpellReqDef|990|5|1|0|0.0|0.0|Pinned
+SpellEffect|990|0|7||0|0|2|0||Buff Acro||1
+SpellEffect|990|0|7||0|0|2|0||Buff Fort||1
+SpellEffect|990|0|0|{comment}&brk;{caster} punches {target} connecting their hit|0|0|0|1||||1
+SpellEffect|990|0|1|f.floor[((-.6*{c.Sleight of Hand})+(-.6*{c.Feats of Strength}))]-(2d6)  + (.4*{t.Fortitude})|986|0|0|1||||1
+SpellEffect|990|0|0|{comment}&brk;{caster} throws a punch at {target} failing to connect their hit|0|0|0|2||||1
+SpellTargetCond|990|0|21|1|0|0.0|0.0|Pinned
+SpellTargetCond|990|0|1|1|0|0.0|0.0|Pinned
+SpellDef|991|Kick|Uses Acrobatics and Feats of Strength|2.0|0|1|2|0|f.floor[((.8*{c.Acrobatics})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|0|61|f|t|f|t|0|Icon291|t|f|0.150905,0.150905,0.150905,1.0|Sparring|f|f|4|1|
+SpellReqDef|991|5|1|0|0.0|0.0|Grappled
+SpellReqDef|991|5|1|0|0.0|0.0|Pinned
+SpellEffect|991|0|7||0|0|2|0||Buff Acro||1
+SpellEffect|991|0|7||0|0|2|0||Buff Acro||1
+SpellEffect|991|0|0|{comment}&brk;{caster} kicks {target} connecting their hit|0|0|0|1||||1
+SpellEffect|991|0|1|f.floor[((-.6*{c.Acrobatics})+(-.6*{c.Feats of Strength}))]-(2d6)  + (.4*{t.Fortitude})|986|0|0|1||||1
+SpellEffect|991|0|0|{comment}&brk;{caster} failed to kick {target} |0|0|0|2||||1
+SpellTargetCond|991|0|1|1|0|0.0|0.0|Grappled
+SpellTargetCond|991|0|1|1|0|0.0|0.0|Pinned
+SpellDef|1005|Guard Stance|Raise your Acrobatics, Foritude while replenishing some Constitution&brk;Fortitude/Feats of Strength vs Feats of Strength and Acrobatics roll|2.0|1|1|2|0|f.floor[((.8*{c.Fortitude})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Feats of Strength})|0|61|f|t|f|f|0|Icon162|t|f|0.0,0.582337,0.899774,1.0|Sparring|f|f|4|1|
+SpellReqDef|1005|5|1|0|0.0|0.0|Grappled
+SpellReqDef|1005|5|1|0|0.0|0.0|Pinned
+SpellEffect|1005|0|0|{comment}&brk;{caster} goes into a guard stance|0|0|0|1||||1
+SpellEffect|1005|2|1|2d6|986|0|0|1||||1
+SpellEffect|1005|2|4|+3|61|0|0|1|10|Buff Acro||1
+SpellEffect|1005|2|4|+3|89|0|0|1|10|Buff Fort||1
+SpellEffect|1005|0|0|{comment}&brk;{caster} failed to focus to go into a guard stance|0|0|0|2||||1
+SpellTargetCond|1005|0|21|1|0|0.0|0.0|Pinned
+SpellTargetCond|1005|0|1|1|0|0.0|0.0|Pinned
+SpellDef|992|Grapple|Rolls Acrobatics and Feat of Strength against enemy Acrobatics roll|2.0|0|1|2|0|f.floor[((.8*{c.Acrobatics})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|0|61|f|t|f|f|0|Icon285|t|f|0.351665,0.177895,0.014388,1.0|Sparring|t|f|4|1|
+SpellReqDef|992|5|1|0|0.0|0.0|Grappled
+SpellReqDef|992|5|1|0|0.0|0.0|Pinned
+SpellEffect|992|0|7||0|0|2|0||Buff Acro||1
+SpellEffect|992|0|7||0|0|2|0||Buff Fort||1
+SpellEffect|992|0|0|{comment}&brk;{caster} Grapples {target} successfully|0|0|0|1||||1
+SpellEffect|992|0|11||995|0|0|1|30|Grappled||1
+SpellEffect|992|0|0|{comment}&brk;{caster} failed to grapple {target} |0|0|0|2||||1
+SpellDef|998|Pin|Rolls Acrobatics and Feat of Strength against enemy Total Constitution|2.0|0|1|2|0|f.floor[((.8*{c.Acrobatics})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|1|986|f|t|f|f|0|Icon285|t|f|0.122225,0.080285,0.0,1.0|Sparring|t|f|4|1|
+SpellReqDef|998|5|1|0|0.0|0.0|Grappled
+SpellReqDef|998|5|1|0|0.0|0.0|Pinned
+SpellEffect|998|0|0|{comment}&brk;{caster} pinned down {target} |0|0|0|1||||1
+SpellEffect|998|0|11||999|0|0|1|30|Pinned||1
+SpellEffect|998|0|7||0|0|0|1||Grappled||1
+SpellEffect|998|0|0|{comment}&brk;{caster} grappling {target} failed to advance into a pin|0|0|0|2||||1
+SpellTargetCond|998|0|20|0|995|0.0|0.0|
+SpellDef|1000|Pin Knock Out|Rolls Acrobatics and Feat of Strength against enemy Total Constitution|2.0|0|1|2|0|f.floor[((.8*{c.Acrobatics})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|1|986|f|t|f|f|0|Icon285|t|f|0.179585,0.0,0.0,1.0|Sparring|t|f|4|1|
+SpellReqDef|1000|5|1|0|0.0|0.0|Grappled
+SpellReqDef|1000|5|1|0|0.0|0.0|Pinned
+SpellEffect|1000|0|0|{comment}&brk;{caster} advanced their pin into a knockout against {target}|0|0|0|1||||1
+SpellEffect|1000|0|1|-30|986|0|0|1||||1
+SpellEffect|1000|0|11||1001|0|0|1|30|Pinned||1
+SpellEffect|1000|0|7||0|0|0|1||Grappled||1
+SpellEffect|1000|0|7||0|0|0|1||Pinned||1
+SpellEffect|1000|0|0|{comment}&brk;{caster} failed to kockout {target} |0|0|0|2||||1
+SpellTargetCond|1000|0|20|0|999|0.0|0.0|
+SpellDef|1004|Break Free|Rolls Acrobatics and Feat of Strength vs enemy Acrobatics and Feat of Strength|2.0|1|1|2|0|f.floor[((.8*{c.Acrobatics})+(.8*{c.Feats of Strength}))]+(1d20)  - (.4*{t.Acrobatics})|0|61|t|t|f|f|0|Icon339|t|f|0.0,0.86718,0.928454,1.0|Sparring|t|f|4|1|
+SpellReqDef|1004|5|0|0|0.0|0.0|Grappled
+SpellReqDef|1004|5|0|0|0.0|0.0|Pinned
+SpellEffect|1004|0|0|{comment}&brk;{caster} Breaks free from {target}|0|0|0|1||||1
+SpellEffect|1004|0|7||0|0|0|1|30|Grappled||1
+SpellEffect|1004|0|7||0|0|0|1||Pinned||1
+SpellEffect|1004|0|0|{comment}&brk;{caster} failed to break free {target} |0|0|0|2||||1
+SpellDef|1099|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|1100|--Hand Crafting--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0|Hand Crafting|f|f|4|1|
+SpellDef|730|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|729|--Scholar--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|735|Prep Studies||0.0|1|1|2|0||4|0|f|f|f|t|1440|872499003|f|f|1.0,1.0,1.0,1.0|Academics Lv1|f|f|4|1|
+SpellReqDef|735|6|0|872481001|0.0|0.0|10
+SpellEffect|735|0|2|1|872499003|0|0|0||||1
+SpellEffect|735|0|0|{caster} prepaares their studies, ready to teach a worthy student.|0|0|0|0||||1
+SpellEffect|735|0|3|5|872481001|0|0|0||||1
+SpellDef|732|Teach Magic Push|Teach your student Magic Push&brk;|2.0|0|1|2|0|1d20+(f.floor[(.10*{c.Scholar EXP})]) + {c.Academic}|2|15|f|f|f|f|1440|873200003|f|f|1.0,1.0,1.0,1.0|Academics Lv1|f|f|1|1|
+SpellReqDef|732|6|0|872499003|0.0|0.0|1
+SpellEffect|732|0|3|1|872499003|0|0|0||||1
+SpellEffect|732|0|2|1|873200003|0|0|1||||1
+SpellEffect|732|0|0|{caster} teaches {target} Magic Push|0|0|0|1||||1
+SpellEffect|732|0|1|+1|733|0|0|1||||1
+SpellEffect|732|0|10|1|740|0|2|1||||1
+SpellEffect|732|0|0|Failed to teach {target} Magic Push|0|0|0|2||||1
+SpellDef|744|Teach Ignite|Teach your student Ignite&brk;|2.0|0|1|2|0|1d20+(f.floor[(.10*{c.Scholar EXP})]) + {c.Academic}|2|15|f|f|f|f|1440|5500064|f|f|1.0,1.0,1.0,1.0|Academics Lv1|f|f|1|1|
+SpellReqDef|744|6|0|872499003|0.0|0.0|1
+SpellEffect|744|0|3|1|872499003|0|0|0||||1
+SpellEffect|744|0|2|1|5500064|0|0|1||||1
+SpellEffect|744|0|0|{caster} teaches {target} Ignite|0|0|0|1||||1
+SpellEffect|744|0|1|+1|733|0|0|1||||1
+SpellEffect|744|0|10|1|742|0|2|1||||1
+SpellEffect|744|0|0|Failed to teach {target} Ignite|0|0|0|2||||1
+SpellDef|748|Teach Blizzard|Teach your student BLizzard|2.0|0|1|2|0|1d20+(f.floor[(.10*{c.Scholar EXP})]) + {c.Academic}|2|15|f|f|f|f|1440|873300026|f|f|1.0,1.0,1.0,1.0|Academics Lv1|f|f|1|1|
+SpellReqDef|748|6|0|872499003|0.0|0.0|1
+SpellEffect|748|0|3|1|872499003|0|0|0||||1
+SpellEffect|748|0|2|1|873300026|0|0|1||||1
+SpellEffect|748|0|0|{caster} teaches {target} Blizzard|0|0|0|1||||1
+SpellEffect|748|0|1|+1|733|0|0|1||||1
+SpellEffect|748|0|10|1|741|0|2|1||||1
+SpellEffect|748|0|0|Failed to teach {target} Blizzard|0|0|0|2||||1
+SpellDef|628|--------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|709|Tinkerer Crafting||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|713|--Crafting--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|714|Craft Fang of Knives|Craft a engineered fan of knives that can be thrown at multiple targets&brk;(Requires Iron Throwing Knives made by black smith)|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tinkerer EXP})]) + {c.Tinkerer}|2|10|f|f|f|t|1440|873300009|f|f|1.0,1.0,1.0,1.0|Tinkerer lv1|f|f|1|1|
+SpellReqDef|714|6|0|872481007|0.0|0.0|10
+SpellReqDef|714|6|0|872481004|0.0|0.0|10
+SpellEffect|714|0|3|10|872481007|0|0|0||||1
+SpellEffect|714|0|3|10|872481004|0|0|0||||1
+SpellEffect|714|0|2|1|873300009|0|0|1||||1
+SpellEffect|714|0|0|{caster} crafts a Fang of Knives|0|0|0|1||||1
+SpellEffect|714|0|1|+1|715|0|0|1||||1
+SpellEffect|714|0|0|Failed to create a Fang of Knives, the device falling apart in the Tinkerer's hand.|0|0|0|2||||1
+SpellDef|717|Craft Shrapnel Bomb|Craft a engineered orb that explodes a wave of shrapnel&brk;(Requires Black powder orb made by black smith)|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tinkerer EXP})]) + {c.Tinkerer}|2|10|f|f|f|t|1440|873300013|f|f|1.0,1.0,1.0,1.0|Tinkerer lv1|f|f|1|1|
+SpellReqDef|717|6|0|7860051|0.0|0.0|5
+SpellReqDef|717|6|0|872481004|0.0|0.0|5
+SpellEffect|717|0|3|5|7860051|0|0|0||||1
+SpellEffect|717|0|3|5|872481004|0|0|0||||1
+SpellEffect|717|0|2|1|873300013|0|0|1||||1
+SpellEffect|717|0|0|{caster} crafts a Shrapnel Bomb|0|0|0|1||||1
+SpellEffect|717|0|1|+1|715|0|0|1||||1
+SpellEffect|717|0|0|Failed to create a Shrapnel Bomb|0|0|0|2||||1
+SpellDef|722|Craft Poison Dart|Craft a engineered fan of knives that can be thrown at multiple targets&brk;(Requires Iron Throwing Knives made by black smith)|0.0|1|0|2|0|1d20+(f.floor[(.10*{c.Tinkerer EXP})]) + {c.Tinkerer}|2|10|f|f|f|t|1440|7700032|f|f|1.0,1.0,1.0,1.0|Tinkerer lv1|f|f|1|1|
+SpellReqDef|722|6|0|872481012|0.0|0.0|5
+SpellReqDef|722|6|0|872481007|0.0|0.0|5
+SpellEffect|722|0|3|5|872481012|0|0|0||||1
+SpellEffect|722|0|3|5|872481007|0|0|0||||1
+SpellEffect|722|0|2|1|7700032|0|0|1||||1
+SpellEffect|722|0|0|{caster} crafts a poison dart|0|0|0|1||||1
+SpellEffect|722|0|1|+1|715|0|0|1||||1
+SpellEffect|722|0|0|Failed to create a poison dart|0|0|0|2||||1
+SpellDef|712|--Abilities--||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|707|Fang Of Knives|Throw a fan of knvies at two targets|4.0|0|2|0|63||2|12|f|f|f|t|0|873300009|t|t|0.137168,0.192629,0.899774,1.0|Consumable Attacks|f|f|4|1|
+SpellReqDef|707|6|0|872111001|0.0|0.0|1
+SpellReqDef|707|0|3|978|1.0|0.0|
+SpellEffect|707|2|3|1|872111001|0|1|0||||1
+SpellEffect|707|2|1|-1|978|0|0|0||||1
+SpellEffect|707|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d4)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|707|0|0|{comment}&brk;&brk;{caster} Throws a fan of knives at {Target}.&brk;{roll}|0|0|0|1||||1
+SpellEffect|707|0|0|{comment}&brk;&brk;{caster} throws a fan of knives, but fails to connect with {Target}.&brk;{roll}|0|0|0|2||||1
+SpellDef|718|Shrapnel Bomb|Throw's a bomb at your target..BOOM!&brk;(Requires Black PowderOrb made by Black smith)|4.0|0|1|0|63||2|12|f|f|f|t|0|873300013|t|t|0.137168,0.192629,0.899774,1.0|Consumable Attacks|f|f|4|1|
+SpellReqDef|718|6|0|872211003|0.0|0.0|1
+SpellReqDef|718|0|3|978|1.0|0.0|
+SpellEffect|718|2|3|1|872211003|0|1|0||||1
+SpellEffect|718|2|1|-1|978|0|0|0||||1
+SpellEffect|718|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d2)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|718|0|0|{comment}&brk;&brk;{caster} throws a bomb exploding {Target}.&brk;{roll}|0|0|0|1||||1
+SpellEffect|718|0|0|{comment}&brk;&brk;{caster} throws a bomb at {Target}, but the shrapnel misses them.&brk;{roll}|0|0|0|2||||1
+SpellDef|724|Poison Dart|Throw's a poison dart, if hit, the target will get status poisoned.&brk;(Requires Iron throwing knife  made by Black smith)|4.0|0|1|0|63||2|12|f|f|f|t|0|7700032|t|t|0.137168,0.192629,0.899774,1.0|Consumable Attacks|f|f|4|1|
+SpellReqDef|724|6|0|872111001|0.0|0.0|1
+SpellReqDef|724|0|3|978|1.0|0.0|
+SpellEffect|724|2|3|1|872111001|0|1|0||||1
+SpellEffect|724|2|1|-1|978|0|0|0||||1
+SpellEffect|724|0|1|f.floor[((-.6*{c.Attack})+(-.6*{c.Range}))]-(2d2)  + (.4*{t.Reaction})|46|2|0|1||||1
+SpellEffect|724|0|0|{comment}&brk;&brk;{caster} throws a poison dart at {Target}.&brk;{roll}|0|0|0|1||||1
+SpellEffect|724|0|11||665|0|0|1|30|Poisoned||1
+SpellEffect|724|0|0|{comment}&brk;&brk;{caster} throws a poison dart at {Target}, but the dart misses them&brk;{roll}|0|0|0|2||||1
+SpellDef|1017|----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|437|Debug|Debug - Do not Abuse|0.0|1|1|2|0|1d20|2|1|f|t|t|f|0|Icon303|t|f|0.329359,0.329359,0.329359,1.0|Debug|f|f|4|1|
+SpellEffect|437|2|11||462|0|2|0|1|Debugging||1
+SpellDef|465|Debug Status|Clear all Status effects|0.0|1|1|2|0|1d20|2|1|f|t|f|f|0|Icon303|t|f|0.329359,0.329359,0.329359,1.0|Debug|f|f|4|1|
+SpellEffect|465|2|7||0|0|2|0|1|Debugging||1
+SpellEffect|465|2|7||0|0|2|0||Rooted||1
+SpellEffect|465|2|7||0|0|2|0||Stunned||1
+SpellEffect|465|2|7||0|0|2|0||Invocation||1
+SpellEffect|465|2|7||0|0|2|0||Buff||1
+SpellEffect|465|2|7||0|0|2|0||Mana Shield||1
+SpellEffect|465|2|7||0|0|2|0||Bleed||1
+SpellEffect|465|0|7||0|0|2|0||In Combat||1
+SpellEffect|465|0|7||0|0|2|0||PVP Intent||1
+SpellEffect|465|0|7||0|0|2|0||Sickened||1
+SpellEffect|465|0|7||0|0|2|0||Admin||1
+SpellDef|463|Clear Drunk|Debug - Get rid of Drunk status's|0.0|1|0|2|0|1d20|2|0|f|f|f|f|0|Icon303|f|f|0.163651,0.163651,0.163651,1.0|Debug|f|f|4|1|
+SpellEffect|463|0|7||0|0|2|0|1|Tipsy||1
+SpellEffect|463|0|7||0|0|2|0||Intoxicated||1
+SpellEffect|463|0|7||0|0|2|0||Drunk||1
+SpellEffect|463|0|7||0|0|0|0||Debugging||1
+SpellDef|466|Debug Heal|Debug - Heal to max|0.0|1|0|2|0|1d20|2|0|f|f|f|f|0|Icon303|f|f|0.163651,0.163651,0.163651,1.0|Debug|f|f|4|1|
+SpellEffect|466|0|7||0|0|2|0||Debugging||1
+SpellEffect|466|0|10|30|46|0|0|0||||1
+SpellEffect|466|0|1|+30|46|0|0|0||||1
+SpellDef|500|How do I PVP?|1. Declare PVP Intent&brk;2. Roll Initative&brk;3. Use one ability, one free action, and can move 2 tiles per turn in any order&brk;4. May not move, use an action, then move again&brk;5. When HP is 0, winner chooses if the victim is Unconcious or Killed. (Unless discussed)&brk;6. RP control Combat PVP ( Ex. Drains your mana so you cant use magic, steal your weapon, etc) Unless Discussed&brk;&brk;Make a ticket if needed.|0.0|0|0|0|0||0|0|f|f|t|f|0|Icon164|f|f|1.0,1.0,1.0,1.0|Debug|f|f|4|1|
+SpellDef|1029|----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|1030|Experience for Lumber||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1030|6|0|833102|0.0|0.0|1
+SpellEffect|1030|0|3|1|833102|0|2|0||||1
+SpellEffect|1030|0|1|+10|600|0|0|0||||1
+SpellDef|1031|Experience for Cooking||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1031|6|0|833103|0.0|0.0|1
+SpellEffect|1031|0|3|1|833103|0|2|0||||1
+SpellEffect|1031|0|1|+10|586|0|0|0||||1
+SpellDef|1032|Experience for Weaponsmithing||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1032|6|0|833104|0.0|0.0|1
+SpellEffect|1032|0|3|1|833104|0|2|0||||1
+SpellEffect|1032|0|1|+10|939|0|0|0||||1
+SpellDef|1033|Experience for Fishing||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1033|6|0|833105|0.0|0.0|1
+SpellEffect|1033|0|3|1|833105|0|2|0||||1
+SpellEffect|1033|0|1|+20|585|0|0|0||||1
+SpellDef|1034|Experience for Gathering||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1034|6|0|833106|0.0|0.0|1
+SpellEffect|1034|0|3|1|833106|0|2|0||||1
+SpellEffect|1034|0|1|+10|632|0|0|0||||1
+SpellDef|1035|Experience for Scholar||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1035|6|0|833107|0.0|0.0|1
+SpellEffect|1035|0|3|1|833107|0|2|0||||1
+SpellEffect|1035|0|1|+10|675|0|0|0||||1
+SpellDef|1036|Experience for BlackSmithing||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1036|6|0|833108|0.0|0.0|1
+SpellEffect|1036|0|3|1|833108|0|2|0||||1
+SpellEffect|1036|0|1|+10|631|0|0|0||||1
+SpellDef|1037|Experience for Skinning||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1037|6|0|833109|0.0|0.0|1
+SpellEffect|1037|0|3|1|833109|0|2|0||||1
+SpellEffect|1037|0|1|+10|755|0|0|0||||1
+SpellDef|1038|Experience for Tailoring||0.0|1|0|2|0||4|0|f|f|f|t|0|None|f|f|1.0,1.0,1.0,1.0|Event|f|f|4|1|
+SpellReqDef|1038|6|0|833110|0.0|0.0|1
+SpellEffect|1038|0|3|1|833110|0|2|0||||1
+SpellEffect|1038|0|1|+10|956|0|0|0||||1
+SpellDef|1112|----------------------------------||0.0|0|0|0|0||0|0|f|f|f|f|0|None|f|f|1.0,1.0,1.0,1.0||f|f|4|1|
+SpellDef|1113|Experience Check||0.0|1|0|0|0||0|0|f|f|t|f|0|Icon320|f|f|1.0,0.896996,0.458368,1.0||f|f|4|1|
+SpellEffect|1113|0|0||0|0|0|0||||1
+StatusDef|1019|End Turn|1.0,1.0,1.0,1.0|f
+StatusDef|665|Poisoned|0.012888,0.37315,0.126507,1.0|f
+StatusAction|665|65|-1|0
+StatusAction|665|666|0|3
+StatusDef|746|Burning|1.0,0.0,0.0,1.0|f
+StatusAction|746|747|0|3
+StatusDef|348|Bleed|0.927632,0.040908,0.040908,1.0|f
+StatusAction|348|65|-1|0
+StatusDef|358|Rage|0.671391,0.781044,0.129023,1.0|f
+StatusAction|358|63|2|0
+StatusDef|361|Wall of Integrity|0.956863,0.882353,0.454902,1.0|f
+StatusAction|361|65|2|0
+StatusDef|364|Stunned|0.069255,0.316342,0.484683,1.0|f
+StatusDef|391|Sickened|0.0,0.064042,0.005504,1.0|f
+StatusAction|391|63|-1|0
+StatusAction|391|65|-1|0
+StatusDef|399|Invocation|0.066353,0.873458,0.490647,1.0|f
+StatusAction|399|332|4|0
+StatusAction|399|92|4|0
+StatusDef|404|Mana Shield|0.053004,0.838405,0.090466,1.0|f
+StatusAction|404|65|4|0
+StatusDef|664|Powering Up|0.0,0.745234,0.777858,1.0|f
+StatusAction|664|663|0|3
+StatusDef|421|---------------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|422|Tipsy|1.0,0.996916,0.996916,1.0|t
+StatusAction|422|89|-2|0
+StatusDef|424|Intoxicated|1.0,1.0,1.0,1.0|t
+StatusAction|424|89|-2|0
+StatusDef|425|Drunk|1.0,1.0,1.0,1.0|t
+StatusAction|425|89|-2|0
+StatusDef|461|---------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|462|Debugging|1.0,0.018606,0.988902,1.0|f
+StatusAction|462|463|0|3
+StatusAction|462|465|0|3
+StatusAction|462|466|0|3
+StatusDef|504|-------------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|505|Granted Social Abilities|1.0,1.0,1.0,1.0|f
+StatusDef|506||1.0,1.0,1.0,1.0|f
+StatusAction|506|418|0|3
+StatusAction|506|502|0|3
+StatusAction|506|508|0|3
+StatusAction|506|510|0|3
+StatusAction|506|509|0|3
+StatusAction|506|511|0|3
+StatusAction|506|512|0|3
+StatusAction|506|513|0|3
+StatusAction|506|514|0|3
+StatusAction|506|515|0|3
+StatusAction|506|0|0|3
+StatusAction|506|0|0|3
+StatusDef|516|------------------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|517|Combat Mechanics|1.0,1.0,1.0,1.0|f
+StatusDef|518|In Combat|0.908512,0.051646,0.051646,1.0|f
+StatusAction|518|522|0|3
+StatusAction|518|523|0|3
+StatusAction|518|413|0|3
+StatusAction|518|350|0|3
+StatusAction|518|499|0|3
+StatusDef|520|PVP Intent|0.0,0.135896,1.0,1.0|f
+StatusAction|520|521|0|3
+StatusDef|572|----------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|544|Fishing|0.027637,0.69391,0.800164,1.0|f
+StatusAction|544|543|0|3
+StatusDef|561|Cooking|0.577097,0.552989,0.183606,1.0|f
+StatusAction|561|565|0|3
+StatusAction|561|567|0|3
+StatusAction|561|568|0|3
+StatusDef|590|Mining Iron|0.653577,0.352503,0.028822,1.0|f
+StatusAction|590|593|0|3
+StatusDef|598|Mining Steel|0.271697,0.08803,0.895765,1.0|f
+StatusAction|598|597|0|3
+StatusDef|601|Chopping Wood|0.175576,0.071102,0.000469,1.0|f
+StatusAction|601|604|0|3
+StatusDef|607|Chopping Hard Wood|0.701378,0.237175,0.048811,1.0|f
+StatusAction|607|606|0|3
+StatusDef|637|Skinning Leather|0.921258,0.888103,0.134571,1.0|f
+StatusAction|637|636|0|3
+StatusDef|701|Reading|0.048036,0.739858,0.800164,1.0|f
+StatusDef|757|Gathering Herbs|0.0,0.248869,0.011871,1.0|f
+StatusAction|757|752|0|3
+StatusDef|953|Weapon Smithing|1.0,1.0,1.0,1.0|f
+StatusAction|953|938|0|3
+StatusAction|953|941|0|3
+StatusAction|953|942|0|3
+StatusAction|953|943|0|3
+StatusAction|953|944|0|3
+StatusAction|953|945|0|3
+StatusAction|953|946|0|3
+StatusAction|953|947|0|3
+StatusAction|953|948|0|3
+StatusAction|953|949|0|3
+StatusAction|953|950|0|3
+StatusAction|953|951|0|3
+StatusDef|1094|Alchemy|0.0,0.819285,0.540351,1.0|f
+StatusAction|1094|1084|0|3
+StatusAction|1094|1087|0|3
+StatusAction|1094|1088|0|3
+StatusAction|1094|1089|0|3
+StatusAction|1094|1097|0|3
+StatusAction|1094|1101|0|3
+StatusDef|649|----------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|650|Smithing|0.360403,0.360403,0.360403,1.0|f
+StatusAction|650|643|0|3
+StatusAction|650|644|0|3
+StatusAction|650|719|0|3
+StatusAction|650|720|0|3
+StatusAction|650|971|0|3
+StatusAction|650|972|0|3
+StatusDef|954|Tailoring|0.239309,0.169442,0.088339,1.0|f
+StatusAction|954|630|0|3
+StatusAction|954|638|0|3
+StatusAction|954|639|0|3
+StatusAction|954|640|0|3
+StatusAction|954|641|0|3
+StatusAction|954|959|0|3
+StatusAction|954|960|0|3
+StatusAction|954|961|0|3
+StatusAction|954|962|0|3
+StatusAction|954|965|0|3
+StatusAction|954|966|0|3
+StatusAction|954|967|0|3
+StatusAction|954|968|0|3
+StatusDef|573|----------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|574|Grant Consume Panel|1.0,1.0,1.0,1.0|f
+StatusDef|575|Consume Panel |1.0,1.0,1.0,1.0|f
+StatusAction|575|569|0|3
+StatusAction|575|576|0|3
+StatusAction|575|577|0|3
+StatusAction|575|1090|0|3
+StatusAction|575|1091|0|3
+StatusAction|575|1092|0|3
+StatusAction|575|1093|0|3
+StatusAction|575|1098|0|3
+StatusAction|575|1102|0|3
+StatusDef|758|----------------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|759|Casino Bullshit|1.0,1.0,1.0,1.0|f
+StatusDef|760|1|1.0,1.0,1.0,1.0|f
+StatusDef|761|2|1.0,1.0,1.0,1.0|f
+StatusDef|762|3|1.0,1.0,1.0,1.0|f
+StatusDef|763|4|1.0,1.0,1.0,1.0|f
+StatusDef|764|5|1.0,1.0,1.0,1.0|f
+StatusDef|765|6|1.0,1.0,1.0,1.0|f
+StatusDef|766|7|1.0,1.0,1.0,1.0|f
+StatusDef|767|8|1.0,1.0,1.0,1.0|f
+StatusDef|768|9|1.0,1.0,1.0,1.0|f
+StatusDef|769|10|1.0,1.0,1.0,1.0|f
+StatusDef|770|11|1.0,1.0,1.0,1.0|f
+StatusDef|779|12|1.0,1.0,1.0,1.0|f
+StatusDef|780|13|1.0,1.0,1.0,1.0|f
+StatusDef|781|14|1.0,1.0,1.0,1.0|f
+StatusDef|782|15|1.0,1.0,1.0,1.0|f
+StatusDef|783|16|1.0,1.0,1.0,1.0|f
+StatusDef|784|17|1.0,1.0,1.0,1.0|f
+StatusDef|785|18|1.0,1.0,1.0,1.0|f
+StatusDef|786|19|1.0,1.0,1.0,1.0|f
+StatusDef|787|20|1.0,1.0,1.0,1.0|f
+StatusDef|788|21|1.0,1.0,1.0,1.0|f
+StatusDef|789|BUST|1.0,1.0,1.0,1.0|f
+StatusDef|884|---------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|885|--Jobs--|1.0,1.0,1.0,1.0|f
+StatusDef|886|Bartending|0.60259,0.589211,0.589211,1.0|f
+StatusDef|889|Get Paid|1.0,1.0,1.0,1.0|f
+StatusDef|993|---------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|994|--Sparring System--|1.0,1.0,1.0,1.0|f
+StatusDef|1007|Sparring|0.975432,0.108292,0.108292,1.0|f
+StatusAction|1007|990|0|3
+StatusAction|1007|991|0|3
+StatusAction|1007|1005|0|3
+StatusAction|1007|992|0|3
+StatusAction|1007|998|0|3
+StatusAction|1007|1000|0|3
+StatusAction|1007|1004|0|3
+StatusDef|995|Grappled|0.647204,0.647204,0.647204,1.0|f
+StatusAction|995|61|-3|0
+StatusAction|995|69|-3|0
+StatusDef|999|Pinned|0.812911,0.025487,0.025487,1.0|f
+StatusAction|999|476|-5|0
+StatusAction|999|61|-5|0
+StatusAction|999|69|-5|0
+StatusDef|1001|Defeated|0.33491,0.0,0.0,1.0|f
+StatusDef|1018|-----------------------------|1.0,1.0,1.0,1.0|f
+StatusDef|1043|Attacked|1.0,0.228927,0.228927,1.0|f
+StatusDef|1044|Defended|0.251234,0.324355,1.0,1.0|f
+StatusDef|1048|1 DMG|1.0,1.0,1.0,1.0|f
+StatusDef|1049|2 DMG|1.0,1.0,1.0,1.0|f
+StatusDef|1050|3 DMG|1.0,1.0,1.0,1.0|f
+StatusDef|1051|4 DMG|1.0,1.0,1.0,1.0|f
+StatusDef|1052|5 DMG|1.0,1.0,1.0,1.0|f
+StatusDef|1053|MISSED|1.0,1.0,1.0,1.0|f
+Mechanic|1|f|0|0|0|0|0|0|None
+Mechanic|2|f|0|0|0|0|0|0|None
+Mechanic|3|f|0|0|0|0|0|0|None
+Mechanic|4|f|0|0|0|0|0|0|None
+Mechanic|5|f|0|0|0|0|0|0|None
+Mechanic|6|f|0|0|0|0|0|0|None
+Mechanic|7|f|0|0|0|0|0|0|None
+Mechanic|8|f|0|0|0|0|0|0|None
+Mechanic|9|f|0|0|0|0|0|0|None
+Mechanic|10|f|0|0|0|0|0|0|None
+Megascope|11|f|f

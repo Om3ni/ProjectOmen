@@ -1,4 +1,5 @@
 import type { ChatMessage as ChatMessageType } from '@/types/chat';
+import { parseMarkdown, renderMarkdownNodes } from '@/utils/markdown';
 
 type Props = {
   message: ChatMessageType;
@@ -40,6 +41,28 @@ export function ChatMessage({ message }: Props) {
     );
   }
 
+  // Ability execution result
+  if (message.type === 'ability') {
+    return (
+      <div className="flex justify-end my-2">
+        <div className="max-w-[80%] rounded-lg px-3 py-2 border border-purple-500/40 bg-purple-950/20">
+          <div className="flex items-center gap-2 mb-1">
+            <span className="text-sm">⚔️</span>
+            <span className="text-xs font-semibold text-purple-300">
+              {(message.metadata as Record<string,unknown>)?.abilityName as string ?? 'Ability'}
+            </span>
+          </div>
+          <div className="text-sm theme-text whitespace-pre-wrap">
+            {message.content}
+          </div>
+          <div className="text-xs theme-text-muted mt-1">
+            {formatTimestamp(message.timestamp)}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // Roll result - render as text/markdown
   if (isRoll) {
     return (
@@ -70,11 +93,11 @@ export function ChatMessage({ message }: Props) {
           <div className="flex items-center gap-2 mb-1">
             <span className="text-sm">🤖</span>
             <span className="text-xs theme-text-secondary font-medium">
-              {message.metadata?.model || 'AI Assistant'}
+              {message.metadata?.model || 'Sigil'}
             </span>
           </div>
-          <div className="text-sm theme-text whitespace-pre-wrap">
-            {message.content}
+          <div className="text-sm theme-text">
+            {message.content ? renderMarkdownNodes(parseMarkdown(message.content)) : '(Empty response)'}
           </div>
           <div className="flex items-center gap-2 mt-2 text-xs theme-text-muted">
             <span>{formatTimestamp(message.timestamp)}</span>
@@ -104,8 +127,8 @@ export function ChatMessage({ message }: Props) {
             {message.senderName}
           </div>
         )}
-        <div className="text-sm theme-text whitespace-pre-wrap">
-          {message.content}
+        <div className="text-sm theme-text">
+          {renderMarkdownNodes(parseMarkdown(message.content))}
         </div>
         <div className="text-xs theme-text-muted mt-1">
           {formatTimestamp(message.timestamp)}

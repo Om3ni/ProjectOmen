@@ -1,4 +1,5 @@
 import type { SchemaData } from '@/models/schema';
+import { str, num } from '@/utils/rprHelpers';
 
 type Props = {
   data: SchemaData;
@@ -17,15 +18,6 @@ function getOrCreateSingleRecord(
   return { Literal: defaultLiteral };
 }
 
-function str(v: unknown): string {
-  return v === undefined || v === null ? '' : String(v);
-}
-
-function num(v: unknown, fallback = 0): number {
-  const n = Number(v);
-  return Number.isFinite(n) ? n : fallback;
-}
-
 function bool(v: unknown): boolean {
   const s = String(v ?? 'f').toLowerCase();
   return s === 't' || s === 'true' || s === '1';
@@ -33,6 +25,11 @@ function bool(v: unknown): boolean {
 
 function toBoolTf(b: boolean): string {
   return b ? 't' : 'f';
+}
+
+// Select all text in number input on focus
+function selectOnFocus(e: React.FocusEvent<HTMLInputElement>) {
+  e.target.select();
 }
 
 export default function DiceSystemLayout({ data, onChange }: Props) {
@@ -106,6 +103,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
               className={`${inputClass} w-16`}
               value={num(diceRules['Number of Dice'], 1)}
               onChange={(e) => setRules('Number of Dice', parseInt(e.target.value, 10) || 1)}
+              onFocus={selectOnFocus}
             />
             <span className="text-sm theme-text">d</span>
             <input
@@ -114,6 +112,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
               className={`${inputClass} w-16`}
               value={num(diceRules['Sides of Dice'], 20)}
               onChange={(e) => setRules('Sides of Dice', parseInt(e.target.value, 10) || 20)}
+              onFocus={selectOnFocus}
             />
           </div>
 
@@ -126,6 +125,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceRules['Critical Success Threshold'], 20)}
                 onChange={(e) => setRules('Critical Success Threshold', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -135,6 +135,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceRules['Critical Failure Threshold'], 1)}
                 onChange={(e) => setRules('Critical Failure Threshold', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
           </div>
@@ -186,6 +187,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.AttributePoints)}
                 onChange={(e) => setConfig('AttributePoints', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -195,6 +197,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MinAttributeAllocation)}
                 onChange={(e) => setConfig('MinAttributeAllocation', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -204,6 +207,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxAttributeAllocation)}
                 onChange={(e) => setConfig('MaxAttributeAllocation', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <label className="flex items-center gap-2 pb-2">
@@ -226,6 +230,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.SkillPoints)}
                 onChange={(e) => setConfig('SkillPoints', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -235,6 +240,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MinSkillAllocation)}
                 onChange={(e) => setConfig('MinSkillAllocation', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -244,6 +250,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxSkillAllocation)}
                 onChange={(e) => setConfig('MaxSkillAllocation', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <label className="flex items-center gap-2 pb-2">
@@ -266,6 +273,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.PerkPoints)}
                 onChange={(e) => setConfig('PerkPoints', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -275,6 +283,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxRunes)}
                 onChange={(e) => setConfig('MaxRunes', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
           </div>
@@ -296,6 +305,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxAttributeDebuff)}
                 onChange={(e) => setConfig('MaxAttributeDebuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -305,6 +315,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxAttributeBuff)}
                 onChange={(e) => setConfig('MaxAttributeBuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
           </div>
@@ -318,6 +329,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxSkillDebuff)}
                 onChange={(e) => setConfig('MaxSkillDebuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -327,6 +339,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxSkillBuff)}
                 onChange={(e) => setConfig('MaxSkillBuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
           </div>
@@ -340,6 +353,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxStatDebuff)}
                 onChange={(e) => setConfig('MaxStatDebuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
             <div>
@@ -349,6 +363,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
                 className={inputClass}
                 value={num(diceConfig.MaxStatBuff)}
                 onChange={(e) => setConfig('MaxStatBuff', parseInt(e.target.value, 10))}
+                onFocus={selectOnFocus}
               />
             </div>
           </div>
@@ -364,6 +379,7 @@ export default function DiceSystemLayout({ data, onChange }: Props) {
               className={`${inputClass} w-32`}
               value={num(diceConfig.MaxPlayersPerAbility)}
               onChange={(e) => setConfig('MaxPlayersPerAbility', parseInt(e.target.value, 10))}
+              onFocus={selectOnFocus}
             />
             <p className="text-xs theme-text-secondary mt-1">
               This is the maximum number of public (or unlocked) Statuses a player may select in their Bio panel.
